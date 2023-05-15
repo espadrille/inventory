@@ -5,4 +5,7 @@ from inventory import *
 
 my_inventory = Inventory(provider="Aws")
 
+my_inventory.Connect()
+my_inventory.LoadResources()
+
 my_inventory.print()

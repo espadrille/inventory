@@ -9,6 +9,7 @@
 #
 class Instance:
     name = ""
+    description = ""
     instance_id = ""
     client = None
 
@@ -25,11 +26,16 @@ class Instance:
     def LoadInstance(self, instance_id):
         instance = self.client.describe_instances(InstanceIds=[instance_id])['Reservations'][0]['Instances'][0]
 
-        # Recuperation du tag "Name"
         if 'Tags' in instance:
+            # Recuperation du tag "Name"
             t_name = [tag['Value'] for tag in instance['Tags'] if(tag['Key'] == 'Name')]
             if len(t_name) > 0:
                 self.name = t_name[0]
 
+            # Recuperation du tag "Description"
+            t_description = [tag['Value'] for tag in instance['Tags'] if(tag['Key'] == 'Description')]
+            if len(t_description) > 0:
+                self.description = t_description[0]
+
     def print(self):
-        print(self.name)
+        print(self.name, self.description)
