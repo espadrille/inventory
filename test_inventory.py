@@ -3,9 +3,11 @@
 # Teste de la classe Inventory
 from inventory import *
 
-my_inventory = Inventory(provider="Aws")
+my_inventory = Inventory(id="aws", name="AWS", provider="Aws")
 
-my_inventory.Connect()
+
+# my_inventory.print()
+
 my_inventory.LoadResources()
 
 my_inventory.print()
