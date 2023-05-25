@@ -16,4 +16,5 @@ class Resource:
     def print(self):
         print(self.id)
         print(f"    name                : {self.name}")
-        print(f"    description         : {self.description}")
+        if self.description != "":
+            print(f"    description         : {self.description}")

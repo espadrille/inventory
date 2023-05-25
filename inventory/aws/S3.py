@@ -16,7 +16,6 @@ class S3(Service):
 
     def __init__(self, id: str, name: str=""):
         self._resource_types=['bucket']
-
         super().__init__(id=id, name=name)
         
     def LoadResources(self, profile_name: str="") -> dict:

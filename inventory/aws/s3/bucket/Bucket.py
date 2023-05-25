@@ -39,7 +39,6 @@ class Bucket(AwsResource):
 
     def print(self):
         super().print()
-        print(f"    profile             : {self.profile}")
         print(f"    date creation       : {self.creation_date.strftime('%d/%m/%Y %H:%m:%S')}")
         print(f"    versionning         : {self.versioning}")
         print(f"    encryption_type     : {self.encryption_type}")
