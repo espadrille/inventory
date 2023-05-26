@@ -5,30 +5,28 @@
 #
 import boto3
 # from .Aws import Aws
-from .Service import Service
+from .AwsService import AwsService
 from .s3.bucket.Bucket import Bucket
 
 #
 # Classe S3
 #
-class S3(Service):
+class S3(AwsService):
     _resource_types : list # Liste des types de ressources a lister pour le service
 
-    def __init__(self, id: str, name: str=""):
+    def __init__(self, session, client: boto3.client.__class__):
         self._resource_types=['bucket']
-        super().__init__(id=id, name=name)
+        super().__init__(id=f"aws.{session.profile_name}.s3", name='s3', session=session, client=client)
         
-    def LoadResources(self, profile_name: str="") -> dict:
-        if profile_name != "":
-            self.SetProfile(profile_name=profile_name)
-        print(f"   ==> Service {self.name} sur Environnement {self._profile} <==")
-        self._client = boto3.Session(profile_name=self._profile).client(service_name="s3") # type: ignore
+    def LoadResources(self) -> dict:
+
         for my_resource_type in self._resource_types:
             if my_resource_type == "bucket":
                 for my_bucket in self._client.list_buckets()["Buckets"]:
                     new_resource = Bucket(bucket=my_bucket, client=self._client) # type: ignore
-                    new_resource.profile = self._profile
+                    new_resource.SetProperty('profile', self._profile)
 
-                    self._resources[my_resource_type][new_resource.id] = new_resource
-                    self._resources['all'][new_resource.id] = new_resource
+                    self._resources[my_resource_type][new_resource.Id()] = new_resource
+                    self._resources['all'][new_resource.Id()] = new_resource
+
         return self._resources

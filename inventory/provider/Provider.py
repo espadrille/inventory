@@ -36,7 +36,6 @@ class Provider:
         print(f"== Provider {self.name} ==")
         print("=" * (15 + len(self.name)))
         print("")
-        print(f"id              : {self.id}")
         print(f"is connected    : {str(self.IsConnected())}")
         print(f"resources count : {len(self._resources['all'])}")
         

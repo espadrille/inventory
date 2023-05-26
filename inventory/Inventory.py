@@ -8,7 +8,6 @@
 import json
 import mimetypes
 import os
-from importlib import import_module
 from .provider.Provider import Provider
 
 #
@@ -99,7 +98,6 @@ class Inventory:
         print(f"== Inventaire {self.name} ==")
         print("=" * (16 + len(self.name)))
         print("")
-        print(f"id              : {self.id}")
         print(f"resources count : {len(self._resources['all'])}")
         for my_provider in self._providers.values():
             my_provider.print()

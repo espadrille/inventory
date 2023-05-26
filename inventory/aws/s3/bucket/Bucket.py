@@ -11,35 +11,28 @@ from ...AwsResource import AwsResource
 # Classe Instance
 #
 class Bucket(AwsResource):
-    creation_date :datetime
-    versioning :str
-    encryption_type :str
+    _properties_mapping = {
+        'id': 'Name',
+        'name': 'Name'
+        }
 
     def __init__(self, bucket: dict, client: boto3.client.__class__):
-        super().__init__(id=bucket['Name'], name=bucket['Name'], client=client)
-        self.creation_date = bucket["CreationDate"]
+        super().__init__(id=f"s3.bucket.{bucket['Name']}", object=bucket, client=client)
 
         # Versioning
-        if 'Status' in self._client.get_bucket_versioning(Bucket=self.id):
-            self.versioning = self._client.get_bucket_versioning(Bucket=self.id)['Status']
+        if 'Status' in self._client.get_bucket_versioning(Bucket=self.GetProperty('id')):
+            self.SetProperty('versioning', self._client.get_bucket_versioning(Bucket=self.GetProperty('id'))['Status'])
         else:
-            self.versioning = 'None'
+            self.SetProperty('versioning', 'None')
 
         # Encryption
-        self.encryption_type = self._client.get_bucket_encryption(Bucket=self.id)['ServerSideEncryptionConfiguration']['Rules'][0]['ApplyServerSideEncryptionByDefault']['SSEAlgorithm']
+        self.SetProperty('encryption_type', self._client.get_bucket_encryption(Bucket=self.GetProperty('id'))['ServerSideEncryptionConfiguration']['Rules'][0]['ApplyServerSideEncryptionByDefault']['SSEAlgorithm'])
 
-    def _get_tags(self, client: boto3.client.__class__):
+    def _get_tags(self):
         Tags = []
         try:
-            Tags = client.get_bucket_tagging(Bucket=self.id)['TagSet']
+            Tags = self._client.get_bucket_tagging(Bucket=self._id)['TagSet']
         except:
             Tags = []
         return Tags
-        
-
-    def print(self):
-        super().print()
-        print(f"    date creation       : {self.creation_date.strftime('%d/%m/%Y %H:%m:%S')}")
-        print(f"    versionning         : {self.versioning}")
-        print(f"    encryption_type     : {self.encryption_type}")
         
