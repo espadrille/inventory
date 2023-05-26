@@ -118,5 +118,5 @@ class Aws(Provider):
         print(f"profiles        : {self._profile_names}")
         print(f"regions         : {self._region_names}")
         print(f"services        : {self._service_names}")
-        for my_resource in dict(sorted(self._resources['all'].items())).values():
-            print(f"    {my_resource.Id()}")
+        # for my_resource in dict(sorted(self._resources['all'].items())).values():
+        #     print(f"    {my_resource.Id()}")

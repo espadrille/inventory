@@ -8,4 +8,4 @@ my_inventory = Inventory(id="aws", name="AWS", providers=["AWS"], config_file="c
 my_inventory.LoadResources()
 
 my_inventory.print()
-# my_inventory.PrintResources()
+my_inventory.PrintResources()
