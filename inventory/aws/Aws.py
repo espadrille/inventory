@@ -9,6 +9,7 @@ from .Ec2 import Ec2
 from .Rds import Rds
 from .S3 import S3
 from .AwsService import AwsService
+from ..Console import console
 
 #
 # Classe AWS
@@ -32,6 +33,7 @@ class Aws(Provider):
             if "services" in self._config["filters"]:
                 if len(self._config["filters"]["services"]) > 0:
                     self._service_names = self._config["filters"]["services"]
+        self._summary['services'] = self._service_names
 
         # Liste des regions AWS a analyser
         self._region_names = []
@@ -43,6 +45,7 @@ class Aws(Provider):
             if "regions" in self._config["filters"]:
                 if len(self._config["filters"]["regions"]) > 0:
                     self._region_names = self._config["filters"]["regions"]
+        self._summary['regions'] = self._region_names
 
         # Liste des profiles a analyser
         self._profile_names = []
@@ -55,6 +58,7 @@ class Aws(Provider):
             if "profiles" in self._config["filters"]:
                 if len(self._config["filters"]["profiles"]) > 0:
                     self._profile_names = self._config["filters"]["profiles"]
+        self._summary['profiles'] = self._profile_names
 
     def Connect(self):
         for my_profile in self._profile_names:
@@ -63,6 +67,7 @@ class Aws(Provider):
                 self._is_connected = True
             except:
                 print(f"Impossible de se connecter sur le profile {my_profile}")
+        self._summary['is connected'] = self._is_connected
 
     def LoadResources(self) -> dict:
         if not self.IsConnected():
@@ -101,9 +106,9 @@ class Aws(Provider):
 
         # Chargement des resources
         for my_client in self._clients.values():
-            print(f"   ==> Chargement : {my_client.Profile()} - {my_client.Name()} - {my_client.Region()} <==")
+            console.print(f"   ==> Chargement : {my_client.Profile()} - {my_client.Name()} - {my_client.Region()} : ", newline=False)
             client_resources = my_client.LoadResources()
-            print(f"         {len(client_resources['all'])} resources.")
+            console.print(f" {len(client_resources['all'])} resources. <==")
             
             for my_resource_key, my_resource in client_resources['all'].items():
                 self._resources[my_client.Profile()]['all'][my_resource_key] = my_resource
@@ -111,12 +116,13 @@ class Aws(Provider):
                 self._resources[my_client.Region()]['all'][my_resource_key] = my_resource
                 self._resources['all'][my_resource_key] = my_resource
 
+        self._summary['resources total'] = str(len(self._resources['all']))
+
         return self._resources
 
+
     def print(self):
+        for key, value in self._resources.items():
+            if 'all' in value:
+                self._summary[f"resources {key}"] = str(len(value['all']))
         super().print()
-        print(f"profiles        : {self._profile_names}")
-        print(f"regions         : {self._region_names}")
-        print(f"services        : {self._service_names}")
-        # for my_resource in dict(sorted(self._resources['all'].items())).values():
-        #     print(f"    {my_resource.Id()}")

@@ -9,6 +9,7 @@ import json
 import mimetypes
 import os
 from .provider.Provider import Provider
+from .Console import console
 
 #
 # Classe d'inventaire
@@ -22,6 +23,7 @@ class Inventory:
     _resources: dict
 
     def __init__(self, id:str="", name: str="", providers: list=[], config_file :str=""):
+
         self.id = id
         self.name = name
         if name == "":
@@ -33,25 +35,35 @@ class Inventory:
         self._config = {}
         self._config_file = ""
 
-        # Chargement de la configuration
-        if os.path.isfile(f"{config_file}"):
-            self._config_file = f"{config_file}"
-        if os.path.isfile(f"{os.getcwd()}/{config_file}"):
-            self._config_file = f"{os.getcwd()}/{config_file}"
-        if os.path.isfile(f"{os.path.dirname(__file__)}/{config_file}"):
-            self._config_file = f"{os.path.dirname(__file__)}/{config_file}"
+        # Recherche du fichier de configuration
+        self._SetConfigFile(config_file)
 
         if self._config_file == "":
             print(f"Fichier de configuration non trouve [{config_file}]")
         else:
-            self.LoadConfig()
+            self._LoadConfig()
   
         # Creation des providers
         for my_provider in providers:
             self._resources[my_provider] = {}
             self.AddProvider(provider=my_provider)
 
-    def LoadConfig(self):
+    def _SetConfigFile(self, config_file:str) -> str:
+        config_paths = [ # Liste des chemins ou chercher le ficheir de configuration
+            f"",
+            f"./",
+            f"{os.getcwd()}/",
+            f"{os.getcwd()}/config/",
+            f"{os.path.dirname(__file__)}/",
+            f"{os.path.dirname(__file__)}/config/",
+            ]
+
+        for my_path in config_paths:
+            if os.path.isfile(f"{my_path}{config_file}"):
+                self._config_file = f"{my_path}{config_file}"
+                break
+
+    def _LoadConfig(self):
         try:
             config_file_mime_type = mimetypes.guess_type(self._config_file)[0]
             fp = open(self._config_file, "r")
@@ -59,14 +71,14 @@ class Inventory:
                 try:
                     self._config = json.loads(fp.read())
                 except Exception as e:
-                    print(f"Format json incorrect dans le fichier [{self._config_file}", "ERROR")
-                    print(e.__str__())
+                    console.print(f"Format json incorrect dans le fichier [{self._config_file}", "ERROR")
+                    console.print(e.__str__())
             else:
-                print(f"Format non pris en charge : {str(config_file_mime_type)}")
+                console.print(f"Format non pris en charge : {str(config_file_mime_type)}", "ERROR")
             fp.close()
         except Exception as e:
-            print(f"Impossible de charger le fichier de configuration [{self._config_file}]")
-            print(e.__str__())
+            console.print(f"Impossible de charger le fichier de configuration [{self._config_file}]","ERROR")
+            console.print(e.__str__())
 
     def LoadResources(self) -> dict:
         for my_provider_key, my_provider in self._providers.items():
@@ -76,7 +88,7 @@ class Inventory:
         return self._resources
     
     def AddProvider(self, provider: str=""):
-        if provider == "AWS":
+        if provider == "aws":
             provider_config = {}
             if self._config_file != "":
                 if "inventory" in self._config:
@@ -86,19 +98,17 @@ class Inventory:
             from .aws.Aws import Aws
             self._providers[provider] = Aws(id="aws", name="AWS", config=provider_config)
         else:
-            self._providers['other'] = Provider(id="unknown")
+            self._providers[provider] = Provider(id="unknown")
     
     def PrintResources(self):
         for resource in self._resources['all'].values():
             resource.print()
 
     def print(self):
-        print("")
-        print("=" * (16 + len(self.name)))
-        print(f"== Inventaire {self.name} ==")
-        print("=" * (16 + len(self.name)))
-        print("")
-        print(f"resources count : {len(self._resources['all'])}")
+        console.print(f"Inventaire {self.name}", "TITRE1")
+        console.print()
+        console.print(f"fichier de configuration : {self._config_file}")
+        console.print(f"resources count          : {len(self._resources['all'])}")
         for my_provider in self._providers.values():
             my_provider.print()
         

@@ -1,0 +1,41 @@
+#!/usr/bin/python3
+
+# Import des modules
+from inventory import *
+from optparse import OptionParser
+
+# Lecture des arguments d'appel
+parser = OptionParser()
+parser.add_option("-f",
+                  "--config-file",
+                  dest="config_file",
+                  help="Chemin complet du fichier de configuration au format json",
+                  default="config.json"
+                  )
+parser.add_option("-n",
+                  "--name",
+                  dest="name",
+                  help="Nom de l'inventaire",
+                  default="Mon inventaire"
+                  )
+parser.add_option("-p",
+                  "--providers",
+                  dest="providers",
+                  help="Liste des providers a utiliser (['aws'])",
+                  default=['aws']
+                  )
+(options, args) = parser.parse_args()
+
+# Construction de l'inventaire
+my_inventory = Inventory(id="my_inventory", 
+                         name=options.name, 
+                         providers=options.providers, 
+                         config_file=options.config_file
+                         )
+
+# Valorisation de l'inventaire
+my_inventory.LoadResources()
+
+# Affichage de l'inventaire
+my_inventory.print()
+# my_inventory.PrintResources()

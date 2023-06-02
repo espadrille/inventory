@@ -1,0 +1,13 @@
+{
+    "inventory": {
+        "providers": {
+            "aws" : {
+                "filters": {
+                    "profiles": ["developpement", "vmc"],
+                    "regions": ["us-east-1", "eu-west-3", "eu-west-1"],
+                    "services": ["ec2"]
+                }
+            }
+        }
+    }
+}

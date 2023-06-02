@@ -1,12 +1,14 @@
 #
 # Classe Provider
 #
+from ..Console import console
 
 class Provider:
     id :str
     name :str
     _resources :dict
     _is_connected :bool
+    _summary: dict
 
     def __init__(self, id:str, name: str=""):
         self.id = id
@@ -16,6 +18,7 @@ class Provider:
         self._resources = {}
         self._resources['all'] = {}
         self._is_connected = False
+        self._summary = {}
 
     def Connect(self):
         pass
@@ -31,11 +34,8 @@ class Provider:
             resource.print()
 
     def print(self):
-        print("")
-        print("=" * (15 + len(self.name)))
-        print(f"== Provider {self.name} ==")
-        print("=" * (15 + len(self.name)))
-        print("")
-        print(f"is connected    : {str(self.IsConnected())}")
-        print(f"resources count : {len(self._resources['all'])}")
+        datas = []
+        for key, value in self._summary.items():
+            datas.append([key, str(value)])
+        console.print_tab(title=f"Provider {self.name}", datas=datas, footer="")
         
