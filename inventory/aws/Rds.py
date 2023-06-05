@@ -24,7 +24,11 @@ class Rds(AwsService):
 
         for my_resource_type in self._resource_types:
             if my_resource_type == "db_instance":
+                nb_instances = 0
+
                 for my_instance in self._client.describe_db_instances()['DBInstances']:
+                    nb_instances = nb_instances + 1
+
                     new_resource = Instance(instance=my_instance, client=self._client) # type: ignore
                     new_resource.SetProperty('profile', self._profile)
 
@@ -32,6 +36,7 @@ class Rds(AwsService):
                     self._resources['all'][new_resource.Id()] = new_resource
                     if not new_resource.GetProperty('increment') in  self._db_instance_increments:
                         self._db_instance_increments.append(new_resource.GetProperty('increment'))
+                self._summary['instances'] = str(nb_instances)
 
         return self._resources
 
@@ -43,5 +48,5 @@ class Rds(AwsService):
         return len(self._db_instance_increments) + 1
 
     def print(self):
+        self._summary['increment disponible'] = self.NextInstanceIncrement()
         super().print()
-        print(f"increment d'instance disponible : {self.NextInstanceIncrement()}")

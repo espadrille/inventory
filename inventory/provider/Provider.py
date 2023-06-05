@@ -30,7 +30,7 @@ class Provider:
         return self._resources
 
     def PrintResources(self):
-        for k_resource, resource in dict(sorted(self._resources['all'].items())).items():
+        for resource in dict(sorted(self._resources['all'].items())).values():
             resource.print()
 
     def print(self):

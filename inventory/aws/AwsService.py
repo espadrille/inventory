@@ -4,6 +4,7 @@
 # Imports
 #
 import boto3
+from ..Console import console
 
 #
 # Classe AwsService
@@ -16,6 +17,7 @@ class AwsService:
     _resources :dict
     _client :boto3.client.__class__
     _resource_types : list # Liste des types de ressources a lister pour le service
+    _summary: dict
 
     def __init__(self, id: str, name: str, session, client: boto3.client.__class__):
         self.id = id
@@ -29,6 +31,7 @@ class AwsService:
         self._client = client
         for my_resource_type in self._resource_types:
             self._resources[my_resource_type] = {}
+        self._summary = {}
     
     def Name(self):
         return self._name
@@ -47,10 +50,9 @@ class AwsService:
             my_resource.print()
 
     def print(self):
-        print("")
-        print(f"=={'='*(len(self.id)+2)}==")
-        print(f"== {self.id} ==")
-        print(f"=={'='*(len(self.id)+2)}==")
-        print("")
-        for my_resource_category in self._resources:
-            print(f"{my_resource_category} count : {len(self._resources[my_resource_category])}")
+        datas = []
+        for key, value in self._summary.items():
+            datas.append([key, str(value)])
+        # for my_resource_category in self._resources:
+            # datas.append([f"{my_resource_category} count", str(len(self._resources[my_resource_category]))])
+        console.print_tab(title=f"Client {self.id}", datas=datas, footer="")

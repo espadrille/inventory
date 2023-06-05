@@ -126,3 +126,5 @@ class Aws(Provider):
             if 'all' in value:
                 self._summary[f"resources {key}"] = str(len(value['all']))
         super().print()
+        for my_client in self._clients.values():
+            my_client.print()

@@ -22,11 +22,15 @@ class S3(AwsService):
 
         for my_resource_type in self._resource_types:
             if my_resource_type == "bucket":
+                nb_buckets = 0
+
                 for my_bucket in self._client.list_buckets()["Buckets"]:
+                    nb_buckets = nb_buckets + 1
                     new_resource = Bucket(bucket=my_bucket, client=self._client) # type: ignore
                     new_resource.SetProperty('profile', self._profile)
 
                     self._resources[my_resource_type][new_resource.Id()] = new_resource
                     self._resources['all'][new_resource.Id()] = new_resource
+                self._summary['buckets'] = str(nb_buckets)
 
         return self._resources
