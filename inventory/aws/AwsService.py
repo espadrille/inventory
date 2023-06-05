@@ -53,6 +53,4 @@ class AwsService:
         datas = []
         for key, value in self._summary.items():
             datas.append([key, str(value)])
-        # for my_resource_category in self._resources:
-            # datas.append([f"{my_resource_category} count", str(len(self._resources[my_resource_category]))])
         console.print_tab(title=f"Client {self.id}", datas=datas, footer="")
