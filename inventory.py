@@ -24,6 +24,12 @@ parser.add_option("-p",
                   help="Liste des providers a utiliser (['aws'])",
                   default=['aws']
                   )
+parser.add_option("--print-resources",
+                  action="store_true",
+                  dest="print_resources",
+                  help="Indique s'il faut afficher le detail des ressources de l'inventaire [false]",
+                  default=False
+                  )
 (options, args) = parser.parse_args()
 
 # Construction de l'inventaire
@@ -38,4 +44,5 @@ my_inventory.LoadResources()
 
 # Affichage de l'inventaire
 my_inventory.print()
-# my_inventory.PrintResources()
+if options.print_resources:
+    my_inventory.PrintResources()

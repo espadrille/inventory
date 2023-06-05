@@ -42,7 +42,7 @@ class Rds(AwsService):
 
     def NextInstanceIncrement(self):
         if len(self._db_instance_increments) > 0:
-            for i in range(0, max(self._db_instance_increments)):
+            for i in range(1, max(self._db_instance_increments)):
                 if not i in self._db_instance_increments:
                     return i
         return len(self._db_instance_increments) + 1

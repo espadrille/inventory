@@ -1,0 +1,13 @@
+{
+    "inventory": {
+        "providers": {
+            "aws" : {
+                "filters": {
+                    "profiles": ["developpement", "recette", "production", "shared", "securite"],
+                    "regions": ["eu-west-3"],
+                    "services": ["rds"]
+                }
+            }
+        }
+    }
+}
