@@ -21,6 +21,9 @@ class Aws(Provider):
     _service_names :list
     _clients :dict = {}
 
+    #
+    # Private methods
+    #
     def __init__(self, id:str, name: str="", config :dict={}):
         super().__init__(id=id, name=name)
         self._config = config
@@ -28,7 +31,7 @@ class Aws(Provider):
         self._config['regional_services'] = ['ec2', 'rds']
 
         # Liste des services AWS a analyser
-        self._service_names = ['ec2', 'rds', 's3']
+        self._service_names = boto3.Session().get_available_services()
         if "filters" in self._config:
             if "services" in self._config["filters"]:
                 if len(self._config["filters"]["services"]) > 0:
@@ -60,6 +63,9 @@ class Aws(Provider):
                     self._profile_names = self._config["filters"]["profiles"]
         self._summary['profiles'] = self._profile_names
 
+    #
+    # Public methods
+    #
     def Connect(self):
         for my_profile in self._profile_names:
             try:
@@ -98,17 +104,19 @@ class Aws(Provider):
                             self._clients[f"{my_profile}.{my_service}.{my_region}"] = Rds(session=new_session, client=new_client) # type: ignore
 
                 elif my_service in self._config['global_services']:  # Liste des services non regionaux
+                    self._resources['any'] = {}
+                    self._resources['any']['all'] = {}
 
-                    new_client = new_session.client(service_name=my_service, region_name='eu-west-3') # Un client par service
+                    new_client = new_session.client(service_name=my_service) # Un client par service
 
                     if my_service == 's3':
                         self._clients[f"{my_profile}.{my_service}"] = S3(session=new_session, client=new_client) # type: ignore
 
         # Chargement des resources
         for my_client in self._clients.values():
-            console.print(f"   ==> Chargement : {my_client.Profile()} - {my_client.Name()} - {my_client.Region()} : ", newline=False)
+            console.Print(f"   ==> Chargement : {my_client.Profile()} - {my_client.Name()} - {my_client.Region()} : ", newline=False)
             client_resources = my_client.LoadResources()
-            console.print(f" {len(client_resources['all'])} resources. <==")
+            console.Print(f" {len(client_resources['all'])} resources. <==")
             
             for my_resource_key, my_resource in client_resources['all'].items():
                 self._resources[my_client.Profile()]['all'][my_resource_key] = my_resource
@@ -120,11 +128,10 @@ class Aws(Provider):
 
         return self._resources
 
-
-    def print(self):
+    def Print(self):
         for key, value in self._resources.items():
             if 'all' in value:
                 self._summary[f"resources {key}"] = str(len(value['all']))
-        super().print()
+        super().Print()
         for my_client in self._clients.values():
-            my_client.print()
+            my_client.Print()

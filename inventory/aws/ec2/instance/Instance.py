@@ -15,6 +15,9 @@ class Instance(AwsResource):
         'id': 'InstanceId'
         }
 
+    #
+    # Private methods
+    #
     def __init__(self, instance: dict, client: boto3.client.__class__):
         super().__init__(id=f"ec2.instance.{instance['InstanceId']}", client=client, object=instance)
         self.SetProperty('state', instance['State']['Name'])
@@ -27,6 +30,9 @@ class Instance(AwsResource):
         else:
             self.SetProperty('increment', 0)
 
+    #
+    # Protected methods
+    #
     def _get_tags(self):
         Tags :list
         try:

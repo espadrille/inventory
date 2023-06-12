@@ -18,6 +18,9 @@ class Instance(AwsResource):
         'state': 'DBInstanceStatus'
         }
 
+    #
+    # Private methods
+    #
     def __init__(self, instance: dict, client: boto3.client.__class__):
         super().__init__(id=f"rds.instance.{instance['DBInstanceIdentifier']}", object=instance, client=client)
 
@@ -28,6 +31,9 @@ class Instance(AwsResource):
         else:
             self.SetProperty('increment', 0)
 
+    #
+    # Protected methods
+    #
     def _get_tags(self):
         Tags :list
         try:

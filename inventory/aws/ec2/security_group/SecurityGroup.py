@@ -14,9 +14,15 @@ class SecurityGroup(AwsResource):
         'id': 'GroupId'
         }
 
+    #
+    # Private methods
+    #
     def __init__(self, security_group: dict, client: boto3.client.__class__):
         super().__init__(id=f"ec2.security-group.{security_group['GroupId']}", object=security_group, client=client)
 
+    #
+    # Protected methods
+    #
     def _get_tags(self):
         Tags :list
         try:

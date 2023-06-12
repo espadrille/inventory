@@ -1,5 +1,6 @@
 {
     "inventory": {
+        "name": "Inventaire du service RDS",
         "providers": {
             "aws" : {
                 "filters": {

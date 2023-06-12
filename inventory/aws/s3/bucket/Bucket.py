@@ -16,6 +16,9 @@ class Bucket(AwsResource):
         'name': 'Name'
         }
 
+    #
+    # Private methods
+    #
     def __init__(self, bucket: dict, client: boto3.client.__class__):
         super().__init__(id=f"s3.bucket.{bucket['Name']}", object=bucket, client=client)
 
@@ -28,6 +31,9 @@ class Bucket(AwsResource):
         # Encryption
         self.SetProperty('encryption_type', self._client.get_bucket_encryption(Bucket=self.GetProperty('id'))['ServerSideEncryptionConfiguration']['Rules'][0]['ApplyServerSideEncryptionByDefault']['SSEAlgorithm'])
 
+    #
+    # Protected methods
+    #
     def _get_tags(self):
         Tags = []
         try:

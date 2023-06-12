@@ -15,19 +15,22 @@ from .Console import console
 # Classe d'inventaire
 #
 class Inventory:
-    name = ""
-    id = ""
+    _name = ""
+    _id = ""
     _config: dict
     _config_file: str
     _providers: dict
     _resources: dict
 
+    #
+    # Private methods
+    #
     def __init__(self, id:str="", name: str="", providers: list=[], config_file :str=""):
 
-        self.id = id
-        self.name = name
+        self._id = id
+        self._name = name
         if name == "":
-            self.name = self.id
+            self._name = self._id
 
         self._providers = {}
         self._resources = {}
@@ -48,6 +51,9 @@ class Inventory:
             self._resources[my_provider] = {}
             self.AddProvider(provider=my_provider)
 
+    #
+    # Protected methods
+    #
     def _SetConfigFile(self, config_file:str) -> str:
         config_paths = [ # Liste des chemins ou chercher le ficheir de configuration
             f"",
@@ -80,13 +86,15 @@ class Inventory:
             console.print(f"Impossible de charger le fichier de configuration [{self._config_file}]","ERROR")
             console.print(e.__str__())
 
-    def LoadResources(self) -> dict:
-        for my_provider_key, my_provider in self._providers.items():
-            self._resources[my_provider_key] = my_provider.LoadResources()
-            for resource_key, resource in self._resources[my_provider_key]['all'].items():
-                self._resources['all'][resource_key] = resource
-        return self._resources
-    
+        if "inventory" in self._config:
+            if "name" in self._config["inventory"]:
+                self.name = self._config["inventory"]["name"]
+            else:
+                self.name = "Inventory"
+
+    #
+    # Public methods
+    #
     def AddProvider(self, provider: str=""):
         if provider == "aws":
             provider_config = {}
@@ -99,16 +107,28 @@ class Inventory:
             self._providers[provider] = Aws(id="aws", name="AWS", config=provider_config)
         else:
             self._providers[provider] = Provider(id="unknown")
+
+    def Id(self):
+        return self._id
+
+    def LoadResources(self) -> dict:
+        for my_provider_key, my_provider in self._providers.items():
+            self._resources[my_provider_key] = my_provider.LoadResources()
+            for resource_key, resource in self._resources[my_provider_key]['all'].items():
+                self._resources['all'][resource_key] = resource
+        return self._resources
     
+    def Name(self):
+        return self._properties['name']
+
+    def Print(self):
+        console.Print(f"{self.name}", "TITRE1")
+        console.Print()
+        console.Print(f"fichier de configuration : {self._config_file}")
+        console.Print(f"resources count          : {len(self._resources['all'])}")
+        for my_provider in self._providers.values():
+            my_provider.Print()
+            
     def PrintResources(self):
         for resource in self._resources['all'].values():
-            resource.print()
-
-    def print(self):
-        console.print(f"Inventaire {self.name}", "TITRE1")
-        console.print()
-        console.print(f"fichier de configuration : {self._config_file}")
-        console.print(f"resources count          : {len(self._resources['all'])}")
-        for my_provider in self._providers.values():
-            my_provider.print()
-        
+            resource.Print()

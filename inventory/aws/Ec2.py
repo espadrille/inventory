@@ -21,6 +21,7 @@ class Ec2(AwsService):
 
         super().__init__(id=f"aws.{session.profile_name}.ec2.{client._client_config.region_name}", name='ec2', session=session, client=client)
         self._instance_increments = []
+        self._is_regional = True
         
     def LoadResources(self) -> dict:
         for my_resource_type in self._resource_types:

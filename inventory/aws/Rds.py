@@ -19,6 +19,7 @@ class Rds(AwsService):
         
         super().__init__(id=f"aws.{session.profile_name}.rds.{client._client_config.region_name}", name='rds', session=session, client=client)
         self._db_instance_increments = []
+        self._is_regional = True
         
     def LoadResources(self) -> dict:
 

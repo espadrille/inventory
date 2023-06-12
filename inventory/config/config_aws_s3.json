@@ -1,0 +1,14 @@
+{
+    "inventory": {
+        "name": "Inventaire du service S3",
+        "providers": {
+            "aws" : {
+                "filters": {
+                    "profiles": ["developpement", "vmc"],
+                    "regions": [],
+                    "services": ["s3"]
+                }
+            }
+        }
+    }
+}

@@ -7,6 +7,9 @@ from ..resource.Resource import Resource
 class AwsResource(Resource):
     _client :boto3.client.__class__
 
+    #
+    # Private methods
+    #
     def __init__(self, id: str, client: boto3.client.__class__, object: dict):
         super().__init__(id=f"aws.{id}")
         self._client = client
@@ -25,9 +28,15 @@ class AwsResource(Resource):
             if tag['Key'] == 'terraform_module':
                 self.SetProperty('terraform_module', tag['Value'])
 
-    def Id(self):
-        return self._id
-
+    #
+    # Protected methods
+    #
     def _get_tags(self) -> list:
         return []
+
+    #
+    # Public methods
+    #
+    def Id(self):
+        return self._id
     

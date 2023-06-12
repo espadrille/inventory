@@ -1,17 +1,20 @@
 
-import json
 import os
-import pathlib
 import re
 import sys
 import unicodedata
 
-class Console():
+from .Singleton import Singleton
+
+class Console(Singleton):
 
     _COLORS:dict
     _STYLE_COLORS:dict
     _STYLE_INDENTS:dict
 
+    #
+    # Private methods
+    #
     def __init__(self):
         self._COLORS = {
             "BOLD": "\033[1m",
@@ -52,16 +55,11 @@ class Console():
         }
 
 
-        
-    def clear_screen(self):
-        if os.name == 'posix':
-            # Pour macOS et Linux
-            _ = os.system('clear')
-        else:
-            # Pour Windows
-            _ = os.system('cls')
+    #
+    # Protected methods
+    #
 
-    def flush_input(self):
+    def _flush_input(self):
         try:
             import msvcrt
             while msvcrt.kbhit():
@@ -69,6 +67,16 @@ class Console():
         except ImportError:
             import sys, termios
             termios.tcflush(sys.stdin, termios.TCIOFLUSH)
+
+    def _remove_accents(self, text: str=""):
+        try:
+            text = text.encode('utf-8')
+        except (TypeError, NameError):  # unicode is a default on python 3
+            pass
+        text = unicodedata.normalize('NFD', text)
+        text = text.encode('ascii', 'ignore')
+        text = text.decode("utf-8")
+        return str(text)
 
     def _repeat(self, text, nb=2):
         #
@@ -83,12 +91,24 @@ class Console():
             retour = retour + text
         return retour
 
-    def print(self, text: str="", text_format: str="", indent: int=0, newline: bool=True):
+    #
+    # Public methods
+    #
+        
+    def ClearScreen(self):
+        if os.name == 'posix':
+            # Pour macOS et Linux
+            _ = os.system('clear')
+        else:
+            # Pour Windows
+            _ = os.system('cls')
+
+    def Print(self, text: str="", text_format: str="", indent: int=0, newline: bool=True):
         #
         # Propose un affichage formate.
         #
         # Il est possible de cumuler plusieurs formats. Par exemple :
-        #     self.print("Texte à afficher", text_format=["BLUE", "BOLD"], indent=4)
+        #     self.Print("Texte à afficher", text_format=["BLUE", "BOLD"], indent=4)
         # Affiche "Texte à afficher" en bleu gras, et indente de 4 espaces
         #
         # Les valeurs de text_format peuvent être les suivantes :
@@ -148,8 +168,7 @@ class Console():
         if newline:
             print("")
 
-
-    def print_tab(self, title: str="", headers: list=[], datas: list=[], footer: str=None, text_format: str="", indent: int=0, separator: str="┃"):
+    def PrintTab(self, title: str="", headers: list=[], datas: list=[], footer: str=None, text_format: str="", indent: int=0, separator: str="┃"):
         column_separator = " " + separator + " "
 
         # Calcul des longueurs de champs pour ajuster la taille des colonnes du tableau
@@ -234,12 +253,12 @@ class Console():
 
         # Titre
         if len(title) > 0:
-            self.print(first_separator_line_title, text_format=text_format, indent=indent)
+            self.Print(first_separator_line_title, text_format=text_format, indent=indent)
             centered_title = ("{:^" + str(line_length) + "}").format(title)
-            self.print("┃ " + centered_title + " ┃", text_format=text_format, indent=indent)
-            self.print(inter_top_separator_line, text_format=text_format, indent=indent)
+            self.Print("┃ " + centered_title + " ┃", text_format=text_format, indent=indent)
+            self.Print(inter_top_separator_line, text_format=text_format, indent=indent)
         else:
-            self.print(first_separator_line_data, text_format=text_format, indent=indent)
+            self.Print(first_separator_line_data, text_format=text_format, indent=indent)
 
         # Entêtes
         if len(headers) > 0:
@@ -269,9 +288,9 @@ class Console():
                 else:
                     header_line = header_line + ("{:<" + str(length) + "}").format(my_header)
                 i_col = i_col + 1
-            self.print("┃ " + ("{:<" + str(line_length) + "}").format(header_line) + " ┃", text_format=text_format,
+            self.Print("┃ " + ("{:<" + str(line_length) + "}").format(header_line) + " ┃", text_format=text_format,
                     indent=indent)
-            self.print(inter_middle_separator_line, text_format=text_format, indent=indent)
+            self.Print(inter_middle_separator_line, text_format=text_format, indent=indent)
 
         # datas
         if len(datas) > 0:
@@ -331,42 +350,42 @@ class Console():
                     if text_format in self._COLORS:
                         my_color = self._COLORS[text_format]
 
-                self.print("┃ " + ("{:<" + str(line_length) + "}").format(data_line) + my_color + " ┃",
+                self.Print("┃ " + ("{:<" + str(line_length) + "}").format(data_line) + my_color + " ┃",
                         text_format=text_format,
                         indent=indent)
 
         # Pied
         if len(footer) > 0:
-            self.print(inter_bottom_separator_line, text_format=text_format, indent=indent)
-            self.print("┃ " + ("{:>" + str(line_length) + "}").format(footer) + " ┃", text_format=text_format, indent=indent)
-            self.print(last_separator_line_footer, text_format=text_format, indent=indent)
+            self.Print(inter_bottom_separator_line, text_format=text_format, indent=indent)
+            self.Print("┃ " + ("{:>" + str(line_length) + "}").format(footer) + " ┃", text_format=text_format, indent=indent)
+            self.Print(last_separator_line_footer, text_format=text_format, indent=indent)
         else:
-            self.print(last_separator_line_data, text_format=text_format, indent=indent)
+            self.Print(last_separator_line_data, text_format=text_format, indent=indent)
 
 
-    def read_fmt(self, question: str, default: str="", text_format: str="CYAN", indent: int=0, newline: bool=False):
+    def Read(self, question: str, default: str="", text_format: str="CYAN", indent: int=0, newline: bool=False):
         if default != "":
             question = question + " [" + default + "]"
         question = question + " :"
-        self.print(text=question, text_format=text_format, indent=indent, newline=newline)
+        self.Print(text=question, text_format=text_format, indent=indent, newline=newline)
         response = input()
         if response == "":
             response = default
         return response
 
 
-    def read_choice_fmt(self, title: str="", choices: list=[], question: str="", text_format: str="CYAN", indent: int=0):
+    def ReadChoice(self, title: str="", choices: list=[], question: str="", text_format: str="CYAN", indent: int=0):
         options = ""
         if len(choices) == 1:
             # S'il n'y a qu'un choix possible, on le selectionne automatiquement
             retour = choices[0]['value']
         else:
             if title != "":
-                self.print(text=title, text_format=text_format, indent=indent)
+                self.Print(text=title, text_format=text_format, indent=indent)
 
             i = 1
             for my_item in choices:
-                self.print(str(i) + " : " + str(my_item['text']), text_format, indent + 2)
+                self.Print(str(i) + " : " + str(my_item['text']), text_format, indent + 2)
                 if options == "":
                     options = str(i)
                 else:
@@ -383,28 +402,15 @@ class Console():
                 if response == "" or (response.isnumeric() and int(response) in range(1, i)):
                     choix_ok = True
                 else:
-                    self.print("Choisissez parmi les valeurs proposées (" + options + ")", "ERROR")
+                    self.Print("Choisissez parmi les valeurs proposées (" + options + ")", "ERROR")
 
             if response == "":
-                self.print("==> Abandon.", "BOLD")
+                self.Print("==> Abandon.", "BOLD")
                 sys.exit(255)
             else:
                 retour = choices[int(response) - 1]['value']
 
         return retour
-
-
-    def remove_accents(self, text: str=""):
-        try:
-            text = text.encode('utf-8')
-        except (TypeError, NameError):  # unicode is a default on python 3
-            pass
-        text = unicodedata.normalize('NFD', text)
-        text = text.encode('ascii', 'ignore')
-        text = text.decode("utf-8")
-        return str(text)
-
-
 
 
 console = Console()

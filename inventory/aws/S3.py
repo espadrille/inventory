@@ -16,7 +16,9 @@ class S3(AwsService):
 
     def __init__(self, session, client: boto3.client.__class__):
         self._resource_types=['bucket']
+
         super().__init__(id=f"aws.{session.profile_name}.s3", name='s3', session=session, client=client)
+        self._is_regional = False
         
     def LoadResources(self) -> dict:
 
