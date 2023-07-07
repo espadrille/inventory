@@ -26,6 +26,7 @@ class Instance(AwsResource):
         super().__init__(category=f"rds.instance", id=f"{instance['DBInstanceIdentifier']}", object=instance, client=client)
 
         self.SetProperty('account_id', self.GetProperty('arn').split(':')[4])
+        self.SetProperty('region', self.GetProperty('arn').split(':')[3])
 
         # Tenter de lire l'increment dans le nom de l'instance
         result = re.match('.{2}aws.{3}([0-9]{3})', self.GetProperty('name'))
