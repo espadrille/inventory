@@ -58,7 +58,7 @@ class AwsService:
 
     def PrintResources(self):
         for my_resource in self._resources['all'].values():
-            my_resource.print()
+            my_resource.Print()
 
     def Profile(self):
         return self._profile

@@ -1,4 +1,5 @@
 
+import datetime
 import os
 import re
 import sys
@@ -11,11 +12,14 @@ class Console(Singleton):
     _COLORS:dict
     _STYLE_COLORS:dict
     _STYLE_INDENTS:dict
+    _debug_mode: str
 
     #
     # Private methods
     #
-    def __init__(self):
+    def __init__(self, debug_mode: str=""):
+        self._debug_mode = debug_mode
+
         self._COLORS = {
             "BOLD": "\033[1m",
             "BLACK": "\033[30m",
@@ -102,6 +106,18 @@ class Console(Singleton):
         else:
             # Pour Windows
             _ = os.system('cls')
+
+    def Debug(self, text: str="", newline: bool=True):
+        if self._debug_mode == "DEBUG":
+            timestamp = datetime.datetime.now()
+            print(f"[{timestamp}] DEBUG: {text}", end="")
+            if newline:
+                print("")
+
+    def SetDebugMode(self, debug_mode: str="DEBUG"):
+        self._debug_mode = debug_mode
+        if debug_mode != "":
+            print(f"DEBUG_MODE={self._debug_mode}")
 
     def Print(self, text: str="", text_format: str="", indent: int=0, newline: bool=True):
         #

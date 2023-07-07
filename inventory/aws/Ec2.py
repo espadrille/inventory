@@ -67,6 +67,6 @@ class Ec2(AwsService):
                     return i
         return len(self._instance_increments) + 1
 
-    def print(self):
+    def Print(self):
         self._summary['increment disponible'] = self.NextInstanceIncrement()
-        super().print()
+        super().Print()

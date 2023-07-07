@@ -34,6 +34,12 @@ class Provider:
 
     def IsConnected(self):
         return self._is_connected
+    
+    def ListResources(self):
+        datas = []
+        for resource in dict(sorted(self._resources['all'].items())).values():
+            datas.append([resource.GetProperty('profile'), resource.GetProperty('region'), resource.Name(), resource.Description()])
+        console.PrintTab(title=f"Provider {self._name}", headers=["Environnement", "Region", "Name", "Description"], datas=datas)
 
     def LoadResources(self) -> dict:
         return self._resources

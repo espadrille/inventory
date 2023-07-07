@@ -20,7 +20,10 @@ class Bucket(AwsResource):
     # Private methods
     #
     def __init__(self, bucket: dict, client: boto3.client.__class__):
-        super().__init__(id=f"s3.bucket.{bucket['Name']}", object=bucket, client=client)
+        super().__init__(category="s3.bucket", id=f"{bucket['Name']}", object=bucket, client=client)
+
+        self.SetProperty('arn', f"arn:aws:s3:::{self.Name()}")
+        self.SetProperty('region', client.meta._client_config._user_provided_options['region_name'])
 
         # Versioning
         if 'Status' in self._client.get_bucket_versioning(Bucket=self.GetProperty('id')):

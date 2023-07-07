@@ -15,14 +15,17 @@ class Instance(AwsResource):
         'id': 'DBInstanceIdentifier',
         'name': 'DBInstanceIdentifier',
         'type': 'DBInstanceClass',
-        'state': 'DBInstanceStatus'
+        'state': 'DBInstanceStatus',
+        'arn': 'DBInstanceArn'
         }
 
     #
     # Private methods
     #
     def __init__(self, instance: dict, client: boto3.client.__class__):
-        super().__init__(id=f"rds.instance.{instance['DBInstanceIdentifier']}", object=instance, client=client)
+        super().__init__(category=f"rds.instance", id=f"{instance['DBInstanceIdentifier']}", object=instance, client=client)
+
+        self.SetProperty('account_id', self.GetProperty('arn').split(':')[4])
 
         # Tenter de lire l'increment dans le nom de l'instance
         result = re.match('.{2}aws.{3}([0-9]{3})', self.GetProperty('name'))
@@ -37,7 +40,7 @@ class Instance(AwsResource):
     def _get_tags(self):
         Tags :list
         try:
-            Tags = self._client.list_tags_for_resource(ResourceName=self._properties['arn'])['TagList']
+            Tags = self._client.list_tags_for_resource(ResourceName=self._properties['DBInstanceArn'])['TagList']
         except:
             Tags = []
         return Tags

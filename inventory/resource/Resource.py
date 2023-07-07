@@ -1,7 +1,11 @@
+# Imports
+from ..Console import console
+
 #
 # Classe Resource
 #
 class Resource:
+    _category: str
     _id: str
     _properties :dict
     _properties_mapping :dict = {}
@@ -9,7 +13,8 @@ class Resource:
     #
     # Private methods
     #
-    def __init__(self, id: str):
+    def __init__(self, category:str, id: str):
+        self._category = category
         self._id = id
         self._properties = {}
         self._properties['name'] = f"<{id}>"
@@ -27,13 +32,17 @@ class Resource:
     def Id(self):
         return self._id
     
+    def InventoryId(self):
+        return f"{self._category}.{self._id}"
+    
     def Name(self):
         return self._properties['name']
 
     def Print(self):
-        print(f"{self._id}:")
-        for my_property_key, my_property in dict(sorted(self._properties.items())).items():
-            print(f"    {my_property_key} : {my_property}")
+        datas = []
+        for key, value in self._properties.items():
+            datas.append([key, str(value)])
+        console.PrintTab(title=f"Resource {self.Name()}", datas=datas, footer="")
 
     def SetProperty(self, property_name :str, property_value):
         self._properties[property_name] = property_value

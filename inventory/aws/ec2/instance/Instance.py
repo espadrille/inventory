@@ -19,7 +19,11 @@ class Instance(AwsResource):
     # Private methods
     #
     def __init__(self, instance: dict, client: boto3.client.__class__):
-        super().__init__(id=f"ec2.instance.{instance['InstanceId']}", client=client, object=instance)
+        super().__init__(category=f"ec2.instance", id=f"{instance['InstanceId']}", client=client, object=instance)
+
+        self.SetProperty('account_id', client.describe_instances()['Reservations'][0]['OwnerId'])
+        self.SetProperty('region', client._client_config._user_provided_options['region_name'])
+        self.SetProperty('arn', f"arn:aws:ec2:{self.GetProperty('region')}:{self.GetProperty('account_id')}:instance/{self.Id()}")
         self.SetProperty('state', instance['State']['Name'])
         self.SetProperty('state_code', int(instance['State']['Code']))
 

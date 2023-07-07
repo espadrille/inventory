@@ -43,6 +43,7 @@ class Inventory:
 
         if self._config_file == "":
             print(f"Fichier de configuration non trouve [{config_file}]")
+            exit()
         else:
             self._LoadConfig()
   
@@ -77,20 +78,25 @@ class Inventory:
                 try:
                     self._config = json.loads(fp.read())
                 except Exception as e:
-                    console.print(f"Format json incorrect dans le fichier [{self._config_file}", "ERROR")
-                    console.print(e.__str__())
+                    console.Print(f"Format json incorrect dans le fichier [{self._config_file}", "ERROR")
+                    console.Print(e.__str__())
+                    exit()
             else:
-                console.print(f"Format non pris en charge : {str(config_file_mime_type)}", "ERROR")
+                console.Print(f"Format non pris en charge : {str(config_file_mime_type)}", "ERROR")
+                exit()
             fp.close()
         except Exception as e:
-            console.print(f"Impossible de charger le fichier de configuration [{self._config_file}]","ERROR")
-            console.print(e.__str__())
+            console.Print(f"Impossible de charger le fichier de configuration [{self._config_file}]","ERROR")
+            console.Print(e.__str__())
+            exit()
 
         if "inventory" in self._config:
             if "name" in self._config["inventory"]:
                 self.name = self._config["inventory"]["name"]
             else:
                 self.name = "Inventory"
+            if "debug_mode" in self._config["inventory"]:
+                console.SetDebugMode(self._config["inventory"]["debug_mode"])
 
     #
     # Public methods
@@ -110,6 +116,10 @@ class Inventory:
 
     def Id(self):
         return self._id
+
+    def ListResources(self):
+        for my_provider in self._providers.values():
+            my_provider.ListResources()
 
     def LoadResources(self) -> dict:
         for my_provider_key, my_provider in self._providers.items():

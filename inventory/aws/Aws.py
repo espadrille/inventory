@@ -8,7 +8,6 @@ from ..provider.Provider import Provider
 from .Ec2 import Ec2
 from .Rds import Rds
 from .S3 import S3
-from .AwsService import AwsService
 from ..Console import console
 
 #
@@ -114,9 +113,9 @@ class Aws(Provider):
 
         # Chargement des resources
         for my_client in self._clients.values():
-            console.Print(f"   ==> Chargement : {my_client.Profile()} - {my_client.Name()} - {my_client.Region()} : ", newline=False)
+            console.Debug(f"Chargement : {my_client.Profile()} - {my_client.Name()} - {my_client.Region()}")
             client_resources = my_client.LoadResources()
-            console.Print(f" {len(client_resources['all'])} resources. <==")
+            console.Debug(f" ==> {len(client_resources['all'])} resources.")
             
             for my_resource_key, my_resource in client_resources['all'].items():
                 self._resources[my_client.Profile()]['all'][my_resource_key] = my_resource

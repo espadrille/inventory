@@ -48,6 +48,6 @@ class Rds(AwsService):
                     return i
         return len(self._db_instance_increments) + 1
 
-    def print(self):
+    def Print(self):
         self._summary['increment disponible'] = self.NextInstanceIncrement()
-        super().print()
+        super().Print()

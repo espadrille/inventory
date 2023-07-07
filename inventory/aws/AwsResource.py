@@ -6,12 +6,13 @@ from ..resource.Resource import Resource
 
 class AwsResource(Resource):
     _client :boto3.client.__class__
+    _arn: str
 
     #
     # Private methods
     #
-    def __init__(self, id: str, client: boto3.client.__class__, object: dict):
-        super().__init__(id=f"aws.{id}")
+    def __init__(self, category: str, id: str, client: boto3.client.__class__, object: dict):
+        super().__init__(category=f"aws.{category}", id=f"{id}")
         self._client = client
 
         for my_property_key, my_property_value in object.items():
@@ -37,6 +38,6 @@ class AwsResource(Resource):
     #
     # Public methods
     #
-    def Id(self):
-        return self._id
+    def InventoryId(self):
+        return f"{self._category}.{self.GetProperty('profile')}.{self._id}"
     
