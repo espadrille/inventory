@@ -7,8 +7,18 @@
                     "profiles": ["developpement", "recette", "production", "shared", "network", "tools", "securite", "vmc"],
                     "regions": ["us-east-1", "eu-west-3", "eu-west-1"],
                     "services": ["rds"]
+                },
+                "services": {
+                    "rds": {
+                        "filters": {
+                            "resource_types": [
+                                "db_instance"
+                            ]
+                        }
+                    }
                 }
             }
-        }
+        },
+        "debug_mode": "DEBUG"
     }
 }

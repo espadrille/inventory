@@ -3,41 +3,55 @@
 #
 # Imports
 #
-import boto3
 # from .Aws import Aws
 from .AwsService import AwsService
 from .rds.instance.Instance import Instance
+from ..Console import console
 
 #
 # Classe Rds
 #
 class Rds(AwsService):
     _db_instance_increments :list # Liste des increments d'instances RDS utilises
+    _config : dict # Configuration du service AWS
 
-    def __init__(self, session, client: boto3.client.__class__):
-        self._resource_types=['db_instance']
-        
-        super().__init__(id=f"aws.{session.profile_name}.rds.{client._client_config.region_name}", name='rds', session=session, client=client)
-        self._db_instance_increments = []
+    def __init__(self, config :dict={}):
+        config["id"] = "rds"
+        config["name"] = "RDS"
+        config["resource_types"] = ["db_instance"]
+        if "filters" in config:
+            if "resource_types" in config["filters"]:
+                config["resource_types"] = config["filters"]["resource_types"]
         self._is_regional = True
+        super().__init__(config=config)
+        
+        self._db_instance_increments = []
         
     def LoadResources(self) -> dict:
+        nb_instances = 0
+        self._resources['all'] = {}
+        for my_client in self._clients:
+            nb_resources_client = 0
+            console.Debug(f"  Chargement : {my_client.Name()}", newline=False)
 
-        for my_resource_type in self._resource_types:
-            if my_resource_type == "db_instance":
-                nb_instances = 0
+            for my_resource_type in self._config["resource_types"]:
+                if my_resource_type == "db_instance":
+                    nb_instances = 0
 
-                for my_instance in self._client.describe_db_instances()['DBInstances']:
-                    nb_instances = nb_instances + 1
+                    for my_instance in my_client.Client().describe_db_instances()['DBInstances']:
+                        nb_instances = nb_instances + 1
 
-                    new_resource = Instance(instance=my_instance, client=self._client) # type: ignore
-                    new_resource.SetProperty('profile', self._profile)
+                        new_resource = Instance(instance=my_instance, client=my_client) # type: ignore
+                        new_resource.SetProperty('profile', my_client.Profile())
 
-                    self._resources[my_resource_type][new_resource.Id()] = new_resource
-                    self._resources['all'][new_resource.Id()] = new_resource
-                    if not new_resource.GetProperty('increment') in  self._db_instance_increments:
-                        self._db_instance_increments.append(new_resource.GetProperty('increment'))
-                self._summary['instances'] = str(nb_instances)
+                        self._resources[my_resource_type][new_resource.Id()] = new_resource
+                        self._resources['all'][new_resource.Id()] = new_resource
+                        nb_resources_client += 1
+
+                        if not new_resource.GetProperty('increment') in  self._db_instance_increments:
+                            self._db_instance_increments.append(new_resource.GetProperty('increment'))
+                    self._summary['instances'] = str(nb_instances)
+            console.Debug(f" ==> {nb_resources_client} resources.")
 
         return self._resources
 

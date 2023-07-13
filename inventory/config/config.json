@@ -7,8 +7,33 @@
                     "profiles": ["developpement", "recette", "production", "shared"],
                     "regions": ["us-east-1", "eu-west-3", "eu-west-1"],
                     "services": ["ec2", "rds", "s3"]
+                },
+                "services": {
+                    "ec2": {
+                        "filters": {
+                            "resource_types": [
+                                "instance",
+                                "security_group"
+                            ]
+                        }
+                    },
+                    "rds": {
+                        "filters": {
+                            "resource_types": [
+                                "db_instance"
+                            ]
+                        }
+                    },
+                    "s3": {
+                        "filters": {
+                            "resource_types": [
+                                "bucket"
+                            ]
+                        }
+                    }
                 }
             }
-        }
+        },
+        "debug_mode": "DEBUG"
     }
 }

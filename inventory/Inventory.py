@@ -55,7 +55,7 @@ class Inventory:
     #
     # Protected methods
     #
-    def _SetConfigFile(self, config_file:str) -> str:
+    def _SetConfigFile(self, config_file:str):
         config_paths = [ # Liste des chemins ou chercher le ficheir de configuration
             f"",
             f"./",
@@ -129,7 +129,7 @@ class Inventory:
         return self._resources
     
     def Name(self):
-        return self._properties['name']
+        return self._name
 
     def Print(self):
         console.Print(f"{self.name}", "TITRE1")

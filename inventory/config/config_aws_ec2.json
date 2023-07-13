@@ -7,6 +7,16 @@
                     "profiles": ["developpement", "recette", "production", "shared", "network", "tools", "securite", "vmc"],
                     "regions": ["us-east-1", "eu-west-3", "eu-west-1"],
                     "services": ["ec2"]
+                },
+                "services": {
+                    "ec2": {
+                        "filters": {
+                            "resource_types": [
+                                "instance", 
+                                "security_group"
+                            ]
+                        }
+                    }
                 }
             }
         },

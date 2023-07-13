@@ -3,14 +3,15 @@
 #
 # Imports
 #
-import boto3
 import re
+from ...AwsClient import AwsClient
 from ...AwsResource import AwsResource
 
 #
 # Classe Instance
 #
 class Instance(AwsResource):
+    _client : AwsClient
     _properties_mapping = {
         'id': 'DBInstanceIdentifier',
         'name': 'DBInstanceIdentifier',
@@ -22,8 +23,9 @@ class Instance(AwsResource):
     #
     # Private methods
     #
-    def __init__(self, instance: dict, client: boto3.client.__class__):
-        super().__init__(category=f"rds.instance", id=f"{instance['DBInstanceIdentifier']}", object=instance, client=client)
+    def __init__(self, instance: dict, client: AwsClient):
+        self._client = client
+        super().__init__(category=f"rds.instance", id=f"{instance['DBInstanceIdentifier']}", object=instance)
 
         self.SetProperty('account_id', self.GetProperty('arn').split(':')[4])
         self.SetProperty('region', self.GetProperty('arn').split(':')[3])
@@ -41,7 +43,7 @@ class Instance(AwsResource):
     def _get_tags(self):
         Tags :list
         try:
-            Tags = self._client.list_tags_for_resource(ResourceName=self._properties['DBInstanceArn'])['TagList']
+            Tags = self._client.Client().list_tags_for_resource(ResourceName=self._properties['DBInstanceArn'])['TagList']
         except:
             Tags = []
         return Tags

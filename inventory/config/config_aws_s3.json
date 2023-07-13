@@ -5,10 +5,10 @@
             "aws" : {
                 "filters": {
                     "profiles": ["developpement", "shared", "vmc"],
-                    "regions": [],
                     "services": ["s3"]
                 }
             }
-        }
+        },
+        "debug_mode": "DEBUG"
     }
 }

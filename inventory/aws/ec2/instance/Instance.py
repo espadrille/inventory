@@ -3,14 +3,15 @@
 #
 # Imports
 #
-import boto3
 import re
+from ...AwsClient import AwsClient
 from ...AwsResource import AwsResource
 
 #
 # Classe Instance
 #
 class Instance(AwsResource):
+    _client : AwsClient
     _properties_mapping = {
         'id': 'InstanceId'
         }
@@ -18,11 +19,12 @@ class Instance(AwsResource):
     #
     # Private methods
     #
-    def __init__(self, instance: dict, client: boto3.client.__class__):
-        super().__init__(category=f"ec2.instance", id=f"{instance['InstanceId']}", client=client, object=instance)
+    def __init__(self, instance: dict, client: AwsClient):
+        self._client = client
+        super().__init__(category=f"ec2.instance", id=f"{instance['InstanceId']}", object=instance)
 
-        self.SetProperty('account_id', client.describe_instances()['Reservations'][0]['OwnerId'])
-        self.SetProperty('region', client._client_config._user_provided_options['region_name'])
+        self.SetProperty('account_id', client.Client().describe_instances()['Reservations'][0]['OwnerId'])
+        self.SetProperty('region', client.Region())
         self.SetProperty('arn', f"arn:aws:ec2:{self.GetProperty('region')}:{self.GetProperty('account_id')}:instance/{self.Id()}")
         self.SetProperty('state', instance['State']['Name'])
         self.SetProperty('state_code', int(instance['State']['Code']))
@@ -40,7 +42,7 @@ class Instance(AwsResource):
     def _get_tags(self):
         Tags :list
         try:
-            Tags = self._client.describe_tags(Filters=[{'Name': 'resource-id', 'Values': [self.GetProperty('id')]}])['Tags']
+            Tags = self._client.Client().describe_tags(Filters=[{'Name': 'resource-id', 'Values': [self.GetProperty('id')]}])['Tags']
         except:
             Tags = []
         return Tags

@@ -3,58 +3,72 @@
 #
 # Imports
 #
-import boto3
-# from .Aws import Aws
 from .AwsService import AwsService
 from .ec2.instance.Instance import Instance
 from .ec2.security_group.SecurityGroup import SecurityGroup
+from ..Console import console
 
 #
 # Classe Ec2
 #
 class Ec2(AwsService):
     _instance_increments :list # Liste des increments d'instances EC2 utilises
-    _resource_types : list # Liste des types de ressources a lister pour le service
+    _config : dict # Configuration du service AWS
 
-    def __init__(self, session, client: boto3.client.__class__):
-        self._resource_types=['instance', 'security_group']
-
-        super().__init__(id=f"aws.{session.profile_name}.ec2.{client._client_config.region_name}", name='ec2', session=session, client=client)
-        self._instance_increments = []
+    def __init__(self, config :dict={}):
+        config["id"] = "ec2"
+        config["name"] = "Ec2"
+        config["resource_types"] = ["instance", "seucrity-group"]
+        if "filters" in config:
+            if "resource_types" in config["filters"]:
+                config["resource_types"] = config["filters"]["resource_types"]
         self._is_regional = True
+        super().__init__(config=config)
+        
+        self._instance_increments = []
         
     def LoadResources(self) -> dict:
-        for my_resource_type in self._resource_types:
+        nb_instances = 0
+        nb_sg = 0
+        self._resources['all'] = {}
+        for my_client in self._clients:
+            nb_resources_client = 0
+            console.Debug(f"  Chargement : {my_client.Name()}", newline=False)
 
-            if my_resource_type == 'instance':
-                nb_instances = 0
+            for my_resource_type in self._config["resource_types"]:
 
-                for my_reservation in self._client.describe_instances()['Reservations']:
+                if my_resource_type == 'instance':
 
-                    for my_instance in my_reservation['Instances']:
-                        nb_instances = nb_instances + 1
+                    for my_reservation in my_client.Client().describe_instances()['Reservations']:
 
-                        new_resource = Instance(instance=my_instance, client=self._client) # type: ignore
-                        new_resource.SetProperty('profile', self._profile)
+                        for my_instance in my_reservation['Instances']:
+                            nb_instances = nb_instances + 1
+
+                            new_resource = Instance(instance=my_instance, client=my_client) # type: ignore
+                            new_resource.SetProperty('profile', my_client.Profile())
+
+                            self._resources[my_resource_type][new_resource.Id()] = new_resource
+                            self._resources['all'][new_resource.Id()] = new_resource
+                            nb_resources_client += 1
+
+                            if not new_resource.GetProperty('increment') in  self._instance_increments:
+                                self._instance_increments.append(new_resource.GetProperty('increment'))
+                    self._summary['instances'] = str(nb_instances)
+
+                if my_resource_type == 'security_group':
+
+                    for my_sg in my_client.Client().describe_security_groups()['SecurityGroups']: # type: ignore
+                        nb_sg = nb_sg + 1
+                        
+                        new_resource = SecurityGroup(security_group=my_sg, client=my_client) # type: ignore
+                        new_resource.SetProperty('profile', my_client.Profile())
 
                         self._resources[my_resource_type][new_resource.Id()] = new_resource
                         self._resources['all'][new_resource.Id()] = new_resource
-                        if not new_resource.GetProperty('increment') in  self._instance_increments:
-                            self._instance_increments.append(new_resource.GetProperty('increment'))
-                self._summary['instances'] = str(nb_instances)
+                        nb_resources_client += 1
 
-            if my_resource_type == 'security_group':
-                nb_sg = 0
-
-                for my_sg in self._client.describe_security_groups()['SecurityGroups']: # type: ignore
-                    nb_sg = nb_sg + 1
-                    
-                    new_resource = SecurityGroup(security_group=my_sg, client=self._client) # type: ignore
-                    new_resource.SetProperty('profile', self._profile)
-
-                    self._resources[my_resource_type][new_resource.Id()] = new_resource
-                    self._resources['all'][new_resource.Id()] = new_resource
-                self._summary['security-groups'] = str(nb_sg)
+                    self._summary['security-groups'] = str(nb_sg)
+            console.Debug(f" ==> {nb_resources_client} resources.")
 
         self._summary['resources total'] = str(len(self._resources['all']))
 
@@ -65,7 +79,7 @@ class Ec2(AwsService):
             for i in range(1, max(self._instance_increments)):
                 if not i in self._instance_increments:
                     return i
-        return len(self._instance_increments) + 1
+        return max(self._instance_increments) + 1
 
     def Print(self):
         self._summary['increment disponible'] = self.NextInstanceIncrement()

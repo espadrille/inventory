@@ -5,15 +5,13 @@ import boto3
 from ..resource.Resource import Resource
 
 class AwsResource(Resource):
-    _client :boto3.client.__class__
     _arn: str
 
     #
     # Private methods
     #
-    def __init__(self, category: str, id: str, client: boto3.client.__class__, object: dict):
+    def __init__(self, category: str, id: str, object: dict):
         super().__init__(category=f"aws.{category}", id=f"{id}")
-        self._client = client
 
         for my_property_key, my_property_value in object.items():
             self.SetProperty(my_property_key, my_property_value)

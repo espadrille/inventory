@@ -4,12 +4,14 @@
 # Imports
 #
 import boto3
+from ...AwsClient import AwsClient
 from ...AwsResource import AwsResource
 
 #
 # Classe Instance
 #
 class SecurityGroup(AwsResource):
+    _client : AwsClient
     _properties_mapping = {
         'id': 'GroupId'
         }
@@ -17,11 +19,12 @@ class SecurityGroup(AwsResource):
     #
     # Private methods
     #
-    def __init__(self, security_group: dict, client: boto3.client.__class__):
-        super().__init__(category=f"ec2.security-group", id=f"{security_group['GroupId']}", object=security_group, client=client)
+    def __init__(self, security_group: dict, client: AwsClient):
+        self._client = client
+        super().__init__(category=f"ec2.security_group", id=f"{security_group['GroupId']}", object=security_group)
 
-        self.SetProperty('account_id', client.describe_security_groups()['SecurityGroups'][0]['OwnerId'])
-        self.SetProperty('region', client._client_config._user_provided_options['region_name'])
+        self.SetProperty('account_id', client.Client().describe_security_groups()['SecurityGroups'][0]['OwnerId'])
+        self.SetProperty('region', client.Client()._client_config._user_provided_options['region_name'])
         self.SetProperty('arn', f"arn:aws:ec2:{self.GetProperty('region')}:{self.GetProperty('account_id')}:security-group/{self.Id()}")
 
     #
@@ -30,7 +33,7 @@ class SecurityGroup(AwsResource):
     def _get_tags(self):
         Tags :list
         try:
-            Tags = self._client.describe_tags(Filters=[{'Name': 'resource-id', 'Values': [self.GetProperty('id')]}])['Tags']
+            Tags = self._client.Client().describe_tags(Filters=[{'Name': 'resource-id', 'Values': [self.GetProperty('id')]}])['Tags']
         except:
             Tags = []
         return Tags

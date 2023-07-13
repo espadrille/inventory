@@ -13,12 +13,14 @@ class Console(Singleton):
     _STYLE_COLORS:dict
     _STYLE_INDENTS:dict
     _debug_mode: str
+    _prefix_mode: bool
 
     #
     # Private methods
     #
     def __init__(self, debug_mode: str=""):
         self._debug_mode = debug_mode
+        self._prefix_mode = True        
 
         self._COLORS = {
             "BOLD": "\033[1m",
@@ -66,34 +68,21 @@ class Console(Singleton):
     def _flush_input(self):
         try:
             import msvcrt
-            while msvcrt.kbhit():
-                msvcrt.getch()
+            while msvcrt.kbhit(): # type: ignore
+                msvcrt.getch() # type: ignore
         except ImportError:
             import sys, termios
             termios.tcflush(sys.stdin, termios.TCIOFLUSH)
 
     def _remove_accents(self, text: str=""):
         try:
-            text = text.encode('utf-8')
+            text = text.encode('utf-8') # type: ignore
         except (TypeError, NameError):  # unicode is a default on python 3
             pass
         text = unicodedata.normalize('NFD', text)
-        text = text.encode('ascii', 'ignore')
-        text = text.decode("utf-8")
+        text = text.encode('ascii', 'ignore') # type: ignore
+        text = text.decode("utf-8") # type: ignore
         return str(text)
-
-    def _repeat(self, text, nb=2):
-        #
-        # Repeter un caractere (ou plusieurs...), sans retour a la ligne
-        #
-        # Exemple :
-        #    self._repeat("e", 10)
-        # Retourne 10 caracteres 'e' a la suite...
-        #
-        retour = ""
-        for i in range(nb):
-            retour = retour + text
-        return retour
 
     #
     # Public methods
@@ -110,9 +99,14 @@ class Console(Singleton):
     def Debug(self, text: str="", newline: bool=True):
         if self._debug_mode == "DEBUG":
             timestamp = datetime.datetime.now()
-            print(f"[{timestamp}] DEBUG: {text}", end="")
+            if self._prefix_mode:
+                print(f"[{timestamp}] DEBUG: ", end="")
+            print(f"{text}", end="")
             if newline:
                 print("")
+                self._prefix_mode = True
+            else:
+                self._prefix_mode = False
 
     def SetDebugMode(self, debug_mode: str="DEBUG"):
         self._debug_mode = debug_mode
@@ -157,34 +151,34 @@ class Console(Singleton):
 
         if text_format == "TITRE1":
             print("")
-            print(self._repeat(' ', my_indent) + my_color + "╔═" + self._repeat("═", len(my_text)) + "═╗" + self._COLORS["RESET"])
-            print(self._repeat(' ', my_indent) + my_color + "║ " + my_text + " ║▒" + self._COLORS["RESET"])
-            print(self._repeat(' ', my_indent) + my_color + "╚═" + self._repeat("═", len(my_text)) + "═╝▒" + self._COLORS["RESET"])
-            print(self._repeat(' ', my_indent) + my_color + " ▒" + self._repeat("▒", len(my_text)) + "▒▒▒" + self._COLORS["RESET"])
+            print(' ' * my_indent + my_color + "╔═" + "═" * len(my_text) + "═╗" + self._COLORS["RESET"])
+            print(' ' * my_indent + my_color + "║ " + my_text + " ║▒" + self._COLORS["RESET"])
+            print(' ' * my_indent + my_color + "╚═" + "═" * len(my_text) + "═╝▒" + self._COLORS["RESET"])
+            print(' ' * my_indent + my_color + " ▒" + "▒" * len(my_text) + "▒▒▒" + self._COLORS["RESET"])
             print("", end="")
         elif text_format == "TITRE2":
             print("")
-            print(self._repeat(' ', my_indent) + my_color + my_text + self._COLORS["RESET"])
-            print(self._repeat(' ', my_indent) + my_color + self._repeat("―", len(my_text)) + self._COLORS["RESET"])
+            print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"])
+            print(' ' * my_indent + my_color + "―" * len(my_text) + self._COLORS["RESET"])
             print("", end="")
         elif text_format == "TITRE3":
             print("")
-            print(self._repeat(' ', my_indent) + my_color + my_text + self._COLORS["RESET"])
+            print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"])
             print("", end="")
         elif text_format == "COMMAND":
-            print(self._repeat(' ', my_indent) + my_color + my_text + self._COLORS["RESET"], end="")
+            print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"], end="")
         elif text_format == "OK":
-            print(self._repeat(' ', my_indent) + my_color + "[OK] " + my_text + self._COLORS["RESET"], end="")
+            print(' ' * my_indent + my_color + "[OK] " + my_text + self._COLORS["RESET"], end="")
         elif text_format == "WARNING":
-            print(self._repeat(' ', my_indent) + my_color + "[WARNING] " + my_text + self._COLORS["RESET"], end="")
+            print(' ' * my_indent + my_color + "[WARNING] " + my_text + self._COLORS["RESET"], end="")
         elif text_format == "ERROR":
-            print(self._repeat(' ', my_indent) + my_color + "[ERROR] " + my_text + self._COLORS["RESET"], end="")
+            print(' ' * my_indent + my_color + "[ERROR] " + my_text + self._COLORS["RESET"], end="")
         else:
-            print(self._repeat(' ', my_indent) + my_color + my_text + self._COLORS["RESET"], end="")
+            print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"], end="")
         if newline:
             print("")
 
-    def PrintTab(self, title: str="", headers: list=[], datas: list=[], footer: str=None, text_format: str="", indent: int=0, separator: str="┃"):
+    def PrintTab(self, title: str="", headers: list=[], datas: list=[], footer: str=None, text_format: str="", indent: int=0, separator: str="┃"): # type: ignore
         column_separator = " " + separator + " "
 
         # Calcul des longueurs de champs pour ajuster la taille des colonnes du tableau
@@ -244,14 +238,14 @@ class Console(Singleton):
                 line_length = line_length + len(column_separator)
                 separator_line = separator_line + re.sub(r"\s", "-", re.sub(r"\S", "+", column_separator))
             line_length = line_length + MyLength
-            separator_line = separator_line + self._repeat("-", MyLength)
+            separator_line = separator_line + "-" * MyLength
         # Agrandir la longueur de ligne et la ligne de separation si nécessaire pour que le titre passe dedans
         if len(title) > line_length:
-            separator_line = separator_line + self._repeat("-", len(title) - line_length)
+            separator_line = separator_line + "-" * (len(title) - line_length)
             line_length = len(title)
         # Agrandir la longueur de ligne et la ligne de separation si nécessaire pour que le pied passe dedans
         if len(footer) > line_length:
-            separator_line = separator_line + self._repeat("-", len(footer) - line_length)
+            separator_line = separator_line + "-" * (len(footer) - line_length)
             line_length = len(footer)
         first_separator_line_title = "┏━" + separator_line.replace("-", "━").replace("+", "━") + "━┓"
         if separator == "┃":
@@ -414,7 +408,7 @@ class Console(Singleton):
                 if question == "":
                     question = "Faites un choix parmi (" + options + ") ou 'Entree'  pour sortir : "
 
-                response = self.read_fmt(question=question, text_format=text_format, indent=indent)
+                response = self.Read(question=question, text_format=text_format, indent=indent)
                 if response == "" or (response.isnumeric() and int(response) in range(1, i)):
                     choix_ok = True
                 else:
