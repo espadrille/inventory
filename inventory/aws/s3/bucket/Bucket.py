@@ -28,13 +28,13 @@ class Bucket(AwsResource):
         self.SetProperty('region', client.Client().meta._client_config._user_provided_options['region_name'])
 
         # Versioning
-        # if 'Status' in client.Client().get_bucket_versioning(Bucket=bucket['Name']):
-        #     self.SetProperty('versioning', client.Client().get_bucket_versioning(Bucket=bucket['Name'])['Status'])
-        # else:
-        #     self.SetProperty('versioning', 'None')
+        if 'Status' in self._client.Client().get_bucket_versioning(Bucket=bucket['Name']):
+            self.SetProperty('versioning', self._client.Client().get_bucket_versioning(Bucket=bucket['Name'])['Status'])
+        else:
+            self.SetProperty('versioning', 'None')
 
         # Encryption
-        # self.SetProperty('encryption_type', client.Client().get_bucket_encryption(Bucket=bucket['Name'])['ServerSideEncryptionConfiguration']['Rules'][0]['ApplyServerSideEncryptionByDefault']['SSEAlgorithm'])
+        self.SetProperty('encryption_type', self._client.Client().get_bucket_encryption(Bucket=bucket['Name'])['ServerSideEncryptionConfiguration']['Rules'][0]['ApplyServerSideEncryptionByDefault']['SSEAlgorithm'])
 
     #
     # Protected methods

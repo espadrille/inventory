@@ -6,6 +6,7 @@ from ..Console import console
 
 class AwsClient():
     _boto3_client: boto3.client.__class__
+    _boto3_session: boto3.Session
     _profile: str
     _region: str
     _service: str
@@ -18,12 +19,12 @@ class AwsClient():
         self._profile = profile
         self._region = region
 
-        new_session = boto3.Session(profile_name=self._profile) # Une session par profile
+        self._boto3_session = boto3.Session(profile_name=self._profile) # Une session par profile
 
         if region == "":
-            self._boto3_client = new_session.client(service_name=self._service) # type: ignore
+            self._boto3_client = self._boto3_session.client(service_name=self._service) # type: ignore
         else:
-            self._boto3_client = new_session.client(service_name=self._service, region_name=self._region) # type: ignore
+            self._boto3_client = self._boto3_session.client(service_name=self._service, region_name=self._region) # type: ignore
 
         console.Debug(f"Creation client : {self.Name()}")
 
