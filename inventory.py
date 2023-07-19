@@ -49,9 +49,11 @@ my_inventory = Inventory(id="my_inventory",
 my_inventory.LoadResources()
 
 # Affichage de l'inventaire
-if options.print_resources:
-    my_inventory.PrintResources()
-elif options.list_resources:
-    my_inventory.ListResources()
-else:
-    my_inventory.Print()
+# if options.print_resources:
+#     my_inventory.PrintResources()
+# elif options.list_resources:
+#     my_inventory.ListResources()
+# else:
+#     my_inventory.Print()
+
+my_inventory.Output()

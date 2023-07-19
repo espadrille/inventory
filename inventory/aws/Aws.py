@@ -5,9 +5,9 @@
 #
 import boto3
 from ..provider.Provider import Provider
-from .Ec2 import Ec2
-from .Rds import Rds
-from .S3 import S3
+from .ec2.Ec2 import Ec2
+from .rds.Rds import Rds
+from .s3.S3 import S3
 from ..Console import console
 
 #

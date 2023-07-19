@@ -1,7 +1,6 @@
 #
 # Classe AwsResource
 #
-import boto3
 from ..resource.Resource import Resource
 
 class AwsResource(Resource):
@@ -33,9 +32,3 @@ class AwsResource(Resource):
     def _get_tags(self) -> list:
         return []
 
-    #
-    # Public methods
-    #
-    def InventoryId(self):
-        return f"{self._category}.{self.GetProperty('profile')}.{self._id}"
-    

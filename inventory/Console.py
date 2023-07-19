@@ -236,7 +236,7 @@ class Console(Singleton):
         for MyLength in field_lengths_printable:
             if line_length != 0:
                 line_length = line_length + len(column_separator)
-                separator_line = separator_line + re.sub(r"\s", "-", re.sub(r"\S", "+", column_separator))
+                separator_line = separator_line + re.sub(r"\s", "-", re.sub(r"\S", "+", column_separator)) # type: ignore
             line_length = line_length + MyLength
             separator_line = separator_line + "-" * MyLength
         # Agrandir la longueur de ligne et la ligne de separation si nécessaire pour que le titre passe dedans

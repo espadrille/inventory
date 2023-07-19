@@ -4,8 +4,8 @@
         "providers": {
             "aws" : {
                 "filters": {
-                    "profiles": ["developpement", "recette", "production", "shared", "network", "tools", "securite", "vmc"],
-                    "regions": ["us-east-1", "eu-west-3", "eu-west-1"],
+                    "profiles": ["tools", "network"],
+                    "regions": ["eu-west-3"],
                     "services": ["ec2"]
                 },
                 "services": {
@@ -20,6 +20,11 @@
                 }
             }
         },
-        "debug_mode": "DEBUG"
+        "#debug_mode": "DEBUG",
+        "output": {
+            "mode": "file",
+            "format": "table",
+            "output_file": "./inventory_ec2.txt"
+        }
     }
 }

@@ -4,9 +4,9 @@
 # Imports
 #
 # from .Aws import Aws
-from .AwsService import AwsService
-from .rds.instance.Instance import Instance
-from ..Console import console
+from ..AwsService import AwsService
+from .instance.Instance import Instance
+from ...Console import console
 
 #
 # Classe Rds

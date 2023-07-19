@@ -34,6 +34,11 @@
                 }
             }
         },
-        "debug_mode": "DEBUG"
+        "#debug_mode": "DEBUG",
+        "output": {
+            "mode": "file",
+            "format": "json",
+            "output_file": "./inventory_result.json"
+        }
     }
 }

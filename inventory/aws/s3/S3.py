@@ -3,9 +3,9 @@
 #
 # Imports
 #
-from .AwsService import AwsService
-from .s3.bucket.Bucket import Bucket
-from ..Console import console
+from ..AwsService import AwsService
+from .bucket.Bucket import Bucket
+from ...Console import console
 
 #
 # Classe S3

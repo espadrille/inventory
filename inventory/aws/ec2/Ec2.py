@@ -3,10 +3,10 @@
 #
 # Imports
 #
-from .AwsService import AwsService
-from .ec2.instance.Instance import Instance
-from .ec2.security_group.SecurityGroup import SecurityGroup
-from ..Console import console
+from ..AwsService import AwsService
+from .instance.Instance import Instance
+from .security_group.SecurityGroup import SecurityGroup
+from ...Console import console
 
 #
 # Classe Ec2

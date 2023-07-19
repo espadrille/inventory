@@ -1,11 +1,12 @@
 # Imports
+import json
 from ..Console import console
+from ..CustomJSONEncoder import CustomJSONEncoder
 
 #
 # Classe Resource
 #
 class Resource:
-    _category: str
     _id: str
     _properties :dict
     _properties_mapping :dict = {}
@@ -14,15 +15,21 @@ class Resource:
     # Private methods
     #
     def __init__(self, category:str, id: str):
-        self._category = category
         self._id = id
         self._properties = {}
         self._properties['name'] = f"<{id}>"
         self._properties['description'] = ""
+        self._properties['category'] = category
+
+    def __str__(self) -> str:
+        return self.ToJson()
 
     #
     # Public methods
     #
+    def Data(self):
+        return self._properties
+
     def Description(self):
         return self._properties['description']
 
@@ -33,10 +40,10 @@ class Resource:
         return self._id
     
     def InventoryId(self):
-        return f"{self._category}.{self._id}"
+        return f"{self.GetProperty('category')}.{self._id}"
     
     def Name(self):
-        return self._properties['name']
+        return self.GetProperty('name')
 
     def Print(self):
         datas = []
@@ -50,4 +57,14 @@ class Resource:
             for my_mapping_key, my_mapping_value in self._properties_mapping.items():
                 if my_mapping_value == property_name:
                     self._properties[my_mapping_key] = property_value
+
+    def ToJson(self):
+        json_output = json.dumps(self.Data(), indent=4, cls=CustomJSONEncoder)
+        return json_output
+
+    def ToTable(self):
+        datas = []
+        for key, value in self._properties.items():
+            datas.append([key, str(value)])
+        return datas
 
