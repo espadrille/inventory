@@ -29,12 +29,10 @@ class Inventory:
     #
     # Private methods
     #
-    def __init__(self, id:str="", name: str="", providers: list=[], config_file :str=""):
+    def __init__(self, id:str="", config_file :str=""):
 
         self._id = id
-        self._name = name
-        if name == "":
-            self._name = self._id
+        self._name = ""
 
         self._output_mode = "console"
         self._output_format = "table"
@@ -55,7 +53,7 @@ class Inventory:
             self._LoadConfig()
   
         # Creation des providers
-        for my_provider in providers:
+        for my_provider in self._providers:
             self._resources[my_provider] = {}
             self.AddProvider(provider=my_provider)
 
@@ -102,8 +100,14 @@ class Inventory:
                 self.name = self._config["inventory"]["name"]
             else:
                 self.name = "Inventory"
+
+            if "providers" in self._config["inventory"]:
+                for my_provider in self._config["inventory"]["providers"]:
+                    self.AddProvider(my_provider)
+
             if "debug_mode" in self._config["inventory"]:
                 console.SetDebugMode(self._config["inventory"]["debug_mode"])
+
             if "output" in self._config["inventory"]:
                 if "mode" in self._config["inventory"]["output"]:
                     self._output_mode = self._config["inventory"]["output"]["mode"]

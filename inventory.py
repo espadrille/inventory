@@ -12,27 +12,15 @@ parser.add_option("-f",
                   help="Chemin complet du fichier de configuration au format json (defaut=config.json)",
                   default="config.json"
                   )
-parser.add_option("-n",
-                  "--name",
-                  dest="name",
-                  help="Nom de l'inventaire",
-                  default="par defaut"
-                  )
-parser.add_option("-p",
-                  "--providers",
-                  dest="providers",
-                  help="Liste des providers a utiliser (defaut=['aws'])",
-                  default=['aws']
-                  )
 parser.add_option("--list-resources",
                   action="store_true",
                   dest="list_resources",
                   help="Indique s'il faut lister les ressources de l'inventaire (defaut=False)",
                   default=False
                   )
-parser.add_option("--print-resources",
+parser.add_option("--show-resources",
                   action="store_true",
-                  dest="print_resources",
+                  dest="show_resources",
                   help="Indique s'il faut afficher le detail des ressources de l'inventaire (defaut=False)",
                   default=False
                   )
@@ -40,20 +28,18 @@ parser.add_option("--print-resources",
 
 # Construction de l'inventaire
 my_inventory = Inventory(id="my_inventory", 
-                         name=options.name, 
-                         providers=options.providers, 
                          config_file=options.config_file
                          )
 
 # Valorisation de l'inventaire
 my_inventory.LoadResources()
+my_inventory.Output()
 
 # Affichage de l'inventaire
-# if options.print_resources:
-#     my_inventory.PrintResources()
-# elif options.list_resources:
-#     my_inventory.ListResources()
-# else:
-#     my_inventory.Print()
+if options.show_resources:
+    my_inventory.PrintResources()
+elif options.list_resources:
+    my_inventory.ListResources()
+else:
+    my_inventory.Print()
 
-my_inventory.Output()

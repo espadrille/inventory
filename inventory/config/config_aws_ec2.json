@@ -4,7 +4,7 @@
         "providers": {
             "aws" : {
                 "filters": {
-                    "profiles": ["tools", "network"],
+                    "profiles": ["tools"],
                     "regions": ["eu-west-3"],
                     "services": ["ec2"]
                 },
@@ -23,8 +23,8 @@
         "#debug_mode": "DEBUG",
         "output": {
             "mode": "file",
-            "format": "table",
-            "output_file": "./inventory_ec2.txt"
+            "format": "json",
+            "output_file": "./inventory_ec2.json"
         }
     }
 }

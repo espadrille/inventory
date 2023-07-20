@@ -3,7 +3,6 @@
 #
 # Imports
 #
-import boto3
 from ...AwsClient import AwsClient
 from ...AwsResource import AwsResource
 
