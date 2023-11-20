@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 # Import des modules
-from inventory import *
+from inventory.Inventory import *
 from optparse import OptionParser
 
 # Lecture des arguments d'appel
