@@ -4,7 +4,7 @@
         "providers": {
             "aws" : {
                 "filters": {
-                    "profiles": ["tools"],
+                    "profiles": [],
                     "regions": ["eu-west-3"],
                     "services": ["ec2"]
                 },
@@ -12,8 +12,7 @@
                     "ec2": {
                         "filters": {
                             "resource_types": [
-                                "instance", 
-                                "security_group"
+                                "instance" 
                             ]
                         }
                     }

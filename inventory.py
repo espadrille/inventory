@@ -36,10 +36,9 @@ my_inventory.LoadResources()
 my_inventory.Output()
 
 # Affichage de l'inventaire
-if options.show_resources:
-    my_inventory.PrintResources()
-elif options.list_resources:
+my_inventory.Print()
+if options.list_resources:
     my_inventory.ListResources()
-else:
-    my_inventory.Print()
+if options.show_resources:
+    my_inventory.ShowResources()
 

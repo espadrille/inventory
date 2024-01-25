@@ -190,7 +190,7 @@ class Inventory:
         for my_provider in self._providers.values():
             my_provider.Print()
             
-    def PrintResources(self):
+    def ShowResources(self):
         for resource in self._resources['all'].values():
             resource.Print()
 
