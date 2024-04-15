@@ -1,2 +1,2 @@
-# python
+# inventory
 Test
