@@ -34,7 +34,12 @@ class Instance(AwsResource):
         if result:
             self.SetProperty('increment', int(result.group(1)))
         else:
-            self.SetProperty('increment', 0)
+            # Nouvelle convetion de nommage
+            result = re.match('aws[a-z0-9]{5}([0-9]{3})', self._properties['name'])
+            if result:
+                self.SetProperty('increment', int(result.group(1)))
+            else:
+                self.SetProperty('increment', 0)
 
     #
     # Protected methods
