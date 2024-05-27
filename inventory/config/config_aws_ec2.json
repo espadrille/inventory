@@ -4,7 +4,7 @@
         "providers": {
             "aws" : {
                 "filters": {
-                    "profiles": [],
+                    "profiles": ["developpement", "recette", "production", "shared", "network", "tools", "securite", "vmc"],
                     "regions": ["eu-west-3"],
                     "services": ["ec2"]
                 },

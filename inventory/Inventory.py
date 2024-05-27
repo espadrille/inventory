@@ -5,6 +5,7 @@
 #
 # Imports
 #
+import datetime
 import json
 import mimetypes
 import os
@@ -25,6 +26,7 @@ class Inventory:
     _output_format: str
     _providers: dict
     _resources: dict
+    _summary: dict
 
     #
     # Private methods
@@ -42,6 +44,10 @@ class Inventory:
         self._resources['all'] = {}
         self._config = {}
         self._config_file = ""
+        self._summary = {}
+
+        # Initialisation du resume
+        self._summary['date'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
         # Recherche du fichier de configuration
         self._SetConfigFile(config_file)
@@ -74,6 +80,7 @@ class Inventory:
             if os.path.isfile(f"{my_path}{config_file}"):
                 self._config_file = f"{my_path}{config_file}"
                 break
+        self._summary['config file'] = self._config_file
 
     def _LoadConfig(self):
         try:
@@ -115,6 +122,7 @@ class Inventory:
                     self._output_format = self._config["inventory"]["output"]["format"]
                 if "output_file" in self._config["inventory"]["output"]:
                     self._output_file = self._config["inventory"]["output"]["output_file"]
+        self._summary['output file'] = self._output_file
 
     #
     # Public methods
@@ -154,6 +162,7 @@ class Inventory:
             self._resources[my_provider_key] = my_provider.LoadResources()
             for resource_key, resource in self._resources[my_provider_key]['all'].items():
                 self._resources['all'][resource_key] = resource
+        self._summary['resource count'] = str(len(self._resources['all']))
         return self._resources
     
     def Name(self):
@@ -181,10 +190,9 @@ class Inventory:
         return output
 
     def Print(self):
-
         datas = []
-        datas.append(["fichier de configuration", self._config_file])
-        datas.append(["resources count", str(len(self._resources['all']))])
+        for key, value in self._summary.items():
+            datas.append([key, str(value)])
         console.PrintTab(title=f"{self.name}", datas=datas, footer="")
 
         for my_provider in self._providers.values():
