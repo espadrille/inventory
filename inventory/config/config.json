@@ -38,7 +38,7 @@
         "output": {
             "mode": "file",
             "format": "json",
-            "output_file": "~/inventory_result.json"
+            "output_file": "./inventory_result.json"
         }
     }
 }

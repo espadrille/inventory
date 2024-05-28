@@ -23,7 +23,7 @@
         "output": {
             "mode": "console",
             "format": "csv",
-            "output_file": "~/inventory_test.txt",
+            "output_file": "./inventory_test.txt",
             "selected_fields": [
                 "id",
                 "name",
