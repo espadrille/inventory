@@ -1,4 +1,5 @@
 # Imports
+import datetime
 import json
 from ..Console import console
 from ..CustomJSONEncoder import CustomJSONEncoder
@@ -20,6 +21,7 @@ class Resource:
         self._properties['name'] = f"<{id}>"
         self._properties['description'] = ""
         self._properties['category'] = category
+        self._properties['date'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     def __str__(self) -> str:
         return self.ToJson()
@@ -27,7 +29,9 @@ class Resource:
     #
     # Public methods
     #
-    def Data(self):
+    def Data(self, new_data: dict={}):
+        if new_data != {}:
+            self._properties = new_data
         return self._properties
 
     def Description(self):

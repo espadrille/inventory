@@ -1,0 +1,685 @@
+{
+    "i-0ad467fef661e7eab": {
+        "name": "test-ansible-windows",
+        "description": "",
+        "category": "aws.ec2.instance",
+        "AmiLaunchIndex": 0,
+        "ImageId": "ami-01a6df0ce1da183e3",
+        "InstanceId": "i-0ad467fef661e7eab",
+        "id": "i-0ad467fef661e7eab",
+        "InstanceType": "t2.micro",
+        "KeyName": "key-tools",
+        "LaunchTime": "2023-03-06 13:55:06+00:00",
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "Placement": {
+            "AvailabilityZone": "eu-west-3b",
+            "GroupName": "",
+            "Tenancy": "default"
+        },
+        "Platform": "windows",
+        "PrivateDnsName": "ip-10-5-8-148.eu-west-3.compute.internal",
+        "PrivateIpAddress": "10.5.8.148",
+        "ProductCodes": [],
+        "PublicDnsName": "",
+        "State": {
+            "Code": 80,
+            "Name": "stopped"
+        },
+        "StateTransitionReason": "User initiated (2023-03-06 18:00:25 GMT)",
+        "SubnetId": "subnet-0504abdba6932ffe4",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "Architecture": "x86_64",
+        "BlockDeviceMappings": [
+            {
+                "DeviceName": "/dev/sda1",
+                "Ebs": {
+                    "AttachTime": "2023-02-20 15:27:22+00:00",
+                    "DeleteOnTermination": true,
+                    "Status": "attached",
+                    "VolumeId": "vol-09788af7b83634805"
+                }
+            }
+        ],
+        "ClientToken": "c3419014-0113-43cf-a104-29ab754d3276",
+        "EbsOptimized": false,
+        "EnaSupport": true,
+        "Hypervisor": "xen",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::714117993668:instance-profile/AmazonSSMRoleForInstancesQuickSetup",
+            "Id": "AIPA2MRF72TCKH35EAMT3"
+        },
+        "NetworkInterfaces": [
+            {
+                "Attachment": {
+                    "AttachTime": "2023-02-20 15:27:21+00:00",
+                    "AttachmentId": "eni-attach-0fb1e355a8c45bb57",
+                    "DeleteOnTermination": true,
+                    "DeviceIndex": 0,
+                    "Status": "attached",
+                    "NetworkCardIndex": 0
+                },
+                "Description": "",
+                "Groups": [
+                    {
+                        "GroupName": "sg_test-ansible-windows",
+                        "GroupId": "sg-00f73474f813cb8e7"
+                    }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "0a:3c:72:1b:7f:62",
+                "NetworkInterfaceId": "eni-087aa483306fc41a0",
+                "OwnerId": "714117993668",
+                "PrivateDnsName": "ip-10-5-8-148.eu-west-3.compute.internal",
+                "PrivateIpAddress": "10.5.8.148",
+                "PrivateIpAddresses": [
+                    {
+                        "Primary": true,
+                        "PrivateDnsName": "ip-10-5-8-148.eu-west-3.compute.internal",
+                        "PrivateIpAddress": "10.5.8.148"
+                    }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-0504abdba6932ffe4",
+                "VpcId": "vpc-05db470e8f1a6422f",
+                "InterfaceType": "interface"
+            }
+        ],
+        "RootDeviceName": "/dev/sda1",
+        "RootDeviceType": "ebs",
+        "SecurityGroups": [
+            {
+                "GroupName": "sg_test-ansible-windows",
+                "GroupId": "sg-00f73474f813cb8e7"
+            }
+        ],
+        "SourceDestCheck": true,
+        "StateReason": {
+            "Code": "Client.UserInitiatedShutdown",
+            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
+        },
+        "Tags": [
+            {
+                "Key": "ScheduleStop",
+                "Value": "19:00"
+            },
+            {
+                "Key": "Scheduled",
+                "Value": "True"
+            },
+            {
+                "Key": "Name",
+                "Value": "test-ansible-windows"
+            },
+            {
+                "Key": "code_affaire",
+                "Value": "DSIRN99999"
+            }
+        ],
+        "VirtualizationType": "hvm",
+        "CpuOptions": {
+            "CoreCount": 1,
+            "ThreadsPerCore": 1
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "State": "applied",
+            "HttpTokens": "required",
+            "HttpPutResponseHopLimit": 1,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "PlatformDetails": "Windows",
+        "UsageOperation": "RunInstances:0002",
+        "UsageOperationUpdateTime": "2023-02-20 15:27:21+00:00",
+        "PrivateDnsNameOptions": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": true,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "MaintenanceOptions": {
+            "AutoRecovery": "default"
+        },
+        "CurrentInstanceBootMode": "legacy-bios",
+        "account_id": "714117993668",
+        "region": "eu-west-3",
+        "arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0ad467fef661e7eab",
+        "state": "stopped",
+        "state_code": 80,
+        "increment": 0,
+        "profile": "tools"
+    },
+    "i-0178b5c2a75fae795": {
+        "name": "awstolnx002",
+        "description": "Serveur ansible",
+        "category": "aws.ec2.instance",
+        "AmiLaunchIndex": 0,
+        "ImageId": "ami-02b01316e6e3496d9",
+        "InstanceId": "i-0178b5c2a75fae795",
+        "id": "i-0178b5c2a75fae795",
+        "InstanceType": "t3.xlarge",
+        "KeyName": "key-tools",
+        "LaunchTime": "2023-06-02 07:44:35+00:00",
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "Placement": {
+            "AvailabilityZone": "eu-west-3a",
+            "GroupName": "",
+            "Tenancy": "default"
+        },
+        "PrivateDnsName": "ip-10-5-8-132.eu-west-3.compute.internal",
+        "PrivateIpAddress": "10.5.8.132",
+        "ProductCodes": [],
+        "PublicDnsName": "",
+        "State": {
+            "Code": 16,
+            "Name": "running"
+        },
+        "StateTransitionReason": "",
+        "SubnetId": "subnet-011db4b3b09a58cf7",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "Architecture": "x86_64",
+        "BlockDeviceMappings": [
+            {
+                "DeviceName": "/dev/xvda",
+                "Ebs": {
+                    "AttachTime": "2022-11-10 14:24:32+00:00",
+                    "DeleteOnTermination": true,
+                    "Status": "attached",
+                    "VolumeId": "vol-065582316f0473e48"
+                }
+            }
+        ],
+        "ClientToken": "terraform-20221110142430836000000001",
+        "EbsOptimized": false,
+        "EnaSupport": true,
+        "Hypervisor": "xen",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::714117993668:instance-profile/role-awstolnx002",
+            "Id": "AIPA2MRF72TCFJRXLP2CE"
+        },
+        "NetworkInterfaces": [
+            {
+                "Attachment": {
+                    "AttachTime": "2022-11-10 14:24:32+00:00",
+                    "AttachmentId": "eni-attach-0130725aa213267f2",
+                    "DeleteOnTermination": true,
+                    "DeviceIndex": 0,
+                    "Status": "attached",
+                    "NetworkCardIndex": 0
+                },
+                "Description": "",
+                "Groups": [
+                    {
+                        "GroupName": "sg_awstolnx002",
+                        "GroupId": "sg-005e4ebfa9bc5b203"
+                    }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "06:47:fa:54:75:10",
+                "NetworkInterfaceId": "eni-07fffaa8dc383b444",
+                "OwnerId": "714117993668",
+                "PrivateDnsName": "ip-10-5-8-132.eu-west-3.compute.internal",
+                "PrivateIpAddress": "10.5.8.132",
+                "PrivateIpAddresses": [
+                    {
+                        "Primary": true,
+                        "PrivateDnsName": "ip-10-5-8-132.eu-west-3.compute.internal",
+                        "PrivateIpAddress": "10.5.8.132"
+                    }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-011db4b3b09a58cf7",
+                "VpcId": "vpc-05db470e8f1a6422f",
+                "InterfaceType": "interface"
+            }
+        ],
+        "RootDeviceName": "/dev/xvda",
+        "RootDeviceType": "ebs",
+        "SecurityGroups": [
+            {
+                "GroupName": "sg_awstolnx002",
+                "GroupId": "sg-005e4ebfa9bc5b203"
+            }
+        ],
+        "SourceDestCheck": true,
+        "Tags": [
+            {
+                "Key": "Backup",
+                "Value": "Standard"
+            },
+            {
+                "Key": "code_affaire",
+                "Value": "DSIZZDY299"
+            },
+            {
+                "Key": "map-migrated",
+                "Value": "mig3B3N2FXHQT"
+            },
+            {
+                "Key": "terraform_module",
+                "Value": "terraform-module-aws-ec2-instance"
+            },
+            {
+                "Key": "Name",
+                "Value": "awstolnx002"
+            },
+            {
+                "Key": "terraform_root",
+                "Value": "TOOLS_SERVERS"
+            },
+            {
+                "Key": "Description",
+                "Value": "Serveur ansible"
+            },
+            {
+                "Key": "ODS",
+                "Value": "Infrastructure"
+            },
+            {
+                "Key": "Environment",
+                "Value": "tools"
+            }
+        ],
+        "VirtualizationType": "hvm",
+        "CpuOptions": {
+            "CoreCount": 2,
+            "ThreadsPerCore": 2
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "State": "applied",
+            "HttpTokens": "required",
+            "HttpPutResponseHopLimit": 1,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "PlatformDetails": "Linux/UNIX",
+        "UsageOperation": "RunInstances",
+        "UsageOperationUpdateTime": "2022-11-10 14:24:32+00:00",
+        "PrivateDnsNameOptions": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "MaintenanceOptions": {
+            "AutoRecovery": "default"
+        },
+        "CurrentInstanceBootMode": "legacy-bios",
+        "terraform_module": "terraform-module-aws-ec2-instance",
+        "terraform_root": "TOOLS_SERVERS",
+        "account_id": "714117993668",
+        "region": "eu-west-3",
+        "arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0178b5c2a75fae795",
+        "state": "running",
+        "state_code": 16,
+        "increment": 2,
+        "profile": "tools"
+    },
+    "i-03b87596b59bdd16a": {
+        "name": "awstolnx001",
+        "description": "Serveur terraform",
+        "category": "aws.ec2.instance",
+        "AmiLaunchIndex": 0,
+        "ImageId": "ami-0f2378a9d19d5fe31",
+        "InstanceId": "i-03b87596b59bdd16a",
+        "id": "i-03b87596b59bdd16a",
+        "InstanceType": "t3.xlarge",
+        "KeyName": "key-tools",
+        "LaunchTime": "2024-04-18 14:28:11+00:00",
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "Placement": {
+            "AvailabilityZone": "eu-west-3a",
+            "GroupName": "",
+            "Tenancy": "default"
+        },
+        "PrivateDnsName": "ip-10-5-8-133.eu-west-3.compute.internal",
+        "PrivateIpAddress": "10.5.8.133",
+        "ProductCodes": [],
+        "PublicDnsName": "",
+        "State": {
+            "Code": 16,
+            "Name": "running"
+        },
+        "StateTransitionReason": "",
+        "SubnetId": "subnet-011db4b3b09a58cf7",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "Architecture": "x86_64",
+        "BlockDeviceMappings": [
+            {
+                "DeviceName": "/dev/xvda",
+                "Ebs": {
+                    "AttachTime": "2024-04-18 14:28:12+00:00",
+                    "DeleteOnTermination": true,
+                    "Status": "attached",
+                    "VolumeId": "vol-00cb9cd7213c1f6e5"
+                }
+            },
+            {
+                "DeviceName": "/dev/sdb",
+                "Ebs": {
+                    "AttachTime": "2024-04-18 14:28:12+00:00",
+                    "DeleteOnTermination": true,
+                    "Status": "attached",
+                    "VolumeId": "vol-0084d4d14562d6e35"
+                }
+            }
+        ],
+        "ClientToken": "eff0d398-11f0-4aa2-9026-a77681380c75",
+        "EbsOptimized": true,
+        "EnaSupport": true,
+        "Hypervisor": "xen",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::714117993668:instance-profile/role-awstolnx001",
+            "Id": "AIPA2MRF72TCPMGHMFQ6X"
+        },
+        "NetworkInterfaces": [
+            {
+                "Attachment": {
+                    "AttachTime": "2024-04-18 14:28:11+00:00",
+                    "AttachmentId": "eni-attach-0c4f9d6ee72991022",
+                    "DeleteOnTermination": true,
+                    "DeviceIndex": 0,
+                    "Status": "attached",
+                    "NetworkCardIndex": 0
+                },
+                "Description": "",
+                "Groups": [
+                    {
+                        "GroupName": "sg_awstolnx001",
+                        "GroupId": "sg-0d2f5d7cb1d88578e"
+                    }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "06:dd:51:be:3c:53",
+                "NetworkInterfaceId": "eni-018f1e862b67c0112",
+                "OwnerId": "714117993668",
+                "PrivateDnsName": "ip-10-5-8-133.eu-west-3.compute.internal",
+                "PrivateIpAddress": "10.5.8.133",
+                "PrivateIpAddresses": [
+                    {
+                        "Primary": true,
+                        "PrivateDnsName": "ip-10-5-8-133.eu-west-3.compute.internal",
+                        "PrivateIpAddress": "10.5.8.133"
+                    }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-011db4b3b09a58cf7",
+                "VpcId": "vpc-05db470e8f1a6422f",
+                "InterfaceType": "interface"
+            }
+        ],
+        "RootDeviceName": "/dev/xvda",
+        "RootDeviceType": "ebs",
+        "SecurityGroups": [
+            {
+                "GroupName": "sg_awstolnx001",
+                "GroupId": "sg-0d2f5d7cb1d88578e"
+            }
+        ],
+        "SourceDestCheck": true,
+        "Tags": [
+            {
+                "Key": "Description",
+                "Value": "Serveur terraform"
+            },
+            {
+                "Key": "code_affaire",
+                "Value": "DSIZZDY299"
+            },
+            {
+                "Key": "Backup",
+                "Value": "Standard"
+            },
+            {
+                "Key": "Name",
+                "Value": "awstolnx001"
+            }
+        ],
+        "VirtualizationType": "hvm",
+        "CpuOptions": {
+            "CoreCount": 2,
+            "ThreadsPerCore": 2
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "State": "applied",
+            "HttpTokens": "optional",
+            "HttpPutResponseHopLimit": 1,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "PlatformDetails": "Linux/UNIX",
+        "UsageOperation": "RunInstances",
+        "UsageOperationUpdateTime": "2024-04-18 14:28:11+00:00",
+        "PrivateDnsNameOptions": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "MaintenanceOptions": {
+            "AutoRecovery": "default"
+        },
+        "CurrentInstanceBootMode": "legacy-bios",
+        "account_id": "714117993668",
+        "region": "eu-west-3",
+        "arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-03b87596b59bdd16a",
+        "state": "running",
+        "state_code": 16,
+        "increment": 1,
+        "profile": "tools"
+    },
+    "i-04398be5ee74ec5c5": {
+        "name": "awstolnx003",
+        "description": "Serveur python",
+        "category": "aws.ec2.instance",
+        "AmiLaunchIndex": 0,
+        "ImageId": "ami-0288d9523e7053c23",
+        "InstanceId": "i-04398be5ee74ec5c5",
+        "id": "i-04398be5ee74ec5c5",
+        "InstanceType": "t3.large",
+        "KeyName": "key-tools",
+        "LaunchTime": "2024-05-17 12:56:13+00:00",
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "Placement": {
+            "AvailabilityZone": "eu-west-3b",
+            "GroupName": "",
+            "Tenancy": "default"
+        },
+        "PrivateDnsName": "ip-10-5-8-149.eu-west-3.compute.internal",
+        "PrivateIpAddress": "10.5.8.149",
+        "ProductCodes": [],
+        "PublicDnsName": "",
+        "State": {
+            "Code": 16,
+            "Name": "running"
+        },
+        "StateTransitionReason": "",
+        "SubnetId": "subnet-0504abdba6932ffe4",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "Architecture": "x86_64",
+        "BlockDeviceMappings": [
+            {
+                "DeviceName": "/dev/xvda",
+                "Ebs": {
+                    "AttachTime": "2024-05-17 12:56:14+00:00",
+                    "DeleteOnTermination": true,
+                    "Status": "attached",
+                    "VolumeId": "vol-08100cefed6967898"
+                }
+            }
+        ],
+        "ClientToken": "terraform-20240517125612564400000001",
+        "EbsOptimized": false,
+        "EnaSupport": true,
+        "Hypervisor": "xen",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::714117993668:instance-profile/role-awstolnx003",
+            "Id": "AIPA2MRF72TCE7MGVWMAT"
+        },
+        "NetworkInterfaces": [
+            {
+                "Attachment": {
+                    "AttachTime": "2024-05-17 12:56:13+00:00",
+                    "AttachmentId": "eni-attach-047fdb4498cb2d7ab",
+                    "DeleteOnTermination": true,
+                    "DeviceIndex": 0,
+                    "Status": "attached",
+                    "NetworkCardIndex": 0
+                },
+                "Description": "",
+                "Groups": [
+                    {
+                        "GroupName": "sg_awstolnx003",
+                        "GroupId": "sg-0c3abd67b5ea3d933"
+                    }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "0a:0a:ef:6e:2b:45",
+                "NetworkInterfaceId": "eni-06f61f63deccb9c63",
+                "OwnerId": "714117993668",
+                "PrivateDnsName": "ip-10-5-8-149.eu-west-3.compute.internal",
+                "PrivateIpAddress": "10.5.8.149",
+                "PrivateIpAddresses": [
+                    {
+                        "Primary": true,
+                        "PrivateDnsName": "ip-10-5-8-149.eu-west-3.compute.internal",
+                        "PrivateIpAddress": "10.5.8.149"
+                    }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-0504abdba6932ffe4",
+                "VpcId": "vpc-05db470e8f1a6422f",
+                "InterfaceType": "interface"
+            }
+        ],
+        "RootDeviceName": "/dev/xvda",
+        "RootDeviceType": "ebs",
+        "SecurityGroups": [
+            {
+                "GroupName": "sg_awstolnx003",
+                "GroupId": "sg-0c3abd67b5ea3d933"
+            }
+        ],
+        "SourceDestCheck": true,
+        "Tags": [
+            {
+                "Key": "Backup",
+                "Value": "Standard"
+            },
+            {
+                "Key": "code_affaire",
+                "Value": "DSIZZDY299"
+            },
+            {
+                "Key": "Environment",
+                "Value": "tools"
+            },
+            {
+                "Key": "Name",
+                "Value": "awstolnx003"
+            },
+            {
+                "Key": "terraform_root",
+                "Value": "TOOLS_SERVERS"
+            },
+            {
+                "Key": "Description",
+                "Value": "Serveur python"
+            },
+            {
+                "Key": "ODS",
+                "Value": "Infrastructure"
+            },
+            {
+                "Key": "terraform_module",
+                "Value": "terraform-module-aws-ec2-instance"
+            },
+            {
+                "Key": "map-migrated",
+                "Value": "mig3B3N2FXHQT"
+            }
+        ],
+        "VirtualizationType": "hvm",
+        "CpuOptions": {
+            "CoreCount": 1,
+            "ThreadsPerCore": 2
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "State": "applied",
+            "HttpTokens": "required",
+            "HttpPutResponseHopLimit": 2,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "BootMode": "uefi-preferred",
+        "PlatformDetails": "Linux/UNIX",
+        "UsageOperation": "RunInstances",
+        "UsageOperationUpdateTime": "2024-05-17 12:56:13+00:00",
+        "PrivateDnsNameOptions": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "MaintenanceOptions": {
+            "AutoRecovery": "default"
+        },
+        "CurrentInstanceBootMode": "uefi",
+        "terraform_module": "terraform-module-aws-ec2-instance",
+        "terraform_root": "TOOLS_SERVERS",
+        "account_id": "714117993668",
+        "region": "eu-west-3",
+        "arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-04398be5ee74ec5c5",
+        "state": "running",
+        "state_code": 16,
+        "increment": 3,
+        "profile": "tools"
+    }
+}

@@ -33,7 +33,8 @@ my_inventory = Inventory(id="my_inventory",
 
 # Valorisation de l'inventaire
 my_inventory.LoadResources()
-my_inventory.Output()
+# Ecriture du resultat
+my_inventory.Write()
 
 # Affichage de l'inventaire
 my_inventory.Print()

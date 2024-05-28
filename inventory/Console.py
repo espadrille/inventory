@@ -1,3 +1,6 @@
+#
+# classe Console
+#
 
 import datetime
 import os

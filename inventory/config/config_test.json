@@ -1,0 +1,37 @@
+{
+    "inventory": {
+        "name": "Inventaire du service EC2",
+        "providers": {
+            "aws" : {
+                "filters": {
+                    "profiles": ["tools"],
+                    "regions": ["eu-west-3"],
+                    "services": ["ec2"]
+                },
+                "services": {
+                    "ec2": {
+                        "filters": {
+                            "resource_types": [
+                                "instance" 
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "debug_mode": "DEBUG",
+        "output": {
+            "mode": "console",
+            "format": "csv",
+            "output_file": "./inventory_test.json",
+            "selected_fields": [
+                "id",
+                "name",
+                "description",
+                "state"
+            ],
+            "csv_separator": ";",
+            "csv_print_header": true
+        }
+    }
+}
