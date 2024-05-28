@@ -23,7 +23,7 @@
         "output": {
             "mode": "file",
             "format": "json",
-            "output_file": "./inventory_rds.json"
+            "output_file": "~/inventory_rds.json"
         }
     }
 }

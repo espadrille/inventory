@@ -19,16 +19,17 @@
                 }
             }
         },
-        "debug_mode": "DEBUG",
+        "#debug_mode": "DEBUG",
         "output": {
-            "mode": "file",
+            "mode": "console",
             "format": "csv",
-            "output_file": "./inventory_test.txt",
+            "output_file": "~/inventory_test.txt",
             "selected_fields": [
                 "id",
                 "name",
                 "description",
-                "state"
+                "state",
+                "PrivateIpAddress"
             ],
             "csv_separator": ";",
             "csv_print_header": true

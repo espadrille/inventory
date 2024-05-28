@@ -4,7 +4,7 @@
         "providers": {
             "aws" : {
                 "filters": {
-                    "profiles": ["developpement", "shared", "vmc"],
+                    "profiles": ["developpement", "recette", "production", "shared", "securite", "vmc", "network", "tools"],
                     "services": ["s3"]
                 }
             }
@@ -15,6 +15,7 @@
             "format": "csv",
             "output_file": "./inventory_s3.csv",
             "selected_fields": [
+                "date",
                 "category",
                 "name",
                 "description",
