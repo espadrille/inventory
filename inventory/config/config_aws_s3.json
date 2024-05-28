@@ -9,6 +9,20 @@
                 }
             }
         },
-        "debug_mode": "DEBUG"
+        "debug_mode": "DEBUG",
+        "output": {
+            "mode": "file",
+            "format": "csv",
+            "output_file": "./inventory_s3.csv",
+            "selected_fields": [
+                "category",
+                "name",
+                "description",
+                "versioning",
+                "profile"
+            ],
+            "csv_separator": ";",
+            "csv_print_header": true
+        }
     }
 }
