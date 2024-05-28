@@ -38,7 +38,10 @@ class Resource:
         return self._properties['description']
 
     def GetProperty(self, property_name :str):
-        return self._properties[property_name]
+        try:
+            return self._properties[property_name]
+        except:
+            return ""
     
     def Id(self):
         return self._id
