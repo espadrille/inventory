@@ -1,0 +1,5 @@
+"id";"name";"description";"state"
+"i-0ad467fef661e7eab";"test-ansible-windows";"";"stopped"
+"i-0178b5c2a75fae795";"awstolnx002";"Serveur ansible";"running"
+"i-03b87596b59bdd16a";"awstolnx001";"Serveur terraform";"running"
+"i-04398be5ee74ec5c5";"awstolnx003";"Serveur python";"running"

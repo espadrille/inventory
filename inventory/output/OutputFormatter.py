@@ -64,7 +64,12 @@ class OutputFormatter(Singleton):
     def Output(self):
         output = ""
         for resource_key, resource in self._resources.items():
-            output += f"{resource_key}: {resource.Name()} - {resource.GetProperty('description')}\n"
+            resource_line = ""
+            for my_field_key, my_filed_value in resource.Data().items():
+                if resource_line != "":
+                    resource_line += ','
+                resource_line += f"{my_field_key}=\"{my_filed_value}\""
+            output += f"{resource_line}\n"
         return output
 
     def Write(self):

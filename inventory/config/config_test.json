@@ -21,9 +21,9 @@
         },
         "debug_mode": "DEBUG",
         "output": {
-            "mode": "console",
+            "mode": "file",
             "format": "csv",
-            "output_file": "./inventory_test.json",
+            "output_file": "./inventory_test.txt",
             "selected_fields": [
                 "id",
                 "name",

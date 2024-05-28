@@ -171,6 +171,9 @@ class Inventory:
         elif self._config['inventory']['output']['format'] == "csv":
             from .output.CsvOutputFormatter import CsvOutputFormatter
             output_formatter = CsvOutputFormatter()
+        elif self._config['inventory']['output']['format'] == "yaml":
+            from .output.YamlOutputFormatter import YamlOutputFormatter
+            output_formatter = YamlOutputFormatter()
         else:
             console.Print(text=f"Format de sortie non reconnu : {self._config['inventory']['output']['format']}", text_format="ERROR")
             from .output.OutputFormatter import OutputFormatter
