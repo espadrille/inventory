@@ -26,7 +26,12 @@ class Instance(AwsResource):
         self.SetProperty('AccountId', client.Client().describe_instances()['Reservations'][0]['OwnerId'])
         self.SetProperty('Region', client.Region())
         self.SetProperty('Arn', f"arn:aws:ec2:{self.GetProperty('Region')}:{self.GetProperty('AccountId')}:instance/{self.Id()}")
-        self.SetProperty('State', instance['State']['Name'])
+        if instance['State']['Name'] == 'running':
+            self.SetProperty('State', 'poweredOn')
+        elif instance['State']['Name'] == 'stopped':
+            self.SetProperty('State', 'poweredOff')
+        else:
+            self.SetProperty('State', instance['State']['Name'])
         self.SetProperty('StateCode', int(instance['State']['Code']))
 
         # Tenter de lire l'increment dans le nom de l'instance
@@ -40,6 +45,12 @@ class Instance(AwsResource):
                 self.SetProperty('Increment', int(result.group(1)))
             else:
                 self.SetProperty('Increment', 0)
+
+        # Creation des proprietes NetworkInterface
+        i = 0
+        for my_interface in self._properties["NetworkInterfaces"]:
+            i += 1
+            self.SetProperty(f"NetworkInterface_{i}", my_interface['NetworkInterfaceId'])
 
     #
     # Protected methods

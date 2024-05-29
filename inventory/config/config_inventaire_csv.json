@@ -4,8 +4,28 @@
         "providers": {
             "aws" : {
                 "filters": {
-                    "profiles": ["securite"],
-                    "regions": ["eu-west-3"],
+                    "profiles": [
+                        "citrix",
+                        "ddfbackend",
+                        "ddfdatalab_developpement",
+                        "ddfdatalab_production",
+                        "ddfdataplatform_developpement",
+                        "ddfdataplatform_production",
+                        "ddfdataplatform_staging",
+                        "ddfmlplatform_developpement",
+                        "ddfmlplatform_production",
+                        "ddfmlplatform_staging",
+                        "developpement", 
+                        "network", 
+                        "ot",
+                        "production", 
+                        "recette", 
+                        "securite", 
+                        "shared", 
+                        "tools",
+                        "vmc"
+                    ],
+                    "regions": ["eu-west-1", "eu-west-3"],
                     "services": ["ec2"]
                 },
                 "services": {
@@ -19,12 +39,12 @@
                 }
             }
         },
-        "#debug_mode": "DEBUG",
+        "debug_mode": "DEBUG",
         "output": {
-            "mode": "console",
-            "format": "json",
-            "output_file": "./inventory_test.json",
-            "#selected_fields": {
+            "mode": "file",
+            "format": "csv",
+            "output_file": "./carto_infrastructure_aws_ec2.csv",
+            "selected_fields": {
                 "Hypervisor": "HYPERVISEUR",
                 "VERSION vCENTER": "VERSION vCENTER",
                 "Host": "Host",

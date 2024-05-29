@@ -27,9 +27,9 @@ class OutputFormatter(Singleton):
             # Ne conserver que les champs selectionnes
             if len(self._config['selected_fields']) > 0:
                 new_data = {}
-                for my_field in self._config['selected_fields']:
-                    if my_field in my_resource.Data().keys():
-                        new_data[my_field] = my_resource.GetProperty(my_field)
+                for my_field_key, my_field in self._config['selected_fields'].items():
+                    if my_field_key in my_resource.Data().keys():
+                        new_data[my_field] = my_resource.GetProperty(my_field_key)
                     else:
                         new_data[my_field] = ""
                 self._resources[my_resource_key].Data(new_data)
@@ -65,10 +65,10 @@ class OutputFormatter(Singleton):
         output = ""
         for resource_key, resource in self._resources.items():
             resource_line = ""
-            for my_field_key, my_filed_value in resource.Data().items():
+            for my_field_key, my_field_value in resource.Data().items():
                 if resource_line != "":
                     resource_line += ','
-                resource_line += f"{my_field_key}=\"{my_filed_value}\""
+                resource_line += f"{my_field_key}=\"{my_field_value}\""
             output += f"{resource_line}\n"
         return output
 

@@ -116,6 +116,10 @@ class Inventory:
                     self._config['inventory']['output']['format'] = "json"
                 if not "output_file" in self._config['inventory']['output']:
                     self._config['inventory']['output']["output_file"] = ""
+        if self._config['inventory']['output']['mode'] == "console":
+            self._summary['output'] = 'console'
+        elif self._config['inventory']['output']['mode'] == "file":
+            self._summary['output file'] = self._config['inventory']['output']['output_file']
 
     #
     # Public methods

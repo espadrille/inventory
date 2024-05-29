@@ -14,14 +14,14 @@
             "mode": "file",
             "format": "csv",
             "output_file": "./inventory_s3.csv",
-            "selected_fields": [
-                "Date",
-                "Category",
-                "Name",
-                "Description",
-                "Versioning",
-                "Profile"
-            ],
+            "selected_fields": {
+                "Date": "Date",
+                "Category": "Category",
+                "Name": "Name",
+                "Description": "Description",
+                "Versioning": "Versioning",
+                "Profile": "Profile"
+            },
             "csv_separator": ";",
             "csv_print_header": true
         }

@@ -24,13 +24,13 @@
             "mode": "file",
             "format": "json",
             "output_file": "./inventory_ec2.json",
-            "#selected_fields": [
-                "Id",
-                "Name",
-                "Description",
-                "State",
-                "PrivateIpAddress"
-            ]
+            "#selected_fields": {
+                "Id": "Id",
+                "Name": "Name",
+                "Description": "Description",
+                "State": "State",
+                "PrivateIpAddress": "PrivateIpAddress"
+            }
         }
     }
 }
