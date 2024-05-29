@@ -4,7 +4,7 @@
         "providers": {
             "aws" : {
                 "filters": {
-                    "profiles": ["tools"],
+                    "profiles": ["developpement"],
                     "regions": ["eu-west-3"],
                     "services": ["ec2"]
                 },
@@ -22,13 +22,13 @@
         "#debug_mode": "DEBUG",
         "output": {
             "mode": "file",
-            "format": "csv",
-            "output_file": "./inventory_ec2.csv",
-            "selected_fields": [
-                "id",
-                "name",
-                "description",
-                "state",
+            "format": "json",
+            "output_file": "./inventory_ec2.json",
+            "#selected_fields": [
+                "Id",
+                "Name",
+                "Description",
+                "State",
                 "PrivateIpAddress"
             ]
         }

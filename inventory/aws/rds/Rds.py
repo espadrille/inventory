@@ -42,14 +42,14 @@ class Rds(AwsService):
                         nb_instances = nb_instances + 1
 
                         new_resource = Instance(instance=my_instance, client=my_client) # type: ignore
-                        new_resource.SetProperty('profile', my_client.Profile())
+                        new_resource.SetProperty('Profile', my_client.Profile())
 
                         self._resources[my_resource_type][new_resource.Id()] = new_resource
                         self._resources['all'][new_resource.Id()] = new_resource
                         nb_resources_client += 1
 
-                        if not new_resource.GetProperty('increment') in  self._db_instance_increments:
-                            self._db_instance_increments.append(new_resource.GetProperty('increment'))
+                        if not new_resource.GetProperty('Increment') in  self._db_instance_increments:
+                            self._db_instance_increments.append(new_resource.GetProperty('Increment'))
                     self._summary['instances'] = str(nb_instances)
             console.Debug(f" ==> {nb_resources_client} resources.")
 

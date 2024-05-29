@@ -18,10 +18,10 @@ class Resource:
     def __init__(self, category:str, id: str):
         self._id = id
         self._properties = {}
-        self._properties['name'] = f"<{id}>"
-        self._properties['description'] = ""
-        self._properties['category'] = category
-        self._properties['date'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        self._properties['Name'] = f"<{id}>"
+        self._properties['Description'] = ""
+        self._properties['Category'] = category
+        self._properties['Date'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     def __str__(self) -> str:
         return self.ToJson()
@@ -35,7 +35,7 @@ class Resource:
         return self._properties
 
     def Description(self):
-        return self._properties['description']
+        return self._properties['Description']
 
     def GetProperty(self, property_name :str):
         try:
@@ -47,10 +47,10 @@ class Resource:
         return self._id
     
     def InventoryId(self):
-        return f"{self.GetProperty('category')}.{self._id}"
+        return f"{self.GetProperty('Category')}.{self._id}"
     
     def Name(self):
-        return self.GetProperty('name')
+        return self.GetProperty('Name')
 
     def Print(self):
         datas = []

@@ -13,7 +13,7 @@ from ...AwsResource import AwsResource
 class Instance(AwsResource):
     _client : AwsClient
     _properties_mapping = {
-        'id': 'InstanceId'
+        'Id': 'InstanceId'
         }
 
     #
@@ -23,23 +23,23 @@ class Instance(AwsResource):
         self._client = client
         super().__init__(category=f"ec2.instance", id=f"{instance['InstanceId']}", object=instance)
 
-        self.SetProperty('account_id', client.Client().describe_instances()['Reservations'][0]['OwnerId'])
-        self.SetProperty('region', client.Region())
-        self.SetProperty('arn', f"arn:aws:ec2:{self.GetProperty('region')}:{self.GetProperty('account_id')}:instance/{self.Id()}")
-        self.SetProperty('state', instance['State']['Name'])
-        self.SetProperty('state_code', int(instance['State']['Code']))
+        self.SetProperty('AccountId', client.Client().describe_instances()['Reservations'][0]['OwnerId'])
+        self.SetProperty('Region', client.Region())
+        self.SetProperty('Arn', f"arn:aws:ec2:{self.GetProperty('Region')}:{self.GetProperty('AccountId')}:instance/{self.Id()}")
+        self.SetProperty('State', instance['State']['Name'])
+        self.SetProperty('StateCode', int(instance['State']['Code']))
 
         # Tenter de lire l'increment dans le nom de l'instance
-        result = re.match('AWS.[A-Z]{1,2}([0-9]{2,3})', self._properties['name'])
+        result = re.match('AWS.[A-Z]{1,2}([0-9]{2,3})', self._properties['Name'])
         if result:
-            self.SetProperty('increment', int(result.group(1)))
+            self.SetProperty('Increment', int(result.group(1)))
         else:
             # Nouvelle convetion de nommage
-            result = re.match('aws[a-z0-9]{5}([0-9]{3})', self._properties['name'])
+            result = re.match('aws[a-z0-9]{5}([0-9]{3})', self._properties['Name'])
             if result:
-                self.SetProperty('increment', int(result.group(1)))
+                self.SetProperty('Increment', int(result.group(1)))
             else:
-                self.SetProperty('increment', 0)
+                self.SetProperty('Increment', 0)
 
     #
     # Protected methods
@@ -47,7 +47,7 @@ class Instance(AwsResource):
     def _get_tags(self):
         Tags :list
         try:
-            Tags = self._client.Client().describe_tags(Filters=[{'Name': 'resource-id', 'Values': [self.GetProperty('id')]}])['Tags']
+            Tags = self._client.Client().describe_tags(Filters=[{'Name': 'resource-id', 'Values': [self.GetProperty('Id')]}])['Tags']
         except:
             Tags = []
         return Tags

@@ -18,13 +18,13 @@ class AwsResource(Resource):
         # Tenter de lire les tags s'il y en a...
         for tag in self._get_tags():
             if tag['Key'] == 'Name':
-                self.SetProperty('name', tag['Value'])
+                self.SetProperty('Name', tag['Value'])
             if tag['Key'] == 'Description':
-                self.SetProperty('description', tag['Value'])
+                self.SetProperty('Description', tag['Value'])
             if tag['Key'] in ['terraform_root', 'terraform_project']:
-                self.SetProperty('terraform_root', tag['Value'])
+                self.SetProperty('TerraformRoot', tag['Value'])
             if tag['Key'] == 'terraform_module':
-                self.SetProperty('terraform_module', tag['Value'])
+                self.SetProperty('TerraformModule', tag['Value'])
 
     #
     # Protected methods

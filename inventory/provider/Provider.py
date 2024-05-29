@@ -38,7 +38,7 @@ class Provider:
     def ListResources(self):
         datas = []
         for resource in dict(sorted(self._resources['all'].items())).values():
-            datas.append([resource.GetProperty('profile'), resource.GetProperty('region'), resource.Name(), resource.Description()])
+            datas.append([resource.GetProperty('Profile'), resource.GetProperty('Region'), resource.Name(), resource.Description()])
         console.PrintTab(title=f"Provider {self._name}", headers=["Environnement", "Region", "Name", "Description"], datas=datas)
 
     def LoadResources(self) -> dict:

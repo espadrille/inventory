@@ -139,10 +139,10 @@ class Inventory:
         datas['resources'] = {}
         for my_resource_key, my_resource in self._resources['all'].items():
             # Creer la 'category' la premiere fois uniquement
-            if not my_resource.GetProperty('category') in datas['resources']:
-                datas['resources'][my_resource.GetProperty('category')] = {}
+            if not my_resource.GetProperty('Category') in datas['resources']:
+                datas['resources'][my_resource.GetProperty('Category')] = {}
             # Enregistrer la 'resource' dans sa 'category'
-            datas['resources'][my_resource.GetProperty('category')][my_resource_key] = my_resource.Data()
+            datas['resources'][my_resource.GetProperty('Category')][my_resource_key] = my_resource.Data()
         return datas
 
     def Id(self):

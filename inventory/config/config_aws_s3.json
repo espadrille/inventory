@@ -15,12 +15,12 @@
             "format": "csv",
             "output_file": "./inventory_s3.csv",
             "selected_fields": [
-                "date",
-                "category",
-                "name",
-                "description",
-                "versioning",
-                "profile"
+                "Date",
+                "Category",
+                "Name",
+                "Description",
+                "Versioning",
+                "Profile"
             ],
             "csv_separator": ";",
             "csv_print_header": true

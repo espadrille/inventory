@@ -13,8 +13,8 @@ from ...AwsResource import AwsResource
 class Bucket(AwsResource):
     _client : AwsClient
     _properties_mapping = {
-        'id': 'Name',
-        'name': 'Name'
+        'Id': 'Name',
+        'Name': 'Name'
         }
 
     #
@@ -24,17 +24,17 @@ class Bucket(AwsResource):
         self._client = client
         super().__init__(category="s3.bucket", id=f"{bucket['Name']}", object=bucket)
 
-        self.SetProperty('arn', f"arn:aws:s3:::{self.Name()}")
-        self.SetProperty('region', client.Client().meta._client_config._user_provided_options['region_name'])
+        self.SetProperty('Arn', f"arn:aws:s3:::{self.Name()}")
+        self.SetProperty('Region', client.Client().meta._client_config._user_provided_options['region_name'])
 
         # Versioning
         if 'Status' in self._client.Client().get_bucket_versioning(Bucket=bucket['Name']):
-            self.SetProperty('versioning', self._client.Client().get_bucket_versioning(Bucket=bucket['Name'])['Status'])
+            self.SetProperty('Versioning', self._client.Client().get_bucket_versioning(Bucket=bucket['Name'])['Status'])
         else:
-            self.SetProperty('versioning', 'None')
+            self.SetProperty('Versioning', 'None')
 
         # Encryption
-        self.SetProperty('encryption_type', self._client.Client().get_bucket_encryption(Bucket=bucket['Name'])['ServerSideEncryptionConfiguration']['Rules'][0]['ApplyServerSideEncryptionByDefault']['SSEAlgorithm'])
+        self.SetProperty('EncryptionType', self._client.Client().get_bucket_encryption(Bucket=bucket['Name'])['ServerSideEncryptionConfiguration']['Rules'][0]['ApplyServerSideEncryptionByDefault']['SSEAlgorithm'])
 
     #
     # Protected methods
