@@ -51,6 +51,7 @@ class Instance(AwsResource):
         for my_interface in self._properties["NetworkInterfaces"]:
             i += 1
             self.SetProperty(f"NetworkInterface_{i}", my_interface['NetworkInterfaceId'])
+            self.SetProperty(f"SubnetId_{i}", my_interface['SubnetId'])
 
         # Recherche de la date de creation (= date d'attachement du volume racine)
         for my_device in self.GetProperty('BlockDeviceMappings'):
