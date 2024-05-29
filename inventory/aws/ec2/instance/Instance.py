@@ -52,6 +52,12 @@ class Instance(AwsResource):
             i += 1
             self.SetProperty(f"NetworkInterface_{i}", my_interface['NetworkInterfaceId'])
 
+        # Recherche de la date de creation (= date d'attachement du volume racine)
+        for my_device in self.GetProperty('BlockDeviceMappings'):
+            if my_device['DeviceName'] == self.GetProperty('RootDeviceName'):
+                self.SetProperty('CreationTime', my_device['Ebs']['AttachTime'])
+
+
     #
     # Protected methods
     #

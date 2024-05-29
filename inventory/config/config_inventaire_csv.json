@@ -51,7 +51,7 @@
                 "Name": "VM",
                 "State": "ETAT",
                 "LaunchTime": "DATE_DEMARRAGE_OS",
-                "DATE_CREATION_VM": "DATE_CREATION_VM",
+                "CreationTime": "DATE_CREATION_VM",
                 "PlatformDetails": "OS",
                 "PrivateDnsName": "DNS",
                 "PrivateIpAddress": "IP",
