@@ -1,6 +1,6 @@
 {
     "inventory": {
-        "name": "Inventaire global ",
+        "name": "Inventaire global",
         "providers": {
             "aws" : {
                 "filters": {

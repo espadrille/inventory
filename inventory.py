@@ -7,9 +7,9 @@ from optparse import OptionParser
 # Lecture des arguments d'appel
 parser = OptionParser()
 parser.add_option("-f",
-                  "--config-file",
-                  dest="config_file",
-                  help="Chemin complet du fichier de configuration au format json (defaut=config.json)",
+                  "--config",
+                  dest="config",
+                  help="Emplacement de la configuration de l'inventaire au format json (defaut=config.json)",
                   default="config.json"
                   )
 parser.add_option("--list-resources",
@@ -28,7 +28,7 @@ parser.add_option("--show-resources",
 
 # Construction de l'inventaire
 my_inventory = Inventory(id="my_inventory", 
-                         config_file=options.config_file
+                         config=options.config
                          )
 
 # Valorisation de l'inventaire

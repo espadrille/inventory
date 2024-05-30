@@ -5,6 +5,7 @@
 #
 # Imports
 #
+import boto3
 import datetime
 import json
 import mimetypes
@@ -27,7 +28,7 @@ class Inventory:
     #
     # Private methods
     #
-    def __init__(self, id:str="", config_file :str=""):
+    def __init__(self, id:str="", config :str=""):
 
         self._id = id
         self._name = ""
@@ -37,20 +38,22 @@ class Inventory:
         self._resources = {}
         self._resources['all'] = {}
         self._config = {}
-        self._config_file = ""
         self._summary = {}
 
         # Initialisation du resume
         self._summary['date'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
         # Recherche du fichier de configuration
-        self._SetConfigFile(config_file)
+        if config.startswith('ssm:') :
+            self._LoadConfigFromSSM(config[4:])
+        else:
+            self._LoadConfigFromFile(config)
 
-        if self._config_file == "":
-            print(f"Fichier de configuration non trouve [{config_file}]")
+        if self._config == "":
+            console.Print(f"La configuration n'a pas pu etre lue [{config}]")
             exit()
         else:
-            self._LoadConfig()
+            self._ParseConfig()
   
         # Creation des providers
         for my_provider in self._providers:
@@ -60,7 +63,8 @@ class Inventory:
     #
     # Protected methods
     #
-    def _SetConfigFile(self, config_file:str):
+
+    def _LoadConfigFromFile(self, config_file:str):
         config_paths = [ # Liste des chemins ou chercher le fichier de configuration
             f"",
             f"./",
@@ -70,21 +74,21 @@ class Inventory:
             f"{os.path.dirname(__file__)}/config/",
             ]
 
+        config_file = ""
         for my_path in config_paths:
             if os.path.isfile(f"{my_path}{config_file}"):
-                self._config_file = f"{my_path}{config_file}"
+                config_file = f"{my_path}{config_file}"
                 break
-        self._summary['config file'] = self._config_file
-
-    def _LoadConfig(self):
+        
         try:
-            config_file_mime_type = mimetypes.guess_type(self._config_file)[0]
-            fp = open(self._config_file, "r")
+            config_file_mime_type = mimetypes.guess_type(config_file)[0]
+            fp = open(config_file, "r")
             if config_file_mime_type == "application/json":
                 try:
-                    self._config = json.loads(fp.read())
+                    str_config = fp.read()
+                    self._config = json.loads(str_config)
                 except Exception as e:
-                    console.Print(f"Format json incorrect dans le fichier [{self._config_file}", "ERROR")
+                    console.Print(f"Format json incorrect dans le fichier [{config_file}", "ERROR")
                     console.Print(e.__str__())
                     exit()
             else:
@@ -92,33 +96,48 @@ class Inventory:
                 exit()
             fp.close()
         except Exception as e:
-            console.Print(f"Impossible de charger le fichier de configuration [{self._config_file}]","ERROR")
+            console.Print(f"Impossible de charger le fichier de configuration [{config_file}]","ERROR")
             console.Print(e.__str__())
             exit()
 
-        if 'inventory' in self._config:
-            if 'name' in self._config['inventory']:
-                self.name = self._config['inventory']['name']
-            else:
-                self.name = 'inventory'
+        self._summary['config file'] = config_file
 
-            if 'providers' in self._config['inventory']:
-                for my_provider in self._config['inventory']['providers']:
-                    self.AddProvider(my_provider)
+    def _LoadConfigFromSSM(self, ssm_parameter:str):
+        try:
+            ssm = boto3.Session().client(service_name='ssm')
+            str_config = ssm.get_parameter(Name=ssm_parameter, WithDecryption=True)['Parameter']['Value']
+            self._config = json.loads(str_config)
+        except Exception as e:
+            console.Print(f"Le parametre {ssm_parameter} n'a pas pu etre lu dans SSM Parameter Store.","ERROR")
+            console.Print(e.__str__())
 
-            if 'debug_mode' in self._config['inventory']:
-                console.SetDebugMode(self._config['inventory']['debug_mode'])
+    def _ParseConfig(self):
+        if not 'inventory' in self._config:
+            self._config['inventory'] = dict()
+        if not 'name' in self._config['inventory']:
+            self._config['inventory']['name'] = 'inventory'
+        if not 'providers' in self._config['inventory']:
+            self._config['inventory']['providers'] = dict()
+        if not 'debug_mode' in self._config['inventory']:
+            self._config['inventory']['debug_mode'] = False
+        if not 'output' in self._config['inventory']:
+            self._config['inventory']['output'] = dict()
+        if not 'mode' in self._config['inventory']['output']:
+            self._config['inventory']['output']['mode'] = "console"
+        if not 'format' in self._config['inventory']['output']:
+            self._config['inventory']['output']['format'] = "json"
+        if not "output_file" in self._config['inventory']['output']:
+            self._config['inventory']['output']["output_file"] = ""
 
-            if 'output' in self._config['inventory']:
-                if not 'mode' in self._config['inventory']['output']:
-                    self._config['inventory']['output']['mode'] = "console"
-                if not 'format' in self._config['inventory']['output']:
-                    self._config['inventory']['output']['format'] = "json"
-                if not "output_file" in self._config['inventory']['output']:
-                    self._config['inventory']['output']["output_file"] = ""
-        if self._config['inventory']['output']['mode'] == "console":
-            self._summary['output'] = 'console'
-        elif self._config['inventory']['output']['mode'] == "file":
+        self.name = self._config['inventory']['name']
+
+        for my_provider in self._config['inventory']['providers']:
+            self.AddProvider(my_provider)
+
+        console.SetDebugMode(self._config['inventory']['debug_mode'])
+
+        self._summary['output'] = self._config['inventory']['output']['mode']
+        if self._config['inventory']['output']['mode'] == "file":
             self._summary['output file'] = self._config['inventory']['output']['output_file']
 
     #
@@ -127,7 +146,7 @@ class Inventory:
     def AddProvider(self, provider: str=""):
         if provider == 'aws':
             provider_config = {}
-            if self._config_file != "":
+            if self._config != "":
                 if 'inventory' in self._config:
                     if 'providers' in self._config['inventory']:
                         if 'aws' in self._config['inventory']['providers']:

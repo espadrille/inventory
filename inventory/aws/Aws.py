@@ -27,6 +27,7 @@ class Aws(Provider):
         super().__init__(id=id, name=name)
         self._config = config
 
+
         # Filtrage des services AWS a analyser
         self._filtered_services_names = boto3.Session().get_available_services()
         if "filters" in self._config:

@@ -19,7 +19,7 @@
                 }
             }
         },
-        "#debug_mode": "DEBUG",
+        "debug_mode": "DEBUG",
         "output": {
             "mode": "file",
             "format": "json",
