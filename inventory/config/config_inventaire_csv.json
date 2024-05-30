@@ -60,14 +60,14 @@
                 "BALISES_NETBACKUP": "BALISES_NETBACKUP",
                 "Profile": "BALISES_Environnement",
                 "Platform": "BALISES_GuestOS",
-                "NetworkInterface_1": "Network #1" ,
-                "NetworkInterface_2": "Network #2" ,
-                "NetworkInterface_3": "Network #3" ,
-                "NetworkInterface_4": "Network #4" ,
-                "NetworkInterface_5": "Network #5" ,
-                "NetworkInterface_6": "Network #6" ,
-                "NetworkInterface_7": "Network #7" ,
-                "NetworkInterface_8": "Network #8"
+                "SubnetName_1": "Network #1" ,
+                "SubnetName_2": "Network #2" ,
+                "SubnetName_3": "Network #3" ,
+                "SubnetName_4": "Network #4" ,
+                "SubnetName_5": "Network #5" ,
+                "SubnetName_6": "Network #6" ,
+                "SubnetName_7": "Network #7" ,
+                "SubnetName_8": "Network #8"
             },
             "csv_separator": ";",
             "csv_print_header": true

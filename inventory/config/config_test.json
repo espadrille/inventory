@@ -4,7 +4,7 @@
         "providers": {
             "aws" : {
                 "filters": {
-                    "profiles": ["securite"],
+                    "profiles": ["network"],
                     "regions": ["eu-west-3"],
                     "services": ["ec2"]
                 },
@@ -21,7 +21,7 @@
         },
         "#debug_mode": "DEBUG",
         "output": {
-            "mode": "console",
+            "mode": "file",
             "format": "json",
             "output_file": "./inventory_test.json",
             "#selected_fields": {

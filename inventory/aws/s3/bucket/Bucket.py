@@ -40,10 +40,9 @@ class Bucket(AwsResource):
     # Protected methods
     #
     def _get_tags(self):
-        Tags = []
         try:
-            Tags = self._client.Client().get_bucket_tagging(Bucket=self._id)['TagSet']
+            self._tags = self._client.Client().get_bucket_tagging(Bucket=self._id)['TagSet']
         except:
-            Tags = []
-        return Tags
+            self._tags = []
+        return self._tags
         

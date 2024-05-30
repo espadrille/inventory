@@ -30,10 +30,9 @@ class SecurityGroup(AwsResource):
     # Protected methods
     #
     def _get_tags(self):
-        Tags :list
         try:
-            Tags = self._client.Client().describe_tags(Filters=[{'Name': 'resource-id', 'Values': [self.GetProperty('Id')]}])['Tags']
+            self._tags = self._client.Client().describe_tags(Filters=[{'Name': 'resource-id', 'Values': [self.GetProperty('Id')]}])['Tags']
         except:
-            Tags = []
-        return Tags
+            self._tags = []
+        return self._tags
         

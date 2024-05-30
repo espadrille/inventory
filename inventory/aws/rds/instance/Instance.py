@@ -46,9 +46,8 @@ class Instance(AwsResource):
     # Protected methods
     #
     def _get_tags(self):
-        Tags :list
         try:
-            Tags = self._client.Client().list_tags_for_resource(ResourceName=self._properties['DBInstanceArn'])['TagList']
+            self._tags = self._client.Client().list_tags_for_resource(ResourceName=self._properties['DBInstanceArn'])['TagList']
         except:
-            Tags = []
-        return Tags
+            self._tags = []
+        return self._tags

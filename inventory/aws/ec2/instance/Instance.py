@@ -51,7 +51,12 @@ class Instance(AwsResource):
         for my_interface in self._properties["NetworkInterfaces"]:
             i += 1
             self.SetProperty(f"NetworkInterface_{i}", my_interface['NetworkInterfaceId'])
+            self.SetProperty(f"PrivateIpAddress_{i}", my_interface['PrivateIpAddress'])
             self.SetProperty(f"SubnetId_{i}", my_interface['SubnetId'])
+            subnet = client.Client().describe_subnets(SubnetIds=[my_interface['SubnetId']])['Subnets'][0]
+            for my_tag in subnet['Tags']:
+                if my_tag['Key'] == 'Name':
+                    self.SetProperty(f"SubnetName_{i}", my_tag['Value'])
 
         # Recherche de la date de creation (= date d'attachement du volume racine)
         for my_device in self.GetProperty('BlockDeviceMappings'):
@@ -63,10 +68,9 @@ class Instance(AwsResource):
     # Protected methods
     #
     def _get_tags(self):
-        Tags :list
         try:
-            Tags = self._client.Client().describe_tags(Filters=[{'Name': 'resource-id', 'Values': [self.GetProperty('Id')]}])['Tags']
+            self._tags = self._client.Client().describe_tags(Filters=[{'Name': 'resource-id', 'Values': [self.GetProperty('Id')]}])['Tags']
         except:
-            Tags = []
-        return Tags
+            self._tags = []
+        return self._tags
         
