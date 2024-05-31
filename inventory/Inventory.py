@@ -44,6 +44,7 @@ class Inventory(ConfigurableObject):
         self._summary['date'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
         # Recherche du fichier de configuration
+        self._summary['configuration'] = configuration
         if configuration.startswith('ssm:') :
             self._load_config_from_ssm(configuration[4:])
         else:

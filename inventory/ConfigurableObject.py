@@ -12,13 +12,13 @@ class ConfigurableObject():
         # Completer recursivement les elements de configuration manquants par des valeurs par defaut
         new_config = config
         for k, v in default_config.items():
-            if isinstance(v, dict):
-                new_config[k] = self._complete_config(config[k], v)
-            else:
-                if k in config:
-                    new_config[k] = config[k]
+            if k in config:
+                if isinstance(v, dict):
+                    new_config[k] = self._complete_config(config[k], v)
                 else:
-                    new_config[k] = v
+                    new_config[k] = config[k]
+            else:
+                new_config[k] = v
         return new_config
 
     def _load_config(self, config:dict):

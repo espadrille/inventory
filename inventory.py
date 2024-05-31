@@ -42,4 +42,3 @@ if options.list_resources:
     my_inventory.ListResources()
 if options.show_resources:
     my_inventory.ShowResources()
-
