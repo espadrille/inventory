@@ -51,7 +51,7 @@ class Inventory:
 
         if self._config == "":
             console.Print(f"La configuration n'a pas pu etre lue [{config}]")
-            exit()
+            exit(1)
         else:
             self._ParseConfig()
   
@@ -74,15 +74,15 @@ class Inventory:
             f"{os.path.dirname(__file__)}/config/",
             ]
 
-        config_file = ""
+        my_config_file = ""
         for my_path in config_paths:
             if os.path.isfile(f"{my_path}{config_file}"):
-                config_file = f"{my_path}{config_file}"
+                my_config_file = f"{my_path}{config_file}"
                 break
         
         try:
-            config_file_mime_type = mimetypes.guess_type(config_file)[0]
-            fp = open(config_file, "r")
+            config_file_mime_type = mimetypes.guess_type(my_config_file)[0]
+            fp = open(my_config_file, "r")
             if config_file_mime_type == "application/json":
                 try:
                     str_config = fp.read()
@@ -90,17 +90,17 @@ class Inventory:
                 except Exception as e:
                     console.Print(f"Format json incorrect dans le fichier [{config_file}", "ERROR")
                     console.Print(e.__str__())
-                    exit()
+                    exit(1)
             else:
                 console.Print(f"Format non pris en charge : {str(config_file_mime_type)}", "ERROR")
-                exit()
+                exit(1)
             fp.close()
         except Exception as e:
             console.Print(f"Impossible de charger le fichier de configuration [{config_file}]","ERROR")
             console.Print(e.__str__())
-            exit()
+            exit(1)
 
-        self._summary['config file'] = config_file
+        self._summary['config file'] = my_config_file
 
     def _LoadConfigFromSSM(self, ssm_parameter:str):
         try:
@@ -111,24 +111,32 @@ class Inventory:
             console.Print(f"Le parametre {ssm_parameter} n'a pas pu etre lu dans SSM Parameter Store.","ERROR")
             console.Print(e.__str__())
 
-    def _ParseConfig(self):
-        if not 'inventory' in self._config:
-            self._config['inventory'] = dict()
-        if not 'name' in self._config['inventory']:
-            self._config['inventory']['name'] = 'inventory'
-        if not 'providers' in self._config['inventory']:
-            self._config['inventory']['providers'] = dict()
-        if not 'debug_mode' in self._config['inventory']:
-            self._config['inventory']['debug_mode'] = False
-        if not 'output' in self._config['inventory']:
-            self._config['inventory']['output'] = dict()
-        if not 'mode' in self._config['inventory']['output']:
-            self._config['inventory']['output']['mode'] = "console"
-        if not 'format' in self._config['inventory']['output']:
-            self._config['inventory']['output']['format'] = "json"
-        if not "output_file" in self._config['inventory']['output']:
-            self._config['inventory']['output']["output_file"] = ""
+    def _completeConfig(self, config:dict, default_config: dict):
+        # Completer recursivement les elements de configuration manquants
+        for k, v in default_config.items():
+            if not k in config:
+                config[k] = v
+            if isinstance(v, dict):
+                config[k] = self._completeConfig(config[k], v)
+                
+        return config
 
+    def _ParseConfig(self):
+        default_config = {
+            'inventory': {
+                'name': 'inventory',
+                'providers': {
+                    },
+                'debug_mode': '',
+                'output': {
+                    'mode': 'console',
+                    'format': 'json'
+                    }
+                }
+            }
+        
+        # Completer les valeurs manquantes de self._config avec les valeur par defaut
+        self._config = self._completeConfig(self._config, default_config)
         self.name = self._config['inventory']['name']
 
         for my_provider in self._config['inventory']['providers']:

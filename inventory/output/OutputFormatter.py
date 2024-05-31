@@ -1,6 +1,7 @@
 #
 # classe OutputFormater
 #
+import boto3
 from ..Console import console
 from ..Singleton import Singleton
 
@@ -39,20 +40,38 @@ class OutputFormatter(Singleton):
         self._resources = resources
         self._select_fields()
 
+    def _completeConfig(self, config:dict, default_config: dict):
+        # Completer recursivement les elements de configuration manquants
+        for k, v in default_config.items():
+            if not k in config:
+                config[k] = v
+            if isinstance(v, dict):
+                config[k] = self._completeConfig(config[k], v)
+                
+        return config
+
     def _LoadConfig(self, config:dict):
-        self._config = config
-        if not 'mode' in self._config:
-            self._config['mode'] = 'console'
-        if not 'format' in self._config:
-            self._config['format'] = 'json'
-        if not 'output_file' in self._config:
-            self._config['output_file'] = ''
-        if not 'selected_fields' in self._config:
-            self._config['selected_fields'] = []
-        if not 'csv_print_header' in self._config:
-            self._config['csv_print_header'] = True
-        if not 'csv_separator' in self._config:
-            self._config['csv_separator'] = ','
+        default_config = {
+            'mode': 'console',
+            'format': 'json',
+            'output_file': '',
+            'selected_fields': [],
+            'csv_print_header': True,
+            'csv_separator': ','
+            }
+        
+        # Completer les valeurs manquantes de config avec les valeur par defaut
+        self._config = self._completeConfig(config, default_config)
+
+        if self._config['mode'] == 'file':
+            if self._config['output_file'].startswith('s3:'):
+                separated_string = self._config['output_file'][3:].split('/')
+                self._config['s3_bucketname'] = separated_string[0]
+                self._config['s3_key'] = '/'.join(separated_string[1:])
+        if self._config['mode'] == 'json':
+            self._config['output_mimetype'] = 'application/json'
+        else:
+            self._config['output_mimetype'] = 'text/plain'
 
     #
     # Public methods
@@ -73,11 +92,24 @@ class OutputFormatter(Singleton):
         return output
 
     def Write(self):
-        if self._config["mode"] == "console":
+        if self._config['mode'] == 'console':
             console.Print(self.Output())
             console.Debug(f"Sortie affichee a la console")
-        elif self._config["mode"] == "file":
-            output_file = open(self._config["output_file"], "w")
-            output_file.write(self.Output())
-            console.Debug(f"Sortie ecrite dans le fichier {self._config['output_file']}")
+        elif self._config['mode'] == 'file':
+            if self._config['output_file'].startswith('s3:'):
+                s3 = boto3.Session().client(service_name='s3')
+                try:
+                    s3.put_object(
+                        Bucket=self._config['s3_bucketname'], 
+                        Key=self._config['s3_key'], 
+                        ContentType=self._config['output_mimetype'],
+                        Body=self.Output()
+                        )
+                except Exception as e:
+                    console.Print(f"Le fichier {self._config['output_file']} n'a pas pu etre ecrit dans S3.","ERROR")
+                    console.Print(e.__str__())
+            else:
+                output_file = open(self._config['output_file'], 'w')
+                output_file.write(self.Output())
+                console.Debug(f"Sortie ecrite dans le fichier {self._config['output_file']}")
             

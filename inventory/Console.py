@@ -113,7 +113,7 @@ class Console(Singleton):
 
     def SetDebugMode(self, debug_mode: str="DEBUG"):
         self._debug_mode = debug_mode
-        if debug_mode != "":
+        if self._debug_mode:
             print(f"DEBUG_MODE={self._debug_mode}")
 
     def Print(self, text: str="", text_format: str="", indent: int=0, newline: bool=True):
