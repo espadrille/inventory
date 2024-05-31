@@ -43,7 +43,7 @@
         "output": {
             "mode": "file",
             "format": "csv",
-            "output_file": "./carto_infrastructure_aws_ec2.csv",
+            "output_file": "s3:intradom-cartography-tools/aws/ec2/instances.csv",
             "selected_fields": {
                 "Hypervisor": "HYPERVISEUR",
                 "VERSION vCENTER": "VERSION vCENTER",

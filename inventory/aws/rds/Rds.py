@@ -13,7 +13,6 @@ from ...Console import console
 #
 class Rds(AwsService):
     _db_instance_increments :list # Liste des increments d'instances RDS utilises
-    _config : dict # Configuration du service AWS
 
     def __init__(self, config :dict={}):
         config["id"] = "rds"

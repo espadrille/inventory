@@ -14,7 +14,6 @@ from ..Console import console
 # Classe AWS
 #
 class Aws(Provider):
-    _config: dict
     _filtered_profile_names :list
     _filtered_region_names :list
     _filtered_services_names :list

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 # Import des modules
-from inventory.Inventory import *
+from inventory.Inventory import Inventory
 from optparse import OptionParser
 
 # Lecture des arguments d'appel
@@ -28,7 +28,7 @@ parser.add_option("--show-resources",
 
 # Construction de l'inventaire
 my_inventory = Inventory(id="my_inventory", 
-                         config=options.config
+                         configuration=options.config
                          )
 
 # Valorisation de l'inventaire

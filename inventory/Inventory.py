@@ -12,14 +12,14 @@ import mimetypes
 import os
 from .Console import console
 from .provider.Provider import Provider
+from .ConfigurableObject import ConfigurableObject
 
 #
 # Classe d'inventaire
 #
-class Inventory:
+class Inventory(ConfigurableObject):
     _name: str = ""
     _id: str = ""
-    _config: dict
     _config_file: str
     _providers: dict
     _resources: dict
@@ -28,7 +28,8 @@ class Inventory:
     #
     # Private methods
     #
-    def __init__(self, id:str="", config :str=""):
+    def __init__(self, id:str="", configuration :str=""):
+        super().__init__()
 
         self._id = id
         self._name = ""
@@ -37,23 +38,18 @@ class Inventory:
         self._providers = {}
         self._resources = {}
         self._resources['all'] = {}
-        self._config = {}
         self._summary = {}
 
         # Initialisation du resume
         self._summary['date'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
         # Recherche du fichier de configuration
-        if config.startswith('ssm:') :
-            self._LoadConfigFromSSM(config[4:])
+        if configuration.startswith('ssm:') :
+            self._load_config_from_ssm(configuration[4:])
         else:
-            self._LoadConfigFromFile(config)
+            self._load_config_from_file(configuration)
 
-        if self._config == "":
-            console.Print(f"La configuration n'a pas pu etre lue [{config}]")
-            exit(1)
-        else:
-            self._ParseConfig()
+        self._parse_config()
   
         # Creation des providers
         for my_provider in self._providers:
@@ -64,7 +60,7 @@ class Inventory:
     # Protected methods
     #
 
-    def _LoadConfigFromFile(self, config_file:str):
+    def _load_config_from_file(self, config_file:str):
         config_paths = [ # Liste des chemins ou chercher le fichier de configuration
             f"",
             f"./",
@@ -86,7 +82,7 @@ class Inventory:
             if config_file_mime_type == "application/json":
                 try:
                     str_config = fp.read()
-                    self._config = json.loads(str_config)
+                    self._load_config(json.loads(str_config))
                 except Exception as e:
                     console.Print(f"Format json incorrect dans le fichier [{config_file}", "ERROR")
                     console.Print(e.__str__())
@@ -102,27 +98,19 @@ class Inventory:
 
         self._summary['config file'] = my_config_file
 
-    def _LoadConfigFromSSM(self, ssm_parameter:str):
+    def _load_config_from_ssm(self, ssm_parameter:str):
         try:
             ssm = boto3.Session().client(service_name='ssm')
             str_config = ssm.get_parameter(Name=ssm_parameter, WithDecryption=True)['Parameter']['Value']
-            self._config = json.loads(str_config)
+            self._load_config(json.loads(str_config))
         except Exception as e:
             console.Print(f"Le parametre {ssm_parameter} n'a pas pu etre lu dans SSM Parameter Store.","ERROR")
             console.Print(e.__str__())
 
-    def _completeConfig(self, config:dict, default_config: dict):
-        # Completer recursivement les elements de configuration manquants
-        for k, v in default_config.items():
-            if not k in config:
-                config[k] = v
-            if isinstance(v, dict):
-                config[k] = self._completeConfig(config[k], v)
-                
-        return config
-
-    def _ParseConfig(self):
-        default_config = {
+    def _parse_config(self):
+        
+        # Completer les valeurs manquantes de self._config avec les valeur par defaut
+        self._config = self._complete_config(config=self._config, default_config={
             'inventory': {
                 'name': 'inventory',
                 'providers': {
@@ -133,10 +121,8 @@ class Inventory:
                     'format': 'json'
                     }
                 }
-            }
-        
-        # Completer les valeurs manquantes de self._config avec les valeur par defaut
-        self._config = self._completeConfig(self._config, default_config)
+            })
+
         self.name = self._config['inventory']['name']
 
         for my_provider in self._config['inventory']['providers']:

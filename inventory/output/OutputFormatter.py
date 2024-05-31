@@ -4,9 +4,10 @@
 import boto3
 from ..Console import console
 from ..Singleton import Singleton
+from ..ConfigurableObject import ConfigurableObject
 
-class OutputFormatter(Singleton):
-    _config: dict
+class OutputFormatter(Singleton, ConfigurableObject):
+    # _config: dict
     _resources: dict
 
     #
@@ -14,11 +15,6 @@ class OutputFormatter(Singleton):
     #
     def __init__(self):
         self._resources = {}
-        self._config = {
-            "mode": "console",
-            "format": "text",
-            "output_file": ""
-        }
 
     #
     # Protected methods
@@ -36,39 +32,34 @@ class OutputFormatter(Singleton):
                 self._resources[my_resource_key].Data(new_data)
             # print(my_resource.Data())
 
-    def _LoadResources(self, resources:dict):
+    def _load_resources(self, resources:dict):
         self._resources = resources
         self._select_fields()
 
-    def _completeConfig(self, config:dict, default_config: dict):
-        # Completer recursivement les elements de configuration manquants
-        for k, v in default_config.items():
-            if not k in config:
-                config[k] = v
-            if isinstance(v, dict):
-                config[k] = self._completeConfig(config[k], v)
-                
-        return config
+    def _load_config(self, config:dict):
+        super()._load_config(config=config)
 
-    def _LoadConfig(self, config:dict):
-        default_config = {
+        # Completer les valeurs manquantes de config avec les valeurs par defaut
+        self._config = self._complete_config(config=self._config, default_config={
             'mode': 'console',
             'format': 'json',
             'output_file': '',
             'selected_fields': [],
             'csv_print_header': True,
             'csv_separator': ','
-            }
-        
-        # Completer les valeurs manquantes de config avec les valeur par defaut
-        self._config = self._completeConfig(config, default_config)
+            })
 
+        # Decoupage du nom de fichier si bucket s3
         if self._config['mode'] == 'file':
             if self._config['output_file'].startswith('s3:'):
-                separated_string = self._config['output_file'][3:].split('/')
-                self._config['s3_bucketname'] = separated_string[0]
-                self._config['s3_key'] = '/'.join(separated_string[1:])
-        if self._config['mode'] == 'json':
+                separated_strings = self._config['output_file'][3:].split('/')
+                self._config['s3_bucketname'] = separated_strings[0]
+                self._config['s3_key'] = '/'.join(separated_strings[1:])
+
+        # Type MIME du resultat
+        if self._config['format'] == 'csv':
+            self._config['output_mimetype'] = 'text/csv'
+        if self._config['format'] == 'json':
             self._config['output_mimetype'] = 'application/json'
         else:
             self._config['output_mimetype'] = 'text/plain'
@@ -77,8 +68,8 @@ class OutputFormatter(Singleton):
     # Public methods
     #
     def Init(self, config:dict, resources:dict):
-        self._LoadConfig(config)
-        self._LoadResources(resources)
+        self._load_config(config)
+        self._load_resources(resources)
 
     def Output(self):
         output = ""

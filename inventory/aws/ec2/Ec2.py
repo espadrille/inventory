@@ -13,7 +13,6 @@ from ...Console import console
 #
 class Ec2(AwsService):
     _instance_increments :list # Liste des increments d'instances EC2 utilises
-    _config : dict # Configuration du service AWS
 
     def __init__(self, config :dict={}):
         config["id"] = "ec2"

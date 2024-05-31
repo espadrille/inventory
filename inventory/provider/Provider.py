@@ -2,8 +2,9 @@
 # Classe Provider
 #
 from ..Console import console
+from ..ConfigurableObject import ConfigurableObject
 
-class Provider:
+class Provider(ConfigurableObject):
     _id :str
     _name :str
     _resources :dict

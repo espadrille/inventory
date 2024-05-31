@@ -5,24 +5,24 @@
 #
 from ..Console import console
 from .AwsClient import AwsClient
+from ..ConfigurableObject import ConfigurableObject
 
 #
 # Classe AwsService
 #
-class AwsService:
+class AwsService(ConfigurableObject):
     _id :str
     _name :str
     _is_regional :bool=True
     _resources :dict
     _clients :list # Liste des clients boto3 associes au service AWS
-    _config : dict # Configuration du service AWS
     _summary: dict
 
     #
     # Private methods
     #
     def __init__(self, config :dict={}):
-        self._config=config
+        self._config = config
         self._id = config["id"]
         self._name = config["name"]
         if self._name == "":
