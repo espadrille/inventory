@@ -28,7 +28,7 @@ parser.add_option("--show-resources",
 
 # Construction de l'inventaire
 my_inventory = Inventory(id="my_inventory", 
-                         configuration=options.config
+                         config_source=options.config
                          )
 
 # Valorisation de l'inventaire

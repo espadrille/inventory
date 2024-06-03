@@ -7,13 +7,13 @@ from ..Singleton import Singleton
 from ..ConfigurableObject import ConfigurableObject
 
 class OutputFormatter(Singleton, ConfigurableObject):
-    # _config: dict
     _resources: dict
 
     #
     # Private methods
     #
     def __init__(self):
+        super().__init__()
         self._resources = {}
 
     #

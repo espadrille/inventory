@@ -22,7 +22,7 @@ class AwsService(ConfigurableObject):
     # Private methods
     #
     def __init__(self, config :dict={}):
-        self._config = config
+        super().__init__(config=config)
         self._id = config["id"]
         self._name = config["name"]
         if self._name == "":

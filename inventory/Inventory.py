@@ -5,11 +5,7 @@
 #
 # Imports
 #
-import boto3
 import datetime
-import json
-import mimetypes
-import os
 from .Console import console
 from .provider.Provider import Provider
 from .ConfigurableObject import ConfigurableObject
@@ -28,8 +24,8 @@ class Inventory(ConfigurableObject):
     #
     # Private methods
     #
-    def __init__(self, id:str="", configuration :str=""):
-        super().__init__()
+    def __init__(self, id:str="", config_source :str=""):
+        super().__init__(config_source=config_source)
 
         self._id = id
         self._name = ""
@@ -43,13 +39,7 @@ class Inventory(ConfigurableObject):
         # Initialisation du resume
         self._summary['date'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-        # Recherche du fichier de configuration
-        self._summary['configuration'] = configuration
-        if configuration.startswith('ssm:') :
-            self._load_config_from_ssm(configuration[4:])
-        else:
-            self._load_config_from_file(configuration)
-
+        self._summary['configuration'] = self._properties['configuration']
         self._parse_config()
   
         # Creation des providers
@@ -60,53 +50,6 @@ class Inventory(ConfigurableObject):
     #
     # Protected methods
     #
-
-    def _load_config_from_file(self, config_file:str):
-        config_paths = [ # Liste des chemins ou chercher le fichier de configuration
-            f"",
-            f"./",
-            f"{os.getcwd()}/",
-            f"{os.getcwd()}/config/",
-            f"{os.path.dirname(__file__)}/",
-            f"{os.path.dirname(__file__)}/config/",
-            ]
-
-        my_config_file = ""
-        for my_path in config_paths:
-            if os.path.isfile(f"{my_path}{config_file}"):
-                my_config_file = f"{my_path}{config_file}"
-                break
-        
-        try:
-            config_file_mime_type = mimetypes.guess_type(my_config_file)[0]
-            fp = open(my_config_file, "r")
-            if config_file_mime_type == "application/json":
-                try:
-                    str_config = fp.read()
-                    self._load_config(json.loads(str_config))
-                except Exception as e:
-                    console.Print(f"Format json incorrect dans le fichier [{config_file}", "ERROR")
-                    console.Print(e.__str__())
-                    exit(1)
-            else:
-                console.Print(f"Format non pris en charge : {str(config_file_mime_type)}", "ERROR")
-                exit(1)
-            fp.close()
-        except Exception as e:
-            console.Print(f"Impossible de charger le fichier de configuration [{config_file}]","ERROR")
-            console.Print(e.__str__())
-            exit(1)
-
-        self._summary['config file'] = my_config_file
-
-    def _load_config_from_ssm(self, ssm_parameter:str):
-        try:
-            ssm = boto3.Session().client(service_name='ssm')
-            str_config = ssm.get_parameter(Name=ssm_parameter, WithDecryption=True)['Parameter']['Value']
-            self._load_config(json.loads(str_config))
-        except Exception as e:
-            console.Print(f"Le parametre {ssm_parameter} n'a pas pu etre lu dans SSM Parameter Store.","ERROR")
-            console.Print(e.__str__())
 
     def _parse_config(self):
         
