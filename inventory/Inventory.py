@@ -24,8 +24,10 @@ class Inventory(ConfigurableObject):
     #
     # Private methods
     #
-    def __init__(self, id:str="", config_source :str=""):
+    def __init__(self, id:str="", config_source :str="", colorize :bool=True):
         super().__init__(config_source=config_source)
+
+        console.SetColorize(colorize)
 
         self._id = id
         self._name = ""
@@ -147,7 +149,7 @@ class Inventory(ConfigurableObject):
         datas = []
         for key, value in self._summary.items():
             datas.append([key, str(value)])
-        console.PrintTab(title=f"{self.name}", datas=datas, footer="")
+        console.PrintTab(title=f"{self.name}", datas=datas, footer="", text_format="GREEN")
 
         for my_provider in self._providers.values():
             my_provider.Print()

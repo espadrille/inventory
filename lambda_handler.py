@@ -5,7 +5,8 @@ from inventory.Inventory import Inventory
 
 def lambda_handler(event, context):
     my_inventory = Inventory(id="my_inventory", 
-                         config_source=os.environ['CONFIGURATION']
+                         config_source=os.environ['CONFIGURATION'],
+                         colorize=False
                          )
     my_inventory.LoadResources()
     my_inventory.Write()

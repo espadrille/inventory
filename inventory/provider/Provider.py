@@ -43,7 +43,7 @@ class Provider(ConfigurableObject):
         datas = []
         for key, value in self._summary.items():
             datas.append([key, str(value)])
-        console.PrintTab(title=f"Provider {self._properties['name']}", datas=datas, footer="")
+        console.PrintTab(title=f"Provider {self._properties['name']}", datas=datas, footer="", text_format='YELLOW')
 
     def PrintResources(self):
         for resource in dict(sorted(self._resources['all'].items())).values():

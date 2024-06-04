@@ -15,6 +15,7 @@ class Console(Singleton):
     _COLORS:dict
     _STYLE_COLORS:dict
     _STYLE_INDENTS:dict
+    _colorize: bool
     _debug_mode: str
     _prefix_mode: bool
 
@@ -22,6 +23,7 @@ class Console(Singleton):
     # Private methods
     #
     def __init__(self, debug_mode: str=""):
+        self._colorize = True
         self._debug_mode = debug_mode
         self._prefix_mode = True        
 
@@ -77,15 +79,27 @@ class Console(Singleton):
             import sys, termios
             termios.tcflush(sys.stdin, termios.TCIOFLUSH)
 
-    def _remove_accents(self, text: str=""):
+    def _remove_accents(self, text: str=''):
         try:
             text = text.encode('utf-8') # type: ignore
         except (TypeError, NameError):  # unicode is a default on python 3
             pass
         text = unicodedata.normalize('NFD', text)
         text = text.encode('ascii', 'ignore') # type: ignore
-        text = text.decode("utf-8") # type: ignore
+        text = text.decode('utf-8') # type: ignore
         return str(text)
+
+    def _remove_colors(self, text: str=''):
+        for my_color_key, my_color in self._COLORS.items():
+            text = text.replace(my_color, '')
+        return text
+
+    def _print(self, *args, **kwargs):
+        text = args[0]
+        if self._colorize:
+            print(*args, **kwargs)
+        else:
+            print(self._remove_colors(text), **kwargs)
 
     #
     # Public methods
@@ -103,18 +117,21 @@ class Console(Singleton):
         if self._debug_mode == "DEBUG":
             timestamp = datetime.datetime.now()
             if self._prefix_mode:
-                print(f"[{timestamp}] DEBUG: ", end="")
-            print(f"{text}", end="")
+                self._print(f"[{timestamp}] DEBUG: ", end="")
+            self._print(f"{text}", end="")
             if newline:
-                print("")
+                self._print("")
                 self._prefix_mode = True
             else:
                 self._prefix_mode = False
 
+    def SetColorize(self, colorize: bool=True):
+        self._colorize = colorize
+
     def SetDebugMode(self, debug_mode: str="DEBUG"):
         self._debug_mode = debug_mode
         if self._debug_mode:
-            print(f"DEBUG_MODE={self._debug_mode}")
+            self._print(f"DEBUG_MODE={self._debug_mode}")
 
     def Print(self, text: str="", text_format: str="", indent: int=0, newline: bool=True):
         #
@@ -153,33 +170,33 @@ class Console(Singleton):
                 my_color = self._COLORS[text_format]
 
         if text_format == "TITRE1":
-            print("")
-            print(' ' * my_indent + my_color + "╔═" + "═" * len(my_text) + "═╗" + self._COLORS["RESET"])
-            print(' ' * my_indent + my_color + "║ " + my_text + " ║▒" + self._COLORS["RESET"])
-            print(' ' * my_indent + my_color + "╚═" + "═" * len(my_text) + "═╝▒" + self._COLORS["RESET"])
-            print(' ' * my_indent + my_color + " ▒" + "▒" * len(my_text) + "▒▒▒" + self._COLORS["RESET"])
-            print("", end="")
+            self._print("")
+            self._print(' ' * my_indent + my_color + "╔═" + "═" * len(my_text) + "═╗" + self._COLORS["RESET"])
+            self._print(' ' * my_indent + my_color + "║ " + my_text + " ║▒" + self._COLORS["RESET"])
+            self._print(' ' * my_indent + my_color + "╚═" + "═" * len(my_text) + "═╝▒" + self._COLORS["RESET"])
+            self._print(' ' * my_indent + my_color + " ▒" + "▒" * len(my_text) + "▒▒▒" + self._COLORS["RESET"])
+            self._print("", end="")
         elif text_format == "TITRE2":
-            print("")
-            print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"])
-            print(' ' * my_indent + my_color + "―" * len(my_text) + self._COLORS["RESET"])
-            print("", end="")
+            self._print("")
+            self._print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"])
+            self._print(' ' * my_indent + my_color + "―" * len(my_text) + self._COLORS["RESET"])
+            self._print("", end="")
         elif text_format == "TITRE3":
-            print("")
-            print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"])
-            print("", end="")
+            self._print("")
+            self._print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"])
+            self._print("", end="")
         elif text_format == "COMMAND":
-            print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"], end="")
+            self._print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"], end="")
         elif text_format == "OK":
-            print(' ' * my_indent + my_color + "[OK] " + my_text + self._COLORS["RESET"], end="")
+            self._print(' ' * my_indent + my_color + "[OK] " + my_text + self._COLORS["RESET"], end="")
         elif text_format == "WARNING":
-            print(' ' * my_indent + my_color + "[WARNING] " + my_text + self._COLORS["RESET"], end="")
+            self._print(' ' * my_indent + my_color + "[WARNING] " + my_text + self._COLORS["RESET"], end="")
         elif text_format == "ERROR":
-            print(' ' * my_indent + my_color + "[ERROR] " + my_text + self._COLORS["RESET"], end="")
+            self._print(' ' * my_indent + my_color + "[ERROR] " + my_text + self._COLORS["RESET"], end="")
         else:
-            print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"], end="")
+            self._print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"], end="")
         if newline:
-            print("")
+            self._print("")
 
     def PrintTab(self, title: str="", headers: list=[], datas: list=[], footer: str=None, text_format: str="", indent: int=0, separator: str="┃"): # type: ignore
         column_separator = " " + separator + " "
