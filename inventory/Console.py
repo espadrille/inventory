@@ -135,7 +135,7 @@ class Console(Singleton):
         #     <valeur numérique> : Nombre d'espaces à afficher avant la chaine (pour l'indenter)
         #
 
-        screen_heigth, screen_width = os.popen('stty size', 'r').read().split()
+        # screen_heigth, screen_width = os.popen('stty size', 'r').read().split()
 
         my_text = str(text).rstrip()
         my_indent = 0
