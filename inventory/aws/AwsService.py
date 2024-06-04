@@ -31,12 +31,12 @@ class AwsService(ConfigurableObject):
         self._resources['all'] = {}
 
         self._clients = []
-        for my_profile in self._config["profiles"]:
+        for my_role in self._config["assume_roles"].items():
             if self._is_regional:
                 for my_region in self._config["regions"]:
-                    self._clients.append(AwsClient(service=self._id, profile=my_profile, region=my_region))
+                    self._clients.append(AwsClient(service=self._id, role=my_role, region=my_region))
             else:
-                self._clients.append(AwsClient(service=self._id, profile=my_profile))
+                self._clients.append(AwsClient(service=self._id, role=my_role))
         for my_resource_type in self._config["resource_types"]:
             self._resources[my_resource_type] = {}
         self._summary = {}

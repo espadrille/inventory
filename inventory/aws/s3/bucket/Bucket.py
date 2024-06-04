@@ -13,8 +13,8 @@ from ...AwsResource import AwsResource
 class Bucket(AwsResource):
     _client : AwsClient
     _properties_mapping = {
-        'Id': 'Name',
-        'Name': 'Name'
+        'Id': 'id',
+        'Name': 'id'
         }
 
     #
@@ -24,7 +24,7 @@ class Bucket(AwsResource):
         self._client = client
         super().__init__(category="s3.bucket", id=f"{bucket['Name']}", object=bucket)
 
-        self.SetProperty('Arn', f"arn:aws:s3:::{self.Name()}")
+        self.SetProperty('Arn', f"arn:aws:s3:::{self.GetProperty('Name')}")
         self.SetProperty('Region', client.Client().meta._client_config._user_provided_options['region_name'])
 
         # Versioning
@@ -41,7 +41,7 @@ class Bucket(AwsResource):
     #
     def _get_tags(self):
         try:
-            self._tags = self._client.Client().get_bucket_tagging(Bucket=self._id)['TagSet']
+            self._tags = self._client.Client().get_bucket_tagging(Bucket=self.GetProperty('id'))['TagSet']
         except:
             self._tags = []
         return self._tags

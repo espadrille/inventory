@@ -14,9 +14,6 @@ from ..Console import console
 # Classe AWS
 #
 class Aws(Provider):
-    _filtered_profile_names :list
-    _filtered_region_names :list
-    _filtered_services_names :list
     _services :list
 
     #
@@ -26,61 +23,39 @@ class Aws(Provider):
         super().__init__(id=id, name=name)
         self._config = config
 
-
-        # Filtrage des services AWS a analyser
-        self._filtered_services_names = boto3.Session().get_available_services()
-        if "filters" in self._config:
-            if "services" in self._config["filters"]:
-                if len(self._config["filters"]["services"]) > 0:
-                    self._filtered_services_names = self._config["filters"]["services"]
-        self._summary['services'] = self._filtered_services_names
-
-        # Filtrage des regions AWS a analyser
-        self._filtered_region_names = []
-        for my_service_name in self._filtered_services_names:
-            for my_region_name in boto3.Session().get_available_regions(my_service_name):
-                if not my_region_name in self._filtered_region_names:
-                    self._filtered_region_names.append(my_region_name)
-        if "filters" in self._config:
-            if "regions" in self._config["filters"]:
-                if len(self._config["filters"]["regions"]) > 0:
-                    self._filtered_region_names = self._config["filters"]["regions"]
-        self._summary['regions'] = self._filtered_region_names
-
-        # Filtrage des profiles a analyser
-        self._filtered_profile_names = []
-        try:
-            for my_profile in boto3.Session().available_profiles:
-                self._filtered_profile_names.append(my_profile) 
-        except:
-            self._filtered_profile_names = []
-        if "filters" in self._config:
-            if "profiles" in self._config["filters"]:
-                if len(self._config["filters"]["profiles"]) > 0:
-                    self._filtered_profile_names = self._config["filters"]["profiles"]
-        self._summary['profiles'] = self._filtered_profile_names
+        self._summary['services'] = []
+        self._summary['regions'] = []
+        self._summary['profiles'] = []
 
         #
         # Creation des services AWS a analyser
         #
         self._services = []
-        for my_service_name in self._filtered_services_names:
+        if 'services' in self._config:
+            for my_service_name, my_service in self._config['services'].items():
+                self._summary['services'].append(my_service_name)
 
-            # Creation de la configuration du service
-            service_config = {}
-            if "services" in self._config:
-                if my_service_name in self._config["services"]:
-                    service_config = self._config["services"][my_service_name]
-            service_config["profiles"] = self._filtered_profile_names
-            service_config["regions"] = self._filtered_region_names
+                # Creation de la configuration du service
+                service_config = my_service
 
-            # Creation des objets AwsService dans self._services
-            if my_service_name == 'ec2':
-                self._services.append(Ec2(config=service_config))
-            elif my_service_name == 'rds':
-                self._services.append(Rds(config=service_config))
-            elif my_service_name == 's3':
-                self._services.append(S3(config=service_config))
+                if 'assume_roles' in self._config:
+                    service_config['assume_roles'] = self._config['assume_roles']
+                    for my_role_name, my_role_arn in self._config['assume_roles'].items():
+                        self._summary['profiles'].append(my_role_name)
+
+                if 'regions' in self._config:
+                    service_config["regions"] = self._config['regions']
+                    for my_region_name in self._config['regions']:
+                        self._summary['regions'].append(my_region_name)
+
+                # Creation des objets AwsService dans self._services
+                if my_service_name == 'ec2':
+                    self._services.append(Ec2(config=service_config))
+                elif my_service_name == 'rds':
+                    self._services.append(Rds(config=service_config))
+                elif my_service_name == 's3':
+                    self._services.append(S3(config=service_config))
+
 
 
     #

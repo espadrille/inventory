@@ -17,10 +17,6 @@ class Ec2(AwsService):
     def __init__(self, config :dict={}):
         config["id"] = "ec2"
         config["name"] = "Ec2"
-        config["resource_types"] = ["instance", "security_group"]
-        if "filters" in config:
-            if "resource_types" in config["filters"]:
-                config["resource_types"] = config["filters"]["resource_types"]
         self._is_regional = True
         super().__init__(config=config)
         

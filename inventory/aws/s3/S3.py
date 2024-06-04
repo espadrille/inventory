@@ -16,10 +16,6 @@ class S3(AwsService):
     def __init__(self, config :dict={}):
         config["id"] = "s3"
         config["name"] = "S3"
-        config["resource_types"] = ["bucket"]
-        if "filters" in config:
-            if "resource_types" in config["filters"]:
-                config["resource_types"] = config["filters"]["resource_types"]
         self._is_regional = False
         super().__init__(config=config)
         

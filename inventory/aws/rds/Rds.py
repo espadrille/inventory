@@ -17,10 +17,6 @@ class Rds(AwsService):
     def __init__(self, config :dict={}):
         config["id"] = "rds"
         config["name"] = "RDS"
-        config["resource_types"] = ["db_instance"]
-        if "filters" in config:
-            if "resource_types" in config["filters"]:
-                config["resource_types"] = config["filters"]["resource_types"]
         self._is_regional = True
         super().__init__(config=config)
         

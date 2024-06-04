@@ -12,13 +12,24 @@ class AwsClient(Object):
     #
     # Private methods
     #
-    def __init__(self, service: str, profile: str, region:str=""):
+    def __init__(self, service: str, role: tuple, region:str=""):
         super().__init__()
+
+        (profile, role_arn) = role
+
         self._properties['service'] = service
         self._properties['profile'] = profile
+        self._properties['role_arn'] = role_arn
         self._properties['region'] = region
 
-        self._boto3_session = boto3.Session(profile_name=self._properties['profile']) # Une session par profile
+        sts = boto3.client('sts')
+        assumed_role_properties = sts.assume_role(RoleArn=role_arn, RoleSessionName=profile)
+        # self._boto3_session = boto3.Session(profile_name=self._properties['profile']) # Une session par profile
+        self._boto3_session = boto3.Session(            # Une session par profile
+            aws_access_key_id=assumed_role_properties['Credentials']['AccessKeyId'],
+            aws_secret_access_key=assumed_role_properties['Credentials']['SecretAccessKey'],
+            aws_session_token = assumed_role_properties['Credentials']['SessionToken']
+            )
 
         if region == "":
             self._boto3_client = self._boto3_session.client(service_name=self._properties['service']) # type: ignore

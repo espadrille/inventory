@@ -3,18 +3,16 @@
         "name": "Inventaire du service EC2",
         "providers": {
             "aws" : {
-                "filters": {
-                    "profiles": ["network"],
-                    "regions": ["eu-west-3"],
-                    "services": ["ec2"]
+                "assume_roles": {
+                    "network": "arn:aws:iam::229327873503:role/role-inventory-readOnly",
+                    "tools": "arn:aws:iam::714117993668:role/role-inventory-readOnly"
                 },
+                "regions": ["eu-west-3"],
                 "services": {
                     "ec2": {
-                        "filters": {
-                            "resource_types": [
-                                "instance"
-                            ]
-                        }
+                        "resource_types": [
+                            "instance"
+                        ]
                     }
                 }
             }

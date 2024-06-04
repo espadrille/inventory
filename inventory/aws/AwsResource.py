@@ -17,11 +17,15 @@ class AwsResource(Resource):
             self.SetProperty(my_property_key, my_property_value)
 
         # Tenter de lire les tags s'il y en a...
-        self._get_tags()
-        self.SetProperty('Name', self._get_tag_value('Name'))
-        self.SetProperty('Description', self._get_tag_value('Description'))
-        self.SetProperty('TerraformRoot', self._get_tag_value('terraform_root'))
-        self.SetProperty('TerraformModule', self._get_tag_value('terraform_module'))
+        if len(self._get_tags()) > 0 :
+            if self._get_tag_value('Name') != "":
+                self.SetProperty('Name', self._get_tag_value('Name'))
+            if self._get_tag_value('Description') != "":
+                self.SetProperty('Description', self._get_tag_value('Description'))
+            if self._get_tag_value('TerraformRoot') != "":
+                self.SetProperty('TerraformRoot', self._get_tag_value('terraform_root'))
+            if self._get_tag_value('TerraformModule') != "":
+                self.SetProperty('TerraformModule', self._get_tag_value('terraform_module'))
 
     #
     # Protected methods

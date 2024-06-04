@@ -3,18 +3,15 @@
         "name": "Inventaire du service RDS",
         "providers": {
             "aws" : {
-                "filters": {
-                    "profiles": ["developpement", "recette", "production", "shared", "network", "tools", "securite", "vmc"],
-                    "regions": ["us-east-1", "eu-west-3", "eu-west-1"],
-                    "services": ["rds"]
+                "assume_roles": {
+                    "recette": "arn:aws:iam::227538533452:role/role-inventory-readOnly"
                 },
+                "regions": ["eu-west-3"],
                 "services": {
                     "rds": {
-                        "filters": {
-                            "resource_types": [
-                                "db_instance"
-                            ]
-                        }
+                        "resource_types": [
+                            "db_instance"
+                        ]
                     }
                 }
             }
