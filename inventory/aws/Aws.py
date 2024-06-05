@@ -3,7 +3,6 @@
 #
 # Imports
 #
-import boto3
 from ..provider.Provider import Provider
 from .ec2.Ec2 import Ec2
 from .rds.Rds import Rds
