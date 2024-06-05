@@ -14,9 +14,6 @@ from .ConfigurableObject import ConfigurableObject
 # Classe d'inventaire
 #
 class Inventory(ConfigurableObject):
-    _name: str = ""
-    _id: str = ""
-    _config_file: str
     _providers: dict
     _resources: dict
     _summary: dict
@@ -29,10 +26,8 @@ class Inventory(ConfigurableObject):
 
         console.SetColorize(colorize)
 
-        self._id = id
-        self._name = ""
+        self.SetProperty('Id', id)
 
-        self._output_format = "json"
         self._providers = {}
         self._resources = {}
         self._resources['all'] = {}
@@ -41,8 +36,9 @@ class Inventory(ConfigurableObject):
         # Initialisation du resume
         self._summary['date'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-        self._summary['configuration'] = self._properties['configuration']
+        self._summary['configuration'] = self.GetProperty('configuration')
         self._parse_config()
+        self.SetProperty('Name', self._config['inventory']['name'])
   
         # Creation des providers
         for my_provider in self._providers:
@@ -68,8 +64,6 @@ class Inventory(ConfigurableObject):
                     }
                 }
             })
-
-        self.name = self._config['inventory']['name']
 
         for my_provider in self._config['inventory']['providers']:
             self.AddProvider(my_provider)
@@ -124,7 +118,7 @@ class Inventory(ConfigurableObject):
         return self._resources
     
     def Name(self):
-        return self._name
+        return self.GetProperty('Name')
     
     def Write(self):
         # Choisir la bonne classe de formatteur
@@ -149,7 +143,7 @@ class Inventory(ConfigurableObject):
         datas = []
         for key, value in self._summary.items():
             datas.append([key, str(value)])
-        console.PrintTab(title=f"{self.name}", datas=datas, footer="", text_format="GREEN")
+        console.PrintTab(title=f"{self.GetProperty('Name')}", datas=datas, footer="", text_format="GREEN")
 
         for my_provider in self._providers.values():
             my_provider.Print()

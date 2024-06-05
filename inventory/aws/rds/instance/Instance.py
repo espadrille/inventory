@@ -36,7 +36,7 @@ class Instance(AwsResource):
             self.SetProperty('Increment', int(result.group(1)))
         else:
             # Nouvelle convetion de nommage
-            result = re.match('aws[a-z0-9]{2}rds([0-9]{3})', self._properties['Name'])
+            result = re.match('aws[a-z0-9]{2}rds([0-9]{3})', self.GetProperty('Name'))
             if result:
                 self.SetProperty('Increment', int(result.group(1)))
             else:
@@ -47,7 +47,7 @@ class Instance(AwsResource):
     #
     def _get_tags(self):
         try:
-            self._tags = self._client.Client().list_tags_for_resource(ResourceName=self._properties['DBInstanceArn'])['TagList']
+            self._tags = self._client.Client().list_tags_for_resource(ResourceName=self.GetProperty('DBInstanceArn'))['TagList']
         except:
             self._tags = []
         return self._tags

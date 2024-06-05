@@ -17,12 +17,12 @@
                 }
             }
         },
-        "#debug_mode": "DEBUG",
+        "debug_mode": "DEBUG",
         "output": {
             "mode": "file",
             "format": "json",
-            "output_file": "s3:intradom-cartography-tools/aws/ec2/instances.json",
-            "selected_fields": {
+            "output_file": "./inventory_result.json",
+            "#selected_fields": {
                 "Hypervisor": "HYPERVISEUR",
                 "VERSION vCENTER": "VERSION vCENTER",
                 "Host": "Host",

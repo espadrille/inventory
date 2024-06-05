@@ -18,10 +18,10 @@ class ConfigurableObject(Object):
         
         # Chargement de la configuration
         if config != {}:
-            self._properties['configuration'] = 'inline'
+            self.SetProperty('configuration', 'inline')
             self._load_config(config)
         if config_source != "":
-            self._properties['configuration'] = config_source
+            self.SetProperty('configuration', config_source)
             if config_source.startswith('ssm:') :
                 self._load_config_from_ssm(config_source[4:])
             else:
@@ -59,7 +59,7 @@ class ConfigurableObject(Object):
         for my_path in config_paths:
             if os.path.isfile(f"{my_path}{config_file}"):
                 my_config_file = f"{my_path}{config_file}"
-                self._properties['configuration'] = my_config_file
+                self.SetProperty('configuration', my_config_file)
                 break
         
         try:

@@ -17,14 +17,13 @@ class AwsClient(Object):
 
         (profile, role_arn) = role
 
-        self._properties['service'] = service
-        self._properties['profile'] = profile
-        self._properties['role_arn'] = role_arn
-        self._properties['region'] = region
+        self.SetProperty('service', service)
+        self.SetProperty('profile', profile)
+        self.SetProperty('role_arn', role_arn)
+        self.SetProperty('region', region)
 
         sts = boto3.client('sts')
         assumed_role_properties = sts.assume_role(RoleArn=role_arn, RoleSessionName=profile)
-        # self._boto3_session = boto3.Session(profile_name=self._properties['profile']) # Une session par profile
         self._boto3_session = boto3.Session(            # Une session par profile
             aws_access_key_id=assumed_role_properties['Credentials']['AccessKeyId'],
             aws_secret_access_key=assumed_role_properties['Credentials']['SecretAccessKey'],
@@ -32,9 +31,9 @@ class AwsClient(Object):
             )
 
         if region == "":
-            self._boto3_client = self._boto3_session.client(service_name=self._properties['service']) # type: ignore
+            self._boto3_client = self._boto3_session.client(service_name=self.GetProperty('service')) # type: ignore
         else:
-            self._boto3_client = self._boto3_session.client(service_name=self._properties['service'], region_name=self._properties['region']) # type: ignore
+            self._boto3_client = self._boto3_session.client(service_name=self.GetProperty('service'), region_name=self.GetProperty('region')) # type: ignore
 
         console.Debug(f"Creation client : {self.Name()}")
 
@@ -45,16 +44,16 @@ class AwsClient(Object):
         return self._boto3_client
     
     def Name(self):
-        if self._properties['region'] == "":
-            return f"{self._properties['service']}.{self._properties['profile']}"
+        if self.GetProperty('region') == "":
+            return f"{self.GetProperty('service')}.{self.GetProperty('profile')}"
         else:
-            return f"{self._properties['service']}.{self._properties['profile']}.{self._properties['region']}"
+            return f"{self.GetProperty('service')}.{self.GetProperty('profile')}.{self.GetProperty('region')}"
     
     def Profile(self):
-        return self._properties['profile']
+        return self.GetProperty('profile')
 
     def Region(self):
-        return self._properties['region']
+        return self.GetProperty('region')
 
     def Service(self):
-        return self._properties['service']
+        return self.GetProperty('service')

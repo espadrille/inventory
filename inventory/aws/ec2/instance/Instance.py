@@ -35,12 +35,12 @@ class Instance(AwsResource):
         self.SetProperty('StateCode', int(instance['State']['Code']))
 
         # Tenter de lire l'increment dans le nom de l'instance
-        result = re.match('AWS.[A-Z]{1,2}([0-9]{2,3})', self._properties['Name'])
+        result = re.match('AWS.[A-Z]{1,2}([0-9]{2,3})', self.GetProperty('Name'))
         if result:
             self.SetProperty('Increment', int(result.group(1)))
         else:
             # Nouvelle convetion de nommage
-            result = re.match('aws[a-z0-9]{5}([0-9]{3})', self._properties['Name'])
+            result = re.match('aws[a-z0-9]{5}([0-9]{3})', self.GetProperty('Name'))
             if result:
                 self.SetProperty('Increment', int(result.group(1)))
             else:
@@ -48,7 +48,7 @@ class Instance(AwsResource):
 
         # Creation des proprietes NetworkInterface
         i = 0
-        for my_interface in self._properties["NetworkInterfaces"]:
+        for my_interface in self.GetProperty('NetworkInterfaces'):
             i += 1
             self.SetProperty(f"NetworkInterface_{i}", my_interface['NetworkInterfaceId'])
             self.SetProperty(f"PrivateIpAddress_{i}", my_interface['PrivateIpAddress'])

@@ -16,11 +16,11 @@ class Resource(Object):
     #
     def __init__(self, category:str, id: str) -> None:
         super().__init__()
-        self._properties['id'] = id
-        self._properties['Name'] = f"<{id}>"
-        self._properties['Description'] = ""
-        self._properties['Category'] = category
-        self._properties['Date'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        self.SetProperty('id', id)
+        self.SetProperty('Name', f"<{id}>")
+        self.SetProperty('Description', "")
+        self.SetProperty('Category', category)
+        self.SetProperty('Date', datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
     def __str__(self) -> str:
         return self.ToJson()
@@ -30,17 +30,17 @@ class Resource(Object):
     #
     def Data(self, new_data: dict={}) -> dict:
         if new_data != {}:
-            self._properties = new_data
-        return self._properties
+            self.SetProperties(new_data)
+        return self.GetProperties()
 
     def Description(self):
-        return self._properties['Description']
+        return self.GetProperty('Description')
     
     def Id(self) -> str:
-        return self._properties['id']
+        return self.GetProperty('id')
     
     def InventoryId(self):
-        return f"{self.GetProperty('Category')}.{self._properties['id']}"
+        return f"{self.GetProperty('Category')}.{self.GetProperty('id')}"
     
     def Name(self):
         return self.GetProperty('Name')
@@ -61,7 +61,7 @@ class Resource(Object):
 
     def ToTable(self):
         datas = []
-        for key, value in self._properties.items():
+        for key, value in self.GetProperties().items():
             datas.append([key, str(value)])
         return datas
 

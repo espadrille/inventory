@@ -19,3 +19,12 @@ class Object():
 
     def SetProperty(self, property_name :str, property_value):
         self._properties[property_name] = property_value
+
+
+    def GetProperties(self) -> dict:
+        return self._properties
+
+
+    def SetProperties(self, properties: dict) -> dict:
+        self._properties = properties
+    
