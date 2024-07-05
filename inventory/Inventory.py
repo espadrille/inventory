@@ -79,14 +79,11 @@ class Inventory(ConfigurableObject):
     #
     def AddProvider(self, provider: str=""):
         if provider == 'aws':
-            provider_config = {}
-            if self._config != "":
-                if 'inventory' in self._config:
-                    if 'providers' in self._config['inventory']:
-                        if 'aws' in self._config['inventory']['providers']:
-                            provider_config = self._config['inventory']['providers']['aws']
             from .aws.Aws import Aws
-            self._providers[provider] = Aws(id='aws', name='aws', config=provider_config)
+            self._providers[provider] = Aws(id='aws', name='aws', config=self._config['inventory']['providers']['aws'])
+        elif provider == 'vsphere':
+            from .vsphere.Vsphere import Vsphere
+            self._providers[provider] = Vsphere(id='vsphere', name='vsphere', config=self._config['inventory']['providers']['vsphere'])
         else:
             self._providers[provider] = Provider(id="unknown")
 

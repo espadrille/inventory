@@ -79,6 +79,12 @@ class Console(Singleton):
             import sys, termios
             termios.tcflush(sys.stdin, termios.TCIOFLUSH)
 
+    def _flush_output(self):
+        try:
+            sys.stdout.flush()
+        except:
+            pass
+
     def _remove_accents(self, text: str=''):
         try:
             text = text.encode('utf-8') # type: ignore
@@ -123,6 +129,7 @@ class Console(Singleton):
                 self._print("")
                 self._prefix_mode = True
             else:
+                self._flush_output()
                 self._prefix_mode = False
 
     def SetColorize(self, colorize: bool=True):

@@ -19,8 +19,7 @@ class Aws(Provider):
     # Private methods
     #
     def __init__(self, id:str, name: str="", config :dict={}):
-        super().__init__(id=id, name=name)
-        self._config = config
+        super().__init__(id=id, name=name, config=config)
 
         self._summary['services'] = []
         self._summary['regions'] = []

@@ -1,5 +1,5 @@
 #
-# Classe AwsResource
+# Classe AwsClient
 #
 import boto3
 from ..Console import console

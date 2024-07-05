@@ -92,3 +92,18 @@ class ConfigurableObject(Object):
             console.Print(f"Le parametre {ssm_parameter} n'a pas pu etre lu dans SSM Parameter Store.","ERROR")
             console.Print(e.__str__())
 
+
+    def _get_config_value(self, config_key:str) -> str:
+        if config_key.startswith('ssm:') :
+            return self._get_config_value_from_ssm(config_key[4:])
+        else:
+            return self._config[config_key]
+
+    def _get_config_value_from_ssm(self, ssm_parameter:str) -> str:
+        try:
+            ssm = boto3.Session().client(service_name='ssm')
+            return ssm.get_parameter(Name=ssm_parameter, WithDecryption=True)['Parameter']['Value']
+        except Exception as e:
+            console.Print(f"Le parametre {ssm_parameter} n'a pas pu etre lu dans SSM Parameter Store.","ERROR")
+            console.Print(e.__str__())
+

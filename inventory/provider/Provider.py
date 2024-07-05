@@ -11,8 +11,8 @@ class Provider(ConfigurableObject):
     #
     # Private methods
     #
-    def __init__(self, id:str, name: str=""):
-        super().__init__()
+    def __init__(self, id:str, name: str="", config :dict={}):
+        super().__init__(config=config)
         self.SetProperty('id', id)
         self.SetProperty('name', name)
         if name == "":
