@@ -1,6 +1,7 @@
 # Imports
 import datetime
 import json
+import time
 from ..Console import console
 from ..CustomJSONEncoder import CustomJSONEncoder
 from ..Object import Object
@@ -24,6 +25,26 @@ class Resource(Object):
 
     def __str__(self) -> str:
         return self.ToJson()
+
+    #
+    # Protected methods
+    #
+    def _execute_with_retry(self, func, *args, max_retries=10, initial_delay=1):
+        '''
+        Executer une fonction/methode et re_essayer {max_retries} fois avant d'echouer.
+        Le delai entre deux executions est augmente apres chaque tentative.
+        '''
+        retries = 0
+        delay = initial_delay
+        while retries < max_retries:
+            try:
+                return func(*args)
+            except Exception as e:
+                retries += 1
+                console.Debug(f"Erreur lors de l'exécution de {func.__name__}: Réessai {retries}/{max_retries} dans {delay} secondes.")
+                time.sleep(delay)
+                delay *= 2  # Backoff exponentiel
+        raise Exception(f"Échec de {func.__name__} après {max_retries} tentatives.")
 
     #
     # Public methods

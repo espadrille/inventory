@@ -6,7 +6,6 @@
 from pyVim.connect import SmartConnect, Disconnect
 from pyVmomi import vim
 import ssl
-import time
 import atexit
 
 from ...Console import console
@@ -100,11 +99,8 @@ class Datacenter(ConfigurableObject):
                     for my_vm in vms:
                         nb_vms = nb_vms + 1
 
-                        new_resource = VirtualMachine(vm=my_vm.summary, datacenter=self)
-                        new_resource.SetProperty('Datacenter', self.GetProperty('name'))
-            
-                        # Pour ne pas surcharger le datacenter avec des appels d'API trop frequents
-                        time.sleep(2)
+                        new_resource = VirtualMachine(vm=my_vm, datacenter=self)
+
                         console.Debug(f"    {my_folder} charge : {new_resource.GetProperty('Name')} ")
 
                         self._resources[my_resource_type][new_resource.Id()] = new_resource
@@ -113,6 +109,9 @@ class Datacenter(ConfigurableObject):
 
                         if not new_resource.GetProperty('Increment') in  self._vm_increments:
                             self._vm_increments.append(new_resource.GetProperty('Increment'))
+
+                        # Pour limiter le nombre de machines virutelles extraites
+                        # if nb_vms > 9 : break
 
                     self._summary[my_resource_type] = str(nb_vms)
 
