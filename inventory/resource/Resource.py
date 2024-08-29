@@ -29,7 +29,7 @@ class Resource(Object):
     #
     # Protected methods
     #
-    def _execute_with_retry(self, func, *args, max_retries=10, initial_delay=1):
+    def _execute_with_retry(self, func, *args, max_retries=7, initial_delay=1):
         '''
         Executer une fonction/methode et re_essayer {max_retries} fois avant d'echouer.
         Le delai entre deux executions est augmente apres chaque tentative.
