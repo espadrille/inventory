@@ -1,0 +1,73 @@
+{
+    "inventory": {
+        "name": "Inventaire VMWare",
+        "providers": {
+            "vsphere" : {
+                "datacenter_credentials": {
+                    "theplx50": {
+                        "hostname": "ssm:theplx50.vsphere.hostname",
+                        "user": "ssm:theplx50.vsphere.user",
+                        "password": "ssm:theplx50.vsphere.password"
+                    }
+                },
+                "folders": {
+                    "vm": {
+                        "resource_types": [
+                            "virtual_machine"
+                        ]
+                    },
+                    "host": {
+                        "resource_types": [
+                            "compute_resource",
+                            "cluster_compute_resource"
+                        ]
+                    },
+                    "datastore": {
+                        "resource_types": [
+                            "datastore",
+                            "datastore_cluster"
+                        ]
+                    },
+                    "network": {
+                        "resource_types": [
+                            "network"
+                        ]
+                    }
+                }
+            }
+        },
+        "debug_mode": "DEBUG",
+        "output": {
+            "mode": "file",
+            "format": "csv",
+            "output_file": "./inventory_result.csv",
+            "selected_fields": {
+                "Hypervisor": "VCenter",
+                "HostVersion": "VERSION vCENTER",
+                "Host": "Host",
+                "Name": "VM",
+                "State": "ETAT",
+                "bootTime": "DATE_DEMARRAGE_OS",
+                "DATE_CREATION_VM": "DATE_CREATION_VM",
+                "guestFullName": "OS",
+                "fqdn": "DNS",
+                "PrivateIpAddress": "IP",
+                "annotation": "ANNOTATION",
+                "BALISES_VEEAM": "BALISES_VEEAM", 
+                "BALISES_NETBACKUP": "BALISES_NETBACKUP",
+                "BALISES_Environnement": "BALISES_Environnement",
+                "BALISES_GuestOS": "BALISES_GuestOS",
+                "SubnetName_1": "Network #1" ,
+                "SubnetName_2": "Network #2" ,
+                "SubnetName_3": "Network #3" ,
+                "SubnetName_4": "Network #4" ,
+                "SubnetName_5": "Network #5" ,
+                "SubnetName_6": "Network #6" ,
+                "SubnetName_7": "Network #7" ,
+                "SubnetName_8": "Network #8"
+            },
+            "csv_separator": ";",
+            "csv_print_header": true
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "inventory": {
+        "name": "Inventaire global",
+        "providers": {
+            "aws" : {
+                "assume_roles": {
+                    "production": "arn:aws:iam::937634852611:role/role-inventory-readOnly", 
+                    "recette": "arn:aws:iam::227538533452:role/role-inventory-readOnly", 
+                    "shared": "arn:aws:iam::545245414921:role/role-inventory-readOnly"
+                },
+                "regions": ["us-east-1", "eu-west-3", "eu-west-1"],
+                "services": {
+                    "ec2": {
+                        "resource_types": [
+                            "instance",
+                            "security_group"
+                        ]
+                    },
+                    "rds": {
+                        "resource_types": [
+                            "db_instance"
+                        ]
+                    },
+                    "s3": {
+                        "resource_types": [
+                            "bucket"
+                        ]
+                    }
+                }
+            }
+        },
+        "#debug_mode": "DEBUG",
+        "output": {
+            "mode": "file",
+            "format": "json",
+            "output_file": "./inventory_result.json"
+        }
+    }
+}

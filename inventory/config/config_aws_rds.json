@@ -1,0 +1,26 @@
+{
+    "inventory": {
+        "name": "Inventaire du service RDS",
+        "providers": {
+            "aws" : {
+                "assume_roles": {
+                    "recette": "arn:aws:iam::227538533452:role/role-inventory-readOnly"
+                },
+                "regions": ["eu-west-3"],
+                "services": {
+                    "rds": {
+                        "resource_types": [
+                            "db_instance"
+                        ]
+                    }
+                }
+            }
+        },
+        "debug_mode": "DEBUG",
+        "output": {
+            "mode": "file",
+            "format": "json",
+            "output_file": "./inventory_rds.json"
+        }
+    }
+}

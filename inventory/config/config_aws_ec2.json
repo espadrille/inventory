@@ -1,0 +1,35 @@
+{
+    "inventory": {
+        "name": "Inventaire du service EC2",
+        "providers": {
+            "aws" : {
+                "assume_roles": {
+                    "production": "arn:aws:iam::937634852611:role/role-inventory-readOnly", 
+                    "recette": "arn:aws:iam::227538533452:role/role-inventory-readOnly", 
+                    "shared": "arn:aws:iam::545245414921:role/role-inventory-readOnly"
+                },
+                "regions": ["eu-west-1", "eu-west-3"],
+                "services": {
+                    "ec2": {
+                        "resource_types": [
+                            "instance"
+                        ]
+                    }
+                }
+            }
+        },
+        "#debug_mode": "DEBUG",
+        "output": {
+            "mode": "file",
+            "format": "json",
+            "output_file": "./inventory_ec2.json",
+            "#selected_fields": {
+                "Id": "Id",
+                "Name": "Name",
+                "Description": "Description",
+                "State": "State",
+                "PrivateIpAddress": "PrivateIpAddress"
+            }
+        }
+    }
+}

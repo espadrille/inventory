@@ -1,0 +1,36 @@
+{
+    "inventory": {
+        "name": "Inventaire du service S3",
+        "providers": {
+            "aws" : {
+                "assume_roles": {
+                    "tools": "arn:aws:iam::714117993668:role/role-inventory-readOnly"
+                },
+                "services": {
+                    "s3": {
+                        "resource_types": [
+                            "bucket"
+                        ]
+                    }
+                }
+            }
+        },
+        "debug_mode": "DEBUG",
+        "output": {
+            "mode": "console",
+            "format": "json",
+            "output_file": "./inventory_s3.csv",
+            "#selected_fields": {
+                "Date": "Date",
+                "Category": "Category",
+                "Name": "Name",
+                "Description": "Description",
+                "Versioning": "Versioning",
+                "Profile": "Profile",
+                "Arn": "Arn"
+            },
+            "csv_separator": ";",
+            "csv_print_header": true
+        }
+    }
+}
