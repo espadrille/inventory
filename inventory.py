@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
+"""
+Point d'entree du script d'inventaire
+"""
+
 # Import des modules
 from inventory.Inventory import Inventory
 from optparse import OptionParser
