@@ -1,5 +1,5 @@
 lint-python:
-  image: eeacms/pylint
+  image: eeacms/pylint:latest
   tags:
     - docker
     - python
