@@ -47,8 +47,8 @@ class ConfigurableObject(Object):
 
     def _load_config_from_file(self, config_file:str) -> None:
         config_paths = [ # Liste des chemins ou chercher le fichier de configuration
-            f"",
-            f"./",
+            "",
+            "./",
             f"{os.getcwd()}/",
             f"{os.getcwd()}/config/",
             f"{os.path.dirname(__file__)}/",

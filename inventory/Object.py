@@ -2,8 +2,9 @@
 # Classe : Object
 # Classe de base pour tous les objets
 #
+from .Console import console
 
-class Object():
+class Object(object):
     _properties: dict
 
     def __init__(self) -> None:
@@ -13,7 +14,8 @@ class Object():
     def GetProperty(self, property_name :str):
         try:
             return self._properties[property_name]
-        except:
+        except Exception as e:
+            console.Print(str(e))
             return ""
 
 

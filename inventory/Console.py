@@ -76,14 +76,15 @@ class Console(Singleton):
             while msvcrt.kbhit(): # type: ignore
                 msvcrt.getch() # type: ignore
         except ImportError:
-            import sys, termios
+            import sys
+            import termios
             termios.tcflush(sys.stdin, termios.TCIOFLUSH)
 
     def _flush_output(self):
         try:
             sys.stdout.flush()
-        except:
-            pass
+        except Exception as e:
+            console.Print(str(e))
 
     def _remove_accents(self, text: str=''):
         try:
