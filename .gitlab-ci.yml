@@ -1,7 +1,7 @@
 lint-python:
-  image: cytopia/docker-pylint
+  image: eeacms/pylint
   tags:
     - docker
     - python
   script:
-    - pylint **/*.py
+    - pylint $(find . -name "*.py")
