@@ -15,9 +15,9 @@ def lambda_handler(event, context):
         config_source = ''
 
     my_inventory = Inventory(id="my_inventory", 
-                         config_source=config_source,
-                         colorize=False
-                         )
+                             config_source=config_source,
+                             colorize=False
+                            )
     my_inventory.LoadResources()
     my_inventory.Write()
     my_inventory.Print()
