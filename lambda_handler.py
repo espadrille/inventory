@@ -14,7 +14,7 @@ def lambda_handler(event, context):
     else:
         config_source = ''
 
-    my_inventory = Inventory(id="my_inventory", 
+    my_inventory = Inventory(id="my_inventory",
                              config_source=config_source,
                              colorize=False
                             )
