@@ -1,5 +1,5 @@
 lint-python:
-  image: cytopia/pylint
+  image: cytopia/docker-pylint
   tags:
     - docker
     - python
