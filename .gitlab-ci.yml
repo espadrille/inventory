@@ -1,6 +1,7 @@
 lint-python:
   image: cytopia/pylint
   tags:
+    - docker
     - python
   script:
     - pylint **/*.py
