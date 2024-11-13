@@ -1,4 +1,6 @@
 lint-python:
   image: cytopia/pylint
+  tags:
+    - python
   script:
     - pylint **/*.py
