@@ -1,10 +1,11 @@
-#
-# Classe AwsResource
-#
 from ..Console import console
 from ..resource.Resource import Resource
 
 class VsphereResource(Resource):
+    '''
+        Classe VsphereResource
+    '''
+
     _arn: str
     _tags: list=[]
 
@@ -16,7 +17,7 @@ class VsphereResource(Resource):
         for my_property_key in dir(resource):
             try:
                 self.SetProperty(my_property_key, getattr(resource, my_property_key))
-            except:
+            except Exception:
                 pass
 
         # Tenter de lire les tags s'il y en a...

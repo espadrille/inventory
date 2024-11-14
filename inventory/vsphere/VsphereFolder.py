@@ -1,11 +1,11 @@
-#
-# Classe AwsClient
-#
-
 from ..Console import console
 from ..Object import Object
 
 class VsphereFolder(Object):
+    '''
+        Classe VsphereFolder
+    '''
+
     _client: SmartConnect.__class__
 
     #

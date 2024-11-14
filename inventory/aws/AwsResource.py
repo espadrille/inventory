@@ -1,9 +1,10 @@
-#
-# Classe AwsResource
-#
 from ..resource.Resource import Resource
 
 class AwsResource(Resource):
+    '''
+        Classe AwsResource
+    '''
+    
     _arn: str
     _tags: list=[]
 

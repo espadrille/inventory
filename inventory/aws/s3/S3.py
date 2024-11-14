@@ -7,10 +7,11 @@ from ..AwsService import AwsService
 from .bucket.Bucket import Bucket
 from ...Console import console
 
-#
-# Classe S3
-#
 class S3(AwsService):
+    '''
+        Classe S3
+    '''
+    
     _resource_types : list # Liste des types de ressources a lister pour le service
 
     def __init__(self, config :dict={}):

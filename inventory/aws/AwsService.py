@@ -1,5 +1,3 @@
-# Service AWS
-
 #
 # Imports
 #
@@ -7,10 +5,11 @@ from ..Console import console
 from .AwsClient import AwsClient
 from ..ConfigurableObject import ConfigurableObject
 
-#
-# Classe AwsService
-#
 class AwsService(ConfigurableObject):
+    '''
+        Classe AwsService
+    '''
+    
     _id :str
     _name :str
     _is_regional :bool=True

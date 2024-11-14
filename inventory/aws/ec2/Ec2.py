@@ -1,4 +1,6 @@
-# Service EC2
+'''
+    Service EC2
+'''
 
 #
 # Imports
@@ -8,21 +10,27 @@ from .instance.Instance import Instance
 from .security_group.SecurityGroup import SecurityGroup
 from ...Console import console
 
-#
-# Classe Ec2
-#
 class Ec2(AwsService):
+    '''
+        Classe Ec2
+    '''
+
     _instance_increments :list # Liste des increments d'instances EC2 utilises
 
-    def __init__(self, config :dict={}):
+    def __init__(self, config :dict=None):
+        if config is None:
+            config = {}
         config["id"] = "ec2"
         config["name"] = "Ec2"
         self._is_regional = True
         super().__init__(config=config)
-        
+
         self._instance_increments = []
-        
+
     def LoadResources(self) -> dict:
+        '''
+            Chargement des ressources
+        '''
         nb_instances = 0
         nb_sg = 0
         self._resources['all'] = {}
@@ -46,7 +54,7 @@ class Ec2(AwsService):
                             self._resources['all'][new_resource.Id()] = new_resource
                             nb_resources_client += 1
 
-                            if not new_resource.GetProperty('Increment') in  self._instance_increments:
+                            if new_resource.GetProperty('Increment') not in  self._instance_increments:
                                 self._instance_increments.append(new_resource.GetProperty('Increment'))
                     self._summary['instances'] = str(nb_instances)
 
@@ -54,7 +62,7 @@ class Ec2(AwsService):
 
                     for my_sg in my_client.Client().describe_security_groups()['SecurityGroups']: # type: ignore
                         nb_sg = nb_sg + 1
-                        
+
                         new_resource = SecurityGroup(security_group=my_sg, client=my_client) # type: ignore
                         new_resource.SetProperty('Profile', my_client.Profile())
 
@@ -70,12 +78,18 @@ class Ec2(AwsService):
         return self._resources
 
     def NextInstanceIncrement(self):
+        '''
+            Calcul et retourne le prochain increment disponible pour une instance EC2
+        '''
         if len(self._instance_increments) > 0:
             for i in range(1, max(self._instance_increments)):
-                if not i in self._instance_increments:
+                if i not in self._instance_increments:
                     return i
         return max(self._instance_increments) + 1
 
     def Print(self):
+        '''
+            Affichage
+        '''
         self._summary['increment disponible'] = self.NextInstanceIncrement()
         super().Print()

@@ -1,5 +1,3 @@
-# Datacenter VMWare
-
 #
 # Imports
 #
@@ -12,10 +10,11 @@ from ...Console import console
 from ...ConfigurableObject import ConfigurableObject
 from .virtualmachine.VirtualMachine import VirtualMachine
 
-#
-# Classe Datacenter
-#
 class Datacenter(ConfigurableObject):
+    '''
+        Classe Datacenter
+    '''
+
     _service_instance :vim.ServiceInstance
     _content :vim.ServiceInstanceContent
     _resources :dict

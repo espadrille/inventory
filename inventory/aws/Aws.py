@@ -1,5 +1,3 @@
-# Interface AWS
-
 #
 # Imports
 #
@@ -9,10 +7,11 @@ from .rds.Rds import Rds
 from .s3.S3 import S3
 from ..Console import console
 
-#
-# Classe AWS
-#
 class Aws(Provider):
+    '''
+        Classe AWS
+    '''
+    
     _services :list
 
     #
@@ -60,7 +59,7 @@ class Aws(Provider):
     # Public methods
     #
     def LoadResources(self) -> dict:
-        console.Debug(f"Chargement : AWS")
+        console.Debug("Chargement : AWS")
         self._resources['all'] = {}
         for my_service in self._services:
             console.Debug(f" Chargement : {my_service.Name()}")

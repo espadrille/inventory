@@ -7,10 +7,11 @@ import re
 from ...AwsClient import AwsClient
 from ...AwsResource import AwsResource
 
-#
-# Classe Instance
-#
 class Instance(AwsResource):
+    '''
+        Classe Instance
+    '''
+    
     _client : AwsClient
     _properties_mapping = {
         'Id': 'DBInstanceIdentifier',
@@ -25,7 +26,7 @@ class Instance(AwsResource):
     #
     def __init__(self, instance: dict, client: AwsClient):
         self._client = client
-        super().__init__(category=f"rds.instance", id=f"{instance['DBInstanceIdentifier']}", object=instance)
+        super().__init__(category="rds.instance", id=f"{instance['DBInstanceIdentifier']}", object=instance)
 
         self.SetProperty('AccountId', self.GetProperty('Arn').split(':')[4])
         self.SetProperty('Region', self.GetProperty('Arn').split(':')[3])
@@ -48,6 +49,6 @@ class Instance(AwsResource):
     def _get_tags(self):
         try:
             self._tags = self._client.Client().list_tags_for_resource(ResourceName=self.GetProperty('DBInstanceArn'))['TagList']
-        except:
+        except Exception:
             self._tags = []
         return self._tags

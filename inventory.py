@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 
 """
-Point d'entree du script d'inventaire
+    Point d'entree du script d'inventaire
 """
 
 # Import des modules
-from inventory.Inventory import Inventory
 from optparse import OptionParser
+from inventory.Inventory import Inventory
 
 # Lecture des arguments d'appel
 parser = OptionParser()

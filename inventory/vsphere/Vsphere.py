@@ -1,5 +1,3 @@
-# Interface AWS
-
 #
 # Imports
 #
@@ -7,10 +5,11 @@ from ..provider.Provider import Provider
 from ..Console import console
 from .datacenter.Datacenter import Datacenter
 
-#
-# Classe AWS
-#
 class Vsphere(Provider):
+    '''
+        Classe Vsphere
+    '''
+
     _datacenters :list
 
     #
@@ -39,7 +38,7 @@ class Vsphere(Provider):
     # Public methods
     #
     def LoadResources(self) -> dict:
-        console.Debug(f"Chargement : VSphere")
+        console.Debug("Chargement : VSphere")
         self._resources['all'] = {}
         for my_datacenter in self._datacenters:
             console.Debug(f" Chargement : {my_datacenter.Name()}")

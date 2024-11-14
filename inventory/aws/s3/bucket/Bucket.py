@@ -3,14 +3,14 @@
 #
 # Imports
 #
-from datetime import datetime
 from ...AwsClient import AwsClient
 from ...AwsResource import AwsResource
 
-#
-# Classe Instance
-#
 class Bucket(AwsResource):
+    '''
+        Classe Bucket
+    '''
+    
     _client : AwsClient
     _properties_mapping = {
         'Id': 'id',
@@ -42,7 +42,7 @@ class Bucket(AwsResource):
     def _get_tags(self):
         try:
             self._tags = self._client.Client().get_bucket_tagging(Bucket=self.GetProperty('id'))['TagSet']
-        except:
+        except Exception:
             self._tags = []
         return self._tags
         

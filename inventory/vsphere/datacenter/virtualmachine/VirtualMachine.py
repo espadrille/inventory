@@ -1,5 +1,3 @@
-# VSphere Machine virtuelle
-
 #
 # Imports
 #
@@ -13,6 +11,10 @@ from ...VsphereResource import VsphereResource
 # Classe Instance
 #
 class VirtualMachine(VsphereResource):
+    '''
+        Classe VirtualMachine
+    '''
+
     _datacenter = None
     _properties_mapping = {
         }
@@ -24,7 +26,7 @@ class VirtualMachine(VsphereResource):
     def __init__(self, vm: vim.VirtualMachine, datacenter=None):
         self._vm = vm
         self._datacenter = datacenter
-        super().__init__(category=f"virtual_machine", id=f"{self._vm.summary.vm._moId}", resource=self._vm.summary)
+        super().__init__(category="virtual_machine", id=f"{self._vm.summary.vm._moId}", resource=self._vm.summary)
 
         self.SetProperty('Name', self._vm.summary.config.name)
         self.SetProperty('Datacenter', datacenter.GetProperty('name'))

@@ -8,10 +8,10 @@ from ..AwsService import AwsService
 from .instance.Instance import Instance
 from ...Console import console
 
-#
-# Classe Rds
-#
 class Rds(AwsService):
+    '''
+        Classe Rds
+    '''
     _db_instance_increments :list # Liste des increments d'instances RDS utilises
 
     def __init__(self, config :dict={}):
@@ -43,7 +43,7 @@ class Rds(AwsService):
                         self._resources['all'][new_resource.Id()] = new_resource
                         nb_resources_client += 1
 
-                        if not new_resource.GetProperty('Increment') in  self._db_instance_increments:
+                        if new_resource.GetProperty('Increment') not in  self._db_instance_increments:
                             self._db_instance_increments.append(new_resource.GetProperty('Increment'))
                     self._summary['instances'] = str(nb_instances)
             console.Debug(f" ==> {nb_resources_client} resources.")
@@ -53,7 +53,7 @@ class Rds(AwsService):
     def NextInstanceIncrement(self):
         if len(self._db_instance_increments) > 0:
             for i in range(1, max(self._db_instance_increments)):
-                if not i in self._db_instance_increments:
+                if i not in self._db_instance_increments:
                     return i
         return len(self._db_instance_increments) + 1
 

@@ -1,11 +1,12 @@
-#
-# Classe AwsClient
-#
 import boto3
 from ..Console import console
 from ..Object import Object
 
 class AwsClient(Object):
+    '''
+        Classe AwsClient
+    '''
+    
     _boto3_client: boto3.client.__class__
     _boto3_session: boto3.Session
 
