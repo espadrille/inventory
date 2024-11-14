@@ -9,7 +9,7 @@ class CustomJSONEncoder(JSONEncoder):
     '''
         Classe CustomJSONEncoder
     '''
-    
+
     def default(self, o):
         # Gestion des objets datetime
         if isinstance(o, datetime.datetime):
