@@ -8,5 +8,6 @@ lint:
     - docker
     - python
   script:
+    - pip install --upgrade pip
     - pip install pylint
     - pylint --rcfile=.pylintrc $(find . -name "*.py")
