@@ -1,7 +1,12 @@
-lint-python:
-  image: eeacms/pylint:latest
+stages:
+  - lint
+
+lint:
+  stage: lint
+  image: python:3.11-slim
   tags:
     - docker
     - python
   script:
-    - pylint $(find . -name "*.py")
+    - pip install pylint
+    - pylint --rcfile=.pylintrc $(find . -name "*.py")
