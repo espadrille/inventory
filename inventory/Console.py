@@ -1,16 +1,21 @@
-#
-# classe Console
-#
+'''
+    Console.py : formate la sortie affichage sur ecran
+'''
 
 import datetime
+import msvcrt
 import os
 import re
 import sys
+import termios
 import unicodedata
 
 from .Singleton import Singleton
 
 class Console(Singleton):
+    '''
+        classe Console
+    '''
 
     _COLORS:dict
     _STYLE_COLORS:dict
@@ -25,7 +30,7 @@ class Console(Singleton):
     def __init__(self, debug_mode: str=""):
         self._colorize = True
         self._debug_mode = debug_mode
-        self._prefix_mode = True        
+        self._prefix_mode = True
 
         self._COLORS = {
             "BOLD": "\033[1m",
@@ -72,12 +77,9 @@ class Console(Singleton):
 
     def _flush_input(self):
         try:
-            import msvcrt
             while msvcrt.kbhit(): # type: ignore
                 msvcrt.getch() # type: ignore
         except ImportError:
-            import sys
-            import termios
             termios.tcflush(sys.stdin, termios.TCIOFLUSH)
 
     def _flush_output(self):
@@ -111,7 +113,7 @@ class Console(Singleton):
     #
     # Public methods
     #
-        
+
     def ClearScreen(self):
         if os.name == 'posix':
             # Pour macOS et Linux
@@ -206,7 +208,12 @@ class Console(Singleton):
         if newline:
             self._print("")
 
-    def PrintTab(self, title: str="", headers: list=[], datas: list=[], footer: str=None, text_format: str="", indent: int=0, separator: str="┃"): # type: ignore
+    def PrintTab(self, title: str="", headers: list=None, datas: list=None, footer: str=None, text_format: str="", indent: int=0, separator: str="┃"): # type: ignore
+        if headers is None:
+            headers = []
+        if datas is None:
+            datas = []
+
         column_separator = " " + separator + " "
 
         # Calcul des longueurs de champs pour ajuster la taille des colonnes du tableau
@@ -449,6 +456,5 @@ class Console(Singleton):
                 retour = choices[int(response) - 1]['value']
 
         return retour
-
 
 console = Console()
