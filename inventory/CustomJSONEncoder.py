@@ -15,11 +15,11 @@ class CustomJSONEncoder(JSONEncoder):
         if isinstance(o, datetime.time):
             return o.isoformat()
 
-        # Gestion des objets de type `set`
+        # Gestion des objets de type 'set'
         if isinstance(o, set):
             return list(o)
 
-        # Gestion des objets personnalisés avec `__dict__`
+        # Gestion des objets personnalisés avec '__dict__'
         if hasattr(o, '__dict__'):
             try:
                 # Sérialiser seulement les attributs publics
