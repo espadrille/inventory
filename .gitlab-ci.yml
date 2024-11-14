@@ -9,4 +9,4 @@ lint:
     - python
   script:
     - pip install pylint
-    - pylint --rcfile=.pylintrc $(find . -name "*.py")
+    - pylint --rcfile=.pylintrc --fail-under=8.0 $(find . -name "*.py")
