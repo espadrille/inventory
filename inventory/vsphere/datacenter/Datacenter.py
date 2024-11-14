@@ -59,21 +59,21 @@ class Datacenter(ConfigurableObject):
 
             # S'assurer que la déconnexion se fera a la fin du programme
             atexit.register(Disconnect, self._service_instance)
-        except:
+        except Exception:
             console.Print(text=f"Erreur lors de la connexion a VSphere ({self.GetProperty('hostname')})", text_format="ERROR")
 
         # Connexion au serveur vCenter
         try:
             self._content = self._service_instance.RetrieveContent()
-        except:
+        except Exception:
             console.Print(text=f"Erreur lors de la lecture du contenu de VSphere ({self.GetProperty('hostname')})", text_format="ERROR")
-        
+
     #
     # Public methods
     #
     def Id(self):
         return self.GetProperty('id')
-    
+
     def Name(self):
         return self.GetProperty('name')
 
