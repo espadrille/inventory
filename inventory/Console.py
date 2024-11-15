@@ -143,24 +143,30 @@ class Console(Singleton):
         if self._debug_mode:
             self._print(f"DEBUG_MODE={self._debug_mode}")
 
-    def Print(self, text: str="", text_format: str="", indent: int=0, newline: bool=True):
-        #
-        # Propose un affichage formate.
-        #
-        # Il est possible de cumuler plusieurs formats. Par exemple :
-        #     self.Print("Texte à afficher", text_format=["BLUE", "BOLD"], indent=4)
-        # Affiche "Texte à afficher" en bleu gras, et indente de 4 espaces
-        #
-        # Les valeurs de text_format peuvent être les suivantes :
-        #     TITRE1, TITRE2, TITRE3 : Formats de titre
-        #     OK, WARNING, ERROR : Formats standards en couleur (respectivement vert, jaune, rouge)
-        #     COMMAND : Utilise pour afficher une commande linux exécutée par un script (inverse video)
-        #     BOLD, RED, GREEN, YELLOW, MAUVE, CYAN, PURPLE : Affiche le texte dans la couleur demandée
-        #     (ou en gras pour BOLD)
-        #
-        # La valeur de 'indent' indique le nombre d'espaces à afficher avant la chaine (pour indenter)
-        #     <valeur numérique> : Nombre d'espaces à afficher avant la chaine (pour l'indenter)
-        #
+    def Print(self,
+              text: str="",
+              text_format: str="",
+              indent: int=0,
+              newline: bool=True
+              ):
+        '''
+        Propose un affichage formate.
+        
+        Il est possible de cumuler plusieurs formats. Par exemple :
+            self.Print("Texte à afficher", text_format=["BLUE", "BOLD"], indent=4)
+        Affiche "Texte à afficher" en bleu gras, et indente de 4 espaces
+        
+        Les valeurs de text_format peuvent être les suivantes :
+            TITRE1, TITRE2, TITRE3 : Formats de titre
+            OK, WARNING, ERROR : Formats standards en couleur (respectivement vert, jaune, rouge)
+            COMMAND : Utilise pour afficher une commande linux exécutée par un script (inverse video)
+            BOLD, RED, GREEN, YELLOW, MAUVE, CYAN, PURPLE : Affiche le texte dans la couleur demandée
+            (ou en gras pour BOLD)
+        
+        La valeur de 'indent' indique le nombre d'espaces à afficher avant la chaine (pour indenter)
+            <valeur numérique> : Nombre d'espaces à afficher avant la chaine (pour l'indenter)
+        
+        '''
 
         # screen_heigth, screen_width = os.popen('stty size', 'r').read().split()
 
@@ -208,7 +214,19 @@ class Console(Singleton):
         if newline:
             self._print("")
 
-    def PrintTab(self, title: str="", headers: list=None, datas: list=None, footer: str=None, text_format: str="", indent: int=0, separator: str="┃"): # type: ignore
+
+    def PrintTab(self,
+                 title: str="",
+                 headers: list=None,
+                 datas: list=None,
+                 footer: str=None,
+                 text_format: str="",
+                 indent: int=0,
+                 separator: str="┃"): # type: ignore
+        '''
+            Propose un affichage formate sous forme de tableau avec titre, entetes, colonnes, pied de tableau, ...
+        '''
+
         if headers is None:
             headers = []
         if datas is None:
