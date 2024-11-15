@@ -1,13 +1,17 @@
-#
-# classe CsvOutputFormater
-#
+'''
+    CsvOutputFormater
+'''
+
 from ..Console import console
 from .OutputFormatter import OutputFormatter
 
 class CsvOutputFormatter(OutputFormatter):
+    '''
+        Classe CsvOutputFormater
+    '''
 
     def Output(self):
-        console.Debug(f"Preparation de la sortie au format CSV...")
+        console.Debug("Preparation de la sortie au format CSV...")
         # Conversion de la liste d'objets en csv:
         printed_headers = False
         if not self._config['csv_print_header']:

@@ -1,15 +1,19 @@
-#
-# classe OutputFormater
-#
+'''
+    OutputFormater
+'''
+
 import json
 from ..Console import console
 from ..CustomJSONEncoder import CustomJSONEncoder
 from .OutputFormatter import OutputFormatter
 
 class JsonOutputFormatter(OutputFormatter):
+    '''
+        Classe OutputFormater
+    '''
 
     def Output(self):
-        console.Debug(f"Preparation de la sortie au format JSON...")
+        console.Debug("Preparation de la sortie au format JSON...")
         # Conversion de la liste d'objets en dict:
         my_resources: dict = {}
         for resource_key, resource in self._resources.items():

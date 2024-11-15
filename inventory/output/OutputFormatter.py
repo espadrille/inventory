@@ -1,12 +1,17 @@
-#
-# classe OutputFormater
-#
+'''
+    OutputFormater
+'''
+
 import boto3
 from ..Console import console
 from ..Singleton import Singleton
 from ..ConfigurableObject import ConfigurableObject
 
 class OutputFormatter(Singleton, ConfigurableObject):
+    '''
+        Classe OutputFormater
+    '''
+    
     _resources: dict
 
     #

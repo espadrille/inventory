@@ -1,14 +1,19 @@
-#
-# classe OutputFormater
-#
+'''
+    OutputFormater
+'''
+
 import yaml
 from ..Console import console
 from .OutputFormatter import OutputFormatter
 
 class YamlOutputFormatter(OutputFormatter):
+    '''
+        Classe OutputFormater
+    '''
+
 
     def Output(self):
-        console.Debug(f"Preparation de la sortie au format YAML...")
+        console.Debug("Preparation de la sortie au format YAML...")
         # Conversion de la liste d'objets en dict:
         my_resources: dict = {}
         for resource_key, resource in self._resources.items():
