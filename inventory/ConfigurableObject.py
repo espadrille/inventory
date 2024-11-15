@@ -1,7 +1,7 @@
-#
-# Classe : ConfigurableObject
-# Ajoute la propriete self._config:dict() a un objet, et quelques fonctions de gestion
-#
+'''
+    ConfigurableObject
+'''
+
 import boto3
 import json
 import mimetypes
@@ -10,12 +10,19 @@ from .Console import console
 from .Object import Object
 
 class ConfigurableObject(Object):
+    '''
+        Classe : ConfigurableObject
+        Ajoute la propriete self._config:dict() a un objet, et quelques fonctions de gestion
+    '''
     _config: dict
 
-    def __init__(self, config:dict={}, config_source :str="") -> None:
+    def __init__(self, config:dict=None, config_source :str="") -> None:
+        if config is None:
+            config = {}
+
         super().__init__()
         self._config = config
-        
+
         # Chargement de la configuration
         if config != {}:
             self.SetProperty('configuration', 'inline')
@@ -61,7 +68,7 @@ class ConfigurableObject(Object):
                 my_config_file = f"{my_path}{config_file}"
                 self.SetProperty('configuration', my_config_file)
                 break
-        
+
         try:
             config_file_mime_type = mimetypes.guess_type(my_config_file)[0]
             fp = open(my_config_file, "r")
@@ -106,4 +113,3 @@ class ConfigurableObject(Object):
         except Exception as e:
             console.Print(f"Le parametre {ssm_parameter} n'a pas pu etre lu dans SSM Parameter Store.","ERROR")
             console.Print(e.__str__())
-

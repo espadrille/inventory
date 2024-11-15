@@ -10,4 +10,5 @@ lint:
   script:
     - pip install --upgrade pip
     - pip install pylint
+    - pip install boto3
     - pylint --rcfile=.pylintrc $(find . -name "*.py")
