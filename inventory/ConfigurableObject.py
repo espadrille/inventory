@@ -2,11 +2,11 @@
     ConfigurableObject
 '''
 
-import boto3
 import json
 import mimetypes
 import os
 import sys
+import boto3
 from .Console import console
 from .Object import Object
 

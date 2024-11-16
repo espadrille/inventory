@@ -1,8 +1,11 @@
 """
     classe Singleton (une seule instanciation de cette classe est possible)
+
 """
 
-class Singleton(object):
+from .Object import Object
+
+class Singleton(Object):
     """
         classe Singleton (une seule instanciation de cette classe est possible)
     """
