@@ -8,7 +8,10 @@ lint:
     - docker
     - python
   script:
+    - python -m venv venv
+    - source venv/bin/activate
     - pip install --upgrade pip
     - pip install pylint
-    - pip install -r requirements.txt
+    - pip install boto3
+    - pip install pyvmomi
     - pylint --rcfile=.pylintrc $(find . -name "*.py")
