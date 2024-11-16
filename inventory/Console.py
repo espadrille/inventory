@@ -469,6 +469,9 @@ class Console(Singleton):
 
 
     def Read(self, question: str, default: str="", text_format: str="CYAN", indent: int=0, newline: bool=False):
+        '''
+            Pose une question et recupere la reponse
+        '''
         if default != "":
             question = question + " [" + default + "]"
         question = question + " :"
@@ -479,7 +482,13 @@ class Console(Singleton):
         return response
 
 
-    def ReadChoice(self, title: str="", choices: list=[], question: str="", text_format: str="CYAN", indent: int=0):
+    def ReadChoice(self, title: str="", choices: list=None, question: str="", text_format: str="CYAN", indent: int=0):
+        '''
+            Pose une question et recupere une reponse parmi une liste de choix
+        '''
+        if choices is None:
+            choices = []
+
         options = ""
         if len(choices) == 1:
             # S'il n'y a qu'un choix possible, on le selectionne automatiquement
