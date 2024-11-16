@@ -28,6 +28,10 @@ class Console(Singleton):
     # Private methods
     #
     def __init__(self, debug_mode: str=""):
+        '''
+            Initialiseur de la classe
+        '''
+
         self._colorize = True
         self._debug_mode = debug_mode
         self._prefix_mode = True
@@ -76,6 +80,11 @@ class Console(Singleton):
     #
 
     def _flush_input(self):
+        '''
+            Vide le cache du clavier avant de continuer
+            Par exemple, lorsque des caracteres ont ete tapes pendant une execution
+        '''
+
         try:
             while msvcrt.kbhit(): # type: ignore
                 msvcrt.getch() # type: ignore
@@ -83,12 +92,20 @@ class Console(Singleton):
             termios.tcflush(sys.stdin, termios.TCIOFLUSH)
 
     def _flush_output(self):
+        '''
+            Vide le cache en sortie avant de continuer
+        '''
+
         try:
             sys.stdout.flush()
         except Exception as e:
             console.Print(str(e))
 
     def _remove_accents(self, text: str=''):
+        '''
+            Supprime les caraceteres accentues d'une chaine de caracteres
+        '''
+
         try:
             text = text.encode('utf-8') # type: ignore
         except (TypeError, NameError):  # unicode is a default on python 3
@@ -99,11 +116,20 @@ class Console(Singleton):
         return str(text)
 
     def _remove_colors(self, text: str=''):
+        '''
+            Supprime les caracteres de mise en forme d'une chaine de caracteres
+            (coloration, gras, italique, ... )
+        '''
+
         for my_color_key, my_color in self._COLORS.items():
             text = text.replace(my_color, '')
         return text
 
     def _print(self, *args, **kwargs):
+        '''
+            Affiche un texte sur l'ecran
+        '''
+
         text = args[0]
         if self._colorize:
             print(*args, **kwargs)
@@ -115,6 +141,10 @@ class Console(Singleton):
     #
 
     def ClearScreen(self):
+        '''
+            Efface l'ecran
+        '''
+
         if os.name == 'posix':
             # Pour macOS et Linux
             _ = os.system('clear')
@@ -123,6 +153,10 @@ class Console(Singleton):
             _ = os.system('cls')
 
     def Debug(self, text: str="", newline: bool=True):
+        '''
+            Affiche un texte si le mode DEBUG est active
+        '''
+
         if self._debug_mode == "DEBUG":
             timestamp = datetime.datetime.now()
             if self._prefix_mode:
@@ -136,9 +170,17 @@ class Console(Singleton):
                 self._prefix_mode = False
 
     def SetColorize(self, colorize: bool=True):
+        '''
+            Active le mode couleur
+        '''
+
         self._colorize = colorize
 
     def SetDebugMode(self, debug_mode: str="DEBUG"):
+        '''
+            Active le mode DEBUG
+        '''
+
         self._debug_mode = debug_mode
         if self._debug_mode:
             self._print(f"DEBUG_MODE={self._debug_mode}")
