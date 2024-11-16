@@ -103,8 +103,7 @@ class ConfigurableObject(Object):
     def _get_config_value(self, config_key:str) -> str:
         if config_key.startswith('ssm:') :
             return self._get_config_value_from_ssm(config_key[4:])
-        else:
-            return self._config[config_key]
+        return self._config[config_key]
 
     def _get_config_value_from_ssm(self, ssm_parameter:str) -> str:
         try:
@@ -113,3 +112,4 @@ class ConfigurableObject(Object):
         except Exception as e:
             console.Print(f"Le parametre {ssm_parameter} n'a pas pu etre lu dans SSM Parameter Store.","ERROR")
             console.Print(str(e))
+            return ""
