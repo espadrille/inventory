@@ -6,6 +6,7 @@ import boto3
 import json
 import mimetypes
 import os
+import sys
 from .Console import console
 from .Object import Object
 
@@ -71,23 +72,22 @@ class ConfigurableObject(Object):
 
         try:
             config_file_mime_type = mimetypes.guess_type(my_config_file)[0]
-            fp = open(my_config_file, "r")
-            if config_file_mime_type == "application/json":
-                try:
-                    str_config = fp.read()
-                    self._load_config(json.loads(str_config))
-                except Exception as e:
-                    console.Print(f"Format json incorrect dans le fichier [{config_file}", "ERROR")
-                    console.Print(e.__str__())
-                    exit(1)
-            else:
-                console.Print(f"Format non pris en charge : {str(config_file_mime_type)}", "ERROR")
-                exit(1)
-            fp.close()
+            with open(my_config_file, "r") as fp:
+                if config_file_mime_type == "application/json":
+                    try:
+                        str_config = fp.read()
+                        self._load_config(json.loads(str_config))
+                    except Exception as e:
+                        console.Print(f"Format json incorrect dans le fichier [{config_file}]", "ERROR")
+                        console.Print(str(e))
+                        sys.exit(1)
+                else:
+                    console.Print(f"Format non pris en charge : {str(config_file_mime_type)}", "ERROR")
+                    sys.exit(1)
         except Exception as e:
             console.Print(f"Impossible de charger le fichier de configuration [{config_file}]","ERROR")
-            console.Print(e.__str__())
-            exit(1)
+            console.Print(str(e))
+            sys.exit(1)
 
 
     def _load_config_from_ssm(self, ssm_parameter:str) -> None:
@@ -97,7 +97,7 @@ class ConfigurableObject(Object):
             self._load_config(json.loads(str_config))
         except Exception as e:
             console.Print(f"Le parametre {ssm_parameter} n'a pas pu etre lu dans SSM Parameter Store.","ERROR")
-            console.Print(e.__str__())
+            console.Print(str(e))
 
 
     def _get_config_value(self, config_key:str) -> str:
@@ -112,4 +112,4 @@ class ConfigurableObject(Object):
             return ssm.get_parameter(Name=ssm_parameter, WithDecryption=True)['Parameter']['Value']
         except Exception as e:
             console.Print(f"Le parametre {ssm_parameter} n'a pas pu etre lu dans SSM Parameter Store.","ERROR")
-            console.Print(e.__str__())
+            console.Print(str(e))
