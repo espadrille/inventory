@@ -26,9 +26,9 @@
                 },
                 "regions": ["eu-west-1", "eu-west-3"],
                 "services": {
-                    "ec2": {
+                    "rds": {
                         "resource_types": [
-                            "instance"
+                            "db_instance"
                         ]
                     }
                 }
@@ -38,12 +38,12 @@
         "output": {
             "mode": "file",
             "format": "csv",
-            "output_file": "s3:intradom-cartography-tools/aws/ec2/instances.csv",
+            "output_file": "./inventory_rds.csv",
             "selected_fields": {
                 "Hypervisor": "HYPERVISEUR",
                 "VERSION vCENTER": "VERSION vCENTER",
                 "Host": "Host",
-                "Name": "VM",
+                "Name": "Name",
                 "State": "ETAT",
                 "LaunchTime": "DATE_DEMARRAGE_OS",
                 "CreationTime": "DATE_CREATION_VM",

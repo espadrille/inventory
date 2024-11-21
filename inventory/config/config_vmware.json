@@ -4,10 +4,10 @@
         "providers": {
             "vsphere" : {
                 "datacenter_credentials": {
-                    "theplx50": {
-                        "hostname": "ssm:theplx50.vsphere.hostname",
-                        "user": "ssm:theplx50.vsphere.user",
-                        "password": "ssm:theplx50.vsphere.password"
+                    "nereide106": {
+                        "hostname": "ssm:nereide106.vsphere.hostname",
+                        "user": "ssm:nereide106.vsphere.user",
+                        "password": "ssm:nereide106.vsphere.password"
                     }
                 },
                 "folders": {
@@ -40,7 +40,7 @@
         "output": {
             "mode": "file",
             "format": "csv",
-            "output_file": "./inventory_result.csv",
+            "output_file": "s3:intradom-cartography-tools/vmware/nereide106/virtualmachines.csv",
             "selected_fields": {
                 "Hypervisor": "VCenter",
                 "HostVersion": "VERSION vCENTER",
