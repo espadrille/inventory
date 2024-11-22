@@ -4,7 +4,6 @@
         "providers": {
             "aws" : {
                 "assume_roles": {
-                    "network": "arn:aws:iam::229327873503:role/role-inventory-readOnly",
                     "tools": "arn:aws:iam::714117993668:role/role-inventory-readOnly"
                 },
                 "regions": ["eu-west-3"],

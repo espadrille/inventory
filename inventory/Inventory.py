@@ -9,12 +9,6 @@ import datetime
 from .Console import console
 from .provider.Provider import Provider
 from .ConfigurableObject import ConfigurableObject
-from .aws.Aws import Aws
-from .vsphere.Vsphere import Vsphere
-from .output.OutputFormatter import OutputFormatter
-from .output.JsonOutputFormatter import JsonOutputFormatter
-from .output.CsvOutputFormatter import CsvOutputFormatter
-from .output.YamlOutputFormatter import YamlOutputFormatter
 
 class Inventory(ConfigurableObject):
     '''
@@ -92,8 +86,10 @@ class Inventory(ConfigurableObject):
         '''
 
         if provider == 'aws':
+            from .aws.Aws import Aws
             self._providers[provider] = Aws(id='aws', name='aws', config=self._config['inventory']['providers']['aws'])
         elif provider == 'vsphere':
+            from .vsphere.Vsphere import Vsphere
             self._providers[provider] = Vsphere(id='vsphere', name='vsphere', config=self._config['inventory']['providers']['vsphere'])
         else:
             self._providers[provider] = Provider(id="unknown")
@@ -155,13 +151,17 @@ class Inventory(ConfigurableObject):
 
         # Choisir la bonne classe de formatteur
         if self._config['inventory']['output']['format'] == "json":
+            from .output.JsonOutputFormatter import JsonOutputFormatter
             output_formatter = JsonOutputFormatter()
         elif self._config['inventory']['output']['format'] == "csv":
+            from .output.CsvOutputFormatter import CsvOutputFormatter
             output_formatter = CsvOutputFormatter()
         elif self._config['inventory']['output']['format'] == "yaml":
+            from .output.YamlOutputFormatter import YamlOutputFormatter
             output_formatter = YamlOutputFormatter()
         else:
             console.Print(text=f"Format de sortie non reconnu : {self._config['inventory']['output']['format']}", text_format="ERROR")
+            from .output.OutputFormatter import OutputFormatter
             output_formatter = OutputFormatter()
 
         output_formatter.Init(config=self._config['inventory']['output'], resources=self._resources['all'])

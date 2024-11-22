@@ -6,6 +6,7 @@
 # Imports
 #
 import re
+import json
 from ...AwsClient import AwsClient
 from ...AwsResource import AwsResource
 
@@ -68,6 +69,16 @@ class Instance(AwsResource):
             if my_device['DeviceName'] == self.GetProperty('RootDeviceName'):
                 self.SetProperty('CreationTime', my_device['Ebs']['AttachTime'])
 
+        # Recherche des informations sur l'OS
+        try:
+            os_type = json.loads(self._get_tag_value("os_type"))
+            if os_type:
+                self.SetProperty('OsName', os_type['name'])
+                self.SetProperty('OsDetailed', os_type['detailed'])
+        except json.JSONDecodeError:
+            self.SetProperty('OsName', "")
+            self.SetProperty('OsDetailed', "")
+            
 
     #
     # Protected methods

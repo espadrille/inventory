@@ -3,9 +3,7 @@
 
 """
 
-from .Object import Object
-
-class Singleton(Object):
+class Singleton(object):
     """
         classe Singleton (une seule instanciation de cette classe est possible)
     """

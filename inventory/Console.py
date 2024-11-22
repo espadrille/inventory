@@ -3,11 +3,9 @@
 '''
 
 import datetime
-import msvcrt
 import os
 import re
 import sys
-import termios
 import unicodedata
 
 from .Singleton import Singleton
@@ -86,9 +84,12 @@ class Console(Singleton):
         '''
 
         try:
+            import msvcrt
             while msvcrt.kbhit(): # type: ignore
                 msvcrt.getch() # type: ignore
         except ImportError:
+            import sys
+            import termios
             termios.tcflush(sys.stdin, termios.TCIOFLUSH)
 
     def _flush_output(self):
