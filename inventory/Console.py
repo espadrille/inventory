@@ -88,7 +88,6 @@ class Console(Singleton):
             while msvcrt.kbhit(): # type: ignore
                 msvcrt.getch() # type: ignore
         except ImportError:
-            import sys
             import termios
             termios.tcflush(sys.stdin, termios.TCIOFLUSH)
 
@@ -122,7 +121,7 @@ class Console(Singleton):
             (coloration, gras, italique, ... )
         '''
 
-        for my_color_key, my_color in self._COLORS.items():
+        for my_color in self._COLORS.values():
             text = text.replace(my_color, '')
         return text
 
@@ -228,32 +227,33 @@ class Console(Singleton):
             if text_format in self._COLORS:
                 my_color = self._COLORS[text_format]
 
-        if text_format == "TITRE1":
-            self._print("")
-            self._print(' ' * my_indent + my_color + "╔═" + "═" * len(my_text) + "═╗" + self._COLORS["RESET"])
-            self._print(' ' * my_indent + my_color + "║ " + my_text + " ║▒" + self._COLORS["RESET"])
-            self._print(' ' * my_indent + my_color + "╚═" + "═" * len(my_text) + "═╝▒" + self._COLORS["RESET"])
-            self._print(' ' * my_indent + my_color + " ▒" + "▒" * len(my_text) + "▒▒▒" + self._COLORS["RESET"])
-            self._print("", end="")
-        elif text_format == "TITRE2":
-            self._print("")
-            self._print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"])
-            self._print(' ' * my_indent + my_color + "―" * len(my_text) + self._COLORS["RESET"])
-            self._print("", end="")
-        elif text_format == "TITRE3":
-            self._print("")
-            self._print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"])
-            self._print("", end="")
-        elif text_format == "COMMAND":
-            self._print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"], end="")
-        elif text_format == "OK":
-            self._print(' ' * my_indent + my_color + "[OK] " + my_text + self._COLORS["RESET"], end="")
-        elif text_format == "WARNING":
-            self._print(' ' * my_indent + my_color + "[WARNING] " + my_text + self._COLORS["RESET"], end="")
-        elif text_format == "ERROR":
-            self._print(' ' * my_indent + my_color + "[ERROR] " + my_text + self._COLORS["RESET"], end="")
-        else:
-            self._print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"], end="")
+        match text_format:
+            case "TITRE1":
+                self._print("")
+                self._print(' ' * my_indent + my_color + "╔═" + "═" * len(my_text) + "═╗" + self._COLORS["RESET"])
+                self._print(' ' * my_indent + my_color + "║ " + my_text + " ║▒" + self._COLORS["RESET"])
+                self._print(' ' * my_indent + my_color + "╚═" + "═" * len(my_text) + "═╝▒" + self._COLORS["RESET"])
+                self._print(' ' * my_indent + my_color + " ▒" + "▒" * len(my_text) + "▒▒▒" + self._COLORS["RESET"])
+                self._print("", end="")
+            case "TITRE2":
+                self._print("")
+                self._print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"])
+                self._print(' ' * my_indent + my_color + "―" * len(my_text) + self._COLORS["RESET"])
+                self._print("", end="")
+            case "TITRE3":
+                self._print("")
+                self._print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"])
+                self._print("", end="")
+            case "COMMAND":
+                self._print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"], end="")
+            case "OK":
+                self._print(' ' * my_indent + my_color + "[OK] " + my_text + self._COLORS["RESET"], end="")
+            case "WARNING":
+                self._print(' ' * my_indent + my_color + "[WARNING] " + my_text + self._COLORS["RESET"], end="")
+            case "ERROR":
+                self._print(' ' * my_indent + my_color + "[ERROR] " + my_text + self._COLORS["RESET"], end="")
+            case _:
+                self._print(' ' * my_indent + my_color + my_text + self._COLORS["RESET"], end="")
         if newline:
             self._print("")
 
