@@ -294,8 +294,8 @@ class Console(Singleton):
             if type(my_data_line) is list:
                 for my_data in my_data_line:
                     my_data_printable = my_data.split("|")[0].strip()
-                    for my_color in self._COLORS:
-                        my_data_printable = my_data_printable.replace(self._COLORS[my_color], "")
+                    for my_color in self._COLORS.values():
+                        my_data_printable = my_data_printable.replace(my_color, "")
 
                     if (i_col + 1) > len(field_lengths):
                         field_lengths.append(len(my_data.split("|")[0]))
@@ -309,8 +309,8 @@ class Console(Singleton):
                     i_col = i_col + 1
             else:
                 my_data_printable = my_data_line.split("|")[0].strip()
-                for my_color in self._COLORS:
-                    my_data_printable = my_data_printable.replace(self._COLORS[my_color], "")
+                for my_color in self._COLORS.values():
+                    my_data_printable = my_data_printable.replace(my_color, "")
 
                 if (i_col + 1) > len(field_lengths):
                     field_lengths.append(len(my_data_line.split("|")[0]))
