@@ -14,4 +14,5 @@ lint:
     - pip install pylint
     - pip install boto3
     - pip install pyvmomi
+    - pip install yaml
     - pylint --rcfile=.pylintrc $(find . -type f -name "*.py" -not -path "./venv/*")

@@ -18,7 +18,7 @@ class CsvOutputFormatter(OutputFormatter):
             printed_headers = True
 
         output = ""
-        for resource_key, resource in self._resources.items():
+        for resource in self._resources.values():
             if not printed_headers:
                 header_line = ""
                 for my_field_key, my_field_value in resource.Data().items():
@@ -33,5 +33,5 @@ class CsvOutputFormatter(OutputFormatter):
                     resource_line += self._config['csv_separator']
                 resource_line += f"\"{my_field_value}\""
             output += f"{resource_line}\n"
-            
+
         return output

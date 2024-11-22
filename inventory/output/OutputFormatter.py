@@ -99,7 +99,7 @@ class OutputFormatter(Singleton, ConfigurableObject):
         '''
         if self._config['mode'] == 'console':
             console.Print(self.Output())
-            console.Debug(f"Sortie affichee a la console")
+            console.Debug('Sortie affichee a la console')
         elif self._config['mode'] == 'file':
             if self._config['output_file'].startswith('s3:'):
                 s3 = boto3.Session().client(service_name='s3')
@@ -112,8 +112,12 @@ class OutputFormatter(Singleton, ConfigurableObject):
                         )
                 except Exception as e:
                     console.Print(f"Le fichier {self._config['output_file']} n'a pas pu etre ecrit dans S3.","ERROR")
-                    console.Print(e.__str__())
+                    console.Print(str(e))
             else:
-                output_file = open(self._config['output_file'], 'w')
-                output_file.write(self.Output())
-                console.Debug(f"Sortie ecrite dans le fichier {self._config['output_file']}")
+                try:
+                    with open(self._config['output_file'], 'w', encoding='utf-8') as output_file:
+                        output_file.write(self.Output())
+                    console.Debug(f"Sortie ecrite dans le fichier {self._config['output_file']}")
+                except IOError as e:
+                    console.Print(f"Le fichier {self._config['output_file']} n'a pas pu etre ecrit.","ERROR")
+                    console.Print(str(e))
