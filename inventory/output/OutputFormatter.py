@@ -11,7 +11,7 @@ class OutputFormatter(Singleton, ConfigurableObject):
     '''
         Classe OutputFormater
     '''
-    
+
     _resources: dict
 
     #
@@ -73,12 +73,18 @@ class OutputFormatter(Singleton, ConfigurableObject):
     # Public methods
     #
     def Init(self, config:dict, resources:dict):
+        '''
+            Reinitialisation de l'objet
+        '''
         self._load_config(config)
         self._load_resources(resources)
 
     def Output(self):
+        '''
+            Retourne l'image formatee de l'inventaire
+        '''
         output = ""
-        for resource_key, resource in self._resources.items():
+        for resource in self._resources.values():
             resource_line = ""
             for my_field_key, my_field_value in resource.Data().items():
                 if resource_line != "":
@@ -88,6 +94,9 @@ class OutputFormatter(Singleton, ConfigurableObject):
         return output
 
     def Write(self):
+        '''
+            Ecrit l'inventaire sur la sortie configuree
+        '''
         if self._config['mode'] == 'console':
             console.Print(self.Output())
             console.Debug(f"Sortie affichee a la console")
@@ -96,8 +105,8 @@ class OutputFormatter(Singleton, ConfigurableObject):
                 s3 = boto3.Session().client(service_name='s3')
                 try:
                     s3.put_object(
-                        Bucket=self._config['s3_bucketname'], 
-                        Key=self._config['s3_key'], 
+                        Bucket=self._config['s3_bucketname'],
+                        Key=self._config['s3_key'],
                         ContentType=self._config['output_mimetype'],
                         Body=self.Output()
                         )
@@ -108,4 +117,3 @@ class OutputFormatter(Singleton, ConfigurableObject):
                 output_file = open(self._config['output_file'], 'w')
                 output_file.write(self.Output())
                 console.Debug(f"Sortie ecrite dans le fichier {self._config['output_file']}")
-            
