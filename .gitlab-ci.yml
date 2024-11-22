@@ -10,9 +10,5 @@ lint:
   script:
     - python -m venv venv
     - source venv/bin/activate
-    - pip install --upgrade pip
-    - pip install pylint
-    - pip install boto3
-    - pip install pyvmomi
-    - pip install pyyaml
+    - pip install --no-cache-dir --upgrade pip pylint boto3 pyvmomi pyyaml
     - pylint --rcfile=.pylintrc $(find . -type f -name "*.py" -not -path "./venv/*")
