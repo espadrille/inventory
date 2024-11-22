@@ -81,7 +81,7 @@ class OutputFormatter(Singleton, ConfigurableObject):
 
     def Output(self):
         '''
-            Retourne l'image formatee de l'inventaire
+            Retourne le contenu de l'inventaire
         '''
         output = ""
         for resource in self._resources.values():
