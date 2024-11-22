@@ -291,7 +291,7 @@ class Console(Singleton):
         for my_data_line in datas:
             # Pour chaque ligne, ajuster les largeurs de colonnes si besoin
             i_col = 0
-            if type(my_data_line) is list:
+            if isinstance(my_data_line, list):
                 for my_data in my_data_line:
                     my_data_printable = my_data.split("|")[0].strip()
                     for my_color in self._COLORS.values():
@@ -403,7 +403,7 @@ class Console(Singleton):
             for my_data_line in datas:
                 data_line = ""
                 i_col = 0
-                if type(my_data_line) is list:
+                if isinstance(my_data_line, list):
                     # Tableau a 2 dimensions
                     for my_data in my_data_line:
                         length = field_lengths[i_col]
