@@ -72,7 +72,7 @@ class ConfigurableObject(Object):
 
         try:
             config_file_mime_type = mimetypes.guess_type(my_config_file)[0]
-            with open(my_config_file, "r") as fp:
+            with open(my_config_file, "r", encoding='utf-8') as fp:
                 if config_file_mime_type == "application/json":
                     try:
                         str_config = fp.read()

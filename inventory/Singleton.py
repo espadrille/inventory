@@ -3,7 +3,7 @@
 
 """
 
-class Singleton(object):
+class Singleton():
     """
         classe Singleton (une seule instanciation de cette classe est possible)
     """
