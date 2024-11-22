@@ -78,7 +78,7 @@ class Instance(AwsResource):
         except json.JSONDecodeError:
             self.SetProperty('OsName', self.GetProperty('PlatformDetails'))
             self.SetProperty('OsDetailed', self.GetProperty('PlatformDetails'))
-            
+
 
     #
     # Protected methods
