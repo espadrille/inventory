@@ -51,9 +51,9 @@ class Resource(Object):
         while retries < max_retries:
             try:
                 return func(*args)
-            except Exception as e:
+            except Exception:
                 retries += 1
-                console.Debug(f"Erreur lors de l'exécution de {func.__name__}: Réessai {retries}/{max_retries} dans {delay} secondes.")
+                console.Debug(f"Erreur lors de l'exécution de {func.__name__}: Re-essai {retries}/{max_retries} dans {delay} secondes.")
                 time.sleep(delay)
                 delay *= 2  # Backoff exponentiel
         raise Exception(f"Échec de {func.__name__} après {max_retries} tentatives.")
@@ -76,21 +76,21 @@ class Resource(Object):
         '''
 
         return self.GetProperty('Description')
-    
+
     def Id(self) -> str:
         '''
             Retourne l'identifiant de la ressource
         '''
 
         return self.GetProperty('id')
-    
+
     def InventoryId(self):
         '''
             Retourne l'identifiant de l'inventaire proprietaire de la ressource
         '''
 
         return f"{self.GetProperty('Category')}.{self.GetProperty('id')}"
-    
+
     def Name(self):
         '''
             Retourne le nom de la ressource
@@ -133,4 +133,3 @@ class Resource(Object):
         for key, value in self.GetProperties().items():
             datas.append([key, str(value)])
         return datas
-
