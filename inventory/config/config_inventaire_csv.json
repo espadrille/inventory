@@ -26,9 +26,9 @@
                 },
                 "regions": ["eu-west-1", "eu-west-3"],
                 "services": {
-                    "rds": {
+                    "ec2": {
                         "resource_types": [
-                            "db_instance"
+                            "instance"
                         ]
                     }
                 }
@@ -38,23 +38,23 @@
         "output": {
             "mode": "file",
             "format": "csv",
-            "output_file": "./inventory_rds.csv",
+            "output_file": "s3:intradom-cartography-tools/aws/ec2/instances.csv",
             "selected_fields": {
                 "Hypervisor": "HYPERVISEUR",
                 "VERSION vCENTER": "VERSION vCENTER",
                 "Host": "Host",
-                "Name": "Name",
+                "Name": "VM",
                 "State": "ETAT",
                 "LaunchTime": "DATE_DEMARRAGE_OS",
                 "CreationTime": "DATE_CREATION_VM",
-                "PlatformDetails": "OS",
+                "OsDetailed": "OS",
                 "PrivateDnsName": "DNS",
                 "PrivateIpAddress": "IP",
                 "Description": "ANNOTATION",
                 "BALISES_VEEAM": "BALISES_VEEAM", 
                 "BALISES_NETBACKUP": "BALISES_NETBACKUP",
                 "Profile": "BALISES_Environnement",
-                "Platform": "BALISES_GuestOS",
+                "OsName": "BALISES_GuestOS",
                 "SubnetName_1": "Network #1" ,
                 "SubnetName_2": "Network #2" ,
                 "SubnetName_3": "Network #3" ,

@@ -76,8 +76,8 @@ class Instance(AwsResource):
                 self.SetProperty('OsName', os_type['name'])
                 self.SetProperty('OsDetailed', os_type['detailed'])
         except json.JSONDecodeError:
-            self.SetProperty('OsName', "")
-            self.SetProperty('OsDetailed', "")
+            self.SetProperty('OsName', self.GetProperty('PlatformDetails'))
+            self.SetProperty('OsDetailed', self.GetProperty('PlatformDetails'))
             
 
     #
