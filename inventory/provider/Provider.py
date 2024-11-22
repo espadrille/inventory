@@ -41,7 +41,7 @@ class Provider(ConfigurableObject):
         '''
             Liste des ressources associees au provider
         '''
-        
+
         datas = []
         for resource in dict(sorted(self._resources['all'].items())).values():
             datas.append([resource.GetProperty('Profile'), resource.GetProperty('Region'), resource.Name(), resource.Description()])
@@ -51,21 +51,21 @@ class Provider(ConfigurableObject):
         '''
             Chargement des ressources associees au rpovider
         '''
-        
+
         return self._resources
 
     def Name(self):
         '''
             Nom du porvider
         '''
-        
+
         return self.GetProperty('name')
 
     def Print(self):
         '''
             Affichage des informations du provider
         '''
-        
+
         datas = []
         for key, value in self._summary.items():
             datas.append([key, str(value)])
@@ -75,6 +75,6 @@ class Provider(ConfigurableObject):
         '''
             Affichage de la liste des ressources associees au provider
         '''
-        
+
         for resource in dict(sorted(self._resources['all'].items())).values():
             resource.Print()
