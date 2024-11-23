@@ -1,6 +1,5 @@
 """
     classe Singleton (une seule instanciation de cette classe est possible)
-
 """
 
 class Singleton():
