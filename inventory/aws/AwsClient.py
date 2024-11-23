@@ -1,3 +1,7 @@
+'''
+    Module de classe AwsClient
+'''
+
 import boto3
 from ..Console import console
 from ..Object import Object
@@ -6,7 +10,7 @@ class AwsClient(Object):
     '''
         Classe AwsClient
     '''
-    
+
     _boto3_client: boto3.client.__class__
     _boto3_session: boto3.Session
 
@@ -42,19 +46,36 @@ class AwsClient(Object):
     # Public methods
     #
     def Client(self):
+        '''
+            Retourne le client
+        '''
         return self._boto3_client
-    
+
     def Name(self):
+        '''
+            Nom du client
+        '''
+        retour = ""
         if self.GetProperty('region') == "":
-            return f"{self.GetProperty('service')}.{self.GetProperty('profile')}"
+            retour = f"{self.GetProperty('service')}.{self.GetProperty('profile')}"
         else:
-            return f"{self.GetProperty('service')}.{self.GetProperty('profile')}.{self.GetProperty('region')}"
-    
+            retour = f"{self.GetProperty('service')}.{self.GetProperty('profile')}.{self.GetProperty('region')}"
+        return retour
+
     def Profile(self):
+        '''
+            Le 'profile' de configuration du client
+        '''
         return self.GetProperty('profile')
 
     def Region(self):
+        '''
+            La region du client
+        '''
         return self.GetProperty('region')
 
     def Service(self):
+        '''
+            Le service du cient
+        '''
         return self.GetProperty('service')
