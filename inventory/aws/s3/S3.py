@@ -1,4 +1,6 @@
-# Service S3
+'''
+    Module de classe S3
+'''
 
 #
 # Imports
@@ -7,20 +9,31 @@ from ..AwsService import AwsService
 from .bucket.Bucket import Bucket
 from ...Console import console
 
+
 class S3(AwsService):
     '''
         Classe S3
     '''
-    
+
     _resource_types : list # Liste des types de ressources a lister pour le service
 
-    def __init__(self, config :dict={}):
+    def __init__(self, config :dict=None):
+        '''
+            Constructeur de la classe
+        '''
+        if config is None:
+            config = {}
+
         config["id"] = "s3"
         config["name"] = "S3"
         self._is_regional = False
         super().__init__(config=config)
-        
+
+
     def LoadResources(self) -> dict:
+        '''
+            Chargement des ressources
+        '''
 
         for my_client in self._clients:
             nb_resources_client = 0

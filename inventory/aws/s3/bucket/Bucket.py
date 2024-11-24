@@ -1,4 +1,6 @@
-# Bucket S3
+'''
+    Module de classe Bucket
+'''
 
 #
 # Imports
@@ -10,7 +12,7 @@ class Bucket(AwsResource):
     '''
         Classe Bucket
     '''
-    
+
     _client : AwsClient
     _properties_mapping = {
         'Id': 'id',
@@ -21,6 +23,10 @@ class Bucket(AwsResource):
     # Private methods
     #
     def __init__(self, bucket: dict, client: AwsClient):
+        '''
+            Constructeur de la classe
+        '''
+
         self._client = client
         super().__init__(category="s3.bucket", id=f"{bucket['Name']}", object=bucket)
 
@@ -40,9 +46,12 @@ class Bucket(AwsResource):
     # Protected methods
     #
     def _get_tags(self):
+        '''
+            Retourne les tags
+        '''
+
         try:
             self._tags = self._client.Client().get_bucket_tagging(Bucket=self.GetProperty('id'))['TagSet']
         except Exception:
-            self._tags = []
+            self._init_tags()
         return self._tags
-        

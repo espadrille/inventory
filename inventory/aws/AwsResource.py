@@ -1,3 +1,7 @@
+'''
+    Module de classe AwsResource
+'''
+
 from ..resource.Resource import Resource
 
 class AwsResource(Resource):
@@ -12,6 +16,10 @@ class AwsResource(Resource):
     # Private methods
     #
     def __init__(self, category: str, id: str, object: dict):
+        '''
+            Constructeur de la classe
+        '''
+
         super().__init__(category=f"aws.{category}", id=f"{id}")
 
         for my_property_key, my_property_value in object.items():
@@ -31,10 +39,22 @@ class AwsResource(Resource):
     #
     # Protected methods
     #
+    def _init_tags(self):
+        '''
+            Initilase la liste de tags
+        '''
+        self._tags = []
+
     def _get_tags(self) -> list:
+        '''
+            Retourne les tags
+        '''
         return self._tags
 
     def _get_tag_value(self, tag_name: str) -> str:
+        '''
+            Retourne la valeur d'un tag donne
+        '''
         result = ""
         for my_tag in self._tags:
             if my_tag['Key'] == tag_name:

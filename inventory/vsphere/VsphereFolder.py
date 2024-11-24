@@ -1,6 +1,7 @@
 '''
     Module de classe VsphereFolder
 '''
+from pyVim.connect import SmartConnect
 from ..Console import console
 from ..Object import Object
 
