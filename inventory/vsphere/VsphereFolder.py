@@ -21,7 +21,7 @@ class VsphereFolder(Object):
         '''
         super().__init__()
 
-        self.SetProperty('Name', )
+        self.SetProperty('Name', "")
 
         console.Debug(f"Creation client : {self.Name()}")
 
@@ -33,13 +33,13 @@ class VsphereFolder(Object):
             Retourne le client
         '''
         return self._client
-    
+
     def Name(self):
         '''
             Retourne le nom du folder
         '''
         return f"{self.GetProperty('service')}.{self.GetProperty('profile')}.{self.GetProperty('region')}"
-    
+
     def Profile(self):
         '''
             Retourne le profile

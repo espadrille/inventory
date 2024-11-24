@@ -1,3 +1,7 @@
+'''
+    Module de classe Aws
+'''
+
 #
 # Imports
 #
@@ -11,13 +15,19 @@ class Aws(Provider):
     '''
         Classe AWS
     '''
-    
+
     _services :list
 
     #
     # Private methods
     #
-    def __init__(self, id:str, name: str="", config :dict={}):
+    def __init__(self, id:str, name: str="", config :dict=None):
+        '''
+            Constructeur de la classe
+        '''
+        if config is None:
+            config = {}
+
         super().__init__(id=id, name=name, config=config)
 
         self._summary['services'] = []
@@ -37,7 +47,7 @@ class Aws(Provider):
 
                 if 'assume_roles' in self._config:
                     service_config['assume_roles'] = self._config['assume_roles']
-                    for my_role_name, my_role_arn in self._config['assume_roles'].items():
+                    for my_role_name in self._config['assume_roles'].keys():
                         self._summary['profiles'].append(my_role_name)
 
                 if 'regions' in self._config:
@@ -59,6 +69,9 @@ class Aws(Provider):
     # Public methods
     #
     def LoadResources(self) -> dict:
+        '''
+            Chargement des ressources
+        '''
         console.Debug("Chargement : AWS")
         self._resources['all'] = {}
         for my_service in self._services:
@@ -74,6 +87,9 @@ class Aws(Provider):
         return self._resources
 
     def Print(self):
+        '''
+            Affichage de l'objet
+        '''
         for key, value in self._resources.items():
             if 'all' in value:
                 self._summary[f"resources {key}"] = str(len(value['all']))
