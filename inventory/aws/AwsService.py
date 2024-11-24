@@ -1,3 +1,7 @@
+'''
+    Module de classe AwsService
+'''
+
 #
 # Imports
 #
@@ -9,7 +13,7 @@ class AwsService(ConfigurableObject):
     '''
         Classe AwsService
     '''
-    
+
     _id :str
     _name :str
     _is_regional :bool=True
@@ -20,7 +24,13 @@ class AwsService(ConfigurableObject):
     #
     # Private methods
     #
-    def __init__(self, config :dict={}):
+    def __init__(self, config :dict=None):
+        '''
+            Constructeur de la classe
+        '''
+        if config is None:
+            config = {}
+
         super().__init__(config=config)
         self._id = config["id"]
         self._name = config["name"]
@@ -39,25 +49,40 @@ class AwsService(ConfigurableObject):
         for my_resource_type in self._config["resource_types"]:
             self._resources[my_resource_type] = {}
         self._summary = {}
-    
+
     #
     # Public methods
     #
     def Id(self):
+        '''
+            Retourne l'identifiant de l'objet
+        '''
         return self._id
-    
+
     def Name(self):
+        '''
+            Retourne le nom de l'objet
+        '''
         return self._name
 
     def LoadResources(self) -> dict:
+        '''
+            Charge les ressources
+        '''
         return self._resources
 
     def Print(self):
+        '''
+            Affichage de l'objet
+        '''
         datas = []
         for key, value in self._summary.items():
             datas.append([key, str(value)])
         console.PrintTab(title=f"Client {self._id}", datas=datas, footer="")
 
     def PrintResources(self):
+        '''
+            Affichage des ressources
+        '''
         for my_resource in self._resources['all'].values():
             my_resource.Print()
