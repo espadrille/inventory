@@ -8,7 +8,7 @@ class AwsResource(Resource):
     '''
         Classe AwsResource
     '''
-    
+
     _arn: str
     _tags: list=[]
 
@@ -39,11 +39,14 @@ class AwsResource(Resource):
     #
     # Protected methods
     #
-    def _init_tags(self):
+    def _init_tags(self, tags_list:list=None):
         '''
             Initilase la liste de tags
         '''
-        self._tags = []
+        if tags_list is None:
+            self._tags = []
+        else:
+            self._tags = tags_list
 
     def _get_tags(self) -> list:
         '''

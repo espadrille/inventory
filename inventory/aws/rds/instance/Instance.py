@@ -1,4 +1,6 @@
-# Instance EC2
+'''
+    Module de classe Instance (RDS)
+'''
 
 #
 # Imports
@@ -11,7 +13,7 @@ class Instance(AwsResource):
     '''
         Classe Instance
     '''
-    
+
     _client : AwsClient
     _properties_mapping = {
         'Id': 'DBInstanceIdentifier',
@@ -25,6 +27,9 @@ class Instance(AwsResource):
     # Private methods
     #
     def __init__(self, instance: dict, client: AwsClient):
+        '''
+            Constructeur de la classe
+        '''
         self._client = client
         super().__init__(category="rds.instance", id=f"{instance['DBInstanceIdentifier']}", object=instance)
 
@@ -47,8 +52,11 @@ class Instance(AwsResource):
     # Protected methods
     #
     def _get_tags(self):
+        '''
+            Retourne les tags
+        '''
         try:
-            self._tags = self._client.Client().list_tags_for_resource(ResourceName=self.GetProperty('DBInstanceArn'))['TagList']
+            self._init_tags(self._client.Client().list_tags_for_resource(ResourceName=self.GetProperty('DBInstanceArn'))['TagList'])
         except Exception:
-            self._tags = []
+            self._init_tags()
         return self._tags

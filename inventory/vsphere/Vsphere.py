@@ -19,10 +19,13 @@ class Vsphere(Provider):
     #
     # Private methods
     #
-    def __init__(self, id:str, name: str="", config :dict={}):
+    def __init__(self, id:str, name: str="", config :dict=None):
         '''
             Construceur de la classe
         '''
+        if config is None:
+            config = {}
+
         super().__init__(id=id, name=name)
         self._config = config
 

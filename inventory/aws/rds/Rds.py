@@ -1,9 +1,10 @@
-# Service RDS
+'''
+    Module de classe Rds
+'''
 
 #
 # Imports
 #
-# from .Aws import Aws
 from ..AwsService import AwsService
 from .instance.Instance import Instance
 from ...Console import console
@@ -14,15 +15,23 @@ class Rds(AwsService):
     '''
     _db_instance_increments :list # Liste des increments d'instances RDS utilises
 
-    def __init__(self, config :dict={}):
+    def __init__(self, config :dict=None):
+        '''
+            Construceur de la classe
+        '''
+        if config is None:
+            config = {}
         config["id"] = "rds"
         config["name"] = "RDS"
         self._is_regional = True
         super().__init__(config=config)
         
         self._db_instance_increments = []
-        
+
     def LoadResources(self) -> dict:
+        '''
+            Chargement des ressources
+        '''
         nb_instances = 0
         self._resources['all'] = {}
         for my_client in self._clients:
@@ -51,6 +60,9 @@ class Rds(AwsService):
         return self._resources
 
     def NextInstanceIncrement(self):
+        '''
+            Calcule le prochain increment libre pour une nouvelle instance
+        '''
         if len(self._db_instance_increments) > 0:
             for i in range(1, max(self._db_instance_increments)):
                 if i not in self._db_instance_increments:
@@ -58,5 +70,8 @@ class Rds(AwsService):
         return len(self._db_instance_increments) + 1
 
     def Print(self):
+        '''
+            Affiche l'objet
+        '''
         self._summary['increment disponible'] = self.NextInstanceIncrement()
         super().Print()
