@@ -1,3 +1,7 @@
+'''
+    Module Vsphere
+'''
+
 #
 # Imports
 #
@@ -16,6 +20,9 @@ class Vsphere(Provider):
     # Private methods
     #
     def __init__(self, id:str, name: str="", config :dict={}):
+        '''
+            Construceur de la classe
+        '''
         super().__init__(id=id, name=name)
         self._config = config
 
@@ -38,6 +45,9 @@ class Vsphere(Provider):
     # Public methods
     #
     def LoadResources(self) -> dict:
+        '''
+            Charge les ressources
+        '''
         console.Debug("Chargement : VSphere")
         self._resources['all'] = {}
         for my_datacenter in self._datacenters:
@@ -53,6 +63,9 @@ class Vsphere(Provider):
         return self._resources
 
     def Print(self):
+        '''
+            Affiche l'objet
+        '''
         for key, value in self._resources.items():
             if 'all' in value:
                 self._summary[f"resources {key}"] = str(len(value['all']))

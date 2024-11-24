@@ -4,7 +4,6 @@
 import re
 from pyVmomi import vim
 import requests
-from ....Console import console
 from ...VsphereResource import VsphereResource
 
 #
@@ -37,7 +36,7 @@ class VirtualMachine(VsphereResource):
         self.SetProperty('fqdn', self._vm.summary.guest.hostName)
         self.SetProperty('PrivateIpAddress', self._vm.summary.guest.ipAddress)
         self.SetProperty('State', self._vm.summary.runtime.powerState)
-        self.SetProperty('guestFullName', self._vm.summary.config.guestFullName) 
+        self.SetProperty('guestFullName', self._vm.summary.config.guestFullName)
         self.SetProperty('bootTime', self._vm.summary.runtime.bootTime)
         self.SetProperty('annotation', self._vm.summary.config.annotation)
 
@@ -46,7 +45,7 @@ class VirtualMachine(VsphereResource):
         if result:
             self.SetProperty('Increment', int(result.group(1)))
         else:
-            # Nouvelle convetion de nommage
+            # Nouvelle convention de nommage
             result = re.match('[a-z0-9]{8}([0-9]{3})', self.GetProperty('Name'))
             if result:
                 self.SetProperty('Increment', int(result.group(1)))
@@ -91,9 +90,14 @@ class VirtualMachine(VsphereResource):
         base_url = f"https://{self._datacenter.GetProperty('hostname')}"
 
         # Authentification
-        response = session.post(f"{base_url}/rest/com/vmware/cis/session", auth=(self._datacenter.GetProperty('user'), self._datacenter.GetProperty('password')), verify=False)
+        request_url = f"{base_url}/rest/com/vmware/cis/session"
+        response = session.post(request_url, auth=(self._datacenter.GetProperty('user'), self._datacenter.GetProperty('password')), verify=False)
         if response.status_code != 200:
-            raise Exception("Echec de l'authentification a vSphere")
+            raise requests.HTTPErrror(
+                "Echec de l'authentification a vSphere\n"
+                f"url={request_url}\n"
+                f"user={self._datacenter.GetProperty('user')}"
+                )
         session_id = response.json()['value']
         headers = {
             'vmware-api-session-id': session_id,
@@ -110,7 +114,11 @@ class VirtualMachine(VsphereResource):
         }
         response = requests.post(request_url, headers=headers, json=payload, verify=False)
         if response.status_code != 200:
-            raise Exception(f"Erreur {response.status_code} lors de la lecture des tags associes a la machine virtuelle {self.GetProperty('Name')}.\nurl={request_url}\nPayload={payload}")
+            raise requests.HTTPErrror(
+                f"Erreur HTTP/{response.status_code} lors de la lecture des tags associes a la machine virtuelle {self.GetProperty('Name')}.\n"
+                f"url={request_url}\n"
+                f"Payload={payload}"
+                )
         tag_ids = response.json()['value']
 
         # Recuperation des details des tags
@@ -119,23 +127,27 @@ class VirtualMachine(VsphereResource):
             tag_detail_url = f"{base_url}/rest/com/vmware/cis/tagging/tag/id:{tag_id}"
             tag_detail_response = requests.get(tag_detail_url, headers=headers, verify=False)
             if tag_detail_response.status_code != 200:
-                raise Exception(f"Erreur {response.status_code} lors de la lecture des details du tag {tag_id}.\nurl={tag_detail_url}")
-            else:
-                tag_info = tag_detail_response.json()['value']
-                tag_name = tag_info['name']
-                category_id = tag_info['category_id']
-                category_detail_url = f"{base_url}/rest/com/vmware/cis/tagging/category/id:{category_id}"
-                category_detail_response = requests.get(category_detail_url, headers=headers, verify=False)
-                if category_detail_response.status_code != 200:
-                    raise Exception(f"Erreur {response.status_code} lors de la lecture des details de la categorie {category_id}.\nurl={category_detail_url}")
-                else:
-                    category_info = category_detail_response.json()['value']
-                    category_name = category_info['name']
-                    self._tags.append({
-                        "Key": category_name,
-                        "Value":tag_name
-                        })
-        
+                raise requests.HTTPErrror(
+                    f"Erreur {response.status_code} lors de la lecture des details du tag {tag_id}.\n"
+                    f"url={tag_detail_url}"
+                    )
+            tag_info = tag_detail_response.json()['value']
+            tag_name = tag_info['name']
+            category_id = tag_info['category_id']
+            category_detail_url = f"{base_url}/rest/com/vmware/cis/tagging/category/id:{category_id}"
+            category_detail_response = requests.get(category_detail_url, headers=headers, verify=False)
+            if category_detail_response.status_code != 200:
+                raise requests.HTTPErrror(
+                    f"Erreur {response.status_code} lors de la lecture des details de la categorie {category_id}.\n"
+                    f"url={category_detail_url}"
+                    )
+            category_info = category_detail_response.json()['value']
+            category_name = category_info['name']
+            self._tags.append({
+                "Key": category_name,
+                "Value":tag_name
+                })
+
     def _get_networks(self):
         # lire les informations de reseau
         i = 1

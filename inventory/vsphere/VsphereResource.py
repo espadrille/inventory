@@ -1,4 +1,7 @@
-from ..Console import console
+'''
+    Module de classe VsphereResource
+'''
+
 from ..resource.Resource import Resource
 
 class VsphereResource(Resource):
@@ -13,6 +16,9 @@ class VsphereResource(Resource):
     # Private methods
     #
     def __init__(self, category: str, id: str, resource: dict):
+        '''
+            Constructeur de classe
+        '''
         super().__init__(category=f"vsphere.{category}", id=f"{id}")
         for my_property_key in dir(resource):
             try:
@@ -30,9 +36,15 @@ class VsphereResource(Resource):
     # Protected methods
     #
     def _get_tags(self) -> list:
+        '''
+            Retourne les tags de la ressource
+        '''
         return self._tags
 
     def _get_tag_value(self, tag_name: str) -> str:
+        '''
+            Retourne la valeur d'un tag donne
+        '''
         result = ""
         for my_tag in self._tags:
             if my_tag['Key'] == tag_name:

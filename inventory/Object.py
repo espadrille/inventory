@@ -3,7 +3,7 @@
 '''
 from .Console import console
 
-class Object(object):
+class Object():
     '''
         Classe : Object
         Classe de base pour tous les objets
