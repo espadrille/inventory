@@ -1,0 +1,10 @@
+version: '2'
+services:
+  inventory:
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile
+    image: pyhton/inventory
+    container_name: inventory
+    environment:
+      - CONFIG_SOURCE=config_test.json
