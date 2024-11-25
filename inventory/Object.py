@@ -23,7 +23,7 @@ class Object():
         try:
             return self._properties[property_name]
         except Exception as e:
-            console.Print(str(e))
+            console.Print(f"Erreur lors de la lecture de la propriete {property_name}")
             return ""
 
 

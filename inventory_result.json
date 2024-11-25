@@ -4,31 +4,7 @@
         "Name": "test-ansible-windows",
         "Description": "",
         "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:25",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-01a6df0ce1da183e3",
-        "InstanceId": "i-0ad467fef661e7eab",
-        "Id": "i-0ad467fef661e7eab",
-        "InstanceType": "t2.micro",
-        "KeyName": "key-tools",
-        "LaunchTime": "2023-03-06T13:55:06+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3b",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "Platform": "windows",
-        "PrivateDnsName": "ip-10-5-8-148.eu-west-3.compute.internal",
-        "PrivateIpAddress": "10.5.8.148",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "poweredOff",
-        "StateTransitionReason": "User initiated (2023-03-06 18:00:25 GMT)",
-        "SubnetId": "subnet-0504abdba6932ffe4",
-        "VpcId": "vpc-05db470e8f1a6422f",
+        "Date": "2024-11-25 18:10:11",
         "Architecture": "x86_64",
         "BlockDeviceMappings": [
             {
@@ -62,8 +38,8 @@
                 "Description": "",
                 "Groups": [
                     {
-                        "GroupName": "sg_test-ansible-windows",
-                        "GroupId": "sg-00f73474f813cb8e7"
+                        "GroupId": "sg-00f73474f813cb8e7",
+                        "GroupName": "sg_test-ansible-windows"
                     }
                 ],
                 "Ipv6Addresses": [],
@@ -83,15 +59,18 @@
                 "Status": "in-use",
                 "SubnetId": "subnet-0504abdba6932ffe4",
                 "VpcId": "vpc-05db470e8f1a6422f",
-                "InterfaceType": "interface"
+                "InterfaceType": "interface",
+                "Operator": {
+                    "Managed": false
+                }
             }
         ],
         "RootDeviceName": "/dev/sda1",
         "RootDeviceType": "ebs",
         "SecurityGroups": [
             {
-                "GroupName": "sg_test-ansible-windows",
-                "GroupId": "sg-00f73474f813cb8e7"
+                "GroupId": "sg-00f73474f813cb8e7",
+                "GroupName": "sg_test-ansible-windows"
             }
         ],
         "SourceDestCheck": true,
@@ -151,6 +130,33 @@
             "AutoRecovery": "default"
         },
         "CurrentInstanceBootMode": "legacy-bios",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-0ad467fef661e7eab",
+        "Id": "i-0ad467fef661e7eab",
+        "ImageId": "ami-01a6df0ce1da183e3",
+        "State": "poweredOff",
+        "PrivateDnsName": "ip-10-5-8-148.eu-west-3.compute.internal",
+        "PublicDnsName": "",
+        "StateTransitionReason": "User initiated (2023-03-06 18:00:25 GMT)",
+        "KeyName": "key-tools",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t2.micro",
+        "LaunchTime": "2023-03-06T13:55:06+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3b"
+        },
+        "Platform": "windows",
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "SubnetId": "subnet-0504abdba6932ffe4",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "PrivateIpAddress": "10.5.8.148",
         "AccountId": "714117993668",
         "Region": "eu-west-3",
         "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0ad467fef661e7eab",
@@ -161,7 +167,7 @@
         "SubnetId_1": "subnet-0504abdba6932ffe4",
         "SubnetName_1": "private_b_tools",
         "CreationTime": "2023-02-20T15:27:22+00:00",
-        "OsName": "windows",
+        "OsName": "Windows",
         "OsDetailed": "Windows",
         "Profile": "tools"
     },
@@ -170,30 +176,7 @@
         "Name": "awstolnx002",
         "Description": "Serveur ansible",
         "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:25",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-02b01316e6e3496d9",
-        "InstanceId": "i-0178b5c2a75fae795",
-        "Id": "i-0178b5c2a75fae795",
-        "InstanceType": "t3.xlarge",
-        "KeyName": "key-tools",
-        "LaunchTime": "2023-06-02T07:44:35+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "ip-10-5-8-132.eu-west-3.compute.internal",
-        "PrivateIpAddress": "10.5.8.132",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "poweredOn",
-        "StateTransitionReason": "",
-        "SubnetId": "subnet-011db4b3b09a58cf7",
-        "VpcId": "vpc-05db470e8f1a6422f",
+        "Date": "2024-11-25 18:10:11",
         "Architecture": "x86_64",
         "BlockDeviceMappings": [
             {
@@ -227,8 +210,8 @@
                 "Description": "",
                 "Groups": [
                     {
-                        "GroupName": "sg_awstolnx002",
-                        "GroupId": "sg-005e4ebfa9bc5b203"
+                        "GroupId": "sg-005e4ebfa9bc5b203",
+                        "GroupName": "sg_awstolnx002"
                     }
                 ],
                 "Ipv6Addresses": [],
@@ -248,15 +231,18 @@
                 "Status": "in-use",
                 "SubnetId": "subnet-011db4b3b09a58cf7",
                 "VpcId": "vpc-05db470e8f1a6422f",
-                "InterfaceType": "interface"
+                "InterfaceType": "interface",
+                "Operator": {
+                    "Managed": false
+                }
             }
         ],
         "RootDeviceName": "/dev/xvda",
         "RootDeviceType": "ebs",
         "SecurityGroups": [
             {
-                "GroupName": "sg_awstolnx002",
-                "GroupId": "sg-005e4ebfa9bc5b203"
+                "GroupId": "sg-005e4ebfa9bc5b203",
+                "GroupName": "sg_awstolnx002"
             }
         ],
         "SourceDestCheck": true,
@@ -336,6 +322,32 @@
             "AutoRecovery": "default"
         },
         "CurrentInstanceBootMode": "legacy-bios",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-0178b5c2a75fae795",
+        "Id": "i-0178b5c2a75fae795",
+        "ImageId": "ami-02b01316e6e3496d9",
+        "State": "poweredOn",
+        "PrivateDnsName": "ip-10-5-8-132.eu-west-3.compute.internal",
+        "PublicDnsName": "",
+        "StateTransitionReason": "",
+        "KeyName": "key-tools",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t3.xlarge",
+        "LaunchTime": "2023-06-02T07:44:35+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "SubnetId": "subnet-011db4b3b09a58cf7",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "PrivateIpAddress": "10.5.8.132",
         "AccountId": "714117993668",
         "Region": "eu-west-3",
         "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0178b5c2a75fae795",
@@ -355,30 +367,7 @@
         "Name": "awstolnx001",
         "Description": "Serveur terraform",
         "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:25",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0f2378a9d19d5fe31",
-        "InstanceId": "i-03b87596b59bdd16a",
-        "Id": "i-03b87596b59bdd16a",
-        "InstanceType": "t3.xlarge",
-        "KeyName": "key-tools",
-        "LaunchTime": "2024-04-18T14:28:11+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "ip-10-5-8-133.eu-west-3.compute.internal",
-        "PrivateIpAddress": "10.5.8.133",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "poweredOn",
-        "StateTransitionReason": "",
-        "SubnetId": "subnet-011db4b3b09a58cf7",
-        "VpcId": "vpc-05db470e8f1a6422f",
+        "Date": "2024-11-25 18:10:12",
         "Architecture": "x86_64",
         "BlockDeviceMappings": [
             {
@@ -421,8 +410,8 @@
                 "Description": "",
                 "Groups": [
                     {
-                        "GroupName": "sg_awstolnx001",
-                        "GroupId": "sg-0d2f5d7cb1d88578e"
+                        "GroupId": "sg-0d2f5d7cb1d88578e",
+                        "GroupName": "sg_awstolnx001"
                     }
                 ],
                 "Ipv6Addresses": [],
@@ -442,15 +431,18 @@
                 "Status": "in-use",
                 "SubnetId": "subnet-011db4b3b09a58cf7",
                 "VpcId": "vpc-05db470e8f1a6422f",
-                "InterfaceType": "interface"
+                "InterfaceType": "interface",
+                "Operator": {
+                    "Managed": false
+                }
             }
         ],
         "RootDeviceName": "/dev/xvda",
         "RootDeviceType": "ebs",
         "SecurityGroups": [
             {
-                "GroupName": "sg_awstolnx001",
-                "GroupId": "sg-0d2f5d7cb1d88578e"
+                "GroupId": "sg-0d2f5d7cb1d88578e",
+                "GroupName": "sg_awstolnx001"
             }
         ],
         "SourceDestCheck": true,
@@ -506,6 +498,32 @@
             "AutoRecovery": "default"
         },
         "CurrentInstanceBootMode": "legacy-bios",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-03b87596b59bdd16a",
+        "Id": "i-03b87596b59bdd16a",
+        "ImageId": "ami-0f2378a9d19d5fe31",
+        "State": "poweredOn",
+        "PrivateDnsName": "ip-10-5-8-133.eu-west-3.compute.internal",
+        "PublicDnsName": "",
+        "StateTransitionReason": "",
+        "KeyName": "key-tools",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t3.xlarge",
+        "LaunchTime": "2024-04-18T14:28:11+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "SubnetId": "subnet-011db4b3b09a58cf7",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "PrivateIpAddress": "10.5.8.133",
         "AccountId": "714117993668",
         "Region": "eu-west-3",
         "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-03b87596b59bdd16a",
@@ -516,7 +534,7 @@
         "SubnetId_1": "subnet-011db4b3b09a58cf7",
         "SubnetName_1": "private_a_tools",
         "CreationTime": "2024-04-18T14:28:12+00:00",
-        "OsName": "",
+        "OsName": "Linux/UNIX",
         "OsDetailed": "Linux/UNIX",
         "Profile": "tools"
     },
@@ -525,30 +543,7 @@
         "Name": "awstolnx003",
         "Description": "Serveur python",
         "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:26",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0288d9523e7053c23",
-        "InstanceId": "i-04398be5ee74ec5c5",
-        "Id": "i-04398be5ee74ec5c5",
-        "InstanceType": "t3.large",
-        "KeyName": "key-tools",
-        "LaunchTime": "2024-05-30T14:23:10+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3b",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "ip-10-5-8-149.eu-west-3.compute.internal",
-        "PrivateIpAddress": "10.5.8.149",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "poweredOn",
-        "StateTransitionReason": "",
-        "SubnetId": "subnet-0504abdba6932ffe4",
-        "VpcId": "vpc-05db470e8f1a6422f",
+        "Date": "2024-11-25 18:10:12",
         "Architecture": "x86_64",
         "BlockDeviceMappings": [
             {
@@ -582,8 +577,8 @@
                 "Description": "",
                 "Groups": [
                     {
-                        "GroupName": "sg_awstolnx003",
-                        "GroupId": "sg-0c3abd67b5ea3d933"
+                        "GroupId": "sg-0c3abd67b5ea3d933",
+                        "GroupName": "sg_awstolnx003"
                     }
                 ],
                 "Ipv6Addresses": [],
@@ -603,15 +598,18 @@
                 "Status": "in-use",
                 "SubnetId": "subnet-0504abdba6932ffe4",
                 "VpcId": "vpc-05db470e8f1a6422f",
-                "InterfaceType": "interface"
+                "InterfaceType": "interface",
+                "Operator": {
+                    "Managed": false
+                }
             }
         ],
         "RootDeviceName": "/dev/xvda",
         "RootDeviceType": "ebs",
         "SecurityGroups": [
             {
-                "GroupName": "sg_awstolnx003",
-                "GroupId": "sg-0c3abd67b5ea3d933"
+                "GroupId": "sg-0c3abd67b5ea3d933",
+                "GroupName": "sg_awstolnx003"
             }
         ],
         "SourceDestCheck": true,
@@ -646,7 +644,7 @@
             },
             {
                 "Key": "os_type",
-                "Value": "{\"name\":\"AmazonLinux2023\", \"detailed\":\"Amazon Linux 2023 AMI 2023.6.20241111.0 x86_64 HVM kernel-6.1\"}"
+                "Value": "{\"name\":\"AmazonLinux2023\", \"detailed\":\"Amazon Linux 2023 AMI 2023.6.20241121.0 x86_64 HVM kernel-6.1\"}"
             },
             {
                 "Key": "terraform_module",
@@ -692,6 +690,32 @@
             "AutoRecovery": "default"
         },
         "CurrentInstanceBootMode": "uefi",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-04398be5ee74ec5c5",
+        "Id": "i-04398be5ee74ec5c5",
+        "ImageId": "ami-0288d9523e7053c23",
+        "State": "poweredOn",
+        "PrivateDnsName": "ip-10-5-8-149.eu-west-3.compute.internal",
+        "PublicDnsName": "",
+        "StateTransitionReason": "",
+        "KeyName": "key-tools",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t3.large",
+        "LaunchTime": "2024-05-30T14:23:10+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3b"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "SubnetId": "subnet-0504abdba6932ffe4",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "PrivateIpAddress": "10.5.8.149",
         "AccountId": "714117993668",
         "Region": "eu-west-3",
         "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-04398be5ee74ec5c5",
@@ -703,38 +727,18 @@
         "SubnetName_1": "private_b_tools",
         "CreationTime": "2024-05-17T12:56:14+00:00",
         "OsName": "AmazonLinux2023",
-        "OsDetailed": "Amazon Linux 2023 AMI 2023.6.20241111.0 x86_64 HVM kernel-6.1",
+        "OsDetailed": "Amazon Linux 2023 AMI 2023.6.20241121.0 x86_64 HVM kernel-6.1",
         "Profile": "tools"
     },
-    "i-065cb573f7b1abb3a": {
-        "id": "i-065cb573f7b1abb3a",
-        "Name": "gitlab-runner-instance-job-infra_developpement",
+    "i-026853574c26840c2": {
+        "id": "i-026853574c26840c2",
+        "Name": "gitlab-runner-instance-job-infra_recette",
         "Description": "",
         "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:26",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-065cb573f7b1abb3a",
-        "Id": "i-065cb573f7b1abb3a",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:35:34+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3b",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:36:09 GMT)",
+        "Date": "2024-11-25 18:10:12",
         "Architecture": "arm64",
         "BlockDeviceMappings": [],
-        "ClientToken": "b6f64d4c-e82b-4b47-cc9b-d124da103abe",
+        "ClientToken": "cdb64d90-7531-7624-430d-52ff3b588bcb",
         "EbsOptimized": false,
         "EnaSupport": true,
         "Hypervisor": "xen",
@@ -748,8 +752,8 @@
         },
         "Tags": [
             {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-07f3b15bcaefc1879"
+                "Key": "Name",
+                "Value": "gitlab-runner-instance-job-infra_recette"
             },
             {
                 "Key": "map-migrated",
@@ -760,24 +764,24 @@
                 "Value": "tools"
             },
             {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_developpement"
-            },
-            {
                 "Key": "ODS",
                 "Value": "Infrastructure"
             },
             {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_developpement"
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "6"
             },
             {
                 "Key": "terraform_root",
                 "Value": "GITLAB"
+            },
+            {
+                "Key": "aws:autoscaling:groupName",
+                "Value": "asg-gitlab-runner-infra_recette"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:id",
+                "Value": "lt-0e6a8409ba028a77b"
             }
         ],
         "VirtualizationType": "hvm",
@@ -805,49 +809,52 @@
         "BootMode": "uefi",
         "PlatformDetails": "Linux/UNIX",
         "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:35:34+00:00",
+        "UsageOperationUpdateTime": "2024-11-25T16:17:43+00:00",
         "MaintenanceOptions": {
             "AutoRecovery": "default"
         },
         "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-065cb573f7b1abb3a",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-0cf333de9e809305d": {
-        "id": "i-0cf333de9e809305d",
-        "Name": "gitlab-runner-instance-job-infra_developpement",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:26",
-        "AmiLaunchIndex": 0,
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-026853574c26840c2",
+        "Id": "i-026853574c26840c2",
         "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-0cf333de9e809305d",
-        "Id": "i-0cf333de9e809305d",
-        "InstanceType": "t4g.nano",
+        "State": "terminated",
+        "PrivateDnsName": "",
+        "PublicDnsName": "",
+        "StateTransitionReason": "User initiated (2024-11-25 16:18:32 GMT)",
         "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:39:58+00:00",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t4g.nano",
+        "LaunchTime": "2024-11-25T16:17:43+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3b"
+        },
         "Monitoring": {
             "State": "disabled"
         },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3b",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:41:28 GMT)",
+        "AccountId": "714117993668",
+        "Region": "eu-west-3",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-026853574c26840c2",
+        "StateCode": 48,
+        "Increment": 0,
+        "OsName": "Linux/UNIX",
+        "OsDetailed": "Linux/UNIX",
+        "Profile": "tools"
+    },
+    "i-0903c148b24beaef9": {
+        "id": "i-0903c148b24beaef9",
+        "Name": "gitlab-runner-instance-job-infra_developpement",
+        "Description": "",
+        "Category": "aws.ec2.instance",
+        "Date": "2024-11-25 18:10:12",
         "Architecture": "arm64",
         "BlockDeviceMappings": [],
-        "ClientToken": "e1e64d4c-f848-b649-1677-5bee60904b5d",
+        "ClientToken": "b6d64d90-7a27-8fc6-6589-3508e1ff55fd",
         "EbsOptimized": false,
         "EnaSupport": true,
         "Hypervisor": "xen",
@@ -861,36 +868,36 @@
         },
         "Tags": [
             {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_developpement"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_developpement"
-            },
-            {
                 "Key": "terraform_root",
                 "Value": "GITLAB"
             },
             {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
+                "Key": "Name",
+                "Value": "gitlab-runner-instance-job-infra_developpement"
             },
             {
                 "Key": "aws:ec2launchtemplate:id",
                 "Value": "lt-07f3b15bcaefc1879"
             },
             {
+                "Key": "ODS",
+                "Value": "Infrastructure"
+            },
+            {
+                "Key": "aws:autoscaling:groupName",
+                "Value": "asg-gitlab-runner-infra_developpement"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "6"
+            },
+            {
                 "Key": "map-migrated",
                 "Value": "mig3B3N2FXHQT"
+            },
+            {
+                "Key": "Environment",
+                "Value": "tools"
             }
         ],
         "VirtualizationType": "hvm",
@@ -918,227 +925,52 @@
         "BootMode": "uefi",
         "PlatformDetails": "Linux/UNIX",
         "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:39:58+00:00",
+        "UsageOperationUpdateTime": "2024-11-25T16:19:04+00:00",
         "MaintenanceOptions": {
             "AutoRecovery": "default"
         },
         "CurrentInstanceBootMode": "uefi",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-0903c148b24beaef9",
+        "Id": "i-0903c148b24beaef9",
+        "ImageId": "ami-0fac8f439810eed46",
+        "State": "terminated",
+        "PrivateDnsName": "",
+        "PublicDnsName": "",
+        "StateTransitionReason": "User initiated (2024-11-25 16:21:08 GMT)",
+        "KeyName": "key-gitlab-runner",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t4g.nano",
+        "LaunchTime": "2024-11-25T16:19:04+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3b"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
         "AccountId": "714117993668",
         "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0cf333de9e809305d",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0903c148b24beaef9",
         "StateCode": 48,
         "Increment": 0,
-        "OsName": "",
+        "OsName": "Linux/UNIX",
         "OsDetailed": "Linux/UNIX",
         "Profile": "tools"
     },
-    "i-0044637b5de98a573": {
-        "id": "i-0044637b5de98a573",
-        "Name": "gitlab-runner-instance-job-infra_developpement",
+    "i-08ee91e1db5370741": {
+        "id": "i-08ee91e1db5370741",
+        "Name": "gitlab-runner-instance-job-infra_production",
         "Description": "",
         "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:27",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-0044637b5de98a573",
-        "Id": "i-0044637b5de98a573",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:56:50+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3b",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "ip-10-5-8-92.eu-west-3.compute.internal",
-        "PrivateIpAddress": "10.5.8.92",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "poweredOn",
-        "StateTransitionReason": "",
-        "SubnetId": "subnet-0b629a5cd42a91cec",
-        "VpcId": "vpc-05db470e8f1a6422f",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [
-            {
-                "DeviceName": "/dev/xvda",
-                "Ebs": {
-                    "AttachTime": "2024-11-22T09:56:51+00:00",
-                    "DeleteOnTermination": true,
-                    "Status": "attached",
-                    "VolumeId": "vol-0bfb2add291dcb7b5"
-                }
-            }
-        ],
-        "ClientToken": "f8e64d4d-3612-4719-9887-81017f7208eb",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "IamInstanceProfile": {
-            "Arn": "arn:aws:iam::714117993668:instance-profile/instance-profile-gitlab-runner-developpement",
-            "Id": "AIPA2MRF72TCKN4CTE5M3"
-        },
-        "NetworkInterfaces": [
-            {
-                "Attachment": {
-                    "AttachTime": "2024-11-22T09:56:50+00:00",
-                    "AttachmentId": "eni-attach-088dde9d9d9c630f7",
-                    "DeleteOnTermination": true,
-                    "DeviceIndex": 0,
-                    "Status": "attached",
-                    "NetworkCardIndex": 0
-                },
-                "Description": "",
-                "Groups": [
-                    {
-                        "GroupName": "sg_gitlab-runner",
-                        "GroupId": "sg-0dbed301a3b70a47d"
-                    }
-                ],
-                "Ipv6Addresses": [],
-                "MacAddress": "0a:f8:2c:de:53:5f",
-                "NetworkInterfaceId": "eni-0d111953650d907e7",
-                "OwnerId": "714117993668",
-                "PrivateDnsName": "ip-10-5-8-92.eu-west-3.compute.internal",
-                "PrivateIpAddress": "10.5.8.92",
-                "PrivateIpAddresses": [
-                    {
-                        "Primary": true,
-                        "PrivateDnsName": "ip-10-5-8-92.eu-west-3.compute.internal",
-                        "PrivateIpAddress": "10.5.8.92"
-                    }
-                ],
-                "SourceDestCheck": true,
-                "Status": "in-use",
-                "SubnetId": "subnet-0b629a5cd42a91cec",
-                "VpcId": "vpc-05db470e8f1a6422f",
-                "InterfaceType": "interface"
-            }
-        ],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [
-            {
-                "GroupName": "sg_gitlab-runner",
-                "GroupId": "sg-0dbed301a3b70a47d"
-            }
-        ],
-        "SourceDestCheck": true,
-        "Tags": [
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-07f3b15bcaefc1879"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_developpement"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_developpement"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "applied",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:56:50+00:00",
-        "PrivateDnsNameOptions": {
-            "HostnameType": "ip-name",
-            "EnableResourceNameDnsARecord": false,
-            "EnableResourceNameDnsAAAARecord": false
-        },
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0044637b5de98a573",
-        "StateCode": 16,
-        "Increment": 0,
-        "NetworkInterface_1": "eni-0d111953650d907e7",
-        "PrivateIpAddress_1": "10.5.8.92",
-        "SubnetId_1": "subnet-0b629a5cd42a91cec",
-        "SubnetName_1": "private_dhcp_b_tools",
-        "CreationTime": "2024-11-22T09:56:51+00:00",
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-0e97d3e3a29a57ccb": {
-        "id": "i-0e97d3e3a29a57ccb",
-        "Name": "gitlab-runner-instance-job-infra_developpement",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:27",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-0e97d3e3a29a57ccb",
-        "Id": "i-0e97d3e3a29a57ccb",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:42:44+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3b",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:43:54 GMT)",
+        "Date": "2024-11-25 18:10:13",
         "Architecture": "arm64",
         "BlockDeviceMappings": [],
-        "ClientToken": "8d964d4d-0268-9a7f-bb48-f4ed0f53263c",
+        "ClientToken": "7d164d90-6de0-2dd3-4da8-ce91319c78bd",
         "EbsOptimized": false,
         "EnaSupport": true,
         "Hypervisor": "xen",
@@ -1152,36 +984,36 @@
         },
         "Tags": [
             {
-                "Key": "ODS",
-                "Value": "Infrastructure"
+                "Key": "map-migrated",
+                "Value": "mig3B3N2FXHQT"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:id",
+                "Value": "lt-0236be89357204227"
+            },
+            {
+                "Key": "Name",
+                "Value": "gitlab-runner-instance-job-infra_production"
+            },
+            {
+                "Key": "aws:autoscaling:groupName",
+                "Value": "asg-gitlab-runner-infra_production"
             },
             {
                 "Key": "Environment",
                 "Value": "tools"
             },
             {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-07f3b15bcaefc1879"
+                "Key": "ODS",
+                "Value": "Infrastructure"
             },
             {
                 "Key": "terraform_root",
                 "Value": "GITLAB"
             },
             {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_developpement"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_developpement"
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "6"
             }
         ],
         "VirtualizationType": "hvm",
@@ -1209,243 +1041,40 @@
         "BootMode": "uefi",
         "PlatformDetails": "Linux/UNIX",
         "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:42:44+00:00",
+        "UsageOperationUpdateTime": "2024-11-25T16:15:43+00:00",
         "MaintenanceOptions": {
             "AutoRecovery": "default"
         },
         "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0e97d3e3a29a57ccb",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-0c5e8878221796489": {
-        "id": "i-0c5e8878221796489",
-        "Name": "gitlab-runner-instance-job-infra_developpement",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:27",
-        "AmiLaunchIndex": 0,
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-08ee91e1db5370741",
+        "Id": "i-08ee91e1db5370741",
         "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-0c5e8878221796489",
-        "Id": "i-0c5e8878221796489",
-        "InstanceType": "t4g.nano",
+        "State": "terminated",
+        "PrivateDnsName": "",
+        "PublicDnsName": "",
+        "StateTransitionReason": "User initiated (2024-11-25 16:17:35 GMT)",
         "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:52:43+00:00",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t4g.nano",
+        "LaunchTime": "2024-11-25T16:15:43+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3b"
+        },
         "Monitoring": {
             "State": "disabled"
         },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3b",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:54:26 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "61d64d4d-2700-6b9e-a284-9f4d4b556b2a",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-07f3b15bcaefc1879"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_developpement"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_developpement"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:52:43+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
         "AccountId": "714117993668",
         "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0c5e8878221796489",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-08ee91e1db5370741",
         "StateCode": 48,
         "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-0cb8ffedf437c4754": {
-        "id": "i-0cb8ffedf437c4754",
-        "Name": "gitlab-runner-instance-job-infra_developpement",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:27",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-0cb8ffedf437c4754",
-        "Id": "i-0cb8ffedf437c4754",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:54:31+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3b",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:55:46 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "5da64d4d-2d95-fd8d-a285-7b81cdd57162",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-07f3b15bcaefc1879"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_developpement"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_developpement"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:54:31+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0cb8ffedf437c4754",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
+        "OsName": "Linux/UNIX",
         "OsDetailed": "Linux/UNIX",
         "Profile": "tools"
     },
@@ -1454,30 +1083,7 @@
         "Name": "awstolnx004",
         "Description": "Serveur GitLab",
         "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:28",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-00d81861317c2cc1f",
-        "InstanceId": "i-08a2c1ac0c7327e6a",
-        "Id": "i-08a2c1ac0c7327e6a",
-        "InstanceType": "t3.large",
-        "KeyName": "key-tools",
-        "LaunchTime": "2024-10-29T14:49:26+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "ip-10-5-8-134.eu-west-3.compute.internal",
-        "PrivateIpAddress": "10.5.8.134",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "poweredOn",
-        "StateTransitionReason": "",
-        "SubnetId": "subnet-011db4b3b09a58cf7",
-        "VpcId": "vpc-05db470e8f1a6422f",
+        "Date": "2024-11-25 18:10:13",
         "Architecture": "x86_64",
         "BlockDeviceMappings": [
             {
@@ -1520,8 +1126,8 @@
                 "Description": "",
                 "Groups": [
                     {
-                        "GroupName": "sg_awstolnx004",
-                        "GroupId": "sg-041db603130ea5bf6"
+                        "GroupId": "sg-041db603130ea5bf6",
+                        "GroupName": "sg_awstolnx004"
                     }
                 ],
                 "Ipv6Addresses": [],
@@ -1541,15 +1147,18 @@
                 "Status": "in-use",
                 "SubnetId": "subnet-011db4b3b09a58cf7",
                 "VpcId": "vpc-05db470e8f1a6422f",
-                "InterfaceType": "interface"
+                "InterfaceType": "interface",
+                "Operator": {
+                    "Managed": false
+                }
             }
         ],
         "RootDeviceName": "/dev/xvda",
         "RootDeviceType": "ebs",
         "SecurityGroups": [
             {
-                "GroupName": "sg_awstolnx004",
-                "GroupId": "sg-041db603130ea5bf6"
+                "GroupId": "sg-041db603130ea5bf6",
+                "GroupName": "sg_awstolnx004"
             }
         ],
         "SourceDestCheck": true,
@@ -1626,6 +1235,32 @@
             "AutoRecovery": "default"
         },
         "CurrentInstanceBootMode": "uefi",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-08a2c1ac0c7327e6a",
+        "Id": "i-08a2c1ac0c7327e6a",
+        "ImageId": "ami-00d81861317c2cc1f",
+        "State": "poweredOn",
+        "PrivateDnsName": "ip-10-5-8-134.eu-west-3.compute.internal",
+        "PublicDnsName": "",
+        "StateTransitionReason": "",
+        "KeyName": "key-tools",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t3.large",
+        "LaunchTime": "2024-10-29T14:49:26+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "SubnetId": "subnet-011db4b3b09a58cf7",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "PrivateIpAddress": "10.5.8.134",
         "AccountId": "714117993668",
         "Region": "eu-west-3",
         "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-08a2c1ac0c7327e6a",
@@ -1636,7 +1271,7 @@
         "SubnetId_1": "subnet-011db4b3b09a58cf7",
         "SubnetName_1": "private_a_tools",
         "CreationTime": "2024-10-29T14:49:26+00:00",
-        "OsName": "",
+        "OsName": "Linux/UNIX",
         "OsDetailed": "Linux/UNIX",
         "Profile": "tools"
     },
@@ -1645,30 +1280,7 @@
         "Name": "awstolnx005",
         "Description": "GitLab Runner Manager",
         "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:28",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-00d81861317c2cc1f",
-        "InstanceId": "i-0dfbe44d4f4cbd9b2",
-        "Id": "i-0dfbe44d4f4cbd9b2",
-        "InstanceType": "t3.medium",
-        "KeyName": "key-tools",
-        "LaunchTime": "2024-11-18T16:39:44+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "ip-10-5-8-135.eu-west-3.compute.internal",
-        "PrivateIpAddress": "10.5.8.135",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "poweredOn",
-        "StateTransitionReason": "",
-        "SubnetId": "subnet-011db4b3b09a58cf7",
-        "VpcId": "vpc-05db470e8f1a6422f",
+        "Date": "2024-11-25 18:10:13",
         "Architecture": "x86_64",
         "BlockDeviceMappings": [
             {
@@ -1702,8 +1314,8 @@
                 "Description": "",
                 "Groups": [
                     {
-                        "GroupName": "sg_awstolnx005",
-                        "GroupId": "sg-031e2a6650157d27e"
+                        "GroupId": "sg-031e2a6650157d27e",
+                        "GroupName": "sg_awstolnx005"
                     }
                 ],
                 "Ipv6Addresses": [],
@@ -1723,15 +1335,18 @@
                 "Status": "in-use",
                 "SubnetId": "subnet-011db4b3b09a58cf7",
                 "VpcId": "vpc-05db470e8f1a6422f",
-                "InterfaceType": "interface"
+                "InterfaceType": "interface",
+                "Operator": {
+                    "Managed": false
+                }
             }
         ],
         "RootDeviceName": "/dev/xvda",
         "RootDeviceType": "ebs",
         "SecurityGroups": [
             {
-                "GroupName": "sg_awstolnx005",
-                "GroupId": "sg-031e2a6650157d27e"
+                "GroupId": "sg-031e2a6650157d27e",
+                "GroupName": "sg_awstolnx005"
             }
         ],
         "SourceDestCheck": true,
@@ -1763,6 +1378,10 @@
             {
                 "Key": "map-migrated",
                 "Value": "mig3B3N2FXHQT"
+            },
+            {
+                "Key": "os_type",
+                "Value": "{\"name\":\"AmazonLinux2023\", \"detailed\":\"Amazon Linux 2023 AMI 2023.6.20241121.0 x86_64 HVM kernel-6.1\"}"
             },
             {
                 "Key": "terraform_module",
@@ -1808,6 +1427,32 @@
             "AutoRecovery": "default"
         },
         "CurrentInstanceBootMode": "uefi",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-0dfbe44d4f4cbd9b2",
+        "Id": "i-0dfbe44d4f4cbd9b2",
+        "ImageId": "ami-00d81861317c2cc1f",
+        "State": "poweredOn",
+        "PrivateDnsName": "ip-10-5-8-135.eu-west-3.compute.internal",
+        "PublicDnsName": "",
+        "StateTransitionReason": "",
+        "KeyName": "key-tools",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t3.medium",
+        "LaunchTime": "2024-11-18T16:39:44+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "SubnetId": "subnet-011db4b3b09a58cf7",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "PrivateIpAddress": "10.5.8.135",
         "AccountId": "714117993668",
         "Region": "eu-west-3",
         "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0dfbe44d4f4cbd9b2",
@@ -1818,39 +1463,19 @@
         "SubnetId_1": "subnet-011db4b3b09a58cf7",
         "SubnetName_1": "private_a_tools",
         "CreationTime": "2024-10-31T08:59:44+00:00",
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
+        "OsName": "AmazonLinux2023",
+        "OsDetailed": "Amazon Linux 2023 AMI 2023.6.20241121.0 x86_64 HVM kernel-6.1",
         "Profile": "tools"
     },
-    "i-060bb9267791ed14c": {
-        "id": "i-060bb9267791ed14c",
-        "Name": "gitlab-runner-instance-job-infra_developpement",
+    "i-0ac1033743294351c": {
+        "id": "i-0ac1033743294351c",
+        "Name": "gitlab-runner-instance-job-infra_recette",
         "Description": "",
         "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:28",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-060bb9267791ed14c",
-        "Id": "i-060bb9267791ed14c",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:38:20+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:39:48 GMT)",
+        "Date": "2024-11-25 18:10:13",
         "Architecture": "arm64",
         "BlockDeviceMappings": [],
-        "ClientToken": "36a64d4c-f254-8689-1839-4aa52979dba3",
+        "ClientToken": "d4c64d90-823f-8e55-d6b3-fc36c7f0d832",
         "EbsOptimized": false,
         "EnaSupport": true,
         "Hypervisor": "xen",
@@ -1864,1166 +1489,152 @@
         },
         "Tags": [
             {
+                "Key": "aws:ec2launchtemplate:id",
+                "Value": "lt-0e6a8409ba028a77b"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "6"
+            },
+            {
+                "Key": "ODS",
+                "Value": "Infrastructure"
+            },
+            {
+                "Key": "aws:autoscaling:groupName",
+                "Value": "asg-gitlab-runner-infra_recette"
+            },
+            {
+                "Key": "Environment",
+                "Value": "tools"
+            },
+            {
                 "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_developpement"
+                "Value": "gitlab-runner-instance-job-infra_recette"
+            },
+            {
+                "Key": "terraform_root",
+                "Value": "GITLAB"
             },
             {
                 "Key": "map-migrated",
                 "Value": "mig3B3N2FXHQT"
-            },
+            }
+        ],
+        "VirtualizationType": "hvm",
+        "CpuOptions": {
+            "CoreCount": 2,
+            "ThreadsPerCore": 1
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "State": "pending",
+            "HttpTokens": "required",
+            "HttpPutResponseHopLimit": 2,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "BootMode": "uefi",
+        "PlatformDetails": "Linux/UNIX",
+        "UsageOperation": "RunInstances",
+        "UsageOperationUpdateTime": "2024-11-25T16:21:17+00:00",
+        "MaintenanceOptions": {
+            "AutoRecovery": "default"
+        },
+        "CurrentInstanceBootMode": "uefi",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-0ac1033743294351c",
+        "Id": "i-0ac1033743294351c",
+        "ImageId": "ami-0fac8f439810eed46",
+        "State": "terminated",
+        "PrivateDnsName": "",
+        "PublicDnsName": "",
+        "StateTransitionReason": "User initiated (2024-11-25 16:21:58 GMT)",
+        "KeyName": "key-gitlab-runner",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t4g.nano",
+        "LaunchTime": "2024-11-25T16:21:17+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "AccountId": "714117993668",
+        "Region": "eu-west-3",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0ac1033743294351c",
+        "StateCode": 48,
+        "Increment": 0,
+        "OsName": "Linux/UNIX",
+        "OsDetailed": "Linux/UNIX",
+        "Profile": "tools"
+    },
+    "i-0b10d192f9487edf2": {
+        "id": "i-0b10d192f9487edf2",
+        "Name": "gitlab-runner-instance-job-infra_developpement",
+        "Description": "",
+        "Category": "aws.ec2.instance",
+        "Date": "2024-11-25 18:10:13",
+        "Architecture": "arm64",
+        "BlockDeviceMappings": [],
+        "ClientToken": "79664d90-7a28-31d2-ffa1-08aa5069975a",
+        "EbsOptimized": false,
+        "EnaSupport": true,
+        "Hypervisor": "xen",
+        "NetworkInterfaces": [],
+        "RootDeviceName": "/dev/xvda",
+        "RootDeviceType": "ebs",
+        "SecurityGroups": [],
+        "StateReason": {
+            "Code": "Client.UserInitiatedShutdown",
+            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
+        },
+        "Tags": [
             {
                 "Key": "aws:ec2launchtemplate:id",
                 "Value": "lt-07f3b15bcaefc1879"
             },
             {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_developpement"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:38:20+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-060bb9267791ed14c",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-098b5d9836422e45e": {
-        "id": "i-098b5d9836422e45e",
-        "Name": "gitlab-runner-instance-job-infra_production",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:28",
-        "AmiLaunchIndex": 1,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-098b5d9836422e45e",
-        "Id": "i-098b5d9836422e45e",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:15:15+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:16:11 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "a9564d4c-9dc6-623f-8b42-107ad7d0b506",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_production"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0236be89357204227"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_production"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:15:15+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-098b5d9836422e45e",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-0b97233711e336d24": {
-        "id": "i-0b97233711e336d24",
-        "Name": "gitlab-runner-instance-job-infra_production",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:28",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-0b97233711e336d24",
-        "Id": "i-0b97233711e336d24",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:15:15+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:16:27 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "a9564d4c-9dc6-623f-8b42-107ad7d0b506",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_production"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0236be89357204227"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_production"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:15:15+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0b97233711e336d24",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-03094b7bf748474e2": {
-        "id": "i-03094b7bf748474e2",
-        "Name": "gitlab-runner-instance-job-infra_recette",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:29",
-        "AmiLaunchIndex": 1,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-03094b7bf748474e2",
-        "Id": "i-03094b7bf748474e2",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:37:33+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:38:08 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "72f64d4c-ef73-a39f-1492-610d2b520a3b",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
                 "Key": "map-migrated",
                 "Value": "mig3B3N2FXHQT"
             },
             {
                 "Key": "Environment",
                 "Value": "tools"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_recette"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0e6a8409ba028a77b"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_recette"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:37:33+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-03094b7bf748474e2",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-03c3aee6556403f66": {
-        "id": "i-03c3aee6556403f66",
-        "Name": "gitlab-runner-instance-job-infra_recette",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:29",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-03c3aee6556403f66",
-        "Id": "i-03c3aee6556403f66",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:37:33+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:38:26 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "72f64d4c-ef73-a39f-1492-610d2b520a3b",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_recette"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_recette"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0e6a8409ba028a77b"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:37:33+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-03c3aee6556403f66",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-0f75d1d527dcf5c7a": {
-        "id": "i-0f75d1d527dcf5c7a",
-        "Name": "gitlab-runner-instance-job-infra_production",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:29",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-0f75d1d527dcf5c7a",
-        "Id": "i-0f75d1d527dcf5c7a",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:48:28+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:49:04 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "83c64d4d-1770-8652-60b6-a5dcac942fa8",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_production"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0236be89357204227"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_production"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:48:28+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0f75d1d527dcf5c7a",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-0aef361e8376e6ef0": {
-        "id": "i-0aef361e8376e6ef0",
-        "Name": "gitlab-runner-instance-job-infra_production",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:29",
-        "AmiLaunchIndex": 1,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-0aef361e8376e6ef0",
-        "Id": "i-0aef361e8376e6ef0",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:49:13+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:50:02 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "87664d4d-1a31-21ad-9b4d-4fee4406a429",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0236be89357204227"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_production"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_production"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:49:13+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0aef361e8376e6ef0",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-07ff01970770a652e": {
-        "id": "i-07ff01970770a652e",
-        "Name": "gitlab-runner-instance-job-infra_production",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:30",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-07ff01970770a652e",
-        "Id": "i-07ff01970770a652e",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:49:13+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:50:11 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "87664d4d-1a31-21ad-9b4d-4fee4406a429",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_production"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_production"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0236be89357204227"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:49:13+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-07ff01970770a652e",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-00da515b2238f1088": {
-        "id": "i-00da515b2238f1088",
-        "Name": "gitlab-runner-instance-job-infra_recette",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:30",
-        "AmiLaunchIndex": 1,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-00da515b2238f1088",
-        "Id": "i-00da515b2238f1088",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:51:59+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:53:02 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "fce64d4d-2451-fd7c-a7a4-c854490bf0eb",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_recette"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0e6a8409ba028a77b"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_recette"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:51:59+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-00da515b2238f1088",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-0bda18f2593e63088": {
-        "id": "i-0bda18f2593e63088",
-        "Name": "gitlab-runner-instance-job-infra_recette",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:30",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-0bda18f2593e63088",
-        "Id": "i-0bda18f2593e63088",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:51:59+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:52:40 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "fce64d4d-2451-fd7c-a7a4-c854490bf0eb",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_recette"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_recette"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0e6a8409ba028a77b"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:51:59+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0bda18f2593e63088",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-0dbc59283ae450e60": {
-        "id": "i-0dbc59283ae450e60",
-        "Name": "gitlab-runner-instance-job-infra_developpement",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:30",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-0dbc59283ae450e60",
-        "Id": "i-0dbc59283ae450e60",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:56:00+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:56:38 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "8ee64d4d-32fd-cfda-4c85-42ec5708deb9",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_developpement"
             },
             {
                 "Key": "aws:autoscaling:groupName",
                 "Value": "asg-gitlab-runner-infra_developpement"
             },
             {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "6"
             },
             {
-                "Key": "Environment",
-                "Value": "tools"
+                "Key": "Name",
+                "Value": "gitlab-runner-instance-job-infra_developpement"
             },
             {
                 "Key": "ODS",
                 "Value": "Infrastructure"
             },
             {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-07f3b15bcaefc1879"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
+                "Key": "terraform_root",
+                "Value": "GITLAB"
             }
         ],
         "VirtualizationType": "hvm",
@@ -3051,1066 +1662,52 @@
         "BootMode": "uefi",
         "PlatformDetails": "Linux/UNIX",
         "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:56:00+00:00",
+        "UsageOperationUpdateTime": "2024-11-25T16:19:04+00:00",
         "MaintenanceOptions": {
             "AutoRecovery": "default"
         },
         "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0dbc59283ae450e60",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-0e76b2ee5f7d76eb3": {
-        "id": "i-0e76b2ee5f7d76eb3",
-        "Name": "gitlab-runner-instance-job-infra_production",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:30",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-0b10d192f9487edf2",
+        "Id": "i-0b10d192f9487edf2",
+        "ImageId": "ami-0fac8f439810eed46",
+        "State": "terminated",
+        "PrivateDnsName": "",
+        "PublicDnsName": "",
+        "StateTransitionReason": "User initiated (2024-11-25 16:20:24 GMT)",
+        "KeyName": "key-gitlab-runner",
         "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-0e76b2ee5f7d76eb3",
-        "Id": "i-0e76b2ee5f7d76eb3",
+        "ProductCodes": [],
         "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:13:15+00:00",
+        "LaunchTime": "2024-11-25T16:19:04+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
         "Monitoring": {
             "State": "disabled"
         },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:14:05 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "9e464d4c-9670-fea3-7258-53bd0e20ae8b",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0236be89357204227"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_production"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_production"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:13:15+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
         "AccountId": "714117993668",
         "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0e76b2ee5f7d76eb3",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0b10d192f9487edf2",
         "StateCode": 48,
         "Increment": 0,
-        "OsName": "",
+        "OsName": "Linux/UNIX",
         "OsDetailed": "Linux/UNIX",
         "Profile": "tools"
     },
-    "i-0ec650503bf7da8cb": {
-        "id": "i-0ec650503bf7da8cb",
-        "Name": "gitlab-runner-instance-job-infra_recette",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:31",
-        "AmiLaunchIndex": 1,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-0ec650503bf7da8cb",
-        "Id": "i-0ec650503bf7da8cb",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:50:13+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:50:47 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "2e564d4d-1dd0-2640-d87d-c759c2442393",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_recette"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0e6a8409ba028a77b"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_recette"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:50:13+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0ec650503bf7da8cb",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-060bae063f54a82da": {
-        "id": "i-060bae063f54a82da",
-        "Name": "gitlab-runner-instance-job-infra_recette",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:31",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-060bae063f54a82da",
-        "Id": "i-060bae063f54a82da",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:50:13+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:51:53 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "2e564d4d-1dd0-2640-d87d-c759c2442393",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_recette"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_recette"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0e6a8409ba028a77b"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:50:13+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-060bae063f54a82da",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-09a0e44741e97cab5": {
-        "id": "i-09a0e44741e97cab5",
-        "Name": "gitlab-runner-instance-job-infra_recette",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:31",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-09a0e44741e97cab5",
-        "Id": "i-09a0e44741e97cab5",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:31:45+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:32:26 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "06f64d4c-da30-53b1-85e5-42e7c66fd1c4",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_recette"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0e6a8409ba028a77b"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_recette"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:31:45+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-09a0e44741e97cab5",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-09ef0f7c354abec4d": {
-        "id": "i-09ef0f7c354abec4d",
-        "Name": "gitlab-runner-instance-job-infra_recette",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:31",
-        "AmiLaunchIndex": 1,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-09ef0f7c354abec4d",
-        "Id": "i-09ef0f7c354abec4d",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:31:45+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:32:20 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "06f64d4c-da30-53b1-85e5-42e7c66fd1c4",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0e6a8409ba028a77b"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_recette"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_recette"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:31:45+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-09ef0f7c354abec4d",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-0d194bd3c053b2fc1": {
-        "id": "i-0d194bd3c053b2fc1",
-        "Name": "gitlab-runner-instance-job-infra_production",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:31",
-        "AmiLaunchIndex": 1,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-0d194bd3c053b2fc1",
-        "Id": "i-0d194bd3c053b2fc1",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:32:34+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:34:08 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "aa164d4c-dd37-3e33-b8cb-09cb98637858",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_production"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_production"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0236be89357204227"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:32:34+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0d194bd3c053b2fc1",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-09f1601020ec959b2": {
-        "id": "i-09f1601020ec959b2",
-        "Name": "gitlab-runner-instance-job-infra_production",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:32",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-09f1601020ec959b2",
-        "Id": "i-09f1601020ec959b2",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:32:34+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:33:11 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "aa164d4c-dd37-3e33-b8cb-09cb98637858",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0236be89357204227"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_production"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_production"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:32:34+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-09f1601020ec959b2",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-0f18af585bcc0322e": {
-        "id": "i-0f18af585bcc0322e",
-        "Name": "gitlab-runner-instance-job-infra_recette",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:32",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-0f18af585bcc0322e",
-        "Id": "i-0f18af585bcc0322e",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:47:48+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:48:24 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "79164d4d-14f9-3c0e-f145-312817964878",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0e6a8409ba028a77b"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_recette"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_recette"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:47:48+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0f18af585bcc0322e",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-061d6b71b68015b34": {
-        "id": "i-061d6b71b68015b34",
-        "Name": "gitlab-runner-instance-job-infra_recette",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:32",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-061d6b71b68015b34",
-        "Id": "i-061d6b71b68015b34",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:41:43+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:42:35 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "0ad64d4c-feb9-218e-b692-55dc85ac9244",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0e6a8409ba028a77b"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_recette"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_recette"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:41:43+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-061d6b71b68015b34",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-06af116473abc11ec": {
-        "id": "i-06af116473abc11ec",
+    "i-06ee971c4d95cdcae": {
+        "id": "i-06ee971c4d95cdcae",
         "Name": "gitlab-runner-instance-job-infra_developpement",
         "Description": "",
         "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:32",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-06af116473abc11ec",
-        "Id": "i-06af116473abc11ec",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:35:34+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:37:22 GMT)",
+        "Date": "2024-11-25 18:10:14",
         "Architecture": "arm64",
         "BlockDeviceMappings": [],
-        "ClientToken": "b0264d4c-e82c-e287-e32b-8edad35ca702",
+        "ClientToken": "3b464d90-6e4a-7520-034f-5d377f84e127",
         "EbsOptimized": false,
         "EnaSupport": true,
         "Hypervisor": "xen",
@@ -4140,12 +1737,12 @@
                 "Value": "mig3B3N2FXHQT"
             },
             {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
                 "Key": "Environment",
                 "Value": "tools"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "6"
             },
             {
                 "Key": "ODS",
@@ -4181,275 +1778,52 @@
         "BootMode": "uefi",
         "PlatformDetails": "Linux/UNIX",
         "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:35:34+00:00",
+        "UsageOperationUpdateTime": "2024-11-25T16:15:50+00:00",
         "MaintenanceOptions": {
             "AutoRecovery": "default"
         },
         "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-06af116473abc11ec",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-0b982c17a16534933": {
-        "id": "i-0b982c17a16534933",
-        "Name": "gitlab-runner-instance-job-infra_recette",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:32",
-        "AmiLaunchIndex": 1,
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-06ee971c4d95cdcae",
+        "Id": "i-06ee971c4d95cdcae",
         "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-0b982c17a16534933",
-        "Id": "i-0b982c17a16534933",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:34:49+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
         "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:35:28 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "b6964d4c-e56f-bb5c-d05c-5dcddb2c5735",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_recette"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0e6a8409ba028a77b"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_recette"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:34:49+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
-        "AccountId": "714117993668",
-        "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0b982c17a16534933",
-        "StateCode": 48,
-        "Increment": 0,
-        "OsName": "",
-        "OsDetailed": "Linux/UNIX",
-        "Profile": "tools"
-    },
-    "i-0e9c73a89c3bb0aaf": {
-        "id": "i-0e9c73a89c3bb0aaf",
-        "Name": "gitlab-runner-instance-job-infra_recette",
-        "Description": "",
-        "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:32",
+        "PrivateDnsName": "",
+        "PublicDnsName": "",
+        "StateTransitionReason": "User initiated (2024-11-25 16:16:48 GMT)",
+        "KeyName": "key-gitlab-runner",
         "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-0e9c73a89c3bb0aaf",
-        "Id": "i-0e9c73a89c3bb0aaf",
+        "ProductCodes": [],
         "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:34:49+00:00",
+        "LaunchTime": "2024-11-25T16:15:50+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
         "Monitoring": {
             "State": "disabled"
         },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:35:27 GMT)",
-        "Architecture": "arm64",
-        "BlockDeviceMappings": [],
-        "ClientToken": "b6964d4c-e56f-bb5c-d05c-5dcddb2c5735",
-        "EbsOptimized": false,
-        "EnaSupport": true,
-        "Hypervisor": "xen",
-        "NetworkInterfaces": [],
-        "RootDeviceName": "/dev/xvda",
-        "RootDeviceType": "ebs",
-        "SecurityGroups": [],
-        "StateReason": {
-            "Code": "Client.UserInitiatedShutdown",
-            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
-        },
-        "Tags": [
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
-                "Key": "ODS",
-                "Value": "Infrastructure"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_recette"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0e6a8409ba028a77b"
-            },
-            {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_recette"
-            }
-        ],
-        "VirtualizationType": "hvm",
-        "CpuOptions": {
-            "CoreCount": 2,
-            "ThreadsPerCore": 1
-        },
-        "CapacityReservationSpecification": {
-            "CapacityReservationPreference": "open"
-        },
-        "HibernationOptions": {
-            "Configured": false
-        },
-        "MetadataOptions": {
-            "State": "pending",
-            "HttpTokens": "required",
-            "HttpPutResponseHopLimit": 2,
-            "HttpEndpoint": "enabled",
-            "HttpProtocolIpv6": "disabled",
-            "InstanceMetadataTags": "disabled"
-        },
-        "EnclaveOptions": {
-            "Enabled": false
-        },
-        "BootMode": "uefi",
-        "PlatformDetails": "Linux/UNIX",
-        "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:34:49+00:00",
-        "MaintenanceOptions": {
-            "AutoRecovery": "default"
-        },
-        "CurrentInstanceBootMode": "uefi",
         "AccountId": "714117993668",
         "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0e9c73a89c3bb0aaf",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-06ee971c4d95cdcae",
         "StateCode": 48,
         "Increment": 0,
-        "OsName": "",
+        "OsName": "Linux/UNIX",
         "OsDetailed": "Linux/UNIX",
         "Profile": "tools"
     },
-    "i-058206b4be44a17f7": {
-        "id": "i-058206b4be44a17f7",
+    "i-0d4a79da1df8099b3": {
+        "id": "i-0d4a79da1df8099b3",
         "Name": "gitlab-runner-instance-job-infra_recette",
         "Description": "",
         "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:33",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-058206b4be44a17f7",
-        "Id": "i-058206b4be44a17f7",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:14:18+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:15:02 GMT)",
+        "Date": "2024-11-25 18:10:14",
         "Architecture": "arm64",
         "BlockDeviceMappings": [],
-        "ClientToken": "1d764d4c-9a4b-3605-4bc4-9a015defc3eb",
+        "ClientToken": "c8b64d90-6b30-713e-d374-4e81a1f50fec",
         "EbsOptimized": false,
         "EnaSupport": true,
         "Hypervisor": "xen",
@@ -4463,36 +1837,36 @@
         },
         "Tags": [
             {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_recette"
+                "Key": "terraform_root",
+                "Value": "GITLAB"
             },
             {
                 "Key": "map-migrated",
                 "Value": "mig3B3N2FXHQT"
             },
             {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0e6a8409ba028a77b"
-            },
-            {
                 "Key": "Environment",
                 "Value": "tools"
+            },
+            {
+                "Key": "ODS",
+                "Value": "Infrastructure"
             },
             {
                 "Key": "Name",
                 "Value": "gitlab-runner-instance-job-infra_recette"
             },
             {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
+                "Key": "aws:autoscaling:groupName",
+                "Value": "asg-gitlab-runner-infra_recette"
             },
             {
                 "Key": "aws:ec2launchtemplate:version",
                 "Value": "6"
             },
             {
-                "Key": "ODS",
-                "Value": "Infrastructure"
+                "Key": "aws:ec2launchtemplate:id",
+                "Value": "lt-0e6a8409ba028a77b"
             }
         ],
         "VirtualizationType": "hvm",
@@ -4520,49 +1894,52 @@
         "BootMode": "uefi",
         "PlatformDetails": "Linux/UNIX",
         "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:14:18+00:00",
+        "UsageOperationUpdateTime": "2024-11-25T16:14:59+00:00",
         "MaintenanceOptions": {
             "AutoRecovery": "default"
         },
         "CurrentInstanceBootMode": "uefi",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-0d4a79da1df8099b3",
+        "Id": "i-0d4a79da1df8099b3",
+        "ImageId": "ami-0fac8f439810eed46",
+        "State": "terminated",
+        "PrivateDnsName": "",
+        "PublicDnsName": "",
+        "StateTransitionReason": "User initiated (2024-11-25 16:15:38 GMT)",
+        "KeyName": "key-gitlab-runner",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t4g.nano",
+        "LaunchTime": "2024-11-25T16:14:59+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
         "AccountId": "714117993668",
         "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-058206b4be44a17f7",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0d4a79da1df8099b3",
         "StateCode": 48,
         "Increment": 0,
-        "OsName": "",
+        "OsName": "Linux/UNIX",
         "OsDetailed": "Linux/UNIX",
         "Profile": "tools"
     },
-    "i-01078f9cb6199da03": {
-        "id": "i-01078f9cb6199da03",
+    "i-0b0554ddac930fcba": {
+        "id": "i-0b0554ddac930fcba",
         "Name": "gitlab-runner-instance-job-infra_recette",
         "Description": "",
         "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:33",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-01078f9cb6199da03",
-        "Id": "i-01078f9cb6199da03",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:16:35+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:18:35 GMT)",
+        "Date": "2024-11-25 18:10:14",
         "Architecture": "arm64",
         "BlockDeviceMappings": [],
-        "ClientToken": "34f64d4c-a2a6-2274-4888-7df1b924e070",
+        "ClientToken": "d7d64d90-7a8d-b7e2-63d4-4f35de0a0f6c",
         "EbsOptimized": false,
         "EnaSupport": true,
         "Hypervisor": "xen",
@@ -4576,26 +1953,6 @@
         },
         "Tags": [
             {
-                "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_recette"
-            },
-            {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0e6a8409ba028a77b"
-            },
-            {
-                "Key": "aws:ec2launchtemplate:version",
-                "Value": "6"
-            },
-            {
                 "Key": "Environment",
                 "Value": "tools"
             },
@@ -4606,6 +1963,26 @@
             {
                 "Key": "Name",
                 "Value": "gitlab-runner-instance-job-infra_recette"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "6"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:id",
+                "Value": "lt-0e6a8409ba028a77b"
+            },
+            {
+                "Key": "terraform_root",
+                "Value": "GITLAB"
+            },
+            {
+                "Key": "aws:autoscaling:groupName",
+                "Value": "asg-gitlab-runner-infra_recette"
+            },
+            {
+                "Key": "map-migrated",
+                "Value": "mig3B3N2FXHQT"
             }
         ],
         "VirtualizationType": "hvm",
@@ -4633,49 +2010,52 @@
         "BootMode": "uefi",
         "PlatformDetails": "Linux/UNIX",
         "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:16:35+00:00",
+        "UsageOperationUpdateTime": "2024-11-25T16:19:10+00:00",
         "MaintenanceOptions": {
             "AutoRecovery": "default"
         },
         "CurrentInstanceBootMode": "uefi",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-0b0554ddac930fcba",
+        "Id": "i-0b0554ddac930fcba",
+        "ImageId": "ami-0fac8f439810eed46",
+        "State": "terminated",
+        "PrivateDnsName": "",
+        "PublicDnsName": "",
+        "StateTransitionReason": "User initiated (2024-11-25 16:20:20 GMT)",
+        "KeyName": "key-gitlab-runner",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t4g.nano",
+        "LaunchTime": "2024-11-25T16:19:10+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
         "AccountId": "714117993668",
         "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-01078f9cb6199da03",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0b0554ddac930fcba",
         "StateCode": 48,
         "Increment": 0,
-        "OsName": "",
+        "OsName": "Linux/UNIX",
         "OsDetailed": "Linux/UNIX",
         "Profile": "tools"
     },
-    "i-0ffc97c0551ec6610": {
-        "id": "i-0ffc97c0551ec6610",
-        "Name": "gitlab-runner-instance-job-infra_recette",
+    "i-0e259e0ced5ffe7d6": {
+        "id": "i-0e259e0ced5ffe7d6",
+        "Name": "gitlab-runner-instance-job-infra_production",
         "Description": "",
         "Category": "aws.ec2.instance",
-        "Date": "2024-11-22 10:57:33",
-        "AmiLaunchIndex": 0,
-        "ImageId": "ami-0fac8f439810eed46",
-        "InstanceId": "i-0ffc97c0551ec6610",
-        "Id": "i-0ffc97c0551ec6610",
-        "InstanceType": "t4g.nano",
-        "KeyName": "key-gitlab-runner",
-        "LaunchTime": "2024-11-22T09:16:45+00:00",
-        "Monitoring": {
-            "State": "disabled"
-        },
-        "Placement": {
-            "AvailabilityZone": "eu-west-3a",
-            "GroupName": "",
-            "Tenancy": "default"
-        },
-        "PrivateDnsName": "",
-        "ProductCodes": [],
-        "PublicDnsName": "",
-        "State": "terminated",
-        "StateTransitionReason": "User initiated (2024-11-22 09:17:25 GMT)",
+        "Date": "2024-11-25 18:10:14",
         "Architecture": "arm64",
         "BlockDeviceMappings": [],
-        "ClientToken": "48d64d4c-a344-6d87-f09c-1ec4d6a19030",
+        "ClientToken": "81d64d90-6de0-d023-63f3-954638e9fa87",
         "EbsOptimized": false,
         "EnaSupport": true,
         "Hypervisor": "xen",
@@ -4689,24 +2069,12 @@
         },
         "Tags": [
             {
-                "Key": "Name",
-                "Value": "gitlab-runner-instance-job-infra_recette"
-            },
-            {
-                "Key": "map-migrated",
-                "Value": "mig3B3N2FXHQT"
-            },
-            {
-                "Key": "Environment",
-                "Value": "tools"
-            },
-            {
                 "Key": "aws:autoscaling:groupName",
-                "Value": "asg-gitlab-runner-infra_recette"
+                "Value": "asg-gitlab-runner-infra_production"
             },
             {
-                "Key": "aws:ec2launchtemplate:id",
-                "Value": "lt-0e6a8409ba028a77b"
+                "Key": "terraform_root",
+                "Value": "GITLAB"
             },
             {
                 "Key": "ODS",
@@ -4717,8 +2085,20 @@
                 "Value": "6"
             },
             {
-                "Key": "terraform_root",
-                "Value": "GITLAB"
+                "Key": "Environment",
+                "Value": "tools"
+            },
+            {
+                "Key": "map-migrated",
+                "Value": "mig3B3N2FXHQT"
+            },
+            {
+                "Key": "Name",
+                "Value": "gitlab-runner-instance-job-infra_production"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:id",
+                "Value": "lt-0236be89357204227"
             }
         ],
         "VirtualizationType": "hvm",
@@ -4746,17 +2126,156 @@
         "BootMode": "uefi",
         "PlatformDetails": "Linux/UNIX",
         "UsageOperation": "RunInstances",
-        "UsageOperationUpdateTime": "2024-11-22T09:16:45+00:00",
+        "UsageOperationUpdateTime": "2024-11-25T16:15:43+00:00",
         "MaintenanceOptions": {
             "AutoRecovery": "default"
         },
         "CurrentInstanceBootMode": "uefi",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-0e259e0ced5ffe7d6",
+        "Id": "i-0e259e0ced5ffe7d6",
+        "ImageId": "ami-0fac8f439810eed46",
+        "State": "terminated",
+        "PrivateDnsName": "",
+        "PublicDnsName": "",
+        "StateTransitionReason": "User initiated (2024-11-25 16:16:44 GMT)",
+        "KeyName": "key-gitlab-runner",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t4g.nano",
+        "LaunchTime": "2024-11-25T16:15:43+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
         "AccountId": "714117993668",
         "Region": "eu-west-3",
-        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0ffc97c0551ec6610",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0e259e0ced5ffe7d6",
         "StateCode": 48,
         "Increment": 0,
-        "OsName": "",
+        "OsName": "Linux/UNIX",
+        "OsDetailed": "Linux/UNIX",
+        "Profile": "tools"
+    },
+    "i-0f8bce861bf7cc437": {
+        "id": "i-0f8bce861bf7cc437",
+        "Name": "gitlab-runner-instance-job-infra_production",
+        "Description": "",
+        "Category": "aws.ec2.instance",
+        "Date": "2024-11-25 18:10:14",
+        "Architecture": "arm64",
+        "BlockDeviceMappings": [],
+        "ClientToken": "6c064d90-67ca-a459-bb9c-91e8f58eaea8",
+        "EbsOptimized": false,
+        "EnaSupport": true,
+        "Hypervisor": "xen",
+        "NetworkInterfaces": [],
+        "RootDeviceName": "/dev/xvda",
+        "RootDeviceType": "ebs",
+        "SecurityGroups": [],
+        "StateReason": {
+            "Code": "Client.UserInitiatedShutdown",
+            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
+        },
+        "Tags": [
+            {
+                "Key": "map-migrated",
+                "Value": "mig3B3N2FXHQT"
+            },
+            {
+                "Key": "Environment",
+                "Value": "tools"
+            },
+            {
+                "Key": "ODS",
+                "Value": "Infrastructure"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "6"
+            },
+            {
+                "Key": "aws:autoscaling:groupName",
+                "Value": "asg-gitlab-runner-infra_production"
+            },
+            {
+                "Key": "terraform_root",
+                "Value": "GITLAB"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:id",
+                "Value": "lt-0236be89357204227"
+            },
+            {
+                "Key": "Name",
+                "Value": "gitlab-runner-instance-job-infra_production"
+            }
+        ],
+        "VirtualizationType": "hvm",
+        "CpuOptions": {
+            "CoreCount": 2,
+            "ThreadsPerCore": 1
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "State": "pending",
+            "HttpTokens": "required",
+            "HttpPutResponseHopLimit": 2,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "BootMode": "uefi",
+        "PlatformDetails": "Linux/UNIX",
+        "UsageOperation": "RunInstances",
+        "UsageOperationUpdateTime": "2024-11-25T16:14:03+00:00",
+        "MaintenanceOptions": {
+            "AutoRecovery": "default"
+        },
+        "CurrentInstanceBootMode": "uefi",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-0f8bce861bf7cc437",
+        "Id": "i-0f8bce861bf7cc437",
+        "ImageId": "ami-0fac8f439810eed46",
+        "State": "terminated",
+        "PrivateDnsName": "",
+        "PublicDnsName": "",
+        "StateTransitionReason": "User initiated (2024-11-25 16:14:47 GMT)",
+        "KeyName": "key-gitlab-runner",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t4g.nano",
+        "LaunchTime": "2024-11-25T16:14:03+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "AccountId": "714117993668",
+        "Region": "eu-west-3",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0f8bce861bf7cc437",
+        "StateCode": 48,
+        "Increment": 0,
+        "OsName": "Linux/UNIX",
         "OsDetailed": "Linux/UNIX",
         "Profile": "tools"
     }

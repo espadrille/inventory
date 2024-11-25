@@ -53,10 +53,11 @@ class Resource(Object):
                 return func(*args)
             except Exception:
                 retries += 1
-                console.Debug(f"Erreur lors de l'execution de {func.__name__}: Re-essai {retries}/{max_retries} dans {delay} secondes.")
+                console.Debug(f"{self.GetProperty('Name')} : Erreur lors de l'execution de {func.__name__}: Re-essai {retries}/{max_retries} dans {delay} secondes.")
                 time.sleep(delay)
                 delay *= 2  # Backoff exponentiel
-        raise Exception(f"Échec de {func.__name__} après {max_retries} tentatives.")
+        console.Debug(f"{self.GetProperty('Name')} : Echec de {func.__name__} aprés {max_retries} tentatives.")
+        # raise Exception(f"Echec de {func.__name__} aprés {max_retries} tentatives.")
 
     #
     # Public methods

@@ -58,9 +58,9 @@ class VirtualMachine(VsphereResource):
                 self.SetProperty('Increment', 0)
 
         # Recherche de la date de creation (= date d'attachement du volume racine)
-        for my_device in self.GetProperty('BlockDeviceMappings'):
-            if my_device['DeviceName'] == self.GetProperty('RootDeviceName'):
-                self.SetProperty('CreationTime', my_device['Ebs']['AttachTime'])
+        # for my_device in self.GetProperty('BlockDeviceMappings'):
+        #     if my_device['DeviceName'] == self.GetProperty('RootDeviceName'):
+        #         self.SetProperty('CreationTime', my_device['Ebs']['AttachTime'])
 
         # Ajouter les informations de tags
         self._execute_with_retry(self._get_tags)
@@ -109,7 +109,7 @@ class VirtualMachine(VsphereResource):
             'Content-Type': 'application/json'
         }
 
-        # Recupération des tags associes à la machine virtuelle
+        # Recuperation des tags associes à la machine virtuelle
         request_url = f"{base_url}/rest/com/vmware/cis/tagging/tag-association?~action=list-attached-tags"
         payload = {
             "object_id": {
