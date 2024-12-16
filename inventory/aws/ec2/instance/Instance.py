@@ -40,6 +40,9 @@ class Instance(AwsResource):
             self.SetProperty('State', instance['State']['Name'])
         self.SetProperty('StateCode', int(instance['State']['Code']))
 
+        # Distinction Prod/Hors-prod
+        self.SetProperty('Environment', client.Profile())
+
         # Tenter de lire l'increment dans le nom de l'instance
         result = re.match('AWS.[A-Z]{1,2}([0-9]{2,3})', self.GetProperty('Name'))
         if result:
@@ -54,6 +57,7 @@ class Instance(AwsResource):
 
         # Creation des proprietes NetworkInterface
         i = 0
+        subnets = ""
         for my_interface in self.GetProperty('NetworkInterfaces'):
             i += 1
             self.SetProperty(f"NetworkInterface_{i}", my_interface['NetworkInterfaceId'])
@@ -63,6 +67,10 @@ class Instance(AwsResource):
             for my_tag in subnet['Tags']:
                 if my_tag['Key'] == 'Name':
                     self.SetProperty(f"SubnetName_{i}", my_tag['Value'])
+                    if subnets == "":
+                        subnets = my_tag['Value']
+                    else:
+                        subnets = f"{subnets}, {my_tag['Value']}"
 
         # Recherche de la date de creation (= date d'attachement du volume racine)
         for my_device in self.GetProperty('BlockDeviceMappings'):

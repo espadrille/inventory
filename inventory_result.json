@@ -1,0 +1,2057 @@
+{
+    "i-0ad467fef661e7eab": {
+        "id": "i-0ad467fef661e7eab",
+        "Name": "test-ansible-windows",
+        "Description": "",
+        "Category": "aws.ec2.instance",
+        "Date": "2024-12-13 14:49:22",
+        "Architecture": "x86_64",
+        "BlockDeviceMappings": [
+            {
+                "DeviceName": "/dev/sda1",
+                "Ebs": {
+                    "AttachTime": "2023-02-20T15:27:22+00:00",
+                    "DeleteOnTermination": true,
+                    "Status": "attached",
+                    "VolumeId": "vol-09788af7b83634805"
+                }
+            }
+        ],
+        "ClientToken": "c3419014-0113-43cf-a104-29ab754d3276",
+        "EbsOptimized": false,
+        "EnaSupport": true,
+        "Hypervisor": "xen",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::714117993668:instance-profile/AmazonSSMRoleForInstancesQuickSetup",
+            "Id": "AIPA2MRF72TCKH35EAMT3"
+        },
+        "NetworkInterfaces": [
+            {
+                "Attachment": {
+                    "AttachTime": "2023-02-20T15:27:21+00:00",
+                    "AttachmentId": "eni-attach-0fb1e355a8c45bb57",
+                    "DeleteOnTermination": true,
+                    "DeviceIndex": 0,
+                    "Status": "attached",
+                    "NetworkCardIndex": 0
+                },
+                "Description": "",
+                "Groups": [
+                    {
+                        "GroupId": "sg-00f73474f813cb8e7",
+                        "GroupName": "sg_test-ansible-windows"
+                    }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "0a:3c:72:1b:7f:62",
+                "NetworkInterfaceId": "eni-087aa483306fc41a0",
+                "OwnerId": "714117993668",
+                "PrivateDnsName": "ip-10-5-8-148.eu-west-3.compute.internal",
+                "PrivateIpAddress": "10.5.8.148",
+                "PrivateIpAddresses": [
+                    {
+                        "Primary": true,
+                        "PrivateDnsName": "ip-10-5-8-148.eu-west-3.compute.internal",
+                        "PrivateIpAddress": "10.5.8.148"
+                    }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-0504abdba6932ffe4",
+                "VpcId": "vpc-05db470e8f1a6422f",
+                "InterfaceType": "interface",
+                "Operator": {
+                    "Managed": false
+                }
+            }
+        ],
+        "RootDeviceName": "/dev/sda1",
+        "RootDeviceType": "ebs",
+        "SecurityGroups": [
+            {
+                "GroupId": "sg-00f73474f813cb8e7",
+                "GroupName": "sg_test-ansible-windows"
+            }
+        ],
+        "SourceDestCheck": true,
+        "StateReason": {
+            "Code": "Client.UserInitiatedShutdown",
+            "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
+        },
+        "Tags": [
+            {
+                "Key": "ScheduleStop",
+                "Value": "19:00"
+            },
+            {
+                "Key": "Scheduled",
+                "Value": "True"
+            },
+            {
+                "Key": "Name",
+                "Value": "test-ansible-windows"
+            },
+            {
+                "Key": "code_affaire",
+                "Value": "DSIRN99999"
+            }
+        ],
+        "VirtualizationType": "hvm",
+        "CpuOptions": {
+            "CoreCount": 1,
+            "ThreadsPerCore": 1
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "State": "applied",
+            "HttpTokens": "required",
+            "HttpPutResponseHopLimit": 1,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "PlatformDetails": "Windows",
+        "UsageOperation": "RunInstances:0002",
+        "UsageOperationUpdateTime": "2023-02-20T15:27:21+00:00",
+        "PrivateDnsNameOptions": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": true,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "MaintenanceOptions": {
+            "AutoRecovery": "default"
+        },
+        "CurrentInstanceBootMode": "legacy-bios",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-0ad467fef661e7eab",
+        "Id": "i-0ad467fef661e7eab",
+        "ImageId": "ami-01a6df0ce1da183e3",
+        "State": "poweredOff",
+        "PrivateDnsName": "ip-10-5-8-148.eu-west-3.compute.internal",
+        "PublicDnsName": "",
+        "StateTransitionReason": "User initiated (2023-03-06 18:00:25 GMT)",
+        "KeyName": "key-tools",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t2.micro",
+        "LaunchTime": "2023-03-06T13:55:06+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3b"
+        },
+        "Platform": "windows",
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "SubnetId": "subnet-0504abdba6932ffe4",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "PrivateIpAddress": "10.5.8.148",
+        "AccountId": "714117993668",
+        "Region": "eu-west-3",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0ad467fef661e7eab",
+        "StateCode": 80,
+        "Environment": "tools",
+        "Increment": 0,
+        "NetworkInterface_1": "eni-087aa483306fc41a0",
+        "PrivateIpAddress_1": "10.5.8.148",
+        "SubnetId_1": "subnet-0504abdba6932ffe4",
+        "SubnetName_1": "private_b_tools",
+        "CreationTime": "2023-02-20T15:27:22+00:00",
+        "OsName": "Windows",
+        "OsDetailed": "Windows",
+        "Profile": "tools"
+    },
+    "i-0178b5c2a75fae795": {
+        "id": "i-0178b5c2a75fae795",
+        "Name": "awstolnx002",
+        "Description": "Serveur ansible",
+        "Category": "aws.ec2.instance",
+        "Date": "2024-12-13 14:49:22",
+        "Architecture": "x86_64",
+        "BlockDeviceMappings": [
+            {
+                "DeviceName": "/dev/xvda",
+                "Ebs": {
+                    "AttachTime": "2022-11-10T14:24:32+00:00",
+                    "DeleteOnTermination": true,
+                    "Status": "attached",
+                    "VolumeId": "vol-065582316f0473e48"
+                }
+            }
+        ],
+        "ClientToken": "terraform-20221110142430836000000001",
+        "EbsOptimized": false,
+        "EnaSupport": true,
+        "Hypervisor": "xen",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::714117993668:instance-profile/role-awstolnx002",
+            "Id": "AIPA2MRF72TCFJRXLP2CE"
+        },
+        "NetworkInterfaces": [
+            {
+                "Attachment": {
+                    "AttachTime": "2022-11-10T14:24:32+00:00",
+                    "AttachmentId": "eni-attach-0130725aa213267f2",
+                    "DeleteOnTermination": true,
+                    "DeviceIndex": 0,
+                    "Status": "attached",
+                    "NetworkCardIndex": 0
+                },
+                "Description": "",
+                "Groups": [
+                    {
+                        "GroupId": "sg-005e4ebfa9bc5b203",
+                        "GroupName": "sg_awstolnx002"
+                    }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "06:47:fa:54:75:10",
+                "NetworkInterfaceId": "eni-07fffaa8dc383b444",
+                "OwnerId": "714117993668",
+                "PrivateDnsName": "ip-10-5-8-132.eu-west-3.compute.internal",
+                "PrivateIpAddress": "10.5.8.132",
+                "PrivateIpAddresses": [
+                    {
+                        "Primary": true,
+                        "PrivateDnsName": "ip-10-5-8-132.eu-west-3.compute.internal",
+                        "PrivateIpAddress": "10.5.8.132"
+                    }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-011db4b3b09a58cf7",
+                "VpcId": "vpc-05db470e8f1a6422f",
+                "InterfaceType": "interface",
+                "Operator": {
+                    "Managed": false
+                }
+            }
+        ],
+        "RootDeviceName": "/dev/xvda",
+        "RootDeviceType": "ebs",
+        "SecurityGroups": [
+            {
+                "GroupId": "sg-005e4ebfa9bc5b203",
+                "GroupName": "sg_awstolnx002"
+            }
+        ],
+        "SourceDestCheck": true,
+        "Tags": [
+            {
+                "Key": "Backup",
+                "Value": "Standard"
+            },
+            {
+                "Key": "code_affaire",
+                "Value": "DSIZZDY299"
+            },
+            {
+                "Key": "map-migrated",
+                "Value": "mig3B3N2FXHQT"
+            },
+            {
+                "Key": "terraform_module",
+                "Value": "terraform-module-aws-ec2-instance"
+            },
+            {
+                "Key": "os_type",
+                "Value": "{\"name\":\"AmazonLinux2\", \"detailed\":\"Amazon Linux 2 Kernel 5.10 AMI 2.0.20241113.1 x86_64 HVM gp2\"}"
+            },
+            {
+                "Key": "Name",
+                "Value": "awstolnx002"
+            },
+            {
+                "Key": "terraform_root",
+                "Value": "TOOLS_SERVERS"
+            },
+            {
+                "Key": "Description",
+                "Value": "Serveur ansible"
+            },
+            {
+                "Key": "ODS",
+                "Value": "Infrastructure"
+            },
+            {
+                "Key": "Environment",
+                "Value": "tools"
+            }
+        ],
+        "VirtualizationType": "hvm",
+        "CpuOptions": {
+            "CoreCount": 2,
+            "ThreadsPerCore": 2
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "State": "applied",
+            "HttpTokens": "required",
+            "HttpPutResponseHopLimit": 1,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "PlatformDetails": "Linux/UNIX",
+        "UsageOperation": "RunInstances",
+        "UsageOperationUpdateTime": "2022-11-10T14:24:32+00:00",
+        "PrivateDnsNameOptions": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "MaintenanceOptions": {
+            "AutoRecovery": "default"
+        },
+        "CurrentInstanceBootMode": "legacy-bios",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-0178b5c2a75fae795",
+        "Id": "i-0178b5c2a75fae795",
+        "ImageId": "ami-02b01316e6e3496d9",
+        "State": "poweredOn",
+        "PrivateDnsName": "ip-10-5-8-132.eu-west-3.compute.internal",
+        "PublicDnsName": "",
+        "StateTransitionReason": "",
+        "KeyName": "key-tools",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t3.xlarge",
+        "LaunchTime": "2023-06-02T07:44:35+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "SubnetId": "subnet-011db4b3b09a58cf7",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "PrivateIpAddress": "10.5.8.132",
+        "AccountId": "714117993668",
+        "Region": "eu-west-3",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0178b5c2a75fae795",
+        "StateCode": 16,
+        "Environment": "tools",
+        "Increment": 2,
+        "NetworkInterface_1": "eni-07fffaa8dc383b444",
+        "PrivateIpAddress_1": "10.5.8.132",
+        "SubnetId_1": "subnet-011db4b3b09a58cf7",
+        "SubnetName_1": "private_a_tools",
+        "CreationTime": "2022-11-10T14:24:32+00:00",
+        "OsName": "AmazonLinux2",
+        "OsDetailed": "Amazon Linux 2 Kernel 5.10 AMI 2.0.20241113.1 x86_64 HVM gp2",
+        "Profile": "tools"
+    },
+    "i-03b87596b59bdd16a": {
+        "id": "i-03b87596b59bdd16a",
+        "Name": "awstolnx001",
+        "Description": "Serveur terraform",
+        "Category": "aws.ec2.instance",
+        "Date": "2024-12-13 14:49:23",
+        "Architecture": "x86_64",
+        "BlockDeviceMappings": [
+            {
+                "DeviceName": "/dev/xvda",
+                "Ebs": {
+                    "AttachTime": "2024-04-18T14:28:12+00:00",
+                    "DeleteOnTermination": true,
+                    "Status": "attached",
+                    "VolumeId": "vol-00cb9cd7213c1f6e5"
+                }
+            },
+            {
+                "DeviceName": "/dev/sdb",
+                "Ebs": {
+                    "AttachTime": "2024-04-18T14:28:12+00:00",
+                    "DeleteOnTermination": true,
+                    "Status": "attached",
+                    "VolumeId": "vol-0084d4d14562d6e35"
+                }
+            }
+        ],
+        "ClientToken": "eff0d398-11f0-4aa2-9026-a77681380c75",
+        "EbsOptimized": true,
+        "EnaSupport": true,
+        "Hypervisor": "xen",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::714117993668:instance-profile/role-awstolnx001",
+            "Id": "AIPA2MRF72TCPMGHMFQ6X"
+        },
+        "NetworkInterfaces": [
+            {
+                "Attachment": {
+                    "AttachTime": "2024-04-18T14:28:11+00:00",
+                    "AttachmentId": "eni-attach-0c4f9d6ee72991022",
+                    "DeleteOnTermination": true,
+                    "DeviceIndex": 0,
+                    "Status": "attached",
+                    "NetworkCardIndex": 0
+                },
+                "Description": "",
+                "Groups": [
+                    {
+                        "GroupId": "sg-0d2f5d7cb1d88578e",
+                        "GroupName": "sg_awstolnx001"
+                    }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "06:dd:51:be:3c:53",
+                "NetworkInterfaceId": "eni-018f1e862b67c0112",
+                "OwnerId": "714117993668",
+                "PrivateDnsName": "ip-10-5-8-133.eu-west-3.compute.internal",
+                "PrivateIpAddress": "10.5.8.133",
+                "PrivateIpAddresses": [
+                    {
+                        "Primary": true,
+                        "PrivateDnsName": "ip-10-5-8-133.eu-west-3.compute.internal",
+                        "PrivateIpAddress": "10.5.8.133"
+                    }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-011db4b3b09a58cf7",
+                "VpcId": "vpc-05db470e8f1a6422f",
+                "InterfaceType": "interface",
+                "Operator": {
+                    "Managed": false
+                }
+            }
+        ],
+        "RootDeviceName": "/dev/xvda",
+        "RootDeviceType": "ebs",
+        "SecurityGroups": [
+            {
+                "GroupId": "sg-0d2f5d7cb1d88578e",
+                "GroupName": "sg_awstolnx001"
+            }
+        ],
+        "SourceDestCheck": true,
+        "Tags": [
+            {
+                "Key": "Description",
+                "Value": "Serveur terraform"
+            },
+            {
+                "Key": "code_affaire",
+                "Value": "DSIZZDY299"
+            },
+            {
+                "Key": "Backup",
+                "Value": "Standard"
+            },
+            {
+                "Key": "Name",
+                "Value": "awstolnx001"
+            }
+        ],
+        "VirtualizationType": "hvm",
+        "CpuOptions": {
+            "CoreCount": 2,
+            "ThreadsPerCore": 2
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "State": "applied",
+            "HttpTokens": "optional",
+            "HttpPutResponseHopLimit": 1,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "PlatformDetails": "Linux/UNIX",
+        "UsageOperation": "RunInstances",
+        "UsageOperationUpdateTime": "2024-04-18T14:28:11+00:00",
+        "PrivateDnsNameOptions": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "MaintenanceOptions": {
+            "AutoRecovery": "default"
+        },
+        "CurrentInstanceBootMode": "legacy-bios",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-03b87596b59bdd16a",
+        "Id": "i-03b87596b59bdd16a",
+        "ImageId": "ami-0f2378a9d19d5fe31",
+        "State": "poweredOn",
+        "PrivateDnsName": "ip-10-5-8-133.eu-west-3.compute.internal",
+        "PublicDnsName": "",
+        "StateTransitionReason": "",
+        "KeyName": "key-tools",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t3.xlarge",
+        "LaunchTime": "2024-04-18T14:28:11+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "SubnetId": "subnet-011db4b3b09a58cf7",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "PrivateIpAddress": "10.5.8.133",
+        "AccountId": "714117993668",
+        "Region": "eu-west-3",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-03b87596b59bdd16a",
+        "StateCode": 16,
+        "Environment": "tools",
+        "Increment": 1,
+        "NetworkInterface_1": "eni-018f1e862b67c0112",
+        "PrivateIpAddress_1": "10.5.8.133",
+        "SubnetId_1": "subnet-011db4b3b09a58cf7",
+        "SubnetName_1": "private_a_tools",
+        "CreationTime": "2024-04-18T14:28:12+00:00",
+        "OsName": "Linux/UNIX",
+        "OsDetailed": "Linux/UNIX",
+        "Profile": "tools"
+    },
+    "i-04398be5ee74ec5c5": {
+        "id": "i-04398be5ee74ec5c5",
+        "Name": "awstolnx003",
+        "Description": "Serveur python",
+        "Category": "aws.ec2.instance",
+        "Date": "2024-12-13 14:49:23",
+        "Architecture": "x86_64",
+        "BlockDeviceMappings": [
+            {
+                "DeviceName": "/dev/xvda",
+                "Ebs": {
+                    "AttachTime": "2024-05-17T12:56:14+00:00",
+                    "DeleteOnTermination": true,
+                    "Status": "attached",
+                    "VolumeId": "vol-08100cefed6967898"
+                }
+            }
+        ],
+        "ClientToken": "terraform-20240517125612564400000001",
+        "EbsOptimized": false,
+        "EnaSupport": true,
+        "Hypervisor": "xen",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::714117993668:instance-profile/role-awstolnx003",
+            "Id": "AIPA2MRF72TCE7MGVWMAT"
+        },
+        "NetworkInterfaces": [
+            {
+                "Attachment": {
+                    "AttachTime": "2024-05-17T12:56:13+00:00",
+                    "AttachmentId": "eni-attach-047fdb4498cb2d7ab",
+                    "DeleteOnTermination": true,
+                    "DeviceIndex": 0,
+                    "Status": "attached",
+                    "NetworkCardIndex": 0
+                },
+                "Description": "",
+                "Groups": [
+                    {
+                        "GroupId": "sg-0c3abd67b5ea3d933",
+                        "GroupName": "sg_awstolnx003"
+                    }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "0a:0a:ef:6e:2b:45",
+                "NetworkInterfaceId": "eni-06f61f63deccb9c63",
+                "OwnerId": "714117993668",
+                "PrivateDnsName": "ip-10-5-8-149.eu-west-3.compute.internal",
+                "PrivateIpAddress": "10.5.8.149",
+                "PrivateIpAddresses": [
+                    {
+                        "Primary": true,
+                        "PrivateDnsName": "ip-10-5-8-149.eu-west-3.compute.internal",
+                        "PrivateIpAddress": "10.5.8.149"
+                    }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-0504abdba6932ffe4",
+                "VpcId": "vpc-05db470e8f1a6422f",
+                "InterfaceType": "interface",
+                "Operator": {
+                    "Managed": false
+                }
+            }
+        ],
+        "RootDeviceName": "/dev/xvda",
+        "RootDeviceType": "ebs",
+        "SecurityGroups": [
+            {
+                "GroupId": "sg-0c3abd67b5ea3d933",
+                "GroupName": "sg_awstolnx003"
+            }
+        ],
+        "SourceDestCheck": true,
+        "Tags": [
+            {
+                "Key": "Backup",
+                "Value": "Standard"
+            },
+            {
+                "Key": "code_affaire",
+                "Value": "DSIZZDY299"
+            },
+            {
+                "Key": "Environment",
+                "Value": "tools"
+            },
+            {
+                "Key": "Name",
+                "Value": "awstolnx003"
+            },
+            {
+                "Key": "terraform_root",
+                "Value": "TOOLS_SERVERS"
+            },
+            {
+                "Key": "Description",
+                "Value": "Serveur python"
+            },
+            {
+                "Key": "ODS",
+                "Value": "Infrastructure"
+            },
+            {
+                "Key": "os_type",
+                "Value": "{\"name\":\"AmazonLinux2023\", \"detailed\":\"Amazon Linux 2023 AMI 2023.6.20241121.0 x86_64 HVM kernel-6.1\"}"
+            },
+            {
+                "Key": "terraform_module",
+                "Value": "terraform-module-aws-ec2-instance"
+            },
+            {
+                "Key": "map-migrated",
+                "Value": "mig3B3N2FXHQT"
+            }
+        ],
+        "VirtualizationType": "hvm",
+        "CpuOptions": {
+            "CoreCount": 1,
+            "ThreadsPerCore": 2
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "State": "applied",
+            "HttpTokens": "required",
+            "HttpPutResponseHopLimit": 2,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "BootMode": "uefi-preferred",
+        "PlatformDetails": "Linux/UNIX",
+        "UsageOperation": "RunInstances",
+        "UsageOperationUpdateTime": "2024-05-17T12:56:13+00:00",
+        "PrivateDnsNameOptions": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "MaintenanceOptions": {
+            "AutoRecovery": "default"
+        },
+        "CurrentInstanceBootMode": "uefi",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-04398be5ee74ec5c5",
+        "Id": "i-04398be5ee74ec5c5",
+        "ImageId": "ami-0288d9523e7053c23",
+        "State": "poweredOn",
+        "PrivateDnsName": "ip-10-5-8-149.eu-west-3.compute.internal",
+        "PublicDnsName": "",
+        "StateTransitionReason": "",
+        "KeyName": "key-tools",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t3.large",
+        "LaunchTime": "2024-05-30T14:23:10+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3b"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "SubnetId": "subnet-0504abdba6932ffe4",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "PrivateIpAddress": "10.5.8.149",
+        "AccountId": "714117993668",
+        "Region": "eu-west-3",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-04398be5ee74ec5c5",
+        "StateCode": 16,
+        "Environment": "tools",
+        "Increment": 3,
+        "NetworkInterface_1": "eni-06f61f63deccb9c63",
+        "PrivateIpAddress_1": "10.5.8.149",
+        "SubnetId_1": "subnet-0504abdba6932ffe4",
+        "SubnetName_1": "private_b_tools",
+        "CreationTime": "2024-05-17T12:56:14+00:00",
+        "OsName": "AmazonLinux2023",
+        "OsDetailed": "Amazon Linux 2023 AMI 2023.6.20241121.0 x86_64 HVM kernel-6.1",
+        "Profile": "tools"
+    },
+    "i-08a2c1ac0c7327e6a": {
+        "id": "i-08a2c1ac0c7327e6a",
+        "Name": "awstolnx004",
+        "Description": "Serveur GitLab",
+        "Category": "aws.ec2.instance",
+        "Date": "2024-12-13 14:49:23",
+        "Architecture": "x86_64",
+        "BlockDeviceMappings": [
+            {
+                "DeviceName": "/dev/xvda",
+                "Ebs": {
+                    "AttachTime": "2024-10-29T14:49:26+00:00",
+                    "DeleteOnTermination": true,
+                    "Status": "attached",
+                    "VolumeId": "vol-03d5dccd69a8ee2b9"
+                }
+            },
+            {
+                "DeviceName": "xvdf",
+                "Ebs": {
+                    "AttachTime": "2024-10-29T14:49:48.520000+00:00",
+                    "DeleteOnTermination": false,
+                    "Status": "attached",
+                    "VolumeId": "vol-0eab5626f2e3b723a"
+                }
+            }
+        ],
+        "ClientToken": "terraform-20241029144917407300000006",
+        "EbsOptimized": true,
+        "EnaSupport": true,
+        "Hypervisor": "xen",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::714117993668:instance-profile/role-awstolnx004",
+            "Id": "AIPA2MRF72TCBQ3LCNRIL"
+        },
+        "NetworkInterfaces": [
+            {
+                "Attachment": {
+                    "AttachTime": "2024-10-29T14:49:26+00:00",
+                    "AttachmentId": "eni-attach-099c788a31453b381",
+                    "DeleteOnTermination": true,
+                    "DeviceIndex": 0,
+                    "Status": "attached",
+                    "NetworkCardIndex": 0
+                },
+                "Description": "",
+                "Groups": [
+                    {
+                        "GroupId": "sg-041db603130ea5bf6",
+                        "GroupName": "sg_awstolnx004"
+                    }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "06:55:f3:43:36:13",
+                "NetworkInterfaceId": "eni-0d6f969925a483470",
+                "OwnerId": "714117993668",
+                "PrivateDnsName": "ip-10-5-8-134.eu-west-3.compute.internal",
+                "PrivateIpAddress": "10.5.8.134",
+                "PrivateIpAddresses": [
+                    {
+                        "Primary": true,
+                        "PrivateDnsName": "ip-10-5-8-134.eu-west-3.compute.internal",
+                        "PrivateIpAddress": "10.5.8.134"
+                    }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-011db4b3b09a58cf7",
+                "VpcId": "vpc-05db470e8f1a6422f",
+                "InterfaceType": "interface",
+                "Operator": {
+                    "Managed": false
+                }
+            }
+        ],
+        "RootDeviceName": "/dev/xvda",
+        "RootDeviceType": "ebs",
+        "SecurityGroups": [
+            {
+                "GroupId": "sg-041db603130ea5bf6",
+                "GroupName": "sg_awstolnx004"
+            }
+        ],
+        "SourceDestCheck": true,
+        "Tags": [
+            {
+                "Key": "terraform_module",
+                "Value": "terraform-module-aws-ec2-instance"
+            },
+            {
+                "Key": "Description",
+                "Value": "Serveur GitLab"
+            },
+            {
+                "Key": "Environment",
+                "Value": "tools"
+            },
+            {
+                "Key": "ODS",
+                "Value": "Infrastructure"
+            },
+            {
+                "Key": "app_name",
+                "Value": "gitlab"
+            },
+            {
+                "Key": "Backup",
+                "Value": "Standard"
+            },
+            {
+                "Key": "os_type",
+                "Value": "{\"name\":\"AmazonLinux2023\", \"detailed\":\"Amazon Linux 2023 AMI 2023.6.20241121.0 x86_64 HVM kernel-6.1\"}"
+            },
+            {
+                "Key": "terraform_root",
+                "Value": "gitlab"
+            },
+            {
+                "Key": "Name",
+                "Value": "awstolnx004"
+            },
+            {
+                "Key": "map-migrated",
+                "Value": "mig3B3N2FXHQT"
+            }
+        ],
+        "VirtualizationType": "hvm",
+        "CpuOptions": {
+            "CoreCount": 1,
+            "ThreadsPerCore": 2
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "State": "applied",
+            "HttpTokens": "required",
+            "HttpPutResponseHopLimit": 2,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "BootMode": "uefi-preferred",
+        "PlatformDetails": "Linux/UNIX",
+        "UsageOperation": "RunInstances",
+        "UsageOperationUpdateTime": "2024-10-29T14:49:26+00:00",
+        "PrivateDnsNameOptions": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "MaintenanceOptions": {
+            "AutoRecovery": "default"
+        },
+        "CurrentInstanceBootMode": "uefi",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-08a2c1ac0c7327e6a",
+        "Id": "i-08a2c1ac0c7327e6a",
+        "ImageId": "ami-00d81861317c2cc1f",
+        "State": "poweredOn",
+        "PrivateDnsName": "ip-10-5-8-134.eu-west-3.compute.internal",
+        "PublicDnsName": "",
+        "StateTransitionReason": "",
+        "KeyName": "key-tools",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t3.large",
+        "LaunchTime": "2024-10-29T14:49:26+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "SubnetId": "subnet-011db4b3b09a58cf7",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "PrivateIpAddress": "10.5.8.134",
+        "AccountId": "714117993668",
+        "Region": "eu-west-3",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-08a2c1ac0c7327e6a",
+        "StateCode": 16,
+        "Environment": "tools",
+        "Increment": 4,
+        "NetworkInterface_1": "eni-0d6f969925a483470",
+        "PrivateIpAddress_1": "10.5.8.134",
+        "SubnetId_1": "subnet-011db4b3b09a58cf7",
+        "SubnetName_1": "private_a_tools",
+        "CreationTime": "2024-10-29T14:49:26+00:00",
+        "OsName": "AmazonLinux2023",
+        "OsDetailed": "Amazon Linux 2023 AMI 2023.6.20241121.0 x86_64 HVM kernel-6.1",
+        "Profile": "tools"
+    },
+    "i-0dfbe44d4f4cbd9b2": {
+        "id": "i-0dfbe44d4f4cbd9b2",
+        "Name": "awstolnx005",
+        "Description": "GitLab Runner Manager",
+        "Category": "aws.ec2.instance",
+        "Date": "2024-12-13 14:49:23",
+        "Architecture": "x86_64",
+        "BlockDeviceMappings": [
+            {
+                "DeviceName": "/dev/xvda",
+                "Ebs": {
+                    "AttachTime": "2024-10-31T08:59:44+00:00",
+                    "DeleteOnTermination": true,
+                    "Status": "attached",
+                    "VolumeId": "vol-01861a1c8274570a1"
+                }
+            }
+        ],
+        "ClientToken": "terraform-2024103108593928050000000f",
+        "EbsOptimized": true,
+        "EnaSupport": true,
+        "Hypervisor": "xen",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::714117993668:instance-profile/role-awstolnx005",
+            "Id": "AIPA2MRF72TCFTNGKMMOA"
+        },
+        "NetworkInterfaces": [
+            {
+                "Attachment": {
+                    "AttachTime": "2024-10-31T08:59:44+00:00",
+                    "AttachmentId": "eni-attach-07b4a597a9df60b29",
+                    "DeleteOnTermination": true,
+                    "DeviceIndex": 0,
+                    "Status": "attached",
+                    "NetworkCardIndex": 0
+                },
+                "Description": "",
+                "Groups": [
+                    {
+                        "GroupId": "sg-031e2a6650157d27e",
+                        "GroupName": "sg_awstolnx005"
+                    }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "06:98:aa:41:3d:7d",
+                "NetworkInterfaceId": "eni-08c6612bd28fd649d",
+                "OwnerId": "714117993668",
+                "PrivateDnsName": "ip-10-5-8-135.eu-west-3.compute.internal",
+                "PrivateIpAddress": "10.5.8.135",
+                "PrivateIpAddresses": [
+                    {
+                        "Primary": true,
+                        "PrivateDnsName": "ip-10-5-8-135.eu-west-3.compute.internal",
+                        "PrivateIpAddress": "10.5.8.135"
+                    }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-011db4b3b09a58cf7",
+                "VpcId": "vpc-05db470e8f1a6422f",
+                "InterfaceType": "interface",
+                "Operator": {
+                    "Managed": false
+                }
+            }
+        ],
+        "RootDeviceName": "/dev/xvda",
+        "RootDeviceType": "ebs",
+        "SecurityGroups": [
+            {
+                "GroupId": "sg-031e2a6650157d27e",
+                "GroupName": "sg_awstolnx005"
+            }
+        ],
+        "SourceDestCheck": true,
+        "Tags": [
+            {
+                "Key": "Description",
+                "Value": "GitLab Runner Manager"
+            },
+            {
+                "Key": "Backup",
+                "Value": "Standard"
+            },
+            {
+                "Key": "app_name",
+                "Value": "gitlab"
+            },
+            {
+                "Key": "Environment",
+                "Value": "tools"
+            },
+            {
+                "Key": "ODS",
+                "Value": "Infrastructure"
+            },
+            {
+                "Key": "map-migrated",
+                "Value": "mig3B3N2FXHQT"
+            },
+            {
+                "Key": "os_type",
+                "Value": "{\"name\":\"AmazonLinux2023\", \"detailed\":\"Amazon Linux 2023 AMI 2023.6.20241121.0 x86_64 HVM kernel-6.1\"}"
+            },
+            {
+                "Key": "terraform_module",
+                "Value": "terraform-module-aws-ec2-instance"
+            },
+            {
+                "Key": "Name",
+                "Value": "awstolnx005"
+            },
+            {
+                "Key": "terraform_root",
+                "Value": "gitlab"
+            }
+        ],
+        "VirtualizationType": "hvm",
+        "CpuOptions": {
+            "CoreCount": 1,
+            "ThreadsPerCore": 2
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "State": "applied",
+            "HttpTokens": "required",
+            "HttpPutResponseHopLimit": 2,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "BootMode": "uefi-preferred",
+        "PlatformDetails": "Linux/UNIX",
+        "UsageOperation": "RunInstances",
+        "UsageOperationUpdateTime": "2024-10-31T08:59:44+00:00",
+        "PrivateDnsNameOptions": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "MaintenanceOptions": {
+            "AutoRecovery": "default"
+        },
+        "CurrentInstanceBootMode": "uefi",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-0dfbe44d4f4cbd9b2",
+        "Id": "i-0dfbe44d4f4cbd9b2",
+        "ImageId": "ami-00d81861317c2cc1f",
+        "State": "poweredOn",
+        "PrivateDnsName": "ip-10-5-8-135.eu-west-3.compute.internal",
+        "PublicDnsName": "",
+        "StateTransitionReason": "",
+        "KeyName": "key-tools",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t3.medium",
+        "LaunchTime": "2024-11-18T16:39:44+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "SubnetId": "subnet-011db4b3b09a58cf7",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "PrivateIpAddress": "10.5.8.135",
+        "AccountId": "714117993668",
+        "Region": "eu-west-3",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0dfbe44d4f4cbd9b2",
+        "StateCode": 16,
+        "Environment": "tools",
+        "Increment": 5,
+        "NetworkInterface_1": "eni-08c6612bd28fd649d",
+        "PrivateIpAddress_1": "10.5.8.135",
+        "SubnetId_1": "subnet-011db4b3b09a58cf7",
+        "SubnetName_1": "private_a_tools",
+        "CreationTime": "2024-10-31T08:59:44+00:00",
+        "OsName": "AmazonLinux2023",
+        "OsDetailed": "Amazon Linux 2023 AMI 2023.6.20241121.0 x86_64 HVM kernel-6.1",
+        "Profile": "tools"
+    },
+    "i-0054730e58064a543": {
+        "id": "i-0054730e58064a543",
+        "Name": "gitlab-runner-instance-job-infra_developpement",
+        "Description": "",
+        "Category": "aws.ec2.instance",
+        "Date": "2024-12-13 14:49:24",
+        "Architecture": "arm64",
+        "BlockDeviceMappings": [
+            {
+                "DeviceName": "/dev/xvda",
+                "Ebs": {
+                    "AttachTime": "2024-12-13T07:00:12+00:00",
+                    "DeleteOnTermination": true,
+                    "Status": "attached",
+                    "VolumeId": "vol-039fc5d3f1c2f6930"
+                }
+            }
+        ],
+        "ClientToken": "35c64efb-455f-43d7-cae7-5b8e69d4fb29",
+        "EbsOptimized": false,
+        "EnaSupport": true,
+        "Hypervisor": "xen",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::714117993668:instance-profile/instance-profile-gitlab-runner-developpement",
+            "Id": "AIPA2MRF72TCKN4CTE5M3"
+        },
+        "NetworkInterfaces": [
+            {
+                "Attachment": {
+                    "AttachTime": "2024-12-13T07:00:12+00:00",
+                    "AttachmentId": "eni-attach-0b4d98c85794fd281",
+                    "DeleteOnTermination": true,
+                    "DeviceIndex": 0,
+                    "Status": "attached",
+                    "NetworkCardIndex": 0
+                },
+                "Description": "",
+                "Groups": [
+                    {
+                        "GroupId": "sg-0dbed301a3b70a47d",
+                        "GroupName": "sg_gitlab-runner"
+                    }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "06:1b:57:8e:d6:e5",
+                "NetworkInterfaceId": "eni-09f924711afb4c643",
+                "OwnerId": "714117993668",
+                "PrivateDnsName": "ip-10-5-8-45.eu-west-3.compute.internal",
+                "PrivateIpAddress": "10.5.8.45",
+                "PrivateIpAddresses": [
+                    {
+                        "Primary": true,
+                        "PrivateDnsName": "ip-10-5-8-45.eu-west-3.compute.internal",
+                        "PrivateIpAddress": "10.5.8.45"
+                    }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-092f10ead44e69abf",
+                "VpcId": "vpc-05db470e8f1a6422f",
+                "InterfaceType": "interface",
+                "Operator": {
+                    "Managed": false
+                }
+            }
+        ],
+        "RootDeviceName": "/dev/xvda",
+        "RootDeviceType": "ebs",
+        "SecurityGroups": [
+            {
+                "GroupId": "sg-0dbed301a3b70a47d",
+                "GroupName": "sg_gitlab-runner"
+            }
+        ],
+        "SourceDestCheck": true,
+        "Tags": [
+            {
+                "Key": "aws:autoscaling:groupName",
+                "Value": "asg-gitlab-runner-infra_developpement"
+            },
+            {
+                "Key": "map-migrated",
+                "Value": "mig3B3N2FXHQT"
+            },
+            {
+                "Key": "Environment",
+                "Value": "tools"
+            },
+            {
+                "Key": "ODS",
+                "Value": "Infrastructure"
+            },
+            {
+                "Key": "Name",
+                "Value": "gitlab-runner-instance-job-infra_developpement"
+            },
+            {
+                "Key": "terraform_root",
+                "Value": "gitlab"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:id",
+                "Value": "lt-07f3b15bcaefc1879"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "13"
+            }
+        ],
+        "VirtualizationType": "hvm",
+        "CpuOptions": {
+            "CoreCount": 2,
+            "ThreadsPerCore": 1
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "State": "applied",
+            "HttpTokens": "required",
+            "HttpPutResponseHopLimit": 2,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "BootMode": "uefi",
+        "PlatformDetails": "Linux/UNIX",
+        "UsageOperation": "RunInstances",
+        "UsageOperationUpdateTime": "2024-12-13T07:00:12+00:00",
+        "PrivateDnsNameOptions": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "MaintenanceOptions": {
+            "AutoRecovery": "default"
+        },
+        "CurrentInstanceBootMode": "uefi",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-0054730e58064a543",
+        "Id": "i-0054730e58064a543",
+        "ImageId": "ami-0fac8f439810eed46",
+        "State": "poweredOn",
+        "PrivateDnsName": "ip-10-5-8-45.eu-west-3.compute.internal",
+        "PublicDnsName": "",
+        "StateTransitionReason": "",
+        "KeyName": "key-gitlab-runner",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t4g.micro",
+        "LaunchTime": "2024-12-13T07:00:12+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "SubnetId": "subnet-092f10ead44e69abf",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "PrivateIpAddress": "10.5.8.45",
+        "AccountId": "714117993668",
+        "Region": "eu-west-3",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0054730e58064a543",
+        "StateCode": 16,
+        "Environment": "tools",
+        "Increment": 0,
+        "NetworkInterface_1": "eni-09f924711afb4c643",
+        "PrivateIpAddress_1": "10.5.8.45",
+        "SubnetId_1": "subnet-092f10ead44e69abf",
+        "SubnetName_1": "private_dhcp_a_tools",
+        "CreationTime": "2024-12-13T07:00:12+00:00",
+        "OsName": "Linux/UNIX",
+        "OsDetailed": "Linux/UNIX",
+        "Profile": "tools"
+    },
+    "i-0042f85f721efdeea": {
+        "id": "i-0042f85f721efdeea",
+        "Name": "gitlab-runner-instance-job-infra_securite",
+        "Description": "",
+        "Category": "aws.ec2.instance",
+        "Date": "2024-12-13 14:49:24",
+        "Architecture": "arm64",
+        "BlockDeviceMappings": [
+            {
+                "DeviceName": "/dev/xvda",
+                "Ebs": {
+                    "AttachTime": "2024-12-13T07:00:12+00:00",
+                    "DeleteOnTermination": true,
+                    "Status": "attached",
+                    "VolumeId": "vol-007d40b55a77d58a9"
+                }
+            }
+        ],
+        "ClientToken": "a8764efb-455d-708b-ba1e-1c9123b8aa93",
+        "EbsOptimized": false,
+        "EnaSupport": true,
+        "Hypervisor": "xen",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::714117993668:instance-profile/instance-profile-gitlab-runner-securite",
+            "Id": "AIPA2MRF72TCDFL33X6DN"
+        },
+        "NetworkInterfaces": [
+            {
+                "Attachment": {
+                    "AttachTime": "2024-12-13T07:00:11+00:00",
+                    "AttachmentId": "eni-attach-08975a8d6b4f22303",
+                    "DeleteOnTermination": true,
+                    "DeviceIndex": 0,
+                    "Status": "attached",
+                    "NetworkCardIndex": 0
+                },
+                "Description": "",
+                "Groups": [
+                    {
+                        "GroupId": "sg-0dbed301a3b70a47d",
+                        "GroupName": "sg_gitlab-runner"
+                    }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "06:2c:82:20:f1:8d",
+                "NetworkInterfaceId": "eni-00cb532e19b2b6afa",
+                "OwnerId": "714117993668",
+                "PrivateDnsName": "ip-10-5-8-12.eu-west-3.compute.internal",
+                "PrivateIpAddress": "10.5.8.12",
+                "PrivateIpAddresses": [
+                    {
+                        "Primary": true,
+                        "PrivateDnsName": "ip-10-5-8-12.eu-west-3.compute.internal",
+                        "PrivateIpAddress": "10.5.8.12"
+                    }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-092f10ead44e69abf",
+                "VpcId": "vpc-05db470e8f1a6422f",
+                "InterfaceType": "interface",
+                "Operator": {
+                    "Managed": false
+                }
+            }
+        ],
+        "RootDeviceName": "/dev/xvda",
+        "RootDeviceType": "ebs",
+        "SecurityGroups": [
+            {
+                "GroupId": "sg-0dbed301a3b70a47d",
+                "GroupName": "sg_gitlab-runner"
+            }
+        ],
+        "SourceDestCheck": true,
+        "Tags": [
+            {
+                "Key": "aws:ec2launchtemplate:id",
+                "Value": "lt-01aae4b690894d49a"
+            },
+            {
+                "Key": "Name",
+                "Value": "gitlab-runner-instance-job-infra_securite"
+            },
+            {
+                "Key": "terraform_root",
+                "Value": "gitlab"
+            },
+            {
+                "Key": "map-migrated",
+                "Value": "mig3B3N2FXHQT"
+            },
+            {
+                "Key": "Environment",
+                "Value": "tools"
+            },
+            {
+                "Key": "ODS",
+                "Value": "Infrastructure"
+            },
+            {
+                "Key": "aws:autoscaling:groupName",
+                "Value": "asg-gitlab-runner-infra_securite"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "6"
+            }
+        ],
+        "VirtualizationType": "hvm",
+        "CpuOptions": {
+            "CoreCount": 2,
+            "ThreadsPerCore": 1
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "State": "applied",
+            "HttpTokens": "required",
+            "HttpPutResponseHopLimit": 2,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "BootMode": "uefi",
+        "PlatformDetails": "Linux/UNIX",
+        "UsageOperation": "RunInstances",
+        "UsageOperationUpdateTime": "2024-12-13T07:00:11+00:00",
+        "PrivateDnsNameOptions": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "MaintenanceOptions": {
+            "AutoRecovery": "default"
+        },
+        "CurrentInstanceBootMode": "uefi",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-0042f85f721efdeea",
+        "Id": "i-0042f85f721efdeea",
+        "ImageId": "ami-0fac8f439810eed46",
+        "State": "poweredOn",
+        "PrivateDnsName": "ip-10-5-8-12.eu-west-3.compute.internal",
+        "PublicDnsName": "",
+        "StateTransitionReason": "",
+        "KeyName": "key-gitlab-runner",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t4g.micro",
+        "LaunchTime": "2024-12-13T07:00:11+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "SubnetId": "subnet-092f10ead44e69abf",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "PrivateIpAddress": "10.5.8.12",
+        "AccountId": "714117993668",
+        "Region": "eu-west-3",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0042f85f721efdeea",
+        "StateCode": 16,
+        "Environment": "tools",
+        "Increment": 0,
+        "NetworkInterface_1": "eni-00cb532e19b2b6afa",
+        "PrivateIpAddress_1": "10.5.8.12",
+        "SubnetId_1": "subnet-092f10ead44e69abf",
+        "SubnetName_1": "private_dhcp_a_tools",
+        "CreationTime": "2024-12-13T07:00:12+00:00",
+        "OsName": "Linux/UNIX",
+        "OsDetailed": "Linux/UNIX",
+        "Profile": "tools"
+    },
+    "i-0ef17a49ec8853bac": {
+        "id": "i-0ef17a49ec8853bac",
+        "Name": "gitlab-runner-instance-job-infra_tools",
+        "Description": "",
+        "Category": "aws.ec2.instance",
+        "Date": "2024-12-13 14:49:24",
+        "Architecture": "arm64",
+        "BlockDeviceMappings": [
+            {
+                "DeviceName": "/dev/xvda",
+                "Ebs": {
+                    "AttachTime": "2024-12-13T07:00:06+00:00",
+                    "DeleteOnTermination": true,
+                    "Status": "attached",
+                    "VolumeId": "vol-0f0f0c82b392c5af4"
+                }
+            }
+        ],
+        "ClientToken": "b1764efb-4503-eab4-5366-b598fb70cfb4",
+        "EbsOptimized": false,
+        "EnaSupport": true,
+        "Hypervisor": "xen",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::714117993668:instance-profile/instance-profile-gitlab-runner-tools",
+            "Id": "AIPA2MRF72TCNQCHOEFVI"
+        },
+        "NetworkInterfaces": [
+            {
+                "Attachment": {
+                    "AttachTime": "2024-12-13T07:00:06+00:00",
+                    "AttachmentId": "eni-attach-06d580a34e7624d85",
+                    "DeleteOnTermination": true,
+                    "DeviceIndex": 0,
+                    "Status": "attached",
+                    "NetworkCardIndex": 0
+                },
+                "Description": "",
+                "Groups": [
+                    {
+                        "GroupId": "sg-0dbed301a3b70a47d",
+                        "GroupName": "sg_gitlab-runner"
+                    }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "06:fc:05:66:51:cb",
+                "NetworkInterfaceId": "eni-0a40b890bd15e0885",
+                "OwnerId": "714117993668",
+                "PrivateDnsName": "ip-10-5-8-29.eu-west-3.compute.internal",
+                "PrivateIpAddress": "10.5.8.29",
+                "PrivateIpAddresses": [
+                    {
+                        "Primary": true,
+                        "PrivateDnsName": "ip-10-5-8-29.eu-west-3.compute.internal",
+                        "PrivateIpAddress": "10.5.8.29"
+                    }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-092f10ead44e69abf",
+                "VpcId": "vpc-05db470e8f1a6422f",
+                "InterfaceType": "interface",
+                "Operator": {
+                    "Managed": false
+                }
+            }
+        ],
+        "RootDeviceName": "/dev/xvda",
+        "RootDeviceType": "ebs",
+        "SecurityGroups": [
+            {
+                "GroupId": "sg-0dbed301a3b70a47d",
+                "GroupName": "sg_gitlab-runner"
+            }
+        ],
+        "SourceDestCheck": true,
+        "Tags": [
+            {
+                "Key": "aws:ec2launchtemplate:id",
+                "Value": "lt-01d527b25ce5b8718"
+            },
+            {
+                "Key": "Name",
+                "Value": "gitlab-runner-instance-job-infra_tools"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "8"
+            },
+            {
+                "Key": "ODS",
+                "Value": "Infrastructure"
+            },
+            {
+                "Key": "aws:autoscaling:groupName",
+                "Value": "asg-gitlab-runner-infra_tools"
+            },
+            {
+                "Key": "Environment",
+                "Value": "tools"
+            },
+            {
+                "Key": "map-migrated",
+                "Value": "mig3B3N2FXHQT"
+            },
+            {
+                "Key": "terraform_root",
+                "Value": "gitlab"
+            }
+        ],
+        "VirtualizationType": "hvm",
+        "CpuOptions": {
+            "CoreCount": 2,
+            "ThreadsPerCore": 1
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "State": "applied",
+            "HttpTokens": "required",
+            "HttpPutResponseHopLimit": 2,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "BootMode": "uefi",
+        "PlatformDetails": "Linux/UNIX",
+        "UsageOperation": "RunInstances",
+        "UsageOperationUpdateTime": "2024-12-13T07:00:06+00:00",
+        "PrivateDnsNameOptions": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "MaintenanceOptions": {
+            "AutoRecovery": "default"
+        },
+        "CurrentInstanceBootMode": "uefi",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-0ef17a49ec8853bac",
+        "Id": "i-0ef17a49ec8853bac",
+        "ImageId": "ami-0fac8f439810eed46",
+        "State": "poweredOn",
+        "PrivateDnsName": "ip-10-5-8-29.eu-west-3.compute.internal",
+        "PublicDnsName": "",
+        "StateTransitionReason": "",
+        "KeyName": "key-gitlab-runner",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t4g.micro",
+        "LaunchTime": "2024-12-13T07:00:06+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "SubnetId": "subnet-092f10ead44e69abf",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "PrivateIpAddress": "10.5.8.29",
+        "AccountId": "714117993668",
+        "Region": "eu-west-3",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0ef17a49ec8853bac",
+        "StateCode": 16,
+        "Environment": "tools",
+        "Increment": 0,
+        "NetworkInterface_1": "eni-0a40b890bd15e0885",
+        "PrivateIpAddress_1": "10.5.8.29",
+        "SubnetId_1": "subnet-092f10ead44e69abf",
+        "SubnetName_1": "private_dhcp_a_tools",
+        "CreationTime": "2024-12-13T07:00:06+00:00",
+        "OsName": "Linux/UNIX",
+        "OsDetailed": "Linux/UNIX",
+        "Profile": "tools"
+    },
+    "i-0245ff54bd971d521": {
+        "id": "i-0245ff54bd971d521",
+        "Name": "gitlab-runner-instance-job-infra_production",
+        "Description": "",
+        "Category": "aws.ec2.instance",
+        "Date": "2024-12-13 14:49:24",
+        "Architecture": "arm64",
+        "BlockDeviceMappings": [
+            {
+                "DeviceName": "/dev/xvda",
+                "Ebs": {
+                    "AttachTime": "2024-12-13T07:00:13+00:00",
+                    "DeleteOnTermination": true,
+                    "Status": "attached",
+                    "VolumeId": "vol-0df79988847229a2a"
+                }
+            }
+        ],
+        "ClientToken": "78d64efb-4569-0382-bdb5-7e1eb7907ade",
+        "EbsOptimized": false,
+        "EnaSupport": true,
+        "Hypervisor": "xen",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::714117993668:instance-profile/instance-profile-gitlab-runner-production",
+            "Id": "AIPA2MRF72TCEXEOMNQIR"
+        },
+        "NetworkInterfaces": [
+            {
+                "Attachment": {
+                    "AttachTime": "2024-12-13T07:00:12+00:00",
+                    "AttachmentId": "eni-attach-0edd20673ffbfe279",
+                    "DeleteOnTermination": true,
+                    "DeviceIndex": 0,
+                    "Status": "attached",
+                    "NetworkCardIndex": 0
+                },
+                "Description": "",
+                "Groups": [
+                    {
+                        "GroupId": "sg-0dbed301a3b70a47d",
+                        "GroupName": "sg_gitlab-runner"
+                    }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "06:a3:25:e3:20:6d",
+                "NetworkInterfaceId": "eni-0b4fdd409b3e73a1b",
+                "OwnerId": "714117993668",
+                "PrivateDnsName": "ip-10-5-8-39.eu-west-3.compute.internal",
+                "PrivateIpAddress": "10.5.8.39",
+                "PrivateIpAddresses": [
+                    {
+                        "Primary": true,
+                        "PrivateDnsName": "ip-10-5-8-39.eu-west-3.compute.internal",
+                        "PrivateIpAddress": "10.5.8.39"
+                    }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-092f10ead44e69abf",
+                "VpcId": "vpc-05db470e8f1a6422f",
+                "InterfaceType": "interface",
+                "Operator": {
+                    "Managed": false
+                }
+            }
+        ],
+        "RootDeviceName": "/dev/xvda",
+        "RootDeviceType": "ebs",
+        "SecurityGroups": [
+            {
+                "GroupId": "sg-0dbed301a3b70a47d",
+                "GroupName": "sg_gitlab-runner"
+            }
+        ],
+        "SourceDestCheck": true,
+        "Tags": [
+            {
+                "Key": "Environment",
+                "Value": "tools"
+            },
+            {
+                "Key": "ODS",
+                "Value": "Infrastructure"
+            },
+            {
+                "Key": "terraform_root",
+                "Value": "gitlab"
+            },
+            {
+                "Key": "map-migrated",
+                "Value": "mig3B3N2FXHQT"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "13"
+            },
+            {
+                "Key": "aws:autoscaling:groupName",
+                "Value": "asg-gitlab-runner-infra_production"
+            },
+            {
+                "Key": "Name",
+                "Value": "gitlab-runner-instance-job-infra_production"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:id",
+                "Value": "lt-0236be89357204227"
+            }
+        ],
+        "VirtualizationType": "hvm",
+        "CpuOptions": {
+            "CoreCount": 2,
+            "ThreadsPerCore": 1
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "State": "applied",
+            "HttpTokens": "required",
+            "HttpPutResponseHopLimit": 2,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "BootMode": "uefi",
+        "PlatformDetails": "Linux/UNIX",
+        "UsageOperation": "RunInstances",
+        "UsageOperationUpdateTime": "2024-12-13T07:00:12+00:00",
+        "PrivateDnsNameOptions": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "MaintenanceOptions": {
+            "AutoRecovery": "default"
+        },
+        "CurrentInstanceBootMode": "uefi",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-0245ff54bd971d521",
+        "Id": "i-0245ff54bd971d521",
+        "ImageId": "ami-0fac8f439810eed46",
+        "State": "poweredOn",
+        "PrivateDnsName": "ip-10-5-8-39.eu-west-3.compute.internal",
+        "PublicDnsName": "",
+        "StateTransitionReason": "",
+        "KeyName": "key-gitlab-runner",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t4g.micro",
+        "LaunchTime": "2024-12-13T07:00:12+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "SubnetId": "subnet-092f10ead44e69abf",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "PrivateIpAddress": "10.5.8.39",
+        "AccountId": "714117993668",
+        "Region": "eu-west-3",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-0245ff54bd971d521",
+        "StateCode": 16,
+        "Environment": "tools",
+        "Increment": 0,
+        "NetworkInterface_1": "eni-0b4fdd409b3e73a1b",
+        "PrivateIpAddress_1": "10.5.8.39",
+        "SubnetId_1": "subnet-092f10ead44e69abf",
+        "SubnetName_1": "private_dhcp_a_tools",
+        "CreationTime": "2024-12-13T07:00:13+00:00",
+        "OsName": "Linux/UNIX",
+        "OsDetailed": "Linux/UNIX",
+        "Profile": "tools"
+    },
+    "i-037f8399bd4b68ad8": {
+        "id": "i-037f8399bd4b68ad8",
+        "Name": "gitlab-runner-instance-job-infra_recette",
+        "Description": "",
+        "Category": "aws.ec2.instance",
+        "Date": "2024-12-13 14:49:25",
+        "Architecture": "arm64",
+        "BlockDeviceMappings": [
+            {
+                "DeviceName": "/dev/xvda",
+                "Ebs": {
+                    "AttachTime": "2024-12-13T07:00:10+00:00",
+                    "DeleteOnTermination": true,
+                    "Status": "attached",
+                    "VolumeId": "vol-0b29ca3ddd2b7a904"
+                }
+            }
+        ],
+        "ClientToken": "1fe64efb-453e-49f8-567f-a2fac7e3d14c",
+        "EbsOptimized": false,
+        "EnaSupport": true,
+        "Hypervisor": "xen",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::714117993668:instance-profile/instance-profile-gitlab-runner-recette",
+            "Id": "AIPA2MRF72TCHBWNA6YPE"
+        },
+        "NetworkInterfaces": [
+            {
+                "Attachment": {
+                    "AttachTime": "2024-12-13T07:00:09+00:00",
+                    "AttachmentId": "eni-attach-0847873543cd80a50",
+                    "DeleteOnTermination": true,
+                    "DeviceIndex": 0,
+                    "Status": "attached",
+                    "NetworkCardIndex": 0
+                },
+                "Description": "",
+                "Groups": [
+                    {
+                        "GroupId": "sg-0dbed301a3b70a47d",
+                        "GroupName": "sg_gitlab-runner"
+                    }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "06:fd:ea:c3:37:67",
+                "NetworkInterfaceId": "eni-0b0ec9261e4d3e4a8",
+                "OwnerId": "714117993668",
+                "PrivateDnsName": "ip-10-5-8-22.eu-west-3.compute.internal",
+                "PrivateIpAddress": "10.5.8.22",
+                "PrivateIpAddresses": [
+                    {
+                        "Primary": true,
+                        "PrivateDnsName": "ip-10-5-8-22.eu-west-3.compute.internal",
+                        "PrivateIpAddress": "10.5.8.22"
+                    }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-092f10ead44e69abf",
+                "VpcId": "vpc-05db470e8f1a6422f",
+                "InterfaceType": "interface",
+                "Operator": {
+                    "Managed": false
+                }
+            }
+        ],
+        "RootDeviceName": "/dev/xvda",
+        "RootDeviceType": "ebs",
+        "SecurityGroups": [
+            {
+                "GroupId": "sg-0dbed301a3b70a47d",
+                "GroupName": "sg_gitlab-runner"
+            }
+        ],
+        "SourceDestCheck": true,
+        "Tags": [
+            {
+                "Key": "aws:ec2launchtemplate:id",
+                "Value": "lt-0e6a8409ba028a77b"
+            },
+            {
+                "Key": "terraform_root",
+                "Value": "gitlab"
+            },
+            {
+                "Key": "Name",
+                "Value": "gitlab-runner-instance-job-infra_recette"
+            },
+            {
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "13"
+            },
+            {
+                "Key": "Environment",
+                "Value": "tools"
+            },
+            {
+                "Key": "ODS",
+                "Value": "Infrastructure"
+            },
+            {
+                "Key": "map-migrated",
+                "Value": "mig3B3N2FXHQT"
+            },
+            {
+                "Key": "aws:autoscaling:groupName",
+                "Value": "asg-gitlab-runner-infra_recette"
+            }
+        ],
+        "VirtualizationType": "hvm",
+        "CpuOptions": {
+            "CoreCount": 2,
+            "ThreadsPerCore": 1
+        },
+        "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+        },
+        "HibernationOptions": {
+            "Configured": false
+        },
+        "MetadataOptions": {
+            "State": "applied",
+            "HttpTokens": "required",
+            "HttpPutResponseHopLimit": 2,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        },
+        "EnclaveOptions": {
+            "Enabled": false
+        },
+        "BootMode": "uefi",
+        "PlatformDetails": "Linux/UNIX",
+        "UsageOperation": "RunInstances",
+        "UsageOperationUpdateTime": "2024-12-13T07:00:09+00:00",
+        "PrivateDnsNameOptions": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "MaintenanceOptions": {
+            "AutoRecovery": "default"
+        },
+        "CurrentInstanceBootMode": "uefi",
+        "Operator": {
+            "Managed": false
+        },
+        "InstanceId": "i-037f8399bd4b68ad8",
+        "Id": "i-037f8399bd4b68ad8",
+        "ImageId": "ami-0fac8f439810eed46",
+        "State": "poweredOn",
+        "PrivateDnsName": "ip-10-5-8-22.eu-west-3.compute.internal",
+        "PublicDnsName": "",
+        "StateTransitionReason": "",
+        "KeyName": "key-gitlab-runner",
+        "AmiLaunchIndex": 0,
+        "ProductCodes": [],
+        "InstanceType": "t4g.micro",
+        "LaunchTime": "2024-12-13T07:00:09+00:00",
+        "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "eu-west-3a"
+        },
+        "Monitoring": {
+            "State": "disabled"
+        },
+        "SubnetId": "subnet-092f10ead44e69abf",
+        "VpcId": "vpc-05db470e8f1a6422f",
+        "PrivateIpAddress": "10.5.8.22",
+        "AccountId": "714117993668",
+        "Region": "eu-west-3",
+        "Arn": "arn:aws:ec2:eu-west-3:714117993668:instance/i-037f8399bd4b68ad8",
+        "StateCode": 16,
+        "Environment": "tools",
+        "Increment": 0,
+        "NetworkInterface_1": "eni-0b0ec9261e4d3e4a8",
+        "PrivateIpAddress_1": "10.5.8.22",
+        "SubnetId_1": "subnet-092f10ead44e69abf",
+        "SubnetName_1": "private_dhcp_a_tools",
+        "CreationTime": "2024-12-13T07:00:10+00:00",
+        "OsName": "Linux/UNIX",
+        "OsDetailed": "Linux/UNIX",
+        "Profile": "tools"
+    }
+}
