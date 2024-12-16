@@ -5,8 +5,8 @@
 #
 # Imports
 #
-from ..provider.Provider import Provider
-from ..Console import console
+from ...provider.Provider import Provider
+from ...core.Console import console
 from .datacenter.Datacenter import Datacenter
 
 class Vsphere(Provider):

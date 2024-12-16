@@ -2,7 +2,7 @@
     Module de classe AwsResource
 '''
 
-from ..resource.Resource import Resource
+from ...core.Resource import Resource
 
 class AwsResource(Resource):
     '''

@@ -2,7 +2,7 @@
     CsvOutputFormater
 '''
 
-from ..Console import console
+from ..core.Console import console
 from .OutputFormatter import OutputFormatter
 
 class CsvOutputFormatter(OutputFormatter):

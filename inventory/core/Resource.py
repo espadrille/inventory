@@ -6,9 +6,9 @@
 import datetime
 import json
 import time
-from ..Console import console
-from ..CustomJSONEncoder import CustomJSONEncoder
-from ..Object import Object
+from ..core.Console import console
+from ..core.CustomJSONEncoder import CustomJSONEncoder
+from ..core.Object import Object
 
 #
 # Classe Resource

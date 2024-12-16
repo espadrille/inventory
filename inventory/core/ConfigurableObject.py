@@ -7,8 +7,8 @@ import mimetypes
 import os
 import sys
 import boto3
-from .Console import console
-from .Object import Object
+from ..core.Console import console
+from ..core.Object import Object
 
 class ConfigurableObject(Object):
     '''
@@ -61,6 +61,7 @@ class ConfigurableObject(Object):
             f"{os.getcwd()}/config/",
             f"{os.path.dirname(__file__)}/",
             f"{os.path.dirname(__file__)}/config/",
+            f"{os.path.dirname(__file__)}/../config/"
             ]
 
         my_config_file = ""

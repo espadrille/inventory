@@ -7,6 +7,7 @@
 #
 import re
 import json
+from .....core.constants import ENVIRONMENT_TYPES
 from ...AwsClient import AwsClient
 from ...AwsResource import AwsResource
 
@@ -42,6 +43,10 @@ class Instance(AwsResource):
 
         # Distinction Prod/Hors-prod
         self.SetProperty('Environment', client.Profile())
+        if self.GetProperty('Environment') in ENVIRONMENT_TYPES:
+            self.SetProperty('EnvironmentType', ENVIRONMENT_TYPES[self.GetProperty('Environment')])
+        else:
+            self.SetProperty('EnvironmentType', 'Unknown')
 
         # Tenter de lire l'increment dans le nom de l'instance
         result = re.match('AWS.[A-Z]{1,2}([0-9]{2,3})', self.GetProperty('Name'))
@@ -84,6 +89,23 @@ class Instance(AwsResource):
                 self.SetProperty('OsName', os_type['name'])
                 self.SetProperty('OsDetailed', os_type['detailed'])
         except json.JSONDecodeError:
+            self.SetProperty('OsName', self.GetProperty('PlatformDetails'))
+            self.SetProperty('OsDetailed', self.GetProperty('PlatformDetails'))
+
+        # Recherche des informations de cartographie
+        try:
+            cartography = json.loads(self._get_tag_value("cartography"))
+            if os_type:
+                self.SetProperty('OsName', cartography['OsName'])
+                self.SetProperty('OsType', cartography['OsType'])
+                self.SetProperty('OsDetailed', cartography['OsDetailed'])
+        except json.JSONDecodeError:
+            if self.GetProperty('PlatformDetails') == "Windows":
+                self.SetProperty('OsType', 'Windows')
+            elif self.GetProperty('PlatformDetails') == "Linux/UNIX":
+                self.SetProperty('OsType', 'Linux')
+            else:
+                self.SetProperty('OsType', 'Appliance')
             self.SetProperty('OsName', self.GetProperty('PlatformDetails'))
             self.SetProperty('OsDetailed', self.GetProperty('PlatformDetails'))
 

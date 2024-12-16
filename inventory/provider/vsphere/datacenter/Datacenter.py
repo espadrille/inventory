@@ -10,8 +10,8 @@ import atexit
 from pyVim.connect import SmartConnect, Disconnect
 from pyVmomi import vim
 
-from ...Console import console
-from ...ConfigurableObject import ConfigurableObject
+from ....core.Console import console
+from ....core.ConfigurableObject import ConfigurableObject
 from .virtualmachine.VirtualMachine import VirtualMachine
 
 class Datacenter(ConfigurableObject):

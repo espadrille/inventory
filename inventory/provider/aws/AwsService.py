@@ -5,9 +5,9 @@
 #
 # Imports
 #
-from ..Console import console
+from ...core.Console import console
 from .AwsClient import AwsClient
-from ..ConfigurableObject import ConfigurableObject
+from ...core.ConfigurableObject import ConfigurableObject
 
 class AwsService(ConfigurableObject):
     '''

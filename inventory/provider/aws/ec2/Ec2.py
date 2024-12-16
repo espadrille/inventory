@@ -8,7 +8,7 @@
 from ..AwsService import AwsService
 from .instance.Instance import Instance
 from .security_group.SecurityGroup import SecurityGroup
-from ...Console import console
+from ....core.Console import console
 
 class Ec2(AwsService):
     '''

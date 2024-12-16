@@ -2,7 +2,7 @@
     Module de classe VsphereResource
 '''
 
-from ..resource.Resource import Resource
+from ...core.Resource import Resource
 
 class VsphereResource(Resource):
     '''

@@ -6,7 +6,7 @@
 
 # Import des modules
 from optparse import OptionParser
-from inventory.Inventory import Inventory
+from inventory.core.Inventory import Inventory
 
 # Lecture des arguments d'appel
 parser = OptionParser()

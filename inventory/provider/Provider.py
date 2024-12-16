@@ -2,8 +2,8 @@
     Provider
 '''
 
-from ..Console import console
-from ..ConfigurableObject import ConfigurableObject
+from ..core.Console import console
+from ..core.ConfigurableObject import ConfigurableObject
 
 class Provider(ConfigurableObject):
     '''

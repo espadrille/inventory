@@ -7,7 +7,7 @@
 #
 from ..AwsService import AwsService
 from .bucket.Bucket import Bucket
-from ...Console import console
+from ....core.Console import console
 
 
 class S3(AwsService):

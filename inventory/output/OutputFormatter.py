@@ -3,9 +3,9 @@
 '''
 
 import boto3
-from ..Console import console
-from ..Singleton import Singleton
-from ..ConfigurableObject import ConfigurableObject
+from ..core.Console import console
+from ..core.Singleton import Singleton
+from ..core.ConfigurableObject import ConfigurableObject
 
 class OutputFormatter(Singleton, ConfigurableObject):
     '''

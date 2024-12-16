@@ -3,8 +3,8 @@
 '''
 
 import json
-from ..Console import console
-from ..CustomJSONEncoder import CustomJSONEncoder
+from ..core.Console import console
+from ..core.CustomJSONEncoder import CustomJSONEncoder
 from .OutputFormatter import OutputFormatter
 
 class JsonOutputFormatter(OutputFormatter):

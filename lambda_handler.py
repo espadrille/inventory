@@ -4,7 +4,7 @@ Ce script propose un code python pour declencher l'inventaire depuis une focntio
 """
 
 import os
-from inventory.Inventory import Inventory
+from inventory.core.Inventory import Inventory
 
 
 def lambda_handler(event, context):

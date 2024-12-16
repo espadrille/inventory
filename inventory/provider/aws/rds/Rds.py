@@ -7,7 +7,7 @@
 #
 from ..AwsService import AwsService
 from .instance.Instance import Instance
-from ...Console import console
+from ....core.Console import console
 
 class Rds(AwsService):
     '''

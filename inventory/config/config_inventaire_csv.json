@@ -50,6 +50,7 @@
                 "PrivateIpAddress": "IP",
                 "Description": "ANNOTATION",
                 "Environment": "ENVIRONNEMENT",
+                "EnvironmentType": "TYPE ENVIRONNEMENT",
                 "Profile": "COMPTE AWS",
                 "OsName": "TYPE OS",
                 "Subnets": "SOUS RESEAUX",

@@ -5,11 +5,11 @@
 #
 # Imports
 #
-from ..provider.Provider import Provider
+from ...provider.Provider import Provider
 from .ec2.Ec2 import Ec2
 from .rds.Rds import Rds
 from .s3.S3 import S3
-from ..Console import console
+from ...core.Console import console
 
 class Aws(Provider):
     '''
