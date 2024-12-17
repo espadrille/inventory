@@ -18,11 +18,11 @@
                 }
             }
         },
-        "#debug_mode": "DEBUG",
+        "debug_mode": "DEBUG",
         "output": {
             "mode": "file",
             "format": "json",
-            "output_file": "./inventory_ec2.json",
+            "output_file": "./inventory_result.json",
             "#selected_fields": {
                 "Id": "Id",
                 "Name": "Name",
