@@ -1,16 +1,19 @@
 {
     "inventory": {
-        "name": "Inventaire du service EC2",
+        "name": "Inventaire VMWare",
         "providers": {
-            "aws" : {
-                "assume_roles": {
-                    "tools": "arn:aws:iam::714117993668:role/role-inventory-readOnly"
+            "vsphere" : {
+                "datacenter_credentials": {
+                    "theplx50": {
+                        "hostname": "ssm:theplx50.vsphere.hostname",
+                        "user": "ssm:theplx50.vsphere.user",
+                        "password": "ssm:theplx50.vsphere.password"
+                    }
                 },
-                "regions": ["eu-west-3"],
-                "services": {
-                    "ec2": {
+                "folders": {
+                    "vm": {
                         "resource_types": [
-                            "instance"
+                            "virtual_machine"
                         ]
                     }
                 }
@@ -21,18 +24,18 @@
             "mode": "file",
             "format": "json",
             "output_file": "./inventory_result.json",
-            "#selected_fields": {
-                "Hypervisor": "HYPERVISEUR",
-                "VERSION vCENTER": "VERSION vCENTER",
+            "selected_fields": {
+                "Hypervisor": "VCenter",
+                "HostVersion": "VERSION vCENTER",
                 "Host": "Host",
                 "Name": "VM",
                 "State": "ETAT",
-                "LaunchTime": "DATE_DEMARRAGE_OS",
+                "bootTime": "DATE_DEMARRAGE_OS",
                 "DATE_CREATION_VM": "DATE_CREATION_VM",
-                "PlatformDetails": "OS",
-                "PrivateDnsName": "DNS",
+                "guestFullName": "OS",
+                "fqdn": "DNS",
                 "PrivateIpAddress": "IP",
-                "Description": "ANNOTATION",
+                "annotation": "ANNOTATION",
                 "BALISES_VEEAM": "BALISES_VEEAM", 
                 "BALISES_NETBACKUP": "BALISES_NETBACKUP",
                 "BALISES_Environnement": "BALISES_Environnement",

@@ -9,6 +9,8 @@ import ssl
 import atexit
 from pyVim.connect import SmartConnect, Disconnect
 from pyVmomi import vim
+import urllib3
+import requests
 
 from ....core.Console import console
 from ....core.ConfigurableObject import ConfigurableObject
@@ -25,6 +27,7 @@ class Datacenter(ConfigurableObject):
     _folders :dict
     _vm_increments :list # Liste des increments des machines virutelles utilises
     _summary: dict
+    _API_session: requests.Session
 
     #
     # Private methods
@@ -78,9 +81,53 @@ class Datacenter(ConfigurableObject):
         except Exception:
             console.Print(text=f"Erreur lors de la lecture du contenu de VSphere ({self.GetProperty('hostname')})", text_format="ERROR")
 
+        # Ouverture d'une session API
+        try:
+            self._API_session = requests.Session()
+
+            # Desctiver les avertissements lies au certificat
+            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+            base_url = f"https://{self.GetProperty('hostname')}"
+
+            # Authentification
+            request_url = f"{base_url}/rest/com/vmware/cis/session"
+            response = self._API_session.post(request_url, auth=(self.GetProperty('user'), self.GetProperty('password')), verify=False, timeout=60)
+            if response.status_code != 200:
+                raise requests.HTTPError(
+                    "Echec de l'authentification a vSphere\n"
+                    f"url={request_url}\n"
+                    f"user={self.GetProperty('user')}"
+                    )
+            session_id = self.APISession().cookies.get('vmware-api-session-id')
+            console.Print(text=f"Session API ouverte sur {self.GetProperty('hostname')} (session_id={session_id})", text_format="GREEN")
+            # S'assurer que la déconnexion se fera a la fin du programme
+            atexit.register(self._disconnect_api, self._service_instance)
+        except Exception:
+            console.Print(text=f"Erreur lors de la connexion a VSphere ({self.GetProperty('hostname')})", text_format="ERROR")
+
+    #
+    # Protected methods
+    #
+    def _disconnect_api(self, *args, **kwargs):
+        # Fermer la session API si on n'en a plus besoin
+        try:
+            session_id = self.APISession().cookies.get('vmware-api-session-id')
+            response = self._API_session.delete(f"https://{self.GetProperty('hostname')}/rest/com/vmware/cis/session", verify=False)
+            if response.status_code == 200:
+                console.Print(text=f"Session API terminee sur ({self.GetProperty('hostname')}) (session_id={session_id})", text_format="GREEN")
+        except requests.exceptions.SSLError as e:
+            console.Print(text=f"Erreur lors de la fermeture de la session API sur ({self.GetProperty('hostname')}) (session_id={session_id})", text_format="ERROR")
+
     #
     # Public methods
     #
+    def APISession(self):
+        '''
+            Retourne la session d'API ouverte
+        '''
+        return self._API_session
+
     def Id(self):
         '''
             Retourne l'identifant de l'objet

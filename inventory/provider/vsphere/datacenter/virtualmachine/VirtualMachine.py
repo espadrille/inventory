@@ -87,23 +87,9 @@ class VirtualMachine(VsphereResource):
         # La recherche des tags se fait par call d'API car pyvmomi ne prend pas en cherge le recuperation des tags
         #
 
-        session = requests.Session()
-
-        # Desctiver les avertissements lies au certificat
-        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
         base_url = f"https://{self._datacenter.GetProperty('hostname')}"
 
-        # Authentification
-        request_url = f"{base_url}/rest/com/vmware/cis/session"
-        response = session.post(request_url, auth=(self._datacenter.GetProperty('user'), self._datacenter.GetProperty('password')), verify=False, timeout=60)
-        if response.status_code != 200:
-            raise requests.HTTPError(
-                "Echec de l'authentification a vSphere\n"
-                f"url={request_url}\n"
-                f"user={self._datacenter.GetProperty('user')}"
-                )
-        session_id = response.json()['value']
+        session_id = self._datacenter.APISession().cookies.get("vmware-api-session-id")
         headers = {
             'vmware-api-session-id': session_id,
             'Content-Type': 'application/json'
@@ -117,7 +103,7 @@ class VirtualMachine(VsphereResource):
                 "type": "VirtualMachine"
             }
         }
-        response = session.post(request_url, headers=headers, json=payload, verify=False, timeout=60)
+        response = self._datacenter.APISession().post(request_url, headers=headers, json=payload, verify=False, timeout=60)
         if response.status_code != 200:
             raise requests.HTTPError(
                 f"Erreur HTTP/{response.status_code} lors de la lecture des tags associes a la machine virtuelle {self.GetProperty('Name')}.\n"
@@ -130,7 +116,7 @@ class VirtualMachine(VsphereResource):
         self._tags = []
         for tag_id in tag_ids:
             tag_detail_url = f"{base_url}/rest/com/vmware/cis/tagging/tag/id:{tag_id}"
-            tag_detail_response = session.get(tag_detail_url, headers=headers, verify=False, timeout=60)
+            tag_detail_response = self._datacenter.APISession().get(tag_detail_url, headers=headers, verify=False, timeout=60)
             if tag_detail_response.status_code != 200:
                 raise requests.HTTPError(
                     f"Erreur {response.status_code} lors de la lecture des details du tag {tag_id}.\n"
@@ -140,7 +126,7 @@ class VirtualMachine(VsphereResource):
             tag_name = tag_info['name']
             category_id = tag_info['category_id']
             category_detail_url = f"{base_url}/rest/com/vmware/cis/tagging/category/id:{category_id}"
-            category_detail_response = session.get(category_detail_url, headers=headers, verify=False, timeout=60)
+            category_detail_response = self._datacenter.APISession().get(category_detail_url, headers=headers, verify=False, timeout=60)
             if category_detail_response.status_code != 200:
                 raise requests.HTTPError(
                     f"Erreur {response.status_code} lors de la lecture des details de la categorie {category_id}.\n"

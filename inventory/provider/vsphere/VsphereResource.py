@@ -20,9 +20,18 @@ class VsphereResource(Resource):
             Constructeur de classe
         '''
         super().__init__(category=f"vsphere.{category}", id=f"{id}")
+        #
+        # Recuperer uniquement les proprietes serialisables, et pas les methodes
+        #
         for my_property_key in dir(resource):
+            if callable(getattr(resource, my_property_key, None)):
+                # Eviter les methodes
+                continue
             try:
-                self.SetProperty(my_property_key, getattr(resource, my_property_key))
+                value = getattr(resource, my_property_key)
+                if isinstance(value, (str, int, float, list, dict, bool, type(None))):
+                    # Eviter les types non serialisables
+                    self.SetProperty(my_property_key, getattr(resource, my_property_key))
             except Exception:
                 pass
 

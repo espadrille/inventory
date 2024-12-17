@@ -152,20 +152,20 @@ class Inventory(ConfigurableObject):
         # Choisir la bonne classe de formatteur
         if self._config['inventory']['output']['format'] == "json":
             from ..output.JsonOutputFormatter import JsonOutputFormatter # pylint: disable=C0415
-            output_formatter = JsonOutputFormatter()
+            output_formater = JsonOutputFormatter()
         elif self._config['inventory']['output']['format'] == "csv":
             from ..output.CsvOutputFormatter import CsvOutputFormatter # pylint: disable=C0415
-            output_formatter = CsvOutputFormatter()
+            output_formater = CsvOutputFormatter()
         elif self._config['inventory']['output']['format'] == "yaml":
             from ..output.YamlOutputFormatter import YamlOutputFormatter # pylint: disable=C0415
-            output_formatter = YamlOutputFormatter()
+            output_formater = YamlOutputFormatter()
         else:
             console.Print(text=f"Format de sortie non reconnu : {self._config['inventory']['output']['format']}", text_format="ERROR")
             from ..output.OutputFormatter import OutputFormatter # pylint: disable=C0415
-            output_formatter = OutputFormatter()
+            output_formater = OutputFormatter()
 
-        output_formatter.Init(config=self._config['inventory']['output'], resources=self._resources['all'])
-        output_formatter.Write()
+        output_formater.Init(config=self._config['inventory']['output'], resources=self._resources['all'])
+        output_formater.Write()
 
     def Print(self):
         '''

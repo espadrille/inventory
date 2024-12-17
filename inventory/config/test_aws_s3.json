@@ -19,7 +19,7 @@
         "output": {
             "mode": "console",
             "format": "json",
-            "output_file": "./inventory_s3.csv",
+            "output_file": "./inventory_result.csv",
             "#selected_fields": {
                 "Date": "Date",
                 "Category": "Category",

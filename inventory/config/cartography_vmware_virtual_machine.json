@@ -22,10 +22,9 @@
         "debug_mode": "DEBUG",
         "output": {
             "mode": "file",
-            "format": "json",
-            "output_file": "./inventory_result.json",
-            "#output_file": "s3:intradom-cartography-tools/vmware/theplx50/virtualmachines.csv",
-            "#selected_fields": {
+            "format": "csv",
+            "output_file": "s3:intradom-cartography-tools/vmware/theplx50/virtualmachines.csv",
+            "selected_fields": {
                 "Hypervisor": "VCenter",
                 "HostVersion": "VERSION vCENTER",
                 "Host": "Host",
