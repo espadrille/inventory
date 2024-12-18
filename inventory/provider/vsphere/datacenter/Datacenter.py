@@ -22,12 +22,16 @@ class Datacenter(ConfigurableObject):
     '''
 
     _service_instance :vim.ServiceInstance
+    _API_session: requests.Session
+
+    _is_vmomi_connected: bool
+    _is_api_connected: bool
+
     _content :vim.ServiceInstanceContent
     _resources :dict
     _folders :dict
     _vm_increments :list # Liste des increments des machines virutelles utilises
     _summary: dict
-    _API_session: requests.Session
 
     #
     # Private methods
@@ -48,6 +52,8 @@ class Datacenter(ConfigurableObject):
         self._resources['all'] = {}
         self._vm_increments = []
         self._summary = {}
+        self._is_vmomi_connected = False
+        self._is_api_connected = False
 
         # Informations de connexion
         self.SetProperty('hostname', self._get_config_value(config['hostname']))
@@ -59,28 +65,10 @@ class Datacenter(ConfigurableObject):
 
         console.Debug(text=f"config['folders']={config['folders']}")
 
-        context = ssl._create_unverified_context()
-
-        # Connexion au serveur vCenter
-        try:
-            self._service_instance = SmartConnect(host=self.GetProperty('hostname'),
-                                            user=self.GetProperty('user'),
-                                            pwd=self.GetProperty('password'),
-                                            sslContext=context)
-
-            self._content = self._service_instance.RetrieveContent()
-
-            # S'assurer que la déconnexion se fera a la fin du programme
-            atexit.register(Disconnect, self._service_instance)
-        except Exception:
-            console.Print(text=f"Erreur lors de la connexion a VSphere ({self.GetProperty('hostname')})", text_format="ERROR")
-
-        # Connexion au serveur vCenter
-        try:
-            self._content = self._service_instance.RetrieveContent()
-        except Exception:
-            console.Print(text=f"Erreur lors de la lecture du contenu de VSphere ({self.GetProperty('hostname')})", text_format="ERROR")
-
+    #
+    # Protected methods
+    #
+    def _connect_api(self):
         # Ouverture d'une session API
         try:
             self._API_session = requests.Session()
@@ -101,14 +89,32 @@ class Datacenter(ConfigurableObject):
                     )
             session_id = self.APISession().cookies.get('vmware-api-session-id')
             console.Print(text=f"Session API ouverte sur {self.GetProperty('hostname')} (session_id={session_id})", text_format="GREEN")
+            self._is_api_connected = True
             # S'assurer que la déconnexion se fera a la fin du programme
             atexit.register(self._disconnect_api, self._service_instance)
         except Exception:
             console.Print(text=f"Erreur lors de la connexion a VSphere ({self.GetProperty('hostname')})", text_format="ERROR")
 
-    #
-    # Protected methods
-    #
+    def _connect_vmomi(self):
+        # Connexion au serveur vCenter
+        context = ssl._create_unverified_context()
+        try:
+            self._service_instance = SmartConnect(host=self.GetProperty('hostname'),
+                                            user=self.GetProperty('user'),
+                                            pwd=self.GetProperty('password'),
+                                            sslContext=context)
+            self._is_vmomi_connected = True
+            # S'assurer que la déconnexion se fera a la fin du programme
+            atexit.register(Disconnect, self._service_instance)
+        except Exception:
+            console.Print(text=f"Erreur lors de la connexion a VSphere ({self.GetProperty('hostname')})", text_format="ERROR")
+
+        # Lecture du contenu du vCenter
+        try:
+            self._content = self._service_instance.RetrieveContent()
+        except Exception:
+            console.Print(text=f"Erreur lors de la lecture du contenu de VSphere ({self.GetProperty('hostname')})", text_format="ERROR")
+
     def _disconnect_api(self, *args, **kwargs):
         # Fermer la session API si on n'en a plus besoin
         try:
@@ -116,6 +122,7 @@ class Datacenter(ConfigurableObject):
             response = self._API_session.delete(f"https://{self.GetProperty('hostname')}/rest/com/vmware/cis/session", verify=False)
             if response.status_code == 200:
                 console.Print(text=f"Session API terminee sur ({self.GetProperty('hostname')}) (session_id={session_id})", text_format="GREEN")
+                self._is_api_connected = False
         except requests.exceptions.SSLError as e:
             console.Print(text=f"Erreur lors de la fermeture de la session API sur ({self.GetProperty('hostname')}) (session_id={session_id})", text_format="ERROR")
 
@@ -128,11 +135,22 @@ class Datacenter(ConfigurableObject):
         '''
         return self._API_session
 
+    def Connect(self):
+        self._connect_vmomi()
+        self._connect_api()
+        return self.IsConnected()
+
     def Id(self):
         '''
             Retourne l'identifant de l'objet
         '''
         return self.GetProperty('id')
+
+    def IsConnected(self) -> bool:
+        '''
+            Indique si le datacenter est connecte
+        '''
+        return self._is_vmomi_connected and self._is_api_connected
 
     def Name(self):
         '''
@@ -146,6 +164,9 @@ class Datacenter(ConfigurableObject):
         '''
         nb_vms = 0
         self._resources['all'] = {}
+
+        if not self.IsConnected():
+            return {}
 
         for my_folder in self._config['folders']:
             nb_resources_folder = 0

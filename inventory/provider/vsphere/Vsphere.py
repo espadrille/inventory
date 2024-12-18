@@ -54,11 +54,14 @@ class Vsphere(Provider):
         console.Debug("Chargement : VSphere")
         self._resources['all'] = {}
         for my_datacenter in self._datacenters:
-            console.Debug(f" Chargement : {my_datacenter.Name()}")
-            self._resources[my_datacenter.Name()] = my_datacenter.LoadResources()
-            for my_resource_key, my_resource in self._resources[my_datacenter.Name()]['all'].items():
-                self._resources['all'][my_resource_key] = my_resource
-            console.Debug(f"  ==> Total : {my_datacenter.Name()} : {len(self._resources[my_datacenter.Name()]['all'])} resources.")
+            if my_datacenter.Connect():
+                console.Debug(f" Chargement : {my_datacenter.Name()}")
+                self._resources[my_datacenter.Name()] = my_datacenter.LoadResources()
+                for my_resource_key, my_resource in self._resources[my_datacenter.Name()]['all'].items():
+                    self._resources['all'][my_resource_key] = my_resource
+                console.Debug(f"  ==> Total : {my_datacenter.Name()} : {len(self._resources[my_datacenter.Name()]['all'])} resources.")
+            else:
+                console.Debug(f"  Datacenter {my_datacenter.Name()} non connecte.")
 
         self._summary['resources total'] = str(len(self._resources['all']))
         console.Debug(f" ==> Total VSphere : {len(self._resources['all'])} resources.")
