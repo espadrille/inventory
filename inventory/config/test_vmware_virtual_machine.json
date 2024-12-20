@@ -1,13 +1,13 @@
 {
     "inventory": {
-        "name": "Inventaire VMWare",
+        "name": "Inventaire VMWare sddc-13-38-208-212",
         "providers": {
             "vsphere" : {
                 "datacenter_credentials": {
-                    "nereide106": {
-                        "hostname": "ssm:nereide106.vsphere.hostname",
-                        "user": "ssm:nereide106.vsphere.user",
-                        "password": "ssm:nereide106.vsphere.password"
+                    "sddc-13-38-208-212": {
+                        "hostname": "ssm:sddc-13-38-208-212.vsphere.hostname",
+                        "user": "ssm:sddc-13-38-208-212.vsphere.user",
+                        "password": "ssm:sddc-13-38-208-212.vsphere.password"
                     }
                 },
                 "folders": {

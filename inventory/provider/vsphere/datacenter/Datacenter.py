@@ -23,6 +23,7 @@ class Datacenter(ConfigurableObject):
 
     _service_instance :vim.ServiceInstance
     _API_session: requests.Session
+    _API_session_id: str
 
     _is_vmomi_connected: bool
     _is_api_connected: bool
@@ -87,13 +88,15 @@ class Datacenter(ConfigurableObject):
                     f"url={request_url}\n"
                     f"user={self.GetProperty('user')}"
                     )
-            session_id = self.APISession().cookies.get('vmware-api-session-id')
-            console.Print(text=f"Session API ouverte sur {self.GetProperty('hostname')} (session_id={session_id})", text_format="GREEN")
+            # print(self._API_session.cookies)
+            self._API_session_id = self._API_session.cookies.get('vmware-api-session-id', domain=self.GetProperty('hostname'), path="/rest")
+            console.Print(text=f"Session API ouverte sur {self.GetProperty('hostname')} (session_id={self._API_session_id})", text_format="GREEN")
             self._is_api_connected = True
             # S'assurer que la déconnexion se fera a la fin du programme
             atexit.register(self._disconnect_api, self._service_instance)
-        except Exception:
-            console.Print(text=f"Erreur lors de la connexion a VSphere ({self.GetProperty('hostname')})", text_format="ERROR")
+        except Exception as e:
+            console.Print(text=f"Erreur lors de la connexion a VSphere API ({self.GetProperty('hostname')})", text_format="ERROR")
+            console.Print(text=f"Exception ({e})", text_format="ERROR")
 
     def _connect_vmomi(self):
         # Connexion au serveur vCenter
@@ -106,8 +109,9 @@ class Datacenter(ConfigurableObject):
             self._is_vmomi_connected = True
             # S'assurer que la déconnexion se fera a la fin du programme
             atexit.register(Disconnect, self._service_instance)
-        except Exception:
-            console.Print(text=f"Erreur lors de la connexion a VSphere ({self.GetProperty('hostname')})", text_format="ERROR")
+        except Exception as e:
+            console.Print(text=f"Erreur lors de la connexion a VSphere vmomi ({self.GetProperty('hostname')})", text_format="ERROR")
+            console.Print(text=f"Exception ({e})", text_format="ERROR")
 
         # Lecture du contenu du vCenter
         try:
@@ -118,13 +122,12 @@ class Datacenter(ConfigurableObject):
     def _disconnect_api(self, *args, **kwargs):
         # Fermer la session API si on n'en a plus besoin
         try:
-            session_id = self.APISession().cookies.get('vmware-api-session-id')
             response = self._API_session.delete(f"https://{self.GetProperty('hostname')}/rest/com/vmware/cis/session", verify=False)
             if response.status_code == 200:
-                console.Print(text=f"Session API terminee sur ({self.GetProperty('hostname')}) (session_id={session_id})", text_format="GREEN")
+                console.Print(text=f"Session API terminee sur ({self.GetProperty('hostname')}) (session_id={self._API_session_id})", text_format="GREEN")
                 self._is_api_connected = False
         except requests.exceptions.SSLError as e:
-            console.Print(text=f"Erreur lors de la fermeture de la session API sur ({self.GetProperty('hostname')}) (session_id={session_id})", text_format="ERROR")
+            console.Print(text=f"Erreur lors de la fermeture de la session API sur ({self.GetProperty('hostname')}) (session_id={self._API_session_id})", text_format="ERROR")
 
     #
     # Public methods
@@ -134,6 +137,37 @@ class Datacenter(ConfigurableObject):
             Retourne la session d'API ouverte
         '''
         return self._API_session
+
+    def APISessionId(self):
+        '''
+            Retourne l'id de la session d'API ouverte
+        '''
+        return self._API_session_id
+
+    def CallRestAPI(self, path: str="/", method: str="GET", payload: dict={}):
+        if self._is_api_connected:
+            try:
+                request_url = f"https://{self.GetProperty('hostname')}{path}"
+                headers = {
+                    'vmware-api-session-id': self._API_session_id,
+                    'Content-Type': 'application/json'
+                }
+                if method =='POST':
+                    response = self._API_session.post(request_url, headers=headers, json=payload, verify=False, timeout=60)
+                elif method =='GET':
+                    response = self._API_session.get(request_url, headers=headers, verify=False, timeout=60)
+
+                if response.status_code != 200:
+                    raise requests.HTTPError(
+                        f"Code rtour API HTTP/{response.status_code} lors de l'apelle d'API {request_url} [{method}].\n"
+                        f"Payload={payload}"
+                        )
+            except Exception as e:
+                console.Print(text=f"Erreur lors de l'appel d'API ({request_url}) [{method}]", text_format="ERROR")
+                console.Print(text=f"Exception: ({e})", text_format="ERROR")
+        else:
+            console.Print(text=f"Aucune session API ouverte sur ({self.GetProperty('hostname')})", text_format="ERROR")
+        return response
 
     def Connect(self):
         self._connect_vmomi()

@@ -6,9 +6,7 @@
 # Imports
 #
 import re
-import urllib3
 from pyVmomi import vim
-import requests
 from ...VsphereResource import VsphereResource
 
 #
@@ -86,57 +84,36 @@ class VirtualMachine(VsphereResource):
         #
         # La recherche des tags se fait par call d'API car pyvmomi ne prend pas en cherge le recuperation des tags
         #
-
-        base_url = f"https://{self._datacenter.GetProperty('hostname')}"
-
-        session_id = self._datacenter.APISession().cookies.get("vmware-api-session-id")
-        headers = {
-            'vmware-api-session-id': session_id,
-            'Content-Type': 'application/json'
-        }
-
-        # Recuperation des tags associes à la machine virtuelle
-        request_url = f"{base_url}/rest/com/vmware/cis/tagging/tag-association?~action=list-attached-tags"
-        payload = {
-            "object_id": {
-                "id": self.GetProperty('id'),
-                "type": "VirtualMachine"
-            }
-        }
-        response = self._datacenter.APISession().post(request_url, headers=headers, json=payload, verify=False, timeout=60)
-        if response.status_code != 200:
-            raise requests.HTTPError(
-                f"Erreur HTTP/{response.status_code} lors de la lecture des tags associes a la machine virtuelle {self.GetProperty('Name')}.\n"
-                f"url={request_url}\n"
-                f"Payload={payload}"
-                )
+        response = self._datacenter.CallRestAPI(
+            path='/rest/com/vmware/cis/tagging/tag-association?~action=list-attached-tags',
+            method='POST',
+            payload = {
+                "object_id": {
+                    "id": self.GetProperty('id'),
+                    "type": "VirtualMachine"
+                    }
+                }
+            )
         tag_ids = response.json()['value']
 
         # Recuperation des details des tags
         self._tags = []
         for tag_id in tag_ids:
-            tag_detail_url = f"{base_url}/rest/com/vmware/cis/tagging/tag/id:{tag_id}"
-            tag_detail_response = self._datacenter.APISession().get(tag_detail_url, headers=headers, verify=False, timeout=60)
-            if tag_detail_response.status_code != 200:
-                raise requests.HTTPError(
-                    f"Erreur {response.status_code} lors de la lecture des details du tag {tag_id}.\n"
-                    f"url={tag_detail_url}"
-                    )
-            tag_info = tag_detail_response.json()['value']
-            tag_name = tag_info['name']
-            category_id = tag_info['category_id']
-            category_detail_url = f"{base_url}/rest/com/vmware/cis/tagging/category/id:{category_id}"
-            category_detail_response = self._datacenter.APISession().get(category_detail_url, headers=headers, verify=False, timeout=60)
-            if category_detail_response.status_code != 200:
-                raise requests.HTTPError(
-                    f"Erreur {response.status_code} lors de la lecture des details de la categorie {category_id}.\n"
-                    f"url={category_detail_url}"
-                    )
-            category_info = category_detail_response.json()['value']
-            category_name = category_info['name']
+            response = self._datacenter.CallRestAPI(
+                path=f"/rest/com/vmware/cis/tagging/tag/id:{tag_id}",
+                method='GET'
+                )
+            tag_info = response.json()['value']
+
+            response = self._datacenter.CallRestAPI(
+                path=f"/rest/com/vmware/cis/tagging/category/id:{tag_info['category_id']}",
+                method='GET'
+                )
+            category_info = response.json()['value']
+
             self._tags.append({
-                "Key": category_name,
-                "Value":tag_name
+                "Key": category_info['name'],
+                "Value":tag_info['name']
                 })
 
     def _get_networks(self):
