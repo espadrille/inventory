@@ -1,13 +1,13 @@
 {
     "inventory": {
-        "name": "Inventaire VMWare vmcpdapl002",
+        "name": "Inventaire VMWare theplx50",
         "providers": {
             "vsphere" : {
                 "datacenter_credentials": {
-                    "vmcpdapl002": {
-                        "hostname": "ssm:vmcpdapl002.vsphere.hostname",
-                        "user": "ssm:vmcpdapl002.vsphere.user",
-                        "password": "ssm:vmcpdapl002.vsphere.password"
+                    "theplx50": {
+                        "hostname": "ssm:theplx50.vsphere.hostname",
+                        "user": "ssm:theplx50.vsphere.user",
+                        "password": "ssm:theplx50.vsphere.password"
                     }
                 },
                 "folders": {
@@ -24,7 +24,7 @@
             "mode": "file",
             "format": "json",
             "output_file": "./inventory_result.json",
-            "selected_fields": {
+            "#selected_fields": {
                 "Hypervisor": "VCenter",
                 "HostVersion": "VERSION vCENTER",
                 "Host": "Host",
