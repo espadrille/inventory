@@ -82,32 +82,36 @@ class Instance(AwsResource):
             if my_device['DeviceName'] == self.GetProperty('RootDeviceName'):
                 self.SetProperty('CreationTime', my_device['Ebs']['AttachTime'])
 
+        #
         # Recherche des informations sur l'OS
+        # 
+        
+        self.SetProperty('OsType', 'Windows' if self.GetProperty('PlatformDetails') == 'Windows' else 'Linux')
+        self.SetProperty('OsName', self.GetProperty('PlatformDetails'))
+        self.SetProperty('OsDetailed', self.GetProperty('PlatformDetails'))
+
+        # Surcharger avec le tag 'os_type' si possible
         try:
             os_type = json.loads(self._get_tag_value("os_type"))
             if os_type:
                 self.SetProperty('OsName', os_type['name'])
                 self.SetProperty('OsDetailed', os_type['detailed'])
         except json.JSONDecodeError:
-            self.SetProperty('OsName', self.GetProperty('PlatformDetails'))
-            self.SetProperty('OsDetailed', self.GetProperty('PlatformDetails'))
+            pass
 
-        # Recherche des informations de cartographie
+        # Surcharger avec le tag 'cartography' si possible
         try:
-            cartography = json.loads(self._get_tag_value("cartography"))
-            if os_type:
-                self.SetProperty('OsName', cartography['OsName'])
-                self.SetProperty('OsType', cartography['OsType'])
-                self.SetProperty('OsDetailed', cartography['OsDetailed'])
+            cartography = json.loads(self._get_tag_value('cartography'))
+            if cartography:
+                if 'os' in cartography:
+                    if 'type' in cartography['os']:
+                        self.SetProperty('OsType', cartography['os']['type'])
+                    if 'name' in cartography['os']:
+                        self.SetProperty('OsName', cartography['os']['name'])
+                    if 'detailed' in cartography['os']:
+                        self.SetProperty('OsDetailed', cartography['os']['detailed'])
         except json.JSONDecodeError:
-            if self.GetProperty('PlatformDetails') == "Windows":
-                self.SetProperty('OsType', 'Windows')
-            elif self.GetProperty('PlatformDetails') == "Linux/UNIX":
-                self.SetProperty('OsType', 'Linux')
-            else:
-                self.SetProperty('OsType', 'Appliance')
-            self.SetProperty('OsName', self.GetProperty('PlatformDetails'))
-            self.SetProperty('OsDetailed', self.GetProperty('PlatformDetails'))
+            pass
 
 
     #

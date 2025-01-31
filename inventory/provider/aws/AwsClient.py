@@ -74,6 +74,12 @@ class AwsClient(Object):
         '''
         return self.GetProperty('region')
 
+    def Role(self):
+        '''
+            Le role du client
+        '''
+        return self.GetProperty('role_arn')
+
     def Service(self):
         '''
             Le service du cient

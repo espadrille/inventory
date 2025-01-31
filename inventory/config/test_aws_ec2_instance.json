@@ -4,7 +4,7 @@
         "providers": {
             "aws" : {
                 "assume_roles": {
-                    "production": "arn:aws:iam::937634852611:role/role-inventory-readOnly", 
+                    "developpement": "arn:aws:iam::773535489628:role/role-inventory-readOnly", 
                     "recette": "arn:aws:iam::227538533452:role/role-inventory-readOnly", 
                     "shared": "arn:aws:iam::545245414921:role/role-inventory-readOnly"
                 },
