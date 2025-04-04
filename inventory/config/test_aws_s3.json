@@ -4,7 +4,25 @@
         "providers": {
             "aws" : {
                 "assume_roles": {
-                    "tools": "arn:aws:iam::714117993668:role/role-inventory-readOnly"
+                    "citrix": "arn:aws:iam::905418046410:role/role-inventory-readOnly",
+                    "ddfbackend": "arn:aws:iam::836216019354:role/role-inventory-readOnly",
+                    "ddfdatalab_developpement": "arn:aws:iam::975050044284:role/role-inventory-readOnly",
+                    "ddfdatalab_production": "arn:aws:iam::211125533794:role/role-inventory-readOnly",
+                    "ddfdataplatform_developpement": "arn:aws:iam::730335420789:role/role-inventory-readOnly",
+                    "ddfdataplatform_production": "arn:aws:iam::891377014648:role/role-inventory-readOnly",
+                    "ddfdataplatform_staging": "arn:aws:iam::992382395260:role/role-inventory-readOnly",
+                    "ddfmlplatform_developpement": "arn:aws:iam::654654274413:role/role-inventory-readOnly",
+                    "ddfmlplatform_production": "arn:aws:iam::637423436886:role/role-inventory-readOnly",
+                    "ddfmlplatform_staging": "arn:aws:iam::339713035866:role/role-inventory-readOnly",
+                    "developpement": "arn:aws:iam::773535489628:role/role-inventory-readOnly", 
+                    "network": "arn:aws:iam::229327873503:role/role-inventory-readOnly",
+                    "ot": "arn:aws:iam::891377024967:role/role-inventory-readOnly",
+                    "production": "arn:aws:iam::937634852611:role/role-inventory-readOnly", 
+                    "recette": "arn:aws:iam::227538533452:role/role-inventory-readOnly", 
+                    "securite": "arn:aws:iam::039980020284:role/role-inventory-readOnly", 
+                    "shared": "arn:aws:iam::545245414921:role/role-inventory-readOnly", 
+                    "tools": "arn:aws:iam::714117993668:role/role-inventory-readOnly",
+                    "vmc": "arn:aws:iam::874464602775:role/role-inventory-readOnly"
                 },
                 "services": {
                     "s3": {

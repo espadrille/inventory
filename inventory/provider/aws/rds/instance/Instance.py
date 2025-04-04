@@ -48,6 +48,19 @@ class Instance(AwsResource):
             else:
                 self.SetProperty('Increment', 0)
 
+        # URL du endpoint
+        self.SetProperty('PrivateDnsName', self.GetProperty('Endpoint')['Address'])
+        self.SetProperty('Port', self.GetProperty('Endpoint')['Port'])
+
+        # Option Group
+        self.SetProperty('OptionGroupName0', self.GetProperty('OptionGroupMemberships')[0]['OptionGroupName'])
+
+        # Parameter Group
+        self.SetProperty('ParameterGroupName0', self.GetProperty('DBParameterGroups')[0]['DBParameterGroupName'])
+
+        # Subnet Group
+        self.SetProperty('SubnetGroupName', self.GetProperty('DBSubnetGroup')['DBSubnetGroupName'])
+
     #
     # Protected methods
     #
